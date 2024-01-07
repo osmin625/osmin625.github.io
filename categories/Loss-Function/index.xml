@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Loss Function on OMIN</title>
+    <link>https://osmin625.github.io/categories/Loss-Function/</link>
+    <description>Recent content in Loss Function on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/categories/Loss-Function/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Back Propagation(오차 역전파 알고리즘)</title>
+      <link>https://osmin625.github.io/posts/2023-09-25-backpropagation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-25-backpropagation/</guid>
+      <description>이 알고리즘으로 인해 ML Network에서의 학습이 가능하다는 것이 알려져, 암흑기에 있던 신경망 학계가 다시 관심을 받게 되었다.&#xA;출력층에서 시작하여 역방향으로 오류를 전파한다는 뜻에서 오류 역전파라 부른다.&#xA;내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다. 오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다. 직관적인 이해는 끝났다. 이제 제대로 이해해보자.&#xA;오차 역전파가 중요한 이유를 알고 싶다면, 여기를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.&#xA;오차 역전파&#xD;#&#xD;신경망을 학습하는 방법.</description>
+    </item>
+    <item>
+      <title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</title>
+      <link>https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</guid>
+      <description>손실 함수, Gradient Descent, Back Propagation&#xA;수치 미분&#xD;#&#xD;한 점에서의 기울기. 변화량을 의미한다.&#xA;경사 하강법을 사용하기 위해서는 미분값이 필요하다.&#xA;$$ {df(x)\over dx} = \lim_{h \to 0} {f(x+h) - f(x)\over h} $$&#xA;수치 미분이 경사 하강법에 사용되는 방법&#xD;#&#xD;경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.&#xA;손실 함수는 대상 값과 예측 값의 오차를 의미하므로,&#xA;손실 함수에 대한 미분 값을 구한 후, 오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.</description>
+    </item>
+    <item>
+      <title>손실 함수(Loss Function)에 대해 알아보자.</title>
+      <link>https://osmin625.github.io/posts/2023-09-23-Loss-function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-23-Loss-function/</guid>
+      <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function&#xD;#&#xD;신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
+    </item>
+    <item>
+      <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
+      <link>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</guid>
+      <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법)&#xD;#&#xD;자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
+    </item>
+  </channel>
+</rss>

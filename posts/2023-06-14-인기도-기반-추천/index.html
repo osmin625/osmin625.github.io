@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="간단 요약
+가장 인기있는 아이템을 규칙을 기반으로 추천한다.
+인기도의 척도
+- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수
+예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법#Most Popular: 조회수가 가장 많은 아이템#최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.
+Score Formula
+가장 많이 조회된 뉴스를 추천하기
+좋아요가 가장 많은 게시글을 추천하기
+Hacker News Formula
+뉴스 추천 서비스">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="인기도 기반 추천이란?" />
+<meta property="og:description" content="간단 요약
+가장 인기있는 아이템을 규칙을 기반으로 추천한다.
+인기도의 척도
+- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수
+예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법#Most Popular: 조회수가 가장 많은 아이템#최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.
+Score Formula
+가장 많이 조회된 뉴스를 추천하기
+좋아요가 가장 많은 게시글을 추천하기
+Hacker News Formula
+뉴스 추천 서비스" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/" /><meta property="article:section" content="posts" />
+
+
+
+<title>인기도 기반 추천이란? | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>인기도 기반 추천이란?</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#score-계산-방법">Score 계산 방법</a>
+          <ul>
+            <li><a href="#most-popular-조회수가-가장-많은-아이템"><strong>Most Popular:</strong> 조회수가 가장 많은 아이템</a></li>
+            <li><a href="#highly-rated-평균-평점이-가장-높은-아이템"><strong>Highly Rated:</strong> 평균 평점이 가장 높은 아이템</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/">인기도 기반 추천이란?</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
+      <a href="/categories/Recommendation-System/">Recommendation System</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Rule-Based/">Rule-Based</a>
+  </div>
+  
+
+
+
+<blockquote>
+<p>간단 요약<br>
+가장 인기있는 아이템을 규칙을 기반으로 추천한다.</p>
+</blockquote>
+<p>인기도의 척도<br>
+- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수</p>
+<ul>
+<li>예시
+<ul>
+<li>네이버 쇼핑 랭킹 순</li>
+<li>다음 뉴스, 댓글 추천</li>
+<li>레딧 Hot 추천</li>
+</ul>
+</li>
+</ul>
+<h2 id="score-계산-방법">
+  Score 계산 방법
+  <a class="anchor" href="#score-%ea%b3%84%ec%82%b0-%eb%b0%a9%eb%b2%95">#</a>
+</h2>
+<h3 id="most-popular-조회수가-가장-많은-아이템">
+  <strong>Most Popular:</strong> 조회수가 가장 많은 아이템
+  <a class="anchor" href="#most-popular-%ec%a1%b0%ed%9a%8c%ec%88%98%ea%b0%80-%ea%b0%80%ec%9e%a5-%eb%a7%8e%ec%9d%80-%ec%95%84%ec%9d%b4%ed%85%9c">#</a>
+</h3>
+<p>최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.</p>
+<ul>
+<li>
+<p><strong>Score Formula</strong></p>
+<p>가장 많이 조회된 뉴스를 추천하기</p>
+<p>좋아요가 가장 많은 게시글을 추천하기</p>
+</li>
+<li>
+<p><strong>Hacker News Formula</strong></p>
+<p>뉴스 추천 서비스</p>
+<p>$$
+score = \frac{pageviews -1}{(age + 2)^{gravity}}
+$$</p>
+<ul>
+<li>gravity = 1.8</li>
+</ul>
+<p>조회수를 기반으로 추천해주면서, 시간이 지남에 따라 스코어를 감소시킨다.</p>
+</li>
+<li>
+<p><strong>Raddit Formula</strong></p>
+<p>시간에 따른 가점 방식</p>
+<p>$$
+score = \log_{10}{(ups-downs)} + \frac{sign(ups-downs)\times seconds}{45000}
+$$</p>
+<p><strong>첫번째 term — Popularity</strong></p>
+<p>해당 값이 높아질수록 점수가 높아진다.</p>
+<p>log scale이기 때문에, 첫 vote가 가장 가치가 높고, vote가 쌓일수록 영향력이 점점 약해진다.</p>
+<p><strong>두번째 term — 포스팅이 게시된 절대 시간</strong></p>
+<p>최근 포스팅일수록 절대 시간값이 높기 때문에, 더 높은 score을 가진다.</p>
+</li>
+</ul>
+<h3 id="highly-rated-평균-평점이-가장-높은-아이템">
+  <strong>Highly Rated:</strong> 평균 평점이 가장 높은 아이템
+  <a class="anchor" href="#highly-rated-%ed%8f%89%ea%b7%a0-%ed%8f%89%ec%a0%90%ec%9d%b4-%ea%b0%80%ec%9e%a5-%eb%86%92%ec%9d%80-%ec%95%84%ec%9d%b4%ed%85%9c">#</a>
+</h3>
+<p>평점의 신뢰도를 파악할 필요가 있다.</p>
+<p>평가의 개수가 충분한지도 고려해야 한다.</p>
+<ul>
+<li>
+<p><strong>Steam Rating Formula</strong></p>
+<p>$$
+avg_rating = \frac{\text{# of positive review}}{\text{# of reviews}}
+$$</p>
+<p>$$
+score = avg_rating - (avg_rating - 0.5) \times 2^{-\log\text{(# of reviews)}}
+$$</p>
+<p>rating은 평균값을 사용하되, 전체 review 개수에 따라 rating을 보정한다.</p>
+<p>review 개수가 아주 많아지면 score은 평균 rating과 거의 비슷해진다.</p>
+</li>
+<li>
+<p><strong>Steam Rating Formula → Movie Rating</strong></p>
+<p>$$
+avg_rating = \frac{\text{# of positive review}}{\text{# of reviews}}
+$$</p>
+<p>$$
+score = avg_rating - (avg_rating - 3.0) \times 2^{-\log\text{(# of reviews)}}
+$$</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#score-계산-방법">Score 계산 방법</a>
+          <ul>
+            <li><a href="#most-popular-조회수가-가장-많은-아이템"><strong>Most Popular:</strong> 조회수가 가장 많은 아이템</a></li>
+            <li><a href="#highly-rated-평균-평점이-가장-높은-아이템"><strong>Highly Rated:</strong> 평균 평점이 가장 높은 아이템</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

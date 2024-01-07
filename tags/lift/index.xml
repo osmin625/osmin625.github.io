@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lift on OMIN</title>
+    <link>https://osmin625.github.io/tags/lift/</link>
+    <description>Recent content in lift on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/lift/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>연관 분석(Association Analysis) 정리</title>
+      <link>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</guid>
+      <description>연관 규칙 분석(Association Rule Analysis)&#xD;#&#xD;추천 시스템의 가장 고전적인 방법론&#xA;장바구니 분석, 서열 분석이라고도 불린다.&#xA;상품의 구매, 조회 등 하나의 연속된 거래들 사이의 규칙을 발견하기 위해 적용하는 방법&#xA;즉, 사용자의 장바구니 내에 포함된 상품들의 규칙을 발견하기 위해 적용하는 방법&#xA;유저 정보(유저 행동 정보)를 활용하는 분석 방법&#xA;규칙&#xA;IF {condition} THEN {result}&#xA;{condition} → {result}&#xA;연관 규칙&#xA;규칙 가운데 일부 기준(빈번함의 기준)을 만족하는 것&#xA;IF {antecedent} THEN {consequent}&#xA;빈번하게 발생하는 규칙을 의미한다.</description>
+    </item>
+  </channel>
+</rss>

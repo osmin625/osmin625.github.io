@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Deep Model on OMIN</title>
+    <link>https://osmin625.github.io/tags/Deep-Model/</link>
+    <description>Recent content in Deep Model on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Deep-Model/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DeepFM</title>
+      <link>https://osmin625.github.io/posts/2023-05-24-DeepFM/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-05-24-DeepFM/</guid>
+      <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background&#xD;#&#xD;추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
+    </item>
+    <item>
+      <title>WDN: Wide &amp; Deep Network</title>
+      <link>https://osmin625.github.io/posts/2023-05-26-WDN-Wide-Deep-Network/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-05-26-WDN-Wide-Deep-Network/</guid>
+      <description>Wide &amp;amp; Deep Learning for Recommender Systems&#xA;선형적인 모델(Wide)과 비선형적인 모델(Deep)을 결합하여 기존 모델들의 장점을 모두 취하고자 한 논문&#xA;등장 배경&#xD;#&#xD;추천시스템에서 해결해야 할 두 가지 과제&#xA;Memorization — 학습데이터에 자주 등장하는 패턴은 모델이 암기해야 한다.&#xA;함께 빈번히 등장하는 아이템 혹은 특성(feature) 관계를 과거 데이터로부터 학습하는 것&#xA;Logistic Regression과 같은 선형 모델&#xA;대규모 추천 시스템 및 검색 엔진에서 사용해왔다. 확장 및 해석이 용이하다. 학습 데이터에 없는 feature 조합에 취약하다. Generalization — 학습데이터에 발생하지 않는 패턴을 적절하게 표현해야 한다.</description>
+    </item>
+  </channel>
+</rss>

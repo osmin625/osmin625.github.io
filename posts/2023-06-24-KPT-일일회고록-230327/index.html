@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TIL (Today I Learn)#Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep#강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="KPT20230327" />
+<meta property="og:description" content="TIL (Today I Learn)#Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep#강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/" /><meta property="article:section" content="posts" />
+
+
+
+<title>KPT20230327 | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>KPT20230327</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
+            <li><a href="#keep"><strong>Keep</strong></a></li>
+            <li><a href="#problem"><strong>Problem</strong></a></li>
+            <li><a href="#try"><strong>Try</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/">KPT20230327</a>
+  </h1>
+  
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/KPT/">KPT</a>, 
+      <a href="/tags/TIL/">TIL</a>
+  </div>
+  
+
+
+
+<h3 id="til-today-i-learn">
+  <strong>TIL (Today I Learn)</strong>
+  <a class="anchor" href="#til-today-i-learn">#</a>
+</h3>
+<ul>
+<li>Stacking이 무엇이고, 어떤 상황에 사용하는지</li>
+<li>추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상)</li>
+<li>추천시스템의 목적</li>
+<li>추천시스템의 평가 지표</li>
+<li>AP, MAP</li>
+<li>CG, DCG, IDCG, NDCG</li>
+<li>스코어 생성 방법</li>
+<li>UMAP 활용 방법</li>
+</ul>
+<h3 id="keep">
+  <strong>Keep</strong>
+  <a class="anchor" href="#keep">#</a>
+</h3>
+<ul>
+<li>강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다.</li>
+<li>여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다.</li>
+<li>연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.</li>
+</ul>
+<h3 id="problem">
+  <strong>Problem</strong>
+  <a class="anchor" href="#problem">#</a>
+</h3>
+<ul>
+<li>전날 잠을 적게 자서 낮잠을 2시간정도 자버렸다.</li>
+<li>낮잠을 잔 후, 이리저리 일정이 있어서 실질적인 공부량이 너무 부족했다.</li>
+<li>차원 축소를 진행할 때, Metric을 설정해주어야 했는데, 다양한 Metric을 배웠음에도 불구하고 어떤 Metric을 접목해야 해당 데이터를 가장 잘 나타낼지 파악하기가 어려웠다.</li>
+</ul>
+<h3 id="try">
+  <strong>Try</strong>
+  <a class="anchor" href="#try">#</a>
+</h3>
+<ul>
+<li>낮잠을 자는 것 까진 괜찮다고 생각하지만, 30분 이상의 낮잠을 자야하는 상황은 피하도록 하자.</li>
+<li>Metric별 어떤 상황에 쓰이는지를 알아둘 필요가 있다.</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
+            <li><a href="#keep"><strong>Keep</strong></a></li>
+            <li><a href="#problem"><strong>Problem</strong></a></li>
+            <li><a href="#try"><strong>Try</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

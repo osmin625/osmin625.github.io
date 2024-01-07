@@ -6,8 +6,29 @@
     <description>Recent content in Categories on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 02 Apr 2014 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DL Algorithm</title>
+      <link>https://osmin625.github.io/categories/DL-Algorithm/</link>
+      <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/categories/DL-Algorithm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Recommendation System</title>
+      <link>https://osmin625.github.io/categories/Recommendation-System/</link>
+      <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/categories/Recommendation-System/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Computer Vision</title>
+      <link>https://osmin625.github.io/categories/Computer-Vision/</link>
+      <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/categories/Computer-Vision/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Development</title>
       <link>https://osmin625.github.io/categories/Development/</link>
@@ -20,6 +41,146 @@
       <link>https://osmin625.github.io/categories/golang/</link>
       <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/categories/golang/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Knowledge</title>
+      <link>https://osmin625.github.io/categories/AI-Knowledge/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/AI-Knowledge/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>AI Math</title>
+      <link>https://osmin625.github.io/categories/AI-Math/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/AI-Math/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>BoostCamp AI Tech</title>
+      <link>https://osmin625.github.io/categories/BoostCamp-AI-Tech/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/BoostCamp-AI-Tech/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data</title>
+      <link>https://osmin625.github.io/categories/Data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>DL Framework</title>
+      <link>https://osmin625.github.io/categories/DL-Framework/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/DL-Framework/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Git</title>
+      <link>https://osmin625.github.io/categories/Git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Git/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hyperparameter</title>
+      <link>https://osmin625.github.io/categories/Hyperparameter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Hyperparameter/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Information Retrieval</title>
+      <link>https://osmin625.github.io/categories/Information-Retrieval/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Information-Retrieval/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Loss Function</title>
+      <link>https://osmin625.github.io/categories/Loss-Function/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Loss-Function/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Natural Language Processing</title>
+      <link>https://osmin625.github.io/categories/Natural-Language-Processing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Natural-Language-Processing/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Numerical Analysis</title>
+      <link>https://osmin625.github.io/categories/Numerical-Analysis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Numerical-Analysis/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimizer</title>
+      <link>https://osmin625.github.io/categories/Optimizer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Optimizer/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Project Management</title>
+      <link>https://osmin625.github.io/categories/Project-Management/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Project-Management/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>PyTorch</title>
+      <link>https://osmin625.github.io/categories/PyTorch/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/PyTorch/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Review</title>
+      <link>https://osmin625.github.io/categories/Review/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Review/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Engineering</title>
+      <link>https://osmin625.github.io/categories/Software-Engineering/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Software-Engineering/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Statistics</title>
+      <link>https://osmin625.github.io/categories/Statistics/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Statistics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>TIL</title>
+      <link>https://osmin625.github.io/categories/TIL/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/TIL/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Weekly</title>
+      <link>https://osmin625.github.io/categories/Weekly/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/Weekly/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>선형대수</title>
+      <link>https://osmin625.github.io/categories/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/categories/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</guid>
       <description></description>
     </item>
   </channel>

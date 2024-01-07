@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer
+Gradient Descent(경사하강법)#자연 과학과 공학에서 오랫동안 사용해온 최적화 방법
+손실 함수의 최적 해를 찾기 위한 방법
+1차 근삿값 발견을 위한 최적화 알고리즘
+미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.
+따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.
+굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)" />
+<meta property="og:description" content="손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer
+Gradient Descent(경사하강법)#자연 과학과 공학에서 오랫동안 사용해온 최적화 방법
+손실 함수의 최적 해를 찾기 위한 방법
+1차 근삿값 발견을 위한 최적화 알고리즘
+미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.
+따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.
+굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/" /><meta property="article:section" content="posts" />
+
+
+
+<title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법) | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gradient-descent경사하강법">Gradient Descent(경사하강법)</a>
+          <ul>
+            <li><a href="#적절한-학습률">적절한 학습률</a></li>
+          </ul>
+        </li>
+        <li><a href="#학습률을-적절히-조정하는-것이-매우-중요하다">학습률을 적절히 조정하는 것이 매우 중요하다.</a>
+          <ul>
+            <li><a href="#기계-학습의-경사-하강법">기계 학습의 경사 하강법</a></li>
+          </ul>
+        </li>
+        <li><a href="#경사-하강법-적용-방법">경사 하강법 적용 방법</a>
+          <ul>
+            <li><a href="#1-bgd-batch-gradient-descent">1. <strong>BGD: Batch Gradient Descent</strong></a></li>
+            <li><a href="#2-sgd-stochastic-gradient-descent확률적-경사-하강법">2. SGD: Stochastic gradient descent(확률적 경사 하강법)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-09-24-Gradient_Descent/">손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/AI-Knowledge/">AI Knowledge</a>, 
+      <a href="/categories/Loss-Function/">Loss Function</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Loss-Function/">Loss Function</a>, 
+      <a href="/tags/Gradient-Descent/">Gradient Descent</a>, 
+      <a href="/tags/Stochastic-Gradient-Descent/">Stochastic Gradient Descent</a>, 
+      <a href="/tags/Batch-Mode/">Batch Mode</a>, 
+      <a href="/tags/Mini-Batch-Mode/">Mini Batch Mode</a>, 
+      <a href="/tags/Pattern-Mode/">Pattern Mode</a>
+  </div>
+  
+
+
+
+<blockquote>
+<p>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer</p>
+</blockquote>
+<h2 id="gradient-descent경사하강법">
+  Gradient Descent(경사하강법)
+  <a class="anchor" href="#gradient-descent%ea%b2%bd%ec%82%ac%ed%95%98%ea%b0%95%eb%b2%95">#</a>
+</h2>
+<p>자연 과학과 공학에서 오랫동안 사용해온 최적화 방법</p>
+<p><strong>손실 함수의 최적 해를 찾기 위한 방법</strong></p>
+<p>1차 근삿값 발견을 위한 최적화 알고리즘</p>
+<p>미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 <strong>방향</strong>이다.</p>
+<p>따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.</p>
+<ul>
+<li><strong>굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</strong>
+<ul>
+<li>일반적으로 손실 함수가 매우 복잡하고 비선형적인 경우가 많기 때문에, 미분을 통해 극값을 계산하기 어렵다.</li>
+<li>미분을 구현하는 것보다 경사 하강법으로 최솟값을 찾는 것이 더 효율적이다.</li>
+</ul>
+</li>
+</ul>
+<aside>
+▪️ 방향은 알지만, 최적해까지의 거리에 대한 정보가 없기 때문에 **학습률 $\rho$**를 곱해서 조금씩 이동한다.
+<p>$$
+w_{t+1} = w_t + \rho\left(-{\partial J\over\partial w_t}\right)
+$$</p>
+<p>$$
+w \leftarrow w + \eta \left( -\frac{\partial L}{\partial w}\right)
+$$</p>
+<ul>
+<li>$J, L$ : 손실 함수</li>
+<li>$\rho,\eta \text{(로, 에타)}$ : 학습률</li>
+<li>$\leftarrow$ : 업데이트를 의미한다.</li>
+</ul>
+<p>표기는 다양하다.</p>
+<p>
+  <img src="gd.png" alt="GD" /></p>
+<hr>
+<p>매개변수가 여럿인 경우, 편미분으로 구한 기울기를 사용한다.</p>
+<p>매개변수마다 독립적으로 미분한다.</p>
+<p>$$
+{\tt{w = w + \rho\left(\tt-\triangledown w\right)}}
+\
+\tt\triangledown w = \left({\partial J\over\partial w_0},{\partial J\over\partial w_1},{\partial J\over\partial w_2},&hellip;,{\partial J\over\partial w_d}\right)
+$$</p>
+<p>
+  <img src="gd1.png" alt="GD" /></p>
+</aside>
+<h3 id="적절한-학습률">
+  적절한 학습률
+  <a class="anchor" href="#%ec%a0%81%ec%a0%88%ed%95%9c-%ed%95%99%ec%8a%b5%eb%a5%a0">#</a>
+</h3>
+<p>학습률은 한번에 최적해를 향해 나아가는 거리를 의미한다.</p>
+<p>학습률이 너무 낮다면, 수렴하는 데 시간이 너무 오래 걸리게 되고,</p>
+<p>학습률이 너무 높다면, 최적해에 수렴하지 못하고 다른곳으로 발산하게 된다.</p>
+<p>
+  <img src="gd2.png" alt="GD" /></p>
+<h2 id="학습률을-적절히-조정하는-것이-매우-중요하다">
+  학습률을 적절히 조정하는 것이 매우 중요하다.
+  <a class="anchor" href="#%ed%95%99%ec%8a%b5%eb%a5%a0%ec%9d%84-%ec%a0%81%ec%a0%88%ed%9e%88-%ec%a1%b0%ec%a0%95%ed%95%98%eb%8a%94-%ea%b2%83%ec%9d%b4-%eb%a7%a4%ec%9a%b0-%ec%a4%91%ec%9a%94%ed%95%98%eb%8b%a4">#</a>
+</h2>
+<h3 id="기계-학습의-경사-하강법">
+  기계 학습의 경사 하강법
+  <a class="anchor" href="#%ea%b8%b0%ea%b3%84-%ed%95%99%ec%8a%b5%ec%9d%98-%ea%b2%bd%ec%82%ac-%ed%95%98%ea%b0%95%eb%b2%95">#</a>
+</h3>
+<ul>
+<li>여러 측면에서 표준 경사 하강법과 다르다.
+<ul>
+<li>잡음이 섞인 데이터의 개입</li>
+<li>방대한 매개변수</li>
+<li>일반화 능력이 필요</li>
+</ul>
+</li>
+<li>기계 학습에서 최적 해를 찾는 것은 쉽지 않다.
+<ul>
+<li>정확률이 등락을 거듭하며 수렴하지 않는 문제</li>
+<li>훈련 집합에서의 높은 성능이 테스트 집합에서의 성능으로 이어지지 않는 문제</li>
+</ul>
+</li>
+</ul>
+<h2 id="경사-하강법-적용-방법">
+  경사 하강법 적용 방법
+  <a class="anchor" href="#%ea%b2%bd%ec%82%ac-%ed%95%98%ea%b0%95%eb%b2%95-%ec%a0%81%ec%9a%a9-%eb%b0%a9%eb%b2%95">#</a>
+</h2>
+<h3 id="1-bgd-batch-gradient-descent">
+  1. <strong>BGD: Batch Gradient Descent</strong>
+  <a class="anchor" href="#1-bgd-batch-gradient-descent">#</a>
+</h3>
+<ul>
+<li>
+<p><strong>배치 모드</strong></p>
+<p>틀린 샘플을 모은 다음 한꺼번에 매개변수 갱신한다.</p>
+<p>한 epoch에 매개변수 갱신이 단 한번만 일어난다.</p>
+<p>즉, 모든 샘플을 확인한 후, 최적의 방향으로 한 걸음 움직인다.</p>
+<p>계산량이 많고 시간이 오래 걸린다.</p>
+</li>
+</ul>
+<h3 id="2-sgd-stochastic-gradient-descent확률적-경사-하강법">
+  2. SGD: Stochastic gradient descent(확률적 경사 하강법)
+  <a class="anchor" href="#2-sgd-stochastic-gradient-descent%ed%99%95%eb%a5%a0%ec%a0%81-%ea%b2%bd%ec%82%ac-%ed%95%98%ea%b0%95%eb%b2%95">#</a>
+</h3>
+<p>패턴 모드와 미니배치 모드의 경사하강법에는 랜덤 샘플링이 적용되기 때문에, Stochastic(확률적)이라는 수식어를 붙인다.</p>
+<p>데이터를 무작위로 선택하여 훨씬 적은 데이터셋으로 평균값을 추정할 수 있다.</p>
+<ul>
+<li>
+<p><strong>패턴 모드</strong></p>
+<p>샘플 하나에 대해 전방 계산을 수행하고 오류에 따라 바로 매개변수 갱신</p>
+<p>패턴 별로 매개변수 갱신</p>
+<p>epoch가 시작할 때 샘플을 뒤섞어 <strong>랜덤 샘플링</strong> 효과 발생</p>
+<p>하나의 샘플을 확인한 후, 정보를 반영하여 바로 한 걸음 움직인다.</p>
+<p>반복이 충분하면 SGD가 효과를 볼 수 있지만, 노이즈가 매우 심해 최저점을 찾지 못할 수도 있다.</p>
+</li>
+<li>
+<p><strong>미니 배치모드(딥러닝)</strong></p>
+<p>배치 모드와 패턴 모드의 중간</p>
+<p>훈련 집합을 일정한 크기의 부분 집합으로 나눈 다음 부분 집합별로 처리한다.</p>
+<p>부분 집합으로 나눌 때 <strong>랜덤 샘플링</strong>을 적용한다.</p>
+<p>계산 속도가 훨씬 빠르다.</p>
+<p>Local Minima에 빠지지 않고, Global Minima에 수렴할 가능성이 더 높다.</p>
+<p><strong>batch size</strong></p>
+<p>미니배치 모드에서의 매개변수.</p>
+<p>배치 크기를 작게 두는 것이 Generalization 성능이 좋다.</p>
+<p>배치사이즈가 너무 커지면 <strong>Sharp Minimum</strong>에 빠지게 된다.</p>
+<p>Flat Minimum은 Generalization 성능이 좋다.</p>
+<p>반대로, 배치사이즈가 작을수록 noise의 영향력이 커지므로 Sharp Minimum에서 탈출할 확률이 높다.</p>
+<p>
+  <img src="gd3.png" alt="GD" /></p>
+<p><strong>참고 논문 :</strong> 
+  <a href="https://arxiv.org/pdf/1609.04836.pdf">On Large-batch Training for Deep Learning : Generalization Gap and Sharp Minima, 2017</a></p>
+</li>
+</ul>
+<p>Gradient Descent Algorithm에는 여러 문제점들이 존재하는데, 이를 해결한 
+  <a href="https://osmin625.github.io/posts/Optimizer/">Optimizer</a>들이 등장한다.</p>
+<ul>
+<li>
+<p>Quiz. $f(x,y,z)$의 그래디언트 벡터는?</p>
+<p>$f(x,y,z) = 9x^2 + 5y^3 - 3z$</p>
+<p>$\tt ans = (18x, 15y^2, -3)$</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#gradient-descent경사하강법">Gradient Descent(경사하강법)</a>
+          <ul>
+            <li><a href="#적절한-학습률">적절한 학습률</a></li>
+          </ul>
+        </li>
+        <li><a href="#학습률을-적절히-조정하는-것이-매우-중요하다">학습률을 적절히 조정하는 것이 매우 중요하다.</a>
+          <ul>
+            <li><a href="#기계-학습의-경사-하강법">기계 학습의 경사 하강법</a></li>
+          </ul>
+        </li>
+        <li><a href="#경사-하강법-적용-방법">경사 하강법 적용 방법</a>
+          <ul>
+            <li><a href="#1-bgd-batch-gradient-descent">1. <strong>BGD: Batch Gradient Descent</strong></a></li>
+            <li><a href="#2-sgd-stochastic-gradient-descent확률적-경사-하강법">2. SGD: Stochastic gradient descent(확률적 경사 하강법)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

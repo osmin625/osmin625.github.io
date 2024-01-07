@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NBCF on OMIN</title>
+    <link>https://osmin625.github.io/tags/NBCF/</link>
+    <description>Recent content in NBCF on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/NBCF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
+      <link>https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/</guid>
+      <description>Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.&#xA;사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법&#xA;Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.&#xA;장점&#xA;구현이 간단하고 이해하기 쉽다. Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다. 최적화나 훈련 과정이 필요 없다. 단점&#xA;Sparsity(희소성) 문제&#xA;NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.&#xA;데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하</description>
+    </item>
+  </channel>
+</rss>

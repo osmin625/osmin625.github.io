@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="개요#Field-aware Factorization Machines for CTR Prediction
+FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.
+Field-aware Factorization Machine (FFM)#FM을 발전시킨 모델
+PITF 모델에서 아이디어를 얻었다.
+PITF : Pairwise Interaction Tensor Factorization#MF를 3차원으로 확장시킨 모델
+PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해
+(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="FFM: Field-aware Factorization Machine" />
+<meta property="og:description" content="개요#Field-aware Factorization Machines for CTR Prediction
+FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.
+Field-aware Factorization Machine (FFM)#FM을 발전시킨 모델
+PITF 모델에서 아이디어를 얻었다.
+PITF : Pairwise Interaction Tensor Factorization#MF를 3차원으로 확장시킨 모델
+PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해
+(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/" /><meta property="article:section" content="posts" />
+
+
+
+<title>FFM: Field-aware Factorization Machine | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>FFM: Field-aware Factorization Machine</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#개요">개요</a></li>
+        <li><a href="#field-aware-factorization-machine-ffm">Field-aware Factorization Machine (FFM)</a>
+          <ul>
+            <li><a href="#pitf--pairwise-interaction-tensor-factorization">PITF : Pairwise Interaction Tensor Factorization</a></li>
+          </ul>
+        </li>
+        <li><a href="#ffm의-특징">FFM의 특징</a></li>
+        <li><a href="#ffm-공식">FFM 공식</a></li>
+        <li><a href="#ffm의-필드-구성">FFM의 필드 구성</a>
+          <ul>
+            <li><a href="#categorical-feature">Categorical Feature</a></li>
+            <li><a href="#numerical-feature">Numerical Feature</a></li>
+          </ul>
+        </li>
+        <li><a href="#fm--ffm-성능-비교">FM / FFM 성능 비교</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/">FFM: Field-aware Factorization Machine</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
+      <a href="/categories/Recommendation-System/">Recommendation System</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Context-aware-Recsys/">Context-aware Recsys</a>, 
+      <a href="/tags/Factorization-Machine/">Factorization Machine</a>, 
+      <a href="/tags/Latent-Factor-Model/">Latent Factor Model</a>, 
+      <a href="/tags/Field-aware-Factorization-Machine/">Field-aware Factorization Machine</a>, 
+      <a href="/tags/CTR-Prediction/">CTR Prediction</a>
+  </div>
+  
+
+
+
+<h2 id="개요">
+  개요
+  <a class="anchor" href="#%ea%b0%9c%ec%9a%94">#</a>
+</h2>
+<p>Field-aware Factorization Machines for CTR Prediction</p>
+<ul>
+<li>FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문</li>
+</ul>
+<p>FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.</p>
+<h2 id="field-aware-factorization-machine-ffm">
+  Field-aware Factorization Machine (FFM)
+  <a class="anchor" href="#field-aware-factorization-machine-ffm">#</a>
+</h2>
+<ul>
+<li>
+<p>FM을 발전시킨 모델</p>
+</li>
+<li>
+<p>PITF 모델에서 아이디어를 얻었다.</p>
+</li>
+</ul>
+<h3 id="pitf--pairwise-interaction-tensor-factorization">
+  PITF : Pairwise Interaction Tensor Factorization
+  <a class="anchor" href="#pitf--pairwise-interaction-tensor-factorization">#</a>
+</h3>
+<p>MF를 3차원으로 확장시킨 모델</p>
+<p>PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해</p>
+<p>(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</p>
+<p>⇒ 이를 일반화하여 여러 개의 필드에 대해서 latent factor를 정의한 것이 FFM</p>
+<h2 id="ffm의-특징">
+  FFM의 특징
+  <a class="anchor" href="#ffm%ec%9d%98-%ed%8a%b9%ec%a7%95">#</a>
+</h2>
+<ul>
+<li>
+<p>입력 변수를 필드(field)로 나누어, 필드별로 서로 다른 latent factor를 가지도록 factorize한다.</p>
+<p>기존의 FM은 하나의 변수에 대해서 k개로 factorize했으나 FFM은 f개의 필드에 대해 각각 k개로 factorize한다.</p>
+</li>
+<li>
+<p>Field</p>
+<ul>
+<li>
+<p>같은 의미를 갖는 변수들의 집합으로 설정</p>
+<p>유저: 성별, 디바이스, 운영체제</p>
+<p>아이템: 광고, 카테고리</p>
+<p>컨텍스트: 어플리케이션, 배너</p>
+</li>
+<li>
+<p>모델을 설계할 때 함께 정의</p>
+</li>
+</ul>
+</li>
+<li>
+<p>CTR 예측에 사용되는 피쳐는 이보다 훨씬 다양하다.</p>
+<p>보통 피쳐의 개수만큼 필드를 정의하여 사용할 수 있다.</p>
+</li>
+</ul>
+<h2 id="ffm-공식">
+  FFM 공식
+  <a class="anchor" href="#ffm-%ea%b3%b5%ec%8b%9d">#</a>
+</h2>
+<p>$$
+\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}<em>{i, f_j}, \mathrm{v}</em>{j, f_i}\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_{i, f} \in \mathbb{R}^k\end{gathered}</p>
+<p>$$</p>
+<p>
+  <img src="/assets/post_imgs/FFM1.png" alt="FFM" /></p>
+<details>
+<summary>
+참고 — FM Formula
+</summary>
+<p>$$
+\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k\end{gathered}
+$$</p>
+<p>FM은 k차원의 파라미터를 $v_i$와 $v_j$가 내적이 된 형태로 상호작용을 표현하는 반면,</p>
+<p>FFM은 $x_i$에 대응되는 파라미터가 $v_i$가 아니라, $v_{i,f_j}$가 된다.</p>
+<p>즉, field $(f_i)$별로 Factorization 파라미터가 정의된다.</p>
+</details>
+<p>ex) 광고 클릭 데이터가 존재하고 사용할 수 있는 feature가 총 세 개(Publisher, Advertiser, Gender)일 때,</p>
+<table>
+<thead>
+<tr>
+<th>Cliked</th>
+<th>Publisher (P)</th>
+<th>Advertiser (A)</th>
+<th>Gender (G)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>ESPN</td>
+<td>Nike</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>FM</strong></p>
+<p>필드가 존재하지 않는다.</p>
+<p>하나의 변수에 대해 factorization 차원$(k)$ 만큼의 파라미터를 학습한다.</p>
+<p>$$
+\hat{y}(\mathrm{x})
+=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\mathrm{Nike}}\
++\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\text {Male }}+\mathrm{v}<em>{\mathrm{Nike}} \cdot \mathrm{v}</em>{\text {Male }}}
+$$</p>
+</li>
+<li>
+<p><strong>FFM</strong></p>
+<p>각각의 feature를 필드 P,A,G로 정의</p>
+<p>하나의 변수에 대해 필드 개수$(f)$와 factorization 차원$(k)$의 곱 $(=fk)$만큼의 파라미터를 학습한다.</p>
+<p>$$
+\hat{y}(\mathrm{x})
+=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{A}} \cdot \mathrm{v}</em>{\mathrm{Nike}, \mathrm{P}}\</p>
+<p>+\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{G}} \cdot \mathrm{v}</em>{\text {Male,P }}+\mathrm{v}<em>{\mathrm{Nike}, \mathrm{G}} \cdot \mathrm{v}</em>{\mathrm{Male}, \mathrm{A}}}
+$$</p>
+</li>
+</ul>
+<h2 id="ffm의-필드-구성">
+  FFM의 필드 구성
+  <a class="anchor" href="#ffm%ec%9d%98-%ed%95%84%eb%93%9c-%ea%b5%ac%ec%84%b1">#</a>
+</h2>
+<h3 id="categorical-feature">
+  Categorical Feature
+  <a class="anchor" href="#categorical-feature">#</a>
+</h3>
+<p>FM</p>
+<p>
+  <img src="/assets/post_imgs/FFM2.png" alt="FFM" /></p>
+<p>FFM</p>
+<p>
+  <img src="/assets/post_imgs/FFM3.png" alt="FFM" /></p>
+<h3 id="numerical-feature">
+  Numerical Feature
+  <a class="anchor" href="#numerical-feature">#</a>
+</h3>
+<p>실수도 반드시 특정 필드에 속해야 한다.</p>
+<ol>
+<li>
+<p><strong>dummy field</strong></p>
+<p>numeric feature 한 개당 하나의 필드에 할당하고 실수 값을 사용</p>
+<p>
+  <img src="/assets/post_imgs/FFM4.png" alt="FFM" /></p>
+<p>field가 크게 의미를 갖지 않는다.</p>
+</li>
+<li>
+<p><strong>discretize</strong></p>
+<p>numeric feature를 n개의 구간으로 나누어 이진 값을 사용하고, n개의 변수를 하나의 필드에 할당한다.</p>
+<p>
+  <img src="/assets/post_imgs/FFM5.png" alt="FFM" /></p>
+</li>
+</ol>
+<h2 id="fm--ffm-성능-비교">
+  FM / FFM 성능 비교
+  <a class="anchor" href="#fm--ffm-%ec%84%b1%eb%8a%a5-%eb%b9%84%ea%b5%90">#</a>
+</h2>
+<p>LR에 비해 FM, FFM의 성능이 더 낫다.</p>
+<p>
+  <img src="/assets/post_imgs/FFM6.png" alt="FFM" /></p>
+<p>필드를 사용하는 것이 적절하지 않은 데이터셋의 경우 FFM보다 FM이 성능이 더 잘나온다.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#개요">개요</a></li>
+        <li><a href="#field-aware-factorization-machine-ffm">Field-aware Factorization Machine (FFM)</a>
+          <ul>
+            <li><a href="#pitf--pairwise-interaction-tensor-factorization">PITF : Pairwise Interaction Tensor Factorization</a></li>
+          </ul>
+        </li>
+        <li><a href="#ffm의-특징">FFM의 특징</a></li>
+        <li><a href="#ffm-공식">FFM 공식</a></li>
+        <li><a href="#ffm의-필드-구성">FFM의 필드 구성</a>
+          <ul>
+            <li><a href="#categorical-feature">Categorical Feature</a></li>
+            <li><a href="#numerical-feature">Numerical Feature</a></li>
+          </ul>
+        </li>
+        <li><a href="#fm--ffm-성능-비교">FM / FFM 성능 비교</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

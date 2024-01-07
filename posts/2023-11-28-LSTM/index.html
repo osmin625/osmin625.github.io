@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델
+선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.
+그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.
+게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.
+가중치
+순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$
+$i$ : 입력 게이트
+$o$ : 출력 게이트
+다양한 구조 설계가 가능하다.
+Model Concept#Cell State#LSTM의 핵심">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="LSTM: Long Short Term Memory" />
+<meta property="og:description" content="RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델
+선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.
+그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.
+게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.
+가중치
+순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$
+$i$ : 입력 게이트
+$o$ : 출력 게이트
+다양한 구조 설계가 가능하다.
+Model Concept#Cell State#LSTM의 핵심" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-11-28-LSTM/" /><meta property="article:section" content="posts" />
+
+
+
+<title>LSTM: Long Short Term Memory | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>LSTM: Long Short Term Memory</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#model-concept">Model Concept</a>
+          <ul>
+            <li><a href="#cell-state"><strong>Cell State</strong></a></li>
+            <li><a href="#gate"><strong>Gate</strong></a></li>
+            <li><a href="#수식-요약">수식 요약</a></li>
+            <li><a href="#모델-요약">모델 요약</a></li>
+            <li><a href="#input--output-shape">Input / Output Shape</a></li>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#lstm--attention">LSTM + Attention</a></li>
+            <li><a href="#bert">BERT</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-11-28-LSTM/">LSTM: Long Short Term Memory</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
+      <a href="/categories/Natural-Language-Processing/">Natural Language Processing</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/LSTM/">LSTM</a>, 
+      <a href="/tags/Long-Short-Term-Memory/">Long-Short-Term-Memory</a>, 
+      <a href="/tags/RNN/">RNN</a>, 
+      <a href="/tags/Sequential-Model/">Sequential Model</a>
+  </div>
+  
+
+
+
+<p>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델</p>
+<ul>
+<li>
+<p><strong>선별적 게이트</strong>라는 개념으로 선별 기억 능력을 확보한다.</p>
+<p>
+  <img src="lstm0.png" alt="lstm" /></p>
+<p>그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.</p>
+</li>
+</ul>
+<p>게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.</p>
+<p><strong>가중치</strong></p>
+<p>순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$</p>
+<ul>
+<li>
+<p>$i$ : 입력 게이트</p>
+</li>
+<li>
+<p>$o$ : 출력 게이트</p>
+</li>
+<li>
+<p>다양한 구조 설계가 가능하다.</p>
+<p>
+  <img src="lstm1.png" alt="lstm" />
+
+  <img src="lstm2.png" alt="lstm" /></p>
+</li>
+</ul>
+<h2 id="model-concept">
+  Model Concept
+  <a class="anchor" href="#model-concept">#</a>
+</h2>
+<h3 id="cell-state">
+  <strong>Cell State</strong>
+  <a class="anchor" href="#cell-state">#</a>
+</h3>
+<ul>
+<li>
+<p>LSTM의 핵심</p>
+</li>
+<li>
+<p>모듈 그림에서 수평으로 그어진 윗 선에 해당</p>
+</li>
+<li>
+<p>일종의 컨베이어 벨트</p>
+<p>작은 linear interaction만을 적용시키면서 데이터의 흐름은 그대로 유지한다.</p>
+<p>아무런 동작을 추가하지 않는다면, 정보는 전혀 바뀌지 않고 그대로 흐른다.</p>
+<p>
+  <img src="lstm3.png" alt="lstm" /></p>
+</li>
+</ul>
+<p><strong>Cell State에서 gate에 의해 정보가 추가되거나 삭제된다.</strong></p>
+<h3 id="gate">
+  <strong>Gate</strong>
+  <a class="anchor" href="#gate">#</a>
+</h3>
+<ol>
+<li>
+<p><strong>Forget Gate</strong></p>
+<p>
+  <img src="lstm4.png" alt="lstm" /></p>
+</li>
+<li>
+<p><strong>Input Gate</strong></p>
+<p>
+  <img src="lstm5.png" alt="lstm" /></p>
+</li>
+</ol>
+<ul>
+<li>
+<p><strong>Cell State 업데이트</strong></p>
+<p>
+  <img src="lstm6.png" alt="lstm" /></p>
+</li>
+</ul>
+<ol>
+<li>
+<p><strong>Output Gate</strong></p>
+<p>
+  <img src="lstm7.png" alt="lstm" /></p>
+</li>
+</ol>
+<h3 id="수식-요약">
+  수식 요약
+  <a class="anchor" href="#%ec%88%98%ec%8b%9d-%ec%9a%94%ec%95%bd">#</a>
+</h3>
+<p>$$
+\begin{aligned}f_t &amp; =\sigma_g\left(W_f x_t+U_f h_{t-1}+b_f\right) \i_t &amp; =\sigma_g\left(W_i x_t+U_i h_{t-1}+b_i\right) \o_t &amp; =\sigma_g\left(W_o x_t+U_o h_{t-1}+b_o\right) \\tilde{c}<em>t &amp; =\sigma_c\left(W_c x_t+U_c h</em>{t-1}+b_c\right) \c_t &amp; =f_t \odot c_{t-1}+i_t \odot \tilde{c}_t \h_t &amp; =o_t \odot \sigma_h\left(c_t\right)\end{aligned}
+$$</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ft <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wf) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uf) <span style="color:#f92672">+</span> bf)  <span style="color:#75715e"># forget gate</span>
+</span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wi) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Ui) <span style="color:#f92672">+</span> bi)  <span style="color:#75715e"># input gate</span>
+</span></span><span style="display:flex;"><span>ot <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wo) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uo) <span style="color:#f92672">+</span> bo)  <span style="color:#75715e"># output gate</span>
+</span></span><span style="display:flex;"><span>Ct <span style="color:#f92672">=</span> ft <span style="color:#f92672">*</span> Ct_1 <span style="color:#f92672">+</span> it <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>tanh(np<span style="color:#f92672">.</span>dot(xt, Wc) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uc) <span style="color:#f92672">+</span> bc)
+</span></span><span style="display:flex;"><span>ht <span style="color:#f92672">=</span> ot <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>tanh(Ct)
+</span></span></code></pre></div><h3 id="모델-요약">
+  모델 요약
+  <a class="anchor" href="#%eb%aa%a8%eb%8d%b8-%ec%9a%94%ec%95%bd">#</a>
+</h3>
+<p>
+  <img src="lstm8.png" alt="lstm" /></p>
+<h3 id="input--output-shape">
+  Input / Output Shape
+  <a class="anchor" href="#input--output-shape">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Size: [batch_size, seq_len, input_size/num_of_features]</span>
+</span></span><span style="display:flex;"><span>input <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lstm <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>LSTM(input_size<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>, hidden_size<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, batch_first<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>output, h <span style="color:#f92672">=</span> lstm(input)
+</span></span><span style="display:flex;"><span>output<span style="color:#f92672">.</span>size()  <span style="color:#75715e"># =&gt; torch.Size([3, 5, 2]), batch_size, seq_len, hidden_size</span>
+</span></span></code></pre></div><p>
+  <img src="lstm9.png" alt="lstm" /></p>
+<ul>
+<li>LSTM을 활용하여 주식 가격을 예측 — 과거 5일의 종가를 예측하는 경우
+<ul>
+<li>Seq_len = 5</li>
+<li>Input_size = 1(종가)</li>
+<li>Batch_size = N</li>
+</ul>
+</li>
+<li>LSTM을 활용하여 주식 가격을 예측 — 과거 5일의 시가, 종가, 거래량을 예측하는 경우
+<ul>
+<li>Seq_len = 5</li>
+<li>Input_size = 3(시가, 종가, 거래량)</li>
+<li>Batch_size = N</li>
+</ul>
+</li>
+<li>LSTM을 활용하여 주식 가격을 예측 — 여러 연속형 변수와 범주형 변수가 포함된 경우
+<ul>
+<li>Seq_len = 5</li>
+<li>Input_size = embedding size(시가, 종가, 거래량)</li>
+<li>Batch_size = N</li>
+</ul>
+</li>
+</ul>
+<h3 id="model">
+  Model
+  <a class="anchor" href="#model">#</a>
+</h3>
+<p>기본으로 제공되는 Feature들을 병합하여 LSTM에 주입한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, input):
+</span></span><span style="display:flex;"><span>		test, question, tag, _, mask, interaction, _ <span style="color:#f92672">=</span> input
+</span></span><span style="display:flex;"><span>		batch_size <span style="color:#f92672">=</span> interaction<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Embedding</span>
+</span></span><span style="display:flex;"><span>		embed_interaction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_interaction(interaction)
+</span></span><span style="display:flex;"><span>		embed_test <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_test(test)
+</span></span><span style="display:flex;"><span>		embed_question <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_question(question)
+</span></span><span style="display:flex;"><span>		embed_tag <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_tag(tag)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		embed <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([embed_interaction,
+</span></span><span style="display:flex;"><span>											 embed_test,
+</span></span><span style="display:flex;"><span>											 embed_question,
+</span></span><span style="display:flex;"><span>											 embed_tag,], <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conb_proj(embed)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		hidden <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>init_hidden(batch_size)
+</span></span><span style="display:flex;"><span>		out, hidden <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>lstm(X, hidden)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> out<span style="color:#f92672">.</span>contiguous()<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>hidden_dim)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(out)
+</span></span><span style="display:flex;"><span>		preds <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>activation(out)<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> preds
+</span></span></code></pre></div><h3 id="lstm--attention">
+  LSTM + Attention
+  <a class="anchor" href="#lstm--attention">#</a>
+</h3>
+<p>기존의 LSTM 모델에 Attention Layer을 추가한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, input):
+</span></span><span style="display:flex;"><span>		test, question, tag, _, mask, interaction, _ <span style="color:#f92672">=</span> input
+</span></span><span style="display:flex;"><span>		batch_size <span style="color:#f92672">=</span> interaction<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Embedding</span>
+</span></span><span style="display:flex;"><span>		embed_interaction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_interaction(interaction)
+</span></span><span style="display:flex;"><span>		embed_test <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_test(test)
+</span></span><span style="display:flex;"><span>		embed_question <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_question(question)
+</span></span><span style="display:flex;"><span>		embed_tag <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_tag(tag)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		embed <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([embed_interaction,
+</span></span><span style="display:flex;"><span>											 embed_test,
+</span></span><span style="display:flex;"><span>											 embed_question,
+</span></span><span style="display:flex;"><span>											 embed_tag,], <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conb_proj(embed)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		hidden <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>init_hidden(batch_size)
+</span></span><span style="display:flex;"><span>		out, hidden <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>lstm(X, hidden)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> out<span style="color:#f92672">.</span>contiguous()<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>hidden_dim)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">**</span>extended_attention_mask <span style="color:#f92672">=</span> mask<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>		extended_attention_mask <span style="color:#f92672">=</span> extended_attention_mask<span style="color:#f92672">.</span>to(dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>		extended_attention_mask <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> extended_attention_mask) <span style="color:#f92672">*</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">10000.0</span>
+</span></span><span style="display:flex;"><span>		head_mask <span style="color:#f92672">=</span> [<span style="color:#66d9ef">None</span>] <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>n_layers
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		encoded_layers <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>attn(out, extended_attention_mask, head_mask<span style="color:#f92672">=</span>head_mask)
+</span></span><span style="display:flex;"><span>		sequence_output <span style="color:#f92672">=</span> encoded_layer[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(sequence_output)
+</span></span><span style="display:flex;"><span>		preds <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>activation(out)<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> preds
+</span></span></code></pre></div><h3 id="bert">
+  BERT
+  <a class="anchor" href="#bert">#</a>
+</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, input):
+</span></span><span style="display:flex;"><span>		test, question, tag, _, mask, interaction, _ <span style="color:#f92672">=</span> input
+</span></span><span style="display:flex;"><span>		batch_size <span style="color:#f92672">=</span> interaction<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e">#Embedding</span>
+</span></span><span style="display:flex;"><span>		embed_interaction <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_interaction(interaction)
+</span></span><span style="display:flex;"><span>		embed_test <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_test(test)
+</span></span><span style="display:flex;"><span>		embed_question <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_question(question)
+</span></span><span style="display:flex;"><span>		embed_tag <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>embedding_tag(tag)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		embed <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([embed_interaction,
+</span></span><span style="display:flex;"><span>											 embed_test,
+</span></span><span style="display:flex;"><span>											 embed_question,
+</span></span><span style="display:flex;"><span>											 embed_tag,], <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		X <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>conb_proj(embed)
+</span></span><span style="display:flex;"><span>		
+</span></span><span style="display:flex;"><span>		<span style="color:#f92672">**</span><span style="color:#75715e"># Bert</span>
+</span></span><span style="display:flex;"><span>		encoded_layers <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>encoder(inputs_embeds<span style="color:#f92672">=</span>X, attention_mask<span style="color:#f92672">=</span>mask)
+</span></span><span style="display:flex;"><span>		out<span style="color:#f92672">=</span>encoded_layers[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">**</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> out<span style="color:#f92672">.</span>contiguous()<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>hidden_dim)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">****</span>
+</span></span><span style="display:flex;"><span>		out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(sequence_output)
+</span></span><span style="display:flex;"><span>		preds <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>activation(out)<span style="color:#f92672">.</span>view(batch_size, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> preds
+</span></span></code></pre></div><p><strong>참고 자료</strong></p>
+<p>
+  <a href="https://dgkim5360.tistory.com/entry/understanding-long-short-term-memory-lstm-kr">Long Short-Term Memory (LSTM) 이해하기</a></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#model-concept">Model Concept</a>
+          <ul>
+            <li><a href="#cell-state"><strong>Cell State</strong></a></li>
+            <li><a href="#gate"><strong>Gate</strong></a></li>
+            <li><a href="#수식-요약">수식 요약</a></li>
+            <li><a href="#모델-요약">모델 요약</a></li>
+            <li><a href="#input--output-shape">Input / Output Shape</a></li>
+            <li><a href="#model">Model</a></li>
+            <li><a href="#lstm--attention">LSTM + Attention</a></li>
+            <li><a href="#bert">BERT</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Multiple Imputation Chained Equation(다중 산입 연립 방정식)
+MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.
+값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.
+Process#누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.
+가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.
+이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="MICE : Multiple Imputation Chained Equation" />
+<meta property="og:description" content="Multiple Imputation Chained Equation(다중 산입 연립 방정식)
+MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.
+값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.
+Process#누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.
+가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.
+이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-21-MICE/" /><meta property="article:section" content="posts" />
+
+
+
+<title>MICE : Multiple Imputation Chained Equation | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>MICE : Multiple Imputation Chained Equation</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#mdpattern"><strong>md.pattern()</strong></a></li>
+            <li><a href="#mdpairs">md.pairs()</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-06-21-MICE/">MICE : Multiple Imputation Chained Equation</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/AI-Math/">AI Math</a>, 
+      <a href="/categories/Statistics/">Statistics</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Missing-Data-Analysis/">Missing Data Analysis</a>, 
+      <a href="/tags/Imputation/">Imputation</a>, 
+      <a href="/tags/Missing-Data/">Missing Data</a>, 
+      <a href="/tags/MICE/">MICE</a>
+  </div>
+  
+
+
+
+<p><strong>Multiple Imputation Chained Equation</strong>(다중 산입 연립 방정식)</p>
+<p>MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.</p>
+<ol>
+<li>값들은 각 방식에 따라 산입된 후</li>
+<li>완전한 데이터셋에 대한 분석이 진행되고</li>
+<li>결과가 합쳐진다.</li>
+</ol>
+<p>다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.</p>
+<h3 id="process">
+  Process
+  <a class="anchor" href="#process">#</a>
+</h3>
+<ol>
+<li>
+<p>누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.</p>
+<p>가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.</p>
+</li>
+<li>
+<p>이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</p>
+</li>
+<li>
+<p>회귀로 결측값이 모두 채워진 그럴싸한 분포의 매개변수는 결측값을 재추정하는 데 사용된다.</p>
+</li>
+<li>
+<p>이후 여러 사이클 동안 연립 방정식을 반복한다.</p>
+</li>
+<li>
+<p>사이클이 완료되면 데이터가 &ldquo;완전한&rdquo; 데이터셋으로 저장된다.</p>
+</li>
+</ol>
+<hr>
+<p>각 변수는 개별적으로 산입되기 때문에, 각 변수 유형에 적합한 모델들이 사용된다.</p>
+<ul>
+<li>Binary Variable → Logistic regression Model</li>
+<li>Categorical Variable → Multinomial Logit Model</li>
+<li>Ordered categorical Variable → Ordered Logit Model</li>
+</ul>
+<p>R 패키지에 MICE가 포함되어 있다.</p>
+<p>MICE algorithm에는 FCS(Fully Conditional Specification)을 구현했다.</p>
+<p><strong>MICE에 내장된 Imputation 방법</strong></p>
+<ul>
+<li><strong>Pmm (any)</strong>: Predictive mean matching</li>
+<li><strong>Sample (any)</strong>: Random sample from observed values</li>
+<li><strong>Mean (numeric)</strong>: Unconditional mean imputation</li>
+<li><strong>norm.nob (numeric)</strong>: Linear regression ignoring model error</li>
+<li><strong>Logreg (binary)</strong>: Logistic regression</li>
+<li><strong>Polr (ordered)</strong>: Proportional odds model</li>
+<li><strong>Polyreg (unordered)</strong>: Polytomous logistic regression</li>
+</ul>
+<p><code>methods(mice)</code>를 사용하면 imputation 할 수 있는 방법론을 쭉 알려준다.</p>
+<p>하지만, 가독성이 좋지 않기 때문에 추천하진 않는다.</p>
+<p>이보단 그냥 <code>?mice</code>로 검색하여 확인하면 더 자세하게 잘 적혀있다.</p>
+<h3 id="mdpattern">
+  <strong>md.pattern()</strong>
+  <a class="anchor" href="#mdpattern">#</a>
+</h3>
+<p>행렬이나 데이터프레임의 형태로 결측데이터의 유형들을 표로 나타낸다.</p>
+<p><strong>md.pattern(x, plot = TRUE, rotate.names = FALSE)</strong></p>
+<p>
+  <img src="/assets/post_imgs/MICE0.png" alt="MICE" /></p>
+<p>표 보는 방법</p>
+<p><strong>가장 왼쪽 열의 숫자</strong>: 해당 pattern으로 구성된 데이터의 개수</p>
+<p>첫 번째 행을 보면, 결측치가 없는 데이터가 4133개라는 것을 알 수 있다.</p>
+<p>두 번째 행을 보면, R.DExpemses만 결측치가 발생한 데이터가 11개라는 것을 알 수 있다.</p>
+<p><strong>가장 오른쪽 열의 숫자</strong>: 결측치가 발생한 변수(column)의 개수</p>
+<p><strong>최하단의 숫자</strong>: 각 변수에서 결측값의 총 개수</p>
+<h3 id="mdpairs">
+  md.pairs()
+  <a class="anchor" href="#mdpairs">#</a>
+</h3>
+<p>출력 값에는 <strong>rr, rm, mr, mm</strong> 네 가지 구성 요소가 존재한다.</p>
+<p>m은 Missing됨을 의미하고, r은 response, 존재함을 의미한다.</p>
+<p>
+  <img src="/assets/post_imgs/MICE1.png" alt="MICE" /></p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#mdpattern"><strong>md.pattern()</strong></a></li>
+            <li><a href="#mdpairs">md.pairs()</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

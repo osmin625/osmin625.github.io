@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Saddle point on OMIN</title>
+    <link>https://osmin625.github.io/tags/Saddle-point/</link>
+    <description>Recent content in Saddle point on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Saddle-point/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Optimizer란?</title>
+      <link>https://osmin625.github.io/posts/2023-09-23-Optimizer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-23-Optimizer/</guid>
+      <description>간단 요약&#xA;Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법&#xA;반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?&#xA;{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue&#xD;#&#xD;1. Local minima, Saddle point&#xD;#&#xD;{: w=&amp;ldquo;700&amp;rdquo; h=&amp;ldquo;400&amp;rdquo; }&#xA;실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.&#xA;local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.&#xA;{: w=&amp;ldquo;400&amp;rdquo; h=&amp;ldquo;250&amp;rdquo; }</description>
+    </item>
+  </channel>
+</rss>

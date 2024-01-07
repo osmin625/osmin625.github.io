@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>weight on OMIN</title>
+    <link>https://osmin625.github.io/tags/weight/</link>
+    <description>Recent content in weight on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/weight/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorch에서 weight를 저장하는 객체 - nn.Parameter</title>
+      <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</guid>
+      <description>간단 요약&#xA;학습의 대상이 되는 Weight를 정의한다.&#xA;Tensor 객체의 상속 객체 {: .prompt-info }&#xA;Tensor 객체와 매우 비슷하다.&#xA;nn.Module의 attribute가 될 때는 required_grad = True로 자동으로 지정되어 AutoGrad의 대상이 된다.&#xA;대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.&#xA;nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.&#xA;$\tt xw +b$&#xD;#&#xD;class MyLinear(nn.Module): def __init__ (self, in_features, out_features, bias=True): super(). init () **self.</description>
+    </item>
+  </channel>
+</rss>

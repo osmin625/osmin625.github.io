@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Engineering on OMIN</title>
+    <link>https://osmin625.github.io/tags/Software-Engineering/</link>
+    <description>Recent content in Software Engineering on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Software-Engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. 프로젝트 식별 및 관리</title>
+      <link>https://osmin625.github.io/posts/2023-06-19-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-06-19-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</guid>
+      <description>프로젝트를 어떻게 시작하느냐에 대한 관점&#xA;프로젝트를 시작하기 전, 어떻게 평가할 지, 그리고 어떻게 계획을 세울지를 설명한다.&#xA;프로젝트 식별&#xD;#&#xD;1. System Request 작성&#xD;#&#xD;Project Sponsor&#xA;프로젝트의 아이디어 제공자&#xA;프로젝트의 금전적 지원자 아님.&#xA;Business Need&#xA;Business requirements&#xA;Business Value : CEO의 입장에서 가장 먼저 보게된다.&#xA;프로젝트의 Business Value가 명확해야 한다. Economic feasibility부분을 미리 고민해봐야 한다. Special issues or constraints&#xA;프로젝트 마감 기간 등&#xA;ex) 크리스마스 시즌 전에 완성해야 한다.&#xA;2. Feasibility Analysis(타당성 분석)&#xD;#&#xD;프로젝트를 진행하기 전에 분석해야 한다.</description>
+    </item>
+  </channel>
+</rss>

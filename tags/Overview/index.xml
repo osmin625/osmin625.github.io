@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on OMIN</title>
+    <link>https://osmin625.github.io/tags/Overview/</link>
+    <description>Recent content in Overview on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Overview/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PyTorch 개요</title>
+      <link>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</guid>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;{: .prompt-info }&#xA;구현 개요(PyTorch)&#xD;#&#xD;1. 데이터 준비&#xD;#&#xD;Tensor PyTorch Datasets &amp;amp; DataLoaders 2. 모델 정의 (&#xD;torch.nn.Module)&#xD;#&#xD;PyTorch 모델 불러오기&#xA;Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning&#xD;#&#xD;4. 모델 평가 기준 및 Optimizer 설정&#xD;#&#xD;모델 평가 기준 : loss를 어떻게 계산할 것인가?</description>
+    </item>
+    <item>
+      <title>추천 시스템 개요</title>
+      <link>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</guid>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템&#xD;#&#xD;추천 시스템 평가 패러다임&#xD;#&#xD;Rule Base&#xD;#&#xD;인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering&#xD;#&#xD;1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가&#xD;#&#xD;TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가&#xD;#&#xD;Similarity</description>
+    </item>
+  </channel>
+</rss>

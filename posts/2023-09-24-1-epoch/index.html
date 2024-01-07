@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화#optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.
+해당 코드는 왜 필요할까?
+zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.
+왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?
+RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="모델 학습 시 1 epoch에 어떤 일이 발생하나요?" />
+<meta property="og:description" content="criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화#optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.
+해당 코드는 왜 필요할까?
+zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.
+왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?
+RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-24-1-epoch/" /><meta property="article:section" content="posts" />
+
+
+
+<title>모델 학습 시 1 epoch에 어떤 일이 발생하나요? | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>모델 학습 시 1 epoch에 어떤 일이 발생하나요?</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-optimizerzero_grad--이전-epoch의-미분값-초기화">1. <code>optimizer.zero_grad()</code> : 이전 epoch의 미분값 초기화</a></li>
+            <li><a href="#2-outputs--modelinputs--모델-예측-수행">2. <code>outputs = model(inputs)</code> : 모델 예측 수행</a></li>
+            <li><a href="#3-loss--criterionoutputs-labels--손실-함수를-통한-loss-계산">3. <code>loss = criterion(outputs, labels)</code> : 손실 함수를 통한 loss 계산</a></li>
+            <li><a href="#4-lossbackward---loss의-미분값-계산">4. <code>loss.backward()</code> :  loss의 미분값 계산</a></li>
+            <li><a href="#5-optimizerstep--미분값을-parameter에-반영">5. <code>optimizer.step()</code> : 미분값을 parameter에 반영</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-09-24-1-epoch/">모델 학습 시 1 epoch에 어떤 일이 발생하나요?</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Framework/">DL Framework</a>, 
+      <a href="/categories/PyTorch/">PyTorch</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/PyTorch/">PyTorch</a>, 
+      <a href="/tags/Optimizer/">Optimizer</a>, 
+      <a href="/tags/zero_grad/">zero_grad</a>, 
+      <a href="/tags/loss/">loss</a>, 
+      <a href="/tags/Backward/">Backward</a>, 
+      <a href="/tags/step/">step</a>
+  </div>
+  
+
+
+
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>criterion <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>MSELoss()
+</span></span><span style="display:flex;"><span>optimizer <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>optim<span style="color:#f92672">.</span>SGD(model<span style="color:#f92672">.</span>parameters(), lr<span style="color:#f92672">=</span>learningRate)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> epoch <span style="color:#f92672">in</span> range(epochs):
+</span></span><span style="display:flex;"><span>    optimizer<span style="color:#f92672">.</span>zero_grad()
+</span></span><span style="display:flex;"><span>    outputs <span style="color:#f92672">=</span> model(inputs)
+</span></span><span style="display:flex;"><span>    loss <span style="color:#f92672">=</span> criterion(outputs, labels) 
+</span></span><span style="display:flex;"><span>    loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>    optimizer<span style="color:#f92672">.</span>step()
+</span></span></code></pre></div><h3 id="1-optimizerzero_grad--이전-epoch의-미분값-초기화">
+  1. <code>optimizer.zero_grad()</code> : 이전 epoch의 미분값 초기화
+  <a class="anchor" href="#1-optimizerzero_grad--%ec%9d%b4%ec%a0%84-epoch%ec%9d%98-%eb%af%b8%eb%b6%84%ea%b0%92-%ec%b4%88%ea%b8%b0%ed%99%94">#</a>
+</h3>
+<p>optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.</p>
+<ul>
+<li>
+<p><strong>해당 코드는 왜 필요할까?</strong></p>
+<p><code>zero_grad()</code>를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.</p>
+</li>
+<li>
+<p><strong>왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?</strong></p>
+<p>RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.</p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong>각 epoch의 손실 함수에서 반환하는 텐서 객체는 서로 다른데, 어떻게 이전 학습 단계의 미분 값을 넘겨받을까?</strong></p>
+<p>Optimizer 객체에서 미분 값을 저장하기 때문이다.</p>
+<p>
+  <a href="https://pytorch.org/docs/stable/_modules/torch/optim/optimizer.html#Optimizer.zero_grad"></a></p>
+<p>
+  <a href="https://www.notion.so/zero_grad-4bfd4c53f19a4f669325fbad826383c0?pvs=21"><strong>zero_grad() 코드 리뷰</strong></a></p>
+</li>
+<li>
+<p><input disabled="" type="checkbox"> <strong><code>model.zero_grad()</code>와 <code>optimizer.zero_grad()</code>의 차이는 뭘까?</strong></p>
+<p>
+  <a href="https://otzslayer.github.io/pytorch/2022/04/17/difference-between-zero-grads.html">model.zero_grad()와 optimizer.zero_grad()의 차이</a></p>
+</li>
+</ul>
+<h3 id="2-outputs--modelinputs--모델-예측-수행">
+  2. <code>outputs = model(inputs)</code> : 모델 예측 수행
+  <a class="anchor" href="#2-outputs--modelinputs--%eb%aa%a8%eb%8d%b8-%ec%98%88%ec%b8%a1-%ec%88%98%ed%96%89">#</a>
+</h3>
+<h3 id="3-loss--criterionoutputs-labels--손실-함수를-통한-loss-계산">
+  3. <code>loss = criterion(outputs, labels)</code> : 손실 함수를 통한 loss 계산
+  <a class="anchor" href="#3-loss--criterionoutputs-labels--%ec%86%90%ec%8b%a4-%ed%95%a8%ec%88%98%eb%a5%bc-%ed%86%b5%ed%95%9c-loss-%ea%b3%84%ec%82%b0">#</a>
+</h3>
+<h3 id="4-lossbackward---loss의-미분값-계산">
+  4. <code>loss.backward()</code> :  loss의 미분값 계산
+  <a class="anchor" href="#4-lossbackward---loss%ec%9d%98-%eb%af%b8%eb%b6%84%ea%b0%92-%ea%b3%84%ec%82%b0">#</a>
+</h3>
+<ol>
+<li>
+<p>$\mathbf w$에서의 loss에 대한 미분 연산을 수행한다.</p>
+<p>
+  <a href="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">수치 미분</a>에는 많은 연산이 필요한데, 이를 
+  <a href="https://osmin625.github.io/posts/backpropagation/">Back Propagation(오차 역전파 알고리즘)</a>을 통해 해결한다.</p>
+</li>
+<li>
+<p>계산된 미분 값을 
+  <a href="https://osmin625.github.io/posts/Gradient_Descent/">GD: gradient descent(경사하강법)</a>을 통해 $\mathbf w$에 반영한다.
+
+  <a href="https://osmin625.github.io/posts/Backward/">Backward</a></p>
+</li>
+</ol>
+<h3 id="5-optimizerstep--미분값을-parameter에-반영">
+  5. <code>optimizer.step()</code> : 미분값을 parameter에 반영
+  <a class="anchor" href="#5-optimizerstep--%eb%af%b8%eb%b6%84%ea%b0%92%ec%9d%84-parameter%ec%97%90-%eb%b0%98%ec%98%81">#</a>
+</h3>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-optimizerzero_grad--이전-epoch의-미분값-초기화">1. <code>optimizer.zero_grad()</code> : 이전 epoch의 미분값 초기화</a></li>
+            <li><a href="#2-outputs--modelinputs--모델-예측-수행">2. <code>outputs = model(inputs)</code> : 모델 예측 수행</a></li>
+            <li><a href="#3-loss--criterionoutputs-labels--손실-함수를-통한-loss-계산">3. <code>loss = criterion(outputs, labels)</code> : 손실 함수를 통한 loss 계산</a></li>
+            <li><a href="#4-lossbackward---loss의-미분값-계산">4. <code>loss.backward()</code> :  loss의 미분값 계산</a></li>
+            <li><a href="#5-optimizerstep--미분값을-parameter에-반영">5. <code>optimizer.step()</code> : 미분값을 parameter에 반영</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

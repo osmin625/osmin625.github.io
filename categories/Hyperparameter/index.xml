@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyperparameter on OMIN</title>
+    <link>https://osmin625.github.io/categories/Hyperparameter/</link>
+    <description>Recent content in Hyperparameter on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/categories/Hyperparameter/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)</title>
+      <link>https://osmin625.github.io/posts/2023-09-21-Hyperparameter_tuning/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-21-Hyperparameter_tuning/</guid>
+      <description>하이퍼 파라미터&#xA;모델 스스로 학습하지 않는 값.&#xA;사람이 직접 지정해주어야 한다.&#xA;결과를 개선하고 싶을 때&#xD;#&#xD;모델을 바꾸기&#xA;중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.&#xA;데이터를 바꾸기 → 성능 개선을 위해 가장 중요하다.&#xA;하이퍼 파라미터 Tuning&#xA;약간의 성능 개선이 간절한 경우 수행한다.&#xA;마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.&#xA;generalization 등 적용&#xA;Hyperparameter Tuning&#xD;#&#xD;가장 기본적인 방법 - grid vs random&#xA;grid&#xA;적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</description>
+    </item>
+  </channel>
+</rss>

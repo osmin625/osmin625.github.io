@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pattern Mode on OMIN</title>
+    <link>https://osmin625.github.io/tags/Pattern-Mode/</link>
+    <description>Recent content in Pattern Mode on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Pattern-Mode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
+      <link>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</guid>
+      <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법)&#xD;#&#xD;자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
+    </item>
+  </channel>
+</rss>

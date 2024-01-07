@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Conv Layer#Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k
+입력 : 224 * 224 * 3
+filter : 11 * 11 * (3)
+3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.
+모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.
+gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.
+Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Alexnet 모델의 파라미터 수 계산" />
+<meta property="og:description" content="Conv Layer#Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k
+입력 : 224 * 224 * 3
+filter : 11 * 11 * (3)
+3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.
+모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.
+gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.
+Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/" /><meta property="article:section" content="posts" />
+
+
+
+<title>Alexnet 모델의 파라미터 수 계산 | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Alexnet 모델의 파라미터 수 계산</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#conv-layer"><strong>Conv Layer</strong></a></li>
+            <li><a href="#dense-layer"><strong>Dense Layer</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/">Alexnet 모델의 파라미터 수 계산</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
+      <a href="/categories/Computer-Vision/">Computer Vision</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Convolution-Neural-Network/">Convolution Neural Network</a>, 
+      <a href="/tags/Alex-Net/">Alex-Net</a>
+  </div>
+  
+
+
+
+<p>
+  <img src="/assets/post_imgs/Alex_struc.png" alt="Alex-net" /></p>
+<h3 id="conv-layer">
+  <strong>Conv Layer</strong>
+  <a class="anchor" href="#conv-layer">#</a>
+</h3>
+<p><strong>Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k</strong></p>
+<ul>
+<li>
+<p>입력 : 224 * 224 * 3</p>
+</li>
+<li>
+<p>filter : 11 * 11 * (3)</p>
+<p>3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.</p>
+</li>
+<li>
+<p>모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.</p>
+<p>gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.</p>
+</li>
+</ul>
+<p><strong>Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k</strong></p>
+<p><strong>Layer 3 파라미터 수 = 3 * 3 * 128 * 2 * 192 * 2 ⇒ 663k</strong></p>
+<p><strong>Layer 4 파라미터 수 = 3 * 3 * 192 * 128 * 2 ⇒ 884k</strong></p>
+<p><strong>Layer 5 파라미터 수 = 3 * 3 * 192 * 128 * 2 ⇒ 442k</strong></p>
+<h3 id="dense-layer">
+  <strong>Dense Layer</strong>
+  <a class="anchor" href="#dense-layer">#</a>
+</h3>
+<p><strong>Layer 6 파라미터 수 = 13 * 13 * 128 * 2 * 2048 * 2 ⇒ 117M</strong></p>
+<p><strong>Layer 7 파라미터 수 = 2048 * 2 * 2048 * 2 ⇒ 16M</strong></p>
+<p><strong>Layer 8 파라미터 수 = 2048 * 2 * 1000 ⇒ 4M</strong></p>
+<p>Dense Layer의 파라미터가 Conv Layer의 파라미터 수에 비해 월등히 많은 것을 볼 수 있다.</p>
+<p>성능을 올리기 위해선 파라미터를 줄여야 한다.</p>
+<p>따라서, 네트워크가 발전됨에 따라 뒷부분의 Fully Connected Layer을 최대한 줄이고, 앞의 Conv Layer을 깊게 쌓게 된다.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#conv-layer"><strong>Conv Layer</strong></a></li>
+            <li><a href="#dense-layer"><strong>Dense Layer</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

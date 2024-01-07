@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rule-Based on OMIN</title>
+    <link>https://osmin625.github.io/tags/Rule-Based/</link>
+    <description>Recent content in Rule-Based on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Rule-Based/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>인기도 기반 추천이란?</title>
+      <link>https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</guid>
+      <description>간단 요약&#xA;가장 인기있는 아이템을 규칙을 기반으로 추천한다.&#xA;인기도의 척도&#xA;- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수&#xA;예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법&#xD;#&#xD;Most Popular: 조회수가 가장 많은 아이템&#xD;#&#xD;최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.&#xA;Score Formula&#xA;가장 많이 조회된 뉴스를 추천하기&#xA;좋아요가 가장 많은 게시글을 추천하기&#xA;Hacker News Formula&#xA;뉴스 추천 서비스</description>
+    </item>
+  </channel>
+</rss>

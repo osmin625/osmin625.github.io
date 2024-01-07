@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것
+즉, Regression을 자기 자신에게 적용하는 것
+$$ y_1, \ldots, y_n \rightarrow y_{n&#43;1} $$
+$$ \mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i&#43;1}\right)^2 $$
+종류#Moving Average(이동평균)#가장 간단한 방법
+최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="Autoregression" />
+<meta property="og:description" content="회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것
+즉, Regression을 자기 자신에게 적용하는 것
+$$ y_1, \ldots, y_n \rightarrow y_{n&#43;1} $$
+$$ \mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i&#43;1}\right)^2 $$
+종류#Moving Average(이동평균)#가장 간단한 방법
+최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-29-Autoregression/" /><meta property="article:section" content="posts" />
+
+
+
+<title>Autoregression | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Autoregression</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#종류">종류</a>
+          <ul>
+            <li><a href="#moving-average이동평균">Moving Average(이동평균)</a></li>
+            <li><a href="#weighted-moving-average">Weighted Moving Average</a></li>
+            <li><a href="#learning-based-moving-average">Learning-based Moving Average</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-06-29-Autoregression/">Autoregression</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/AI-Math/">AI Math</a>, 
+      <a href="/categories/Statistics/">Statistics</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Autoregression/">Autoregression</a>, 
+      <a href="/tags/Autoregressive-Model/">Autoregressive Model</a>
+  </div>
+  
+
+
+
+<p>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것</p>
+<p>즉, Regression을 자기 자신에게 적용하는 것</p>
+<p>$$
+y_1, \ldots, y_n \rightarrow y_{n+1}
+$$</p>
+<p>$$
+\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2
+$$</p>
+<h2 id="종류">
+  종류
+  <a class="anchor" href="#%ec%a2%85%eb%a5%98">#</a>
+</h2>
+<h3 id="moving-average이동평균">
+  Moving Average(이동평균)
+  <a class="anchor" href="#moving-average%ec%9d%b4%eb%8f%99%ed%8f%89%ea%b7%a0">#</a>
+</h3>
+<p>가장 간단한 방법</p>
+<ul>
+<li>최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다.</li>
+<li>K의 값에 따라 경향성을 다르게 모델링할 수 있다.</li>
+<li>K가 커질수록 최신 트렌드의 반영 정도가 줄어든다.</li>
+</ul>
+<p>평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</p>
+<p>$$
+f\left(y_1, \ldots, y_n\right)=\frac{1}{K} \sum_{k=0}^{K-1} y_{n-k}
+$$</p>
+<p>$$
+f\left(y_1, \ldots, y_{n+1}\right)=\frac{1}{K}\left(K \cdot f\left(y_1, \ldots, y_n\right){-y_{n-K+1}}{+y_{n+1}}\right)
+$$</p>
+<ul>
+<li>${-y_{n-K+1}}$: 가장 오래된 값 삭제</li>
+<li>${+y_{n+1}}$ : 최근 값 추가</li>
+</ul>
+<h3 id="weighted-moving-average">
+  Weighted Moving Average
+  <a class="anchor" href="#weighted-moving-average">#</a>
+</h3>
+<p><strong>단순히 평균이 아니라 최근 값에 대한 가중치를 더 크게 주는 방법</strong></p>
+<ul>
+<li>
+<p>선형적으로 비중을 조절하는 것 뿐만 아니라 지수, 로그 등을 활용하여 다양한 방법으로 모델링이 가능하다.</p>
+<p>지수 함수를 활용하여 최근 값의 비중을 기하급수적으로 증가시켰다.</p>
+<p>$$
+\begin{gathered}f\left(y_1\right)=y_1 \f\left(y_1, \ldots, y_{n+1}\right)=\alpha f\left(y_1, \ldots, y_n\right)+(1-\alpha) \cdot y_{n+1}\end{gathered}
+$$</p>
+</li>
+</ul>
+<h3 id="learning-based-moving-average">
+  Learning-based Moving Average
+  <a class="anchor" href="#learning-based-moving-average">#</a>
+</h3>
+<p><strong>Weighted moving average에서의 가중치를 학습하는 방법</strong></p>
+<p>$$
+f\left(y_1, \ldots, y_n\right)=\sum_{k=0}^{K-1} \theta_k \cdot y_{n-k}
+$$</p>
+<p>주기적인 변화가 있는 교통량 예측, 시즌 별 상품 소비 예측 등에 사용된다.</p>
+<p>주 단위, 월 단위 등의 주기성을 모델링하는 데 보다 적합하다.</p>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#종류">종류</a>
+          <ul>
+            <li><a href="#moving-average이동평균">Moving Average(이동평균)</a></li>
+            <li><a href="#weighted-moving-average">Weighted Moving Average</a></li>
+            <li><a href="#learning-based-moving-average">Learning-based Moving Average</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

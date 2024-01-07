@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.
+해당 게시글은 지속적으로 업데이트할 예정입니다.
+노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.
+{: .prompt-info }
+추천 시스템#추천 시스템 평가 패러다임#Rule Base#인기도 기반 추천
+연관 분석(Association Analysis)
+CBF: Content Based Filtering#1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가#TF-IDF
+TF-IDF 기반 추천
+BM25
+Word2Vec
+2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가#Similarity">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
+<meta name="color-scheme" content="light dark"><meta property="og:title" content="추천 시스템 개요" />
+<meta property="og:description" content="Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.
+해당 게시글은 지속적으로 업데이트할 예정입니다.
+노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.
+{: .prompt-info }
+추천 시스템#추천 시스템 평가 패러다임#Rule Base#인기도 기반 추천
+연관 분석(Association Analysis)
+CBF: Content Based Filtering#1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가#TF-IDF
+TF-IDF 기반 추천
+BM25
+Word2Vec
+2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가#Similarity" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/" /><meta property="article:section" content="posts" />
+
+
+
+<title>추천 시스템 개요 | OMIN</title>
+<link rel="manifest" href="/manifest.json">
+<link rel="icon" href="/favicon.png" >
+<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
+  <script defer src="/flexsearch.min.js"></script>
+  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+
+  <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+  
+</head>
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a class="flex align-center" href="/"><span>OMIN</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="/posts/"  >
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>추천 시스템 개요</strong>
+
+  <label for="toc-control">
+    
+    <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#추천-시스템httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/">추천 시스템</a></a></li>
+            <li><a href="#추천-시스템-평가-패러다임httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c-ed8f89eab080-eca780ed919c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/">추천 시스템 평가 패러다임</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#rule-base">Rule Base</a></li>
+    <li><a href="#cbf-content-based-filteringhttpswwwnotionsocbf-content-based-filtering-ee188eb44e6a4fd38992c8182405128cpvs21"><a href="https://www.notion.so/CBF-Content-Based-Filtering-ee188eb44e6a4fd38992c8182405128c?pvs=21">CBF: Content Based Filtering</a></a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#cf-collaborative-filtering협업-필터링httpswwwnotionsocf-collaborative-filtering-fd1b3079e33d4bf28c3d6e11a833842epvs21"><a href="https://www.notion.so/CF-Collaborative-Filtering-fd1b3079e33d4bf28c3d6e11a833842e?pvs=21">CF: Collaborative Filtering(협업 필터링)</a></a>
+      <ul>
+        <li><a href="#nbcf-neighborhood-based-cf이웃-기반-협업-필터링httpswwwnotionsonbcf-neighborhood-based-cf-4d0471ef262d4a7da8175e095c9f72a2pvs21"><a href="https://www.notion.so/NBCF-Neighborhood-based-CF-4d0471ef262d4a7da8175e095c9f72a2?pvs=21">NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</a></a></li>
+        <li><a href="#mbcf-model-based-collaborative-filtering모델-기반-협업-필터링httpswwwnotionsombcf-model-based-collaborative-filtering-75c21283fe794ad48670abf344ae04b1pvs21"><a href="https://www.notion.so/MBCF-Model-based-Collaborative-Filtering-75c21283fe794ad48670abf344ae04b1?pvs=21">MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링)</a></a></li>
+        <li><a href="#rl강화-학습">RL(강화 학습)</a>
+          <ul>
+            <li><a href="#mab-multi-armed-bandithttpswwwnotionsomab-multi-armed-bandit-b00d09a3729c4f64a8c360f2c922f7a7pvs21"><a href="https://www.notion.so/MAB-Multi-Armed-Bandit-b00d09a3729c4f64a8c360f2c922f7a7?pvs=21">MAB: Multi-Armed Bandit</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hybrid-cfhttpswwwnotionsohybrid-cf-103266a4a91643e58bf6f565b7b627capvs21"><a href="https://www.notion.so/Hybrid-CF-103266a4a91643e58bf6f565b7b627ca?pvs=21"><strong>Hybrid CF</strong></a></a>
+      <ul>
+        <li><a href="#cars-context-aware-recommender-system맥락-기반-추천-시스템httpswwwnotionsocars-context-aware-recommender-system-28277faab5fc4fbf843f2e5108981179pvs21"><a href="https://www.notion.so/CARS-Context-aware-Recommender-System-28277faab5fc4fbf843f2e5108981179?pvs=21"><strong>CARS: Context-aware Recommender System(맥락 기반 추천 시스템)</strong></a></a></li>
+      </ul>
+    </li>
+    <li><a href="#추천-라이브러리">추천 라이브러리</a></li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+<article class="markdown book-post">
+  <h1>
+    <a href="/posts/2023-09-27-Recsys-Overview/">추천 시스템 개요</a>
+  </h1>
+  
+
+
+  
+  <div>
+    
+      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
+      <a href="/categories/Recommendation-System/">Recommendation System</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/Recsys/">Recsys</a>, 
+      <a href="/tags/Overview/">Overview</a>
+  </div>
+  
+
+
+
+<blockquote>
+<p>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.<br>
+해당 게시글은 지속적으로 업데이트할 예정입니다.<br>
+노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.<br>
+{: .prompt-info }</p>
+</blockquote>
+<h3 id="추천-시스템httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c">
+  
+  <a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/">추천 시스템</a>
+  <a class="anchor" href="#%ec%b6%94%ec%b2%9c-%ec%8b%9c%ec%8a%a4%ed%85%9chttpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c">#</a>
+</h3>
+<h3 id="추천-시스템-평가-패러다임httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c-ed8f89eab080-eca780ed919c">
+  
+  <a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/">추천 시스템 평가 패러다임</a>
+  <a class="anchor" href="#%ec%b6%94%ec%b2%9c-%ec%8b%9c%ec%8a%a4%ed%85%9c-%ed%8f%89%ea%b0%80-%ed%8c%a8%eb%9f%ac%eb%8b%a4%ec%9e%84httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c-ed8f89eab080-eca780ed919c">#</a>
+</h3>
+<p>
+  <img src="ro.png" alt="recsys" /></p>
+<h1 id="rule-base">
+  Rule Base
+  <a class="anchor" href="#rule-base">#</a>
+</h1>
+<p>
+  <a href="https://osmin625.github.io/posts/%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/">인기도 기반 추천</a></p>
+<p>
+  <a href="https://www.notion.so/Association-Analysis-6ca43cfdd8da4ad89cdefa807331c4ff?pvs=21">연관 분석(Association Analysis)</a></p>
+<h1 id="cbf-content-based-filteringhttpswwwnotionsocbf-content-based-filtering-ee188eb44e6a4fd38992c8182405128cpvs21">
+  
+  <a href="https://www.notion.so/CBF-Content-Based-Filtering-ee188eb44e6a4fd38992c8182405128c?pvs=21">CBF: Content Based Filtering</a>
+  <a class="anchor" href="#cbf-content-based-filteringhttpswwwnotionsocbf-content-based-filtering-ee188eb44e6a4fd38992c8182405128cpvs21">#</a>
+</h1>
+<h4 id="1-vectorizer--아이템-특성을-벡터-형태로-어떻게-표현하는가">
+  1. Vectorizer — <strong>아이템 특성을 벡터 형태로 어떻게 표현하는가</strong>
+  <a class="anchor" href="#1-vectorizer--%ec%95%84%ec%9d%b4%ed%85%9c-%ed%8a%b9%ec%84%b1%ec%9d%84-%eb%b2%a1%ed%84%b0-%ed%98%95%ed%83%9c%eb%a1%9c-%ec%96%b4%eb%96%bb%ea%b2%8c-%ed%91%9c%ed%98%84%ed%95%98%eb%8a%94%ea%b0%80">#</a>
+</h4>
+<ul>
+<li>
+<p>
+  <a href="https://www.notion.so/TF-IDF-9478a90aa99e44c1820b26b296535223?pvs=21">TF-IDF</a></p>
+<p>
+  <a href="https://www.notion.so/TF-IDF-0465ef82197b423e92cbd7516e964d7b?pvs=21">TF-IDF 기반 추천</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.notion.so/BM25-857f76f951ef44e6a8ffa08c022dbbcb?pvs=21">BM25</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.notion.so/Word2Vec-c21d23fa76c8478f921fdc392f599f95?pvs=21">Word2Vec</a></p>
+</li>
+</ul>
+<h4 id="2-similarity--특성화된-아이템이-서로-얼마나-비슷한가">
+  2. Similarity — <strong>특성화된 아이템이 서로 얼마나 비슷한가</strong>
+  <a class="anchor" href="#2-similarity--%ed%8a%b9%ec%84%b1%ed%99%94%eb%90%9c-%ec%95%84%ec%9d%b4%ed%85%9c%ec%9d%b4-%ec%84%9c%eb%a1%9c-%ec%96%bc%eb%a7%88%eb%82%98-%eb%b9%84%ec%8a%b7%ed%95%9c%ea%b0%80">#</a>
+</h4>
+<ul>
+<li>
+<p>
+  <a href="https://www.notion.so/Similarity-e210820646c04d248e6ca2b5f2db7bae?pvs=21">Similarity</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.notion.so/Distance-dcb9f23eabba4d25829a6a26a33c892e?pvs=21">Distance</a></p>
+</li>
+</ul>
+<h1 id="cf-collaborative-filtering협업-필터링httpswwwnotionsocf-collaborative-filtering-fd1b3079e33d4bf28c3d6e11a833842epvs21">
+  
+  <a href="https://www.notion.so/CF-Collaborative-Filtering-fd1b3079e33d4bf28c3d6e11a833842e?pvs=21">CF: Collaborative Filtering(협업 필터링)</a>
+  <a class="anchor" href="#cf-collaborative-filtering%ed%98%91%ec%97%85-%ed%95%84%ed%84%b0%eb%a7%81httpswwwnotionsocf-collaborative-filtering-fd1b3079e33d4bf28c3d6e11a833842epvs21">#</a>
+</h1>
+<ul>
+<li>
+<h2 id="nbcf-neighborhood-based-cf이웃-기반-협업-필터링httpswwwnotionsonbcf-neighborhood-based-cf-4d0471ef262d4a7da8175e095c9f72a2pvs21">
+  
+  <a href="https://www.notion.so/NBCF-Neighborhood-based-CF-4d0471ef262d4a7da8175e095c9f72a2?pvs=21">NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</a>
+  <a class="anchor" href="#nbcf-neighborhood-based-cf%ec%9d%b4%ec%9b%83-%ea%b8%b0%eb%b0%98-%ed%98%91%ec%97%85-%ed%95%84%ed%84%b0%eb%a7%81httpswwwnotionsonbcf-neighborhood-based-cf-4d0471ef262d4a7da8175e095c9f72a2pvs21">#</a>
+</h2>
+</li>
+<li>
+<h2 id="mbcf-model-based-collaborative-filtering모델-기반-협업-필터링httpswwwnotionsombcf-model-based-collaborative-filtering-75c21283fe794ad48670abf344ae04b1pvs21">
+  
+  <a href="https://www.notion.so/MBCF-Model-based-Collaborative-Filtering-75c21283fe794ad48670abf344ae04b1?pvs=21">MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링)</a>
+  <a class="anchor" href="#mbcf-model-based-collaborative-filtering%eb%aa%a8%eb%8d%b8-%ea%b8%b0%eb%b0%98-%ed%98%91%ec%97%85-%ed%95%84%ed%84%b0%eb%a7%81httpswwwnotionsombcf-model-based-collaborative-filtering-75c21283fe794ad48670abf344ae04b1pvs21">#</a>
+</h2>
+  <details markdown="1">
+  <summary>Supervised Learning Model</summary>
+<p><strong>ML based CF</strong></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/Naive-Bayes-Classification-33b7db10c9314bcf8c7dda33785846e9?pvs=21">Naive Bayes Classification</a></li>
+<li>
+  <a href="https://www.notion.so/GBM-Gradient-Boosting-Machine-ad2a50e8de754365ae06f0ac90adcaa1?pvs=21">GBM: Gradient Boosting Machine</a>
+
+  <a href="https://www.notion.so/GBDT-Gradient-Boosting-Decision-Trees-082ff2ad256a436f9ce28f7b2181d5ca?pvs=21">GBDT: Gradient Boosting Decision Trees</a>
+<ul>
+<li>
+  <a href="https://www.notion.so/XGBoost-Extreme-gradient-boosting-3f2f693c177e430d983f678e2d1e1c74?pvs=21">XGBoost: Extreme gradient boosting</a></li>
+<li>
+  <a href="https://www.notion.so/LGBM-LightGBM-26aed012b6a5416aac0b4650b0155e5e?pvs=21">LGBM: LightGBM</a></li>
+<li>
+  <a href="https://www.notion.so/CatBoost-474c3b0d5e124ae19aff470924694636?pvs=21">CatBoost</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>DL based CF</strong></p>
+  <details markdown="1">
+  <summary>Background</summary>
+  <br>
+<p><strong>DL based CF의 장점</strong></p>
+<ol>
+<li>
+<p><strong>Nonlinear Transformation</strong></p>
+<ul>
+<li>
+<p>data의 non-linearity를 효과적으로 나타낼 수 있다.</p>
+</li>
+<li>
+<p>복잡한 user-item interaction pattern을 효과적으로 모델링</p>
+<p>user의 선호도 예측 용이</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Representation Learning</strong></p>
+<ul>
+<li>사람이 직접 feature design하지 않아도 된다.</li>
+<li>텍스트, 이미지, 오디오 등 다양한 종류의 정보를 추천 시스템에 활용할 수 있다.
+<ul>
+<li>과거 아이템의 이미지를 활용하여 새로운 아이템에 대한 특징 추출 가능</li>
+<li>사용자가 남긴 텍스트를 활용하여 취향에 대한 특징 추출 가능</li>
+<li>새로운 아이템이나 인기 없는 아이템도 추천이 가능</li>
+<li>사용자에게 아이템을 왜 추천하는 이유에 대한 설명력이 증가</li>
+<li>다양한 맥락 정보를 함께 활용하기 때문에 보다 정교한 추천이 가능</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Sequence Modeling</strong></p>
+<ul>
+<li>DNN은 자연어처리, 음성 신호 처리 등 sequential modeling task에서 성공적으로 적용된다.</li>
+<li>추천 시스템에서 next-item prediction, session-based recommendation등에 사용된다.</li>
+</ul>
+</li>
+<li>
+<p><strong>Various Architectures</strong></p>
+<ul>
+<li>CNN, RNN 등 비정형 데이터 특징 추출에 특화된 구조 활용이 가능하다.</li>
+</ul>
+</li>
+<li>
+<p><strong>Flexibility</strong></p>
+<ul>
+<li>Tensorflow, PyTorch 등 다양한 DL 프레임워크 오픈</li>
+<li>추천시스템 모델링 flexibility가 높으며 더 효율적으로 서빙할 수 있다.</li>
+<li>end-to-end 구조로써 Domain adaptation,Generative modeling등의 응용 모델 활용이 가능하다.</li>
+</ul>
+</li>
+</ol>
+<p><strong>단점</strong></p>
+<ol>
+<li><strong>Interpretability</strong> → Black Box</li>
+<li><strong>Data Requirement</strong> → 많은 양의 데이터 필요</li>
+<li><strong>Extensive Hyperparameter Tuning</strong> → 많은 시간 소요</li>
+</ol>
+<p>추천에서는 DL이 ML을 압도하지는 않는다.</p>
+<p>추천을 수행할 때 Latency가 중요하기 때문에, 너무 복잡한 모델은 사용하지 못한다.</p>
+  </details>    
+<p>
+  <a href="https://www.notion.so/MLP-Multilayer-Perceptron-e33b62a970784be2bcd83dab0b55e220?pvs=21">MLP: Multilayer Perceptron(다층 퍼셉트론)</a> 계열 모델</p>
+<ul>
+<li>
+  <a href="https://www.notion.so/NCF-Neural-Collaborative-Filtering-7ea11a83950c466a91a46ed5d7b7bab3?pvs=21">NCF: Neural Collaborative Filtering</a></li>
+<li>
+  <a href="https://www.notion.so/YouTube-Recommendation-29e3b9ef81784ed6b8b3c29b2b5c7aaa?pvs=21">YouTube Recommendation</a></li>
+</ul>
+<p>
+  <a href="https://www.notion.so/AE-Autoencoder-994ae0144c034d249cf5da6e7f618c1a?pvs=21">AE: Autoencoder(<strong>오토인코더)</strong></a> 계열 모델</p>
+<p>입력값 (rating)을 reconstruction (decoding) 할 수 있게끔 학습함으로써 rating이 가지고 있는 잠재적인 패턴이 latent factor(information bottleneck)에 암호화 (encoding)된다.</p>
+<p>
+  <img src="ro1.png" alt="recsys" /></p>
+<p>
+  <a href="https://www.notion.so/DAE-Denoising-Autoencoder-d6800d81dced436b8b00911996978dd2?pvs=21">DAE: Denoising Autoencoder</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/U-I-RBM-1d121b28c9f74d0a90046b3188b17044?pvs=21">U/I-RBM</a></li>
+<li>
+  <a href="https://www.notion.so/AutoRec-dd00ba485fd244b783ced96109ae916f?pvs=21">AutoRec</a></li>
+<li>
+  <a href="https://www.notion.so/NeuMF-Neural-MF-4a9f4d36220b49f0afea9f298a4a3807?pvs=21">NeuMF: Neural MF</a></li>
+<li>
+  <a href="https://www.notion.so/CDAE-Collaborative-Denoising-Auto-Encoder-ba86511b225748d1ae1ed298d828266c?pvs=21">CDAE: Collaborative Denoising Auto-Encoder</a></li>
+</ul>
+<p>
+  <a href="https://www.notion.so/GNN-Graph-Neural-Network-3187fc20130b45f189ec91ee55e85480?pvs=21">GNN: Graph Neural Network</a> 계열 모델</p>
+<p>
+  <a href="https://www.notion.so/GCN-Graph-Convolution-Network-e9a3a153c8f747d89b6f7cda4f39311c?pvs=21">GCN: Graph Convolution Network</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/NGCF-Neural-Graph-Collaborative-Filtering-c7298066e8b3423f8fb430305cdb2696?pvs=21">NGCF: Neural Graph Collaborative Filtering</a></li>
+<li>
+  <a href="https://www.notion.so/LightGCN-96a9cf2cf19c452586b432fb01e1563e?pvs=21">LightGCN</a></li>
+</ul>
+<p>
+  <a href="https://www.notion.so/CNN-Convolutional-Neural-Network-5fe961c5ba07444688035a28c4925a4b?pvs=21">CNN: Convolutional Neural Network(컨볼루션 신경망)</a> 계열 모델</p>
+<ul>
+<li>
+  <a href="https://www.notion.so/Image-Based-Recommendations-7ab89ac403d54c738d9be9afab18dbce?pvs=21">Image-Based Recommendations</a></li>
+<li>
+  <a href="https://www.notion.so/VBPR-Visual-BPR-7142388f354b44b6978c6916f1f94946?pvs=21">VBPR: Visual BPR</a></li>
+<li>
+  <a href="https://www.notion.so/DeepCoNN-c627c7b226814600b73b211d8a5f5829?pvs=21">DeepCoNN(심층 협력 신경망)</a></li>
+</ul>
+<p>
+  <a href="https://www.notion.so/RNN-Recurrent-Neural-Network-a3cbd14760f6406b9d926e1062365982?pvs=21">RNN:Recurrent Neural Network(순환신경망)</a> 계열 모델</p>
+<p>
+  <a href="https://www.notion.so/LSTM-Long-Short-Term-Memory-ce7b82de1e554356875ddda3aa02dc91?pvs=21">LSTM(Long Short Term Memory)</a>, 
+  <a href="https://www.notion.so/GRU-Gated-Recurrent-Unit-e9fb943fdd2b48b5a99047b7bc3084da?pvs=21">GRU(Gated Recurrent Unit)</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/GRU4Rec-7e0959bd25ae4fc79b148bb86544bf00?pvs=21">GRU4Rec</a></li>
+<li>
+  <a href="https://www.notion.so/RRN-Recurrent-Recommender-Network-af2ab646a37f4f9580e783231ad33f75?pvs=21">RRN: Recurrent Recommender Network</a></li>
+<li>
+  <a href="https://www.notion.so/WDN-Wide-Deep-Network-7e6a7cd23fd444f5a4bc3db8fbdf9b96?pvs=21">WDN: Wide &amp; Deep Network</a></li>
+<li>
+  <a href="https://www.notion.so/DeepFM-964f67dd360b4c1f88c4a0bd0698f0e5?pvs=21">DeepFM</a></li>
+<li>
+  <a href="https://www.notion.so/DIN-Deep-Interest-Network-7f7dab7f46074f5481e9cabc4f04eca7?pvs=21">DIN: Deep Interest Network</a></li>
+<li>DCN: Deep &amp; Cross Network</li>
+<li>
+  <a href="https://www.notion.so/BST-Behavior-Sequence-Transformer-9b06a51043dd4d15bc565b8ef52eb7a2?pvs=21">BST: Behavior Sequence Transformer</a></li>
+<li>
+  <a href="https://www.notion.so/TabNet-1e5c27561c974f6e80af1989a106cfde?pvs=21">TabNet</a></li>
+</ul>
+  </details>
+  <details markdown='1'>
+  <summary>Unsupervised Learning Model</summary>
+  <br>
+  <details markdown="1">
+  <summary>Background : User-free Model</summary>
+  <br>
+  비지도학습 모델들 중, User-free 모델로 활용되는 경우가 많다.
+<p><strong>User-free 모델의 장점 ($=\gamma_u$를 사용하지 않을 때의 장점)</strong></p>
+<ol>
+<li>
+<p><strong>새로운 사용자에 대해 inference가 가능하다.</strong></p>
+<p>$\gamma_u$는 새로운 사용자가 발생할 때마다 재학습을 필요로 한다.</p>
+</li>
+<li>
+<p><strong>이력이 거의 없는 사용자에 대한 대응이 가능하다.</strong></p>
+<p>MF 계열의 모델은 이런 상황에서 $\gamma_u$가 제대로 학습되지 않으므로 성능이 좋지 않다.</p>
+</li>
+<li>
+<p><strong>CF 모델에서 종종 무시되곤 하는 sequential 시나리오에 대해 대응이 가능하다.</strong></p>
+<p>MF의 $\gamma_u$는 sequence를 고려하지 않는다.</p>
+</li>
+</ol>
+<ul>
+<li>실제 추천 시스템의 deployment를 고려하면, 새로운 사용자가 발생할 때마다 재학습이 필요한 점은 큰 단점이다.</li>
+<li>따라서, user-free 모델은 전통적인 MF 계열의 모델보다 실용적이라고 볼 수 있다.</li>
+</ul>
+  </details>
+<p>
+  <a href="https://www.notion.so/Latent-Factor-Model-Embedding-7e8eb7413b9e45ceb5ed2a16151c12c0?pvs=21"><strong>Latent Factor Model(Embedding)</strong></a></p>
+<ul>
+<li>
+<p>
+  <a href="https://www.notion.so/SVD-Singular-Value-Decomposition-2bc5621a4b8b423587cce5c72387332a?pvs=21">SVD: Singular Value Decomposition(특이값 분해)</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.notion.so/MF-Matrix-Factorization-e4a47b3afa0c4159ab9ad24920f2f6a5?pvs=21">MF: Matrix Factorization</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/WRMF-Weighted-Regularized-MF-MF-for-Implicit-Feedback-0fedc650822c476da6d348dbc97a47a7?pvs=21">WRMF: Weighted Regularized MF (MF for Implicit Feedback)</a></li>
+<li>
+  <a href="https://www.notion.so/ALS-Alternating-Least-Square-f7558a78197f4f1c8657aeaf6e5a29fd?pvs=21">ALS: Alternating Least Square</a></li>
+<li>
+  <a href="https://www.notion.so/BPR-Bayesian-Personalized-Ranking-19396cb2510e4bdb935c62fb7e29d87e?pvs=21">BPR: Bayesian Personalized Ranking</a></li>
+</ul>
+<p>
+  <a href="https://www.notion.so/Feedback-bc67a3ec8d14494f84ff96524491fbee?pvs=21">Feedback</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/Word2Vec-c21d23fa76c8478f921fdc392f599f95?pvs=21">Word2Vec</a>
+<ul>
+<li>
+  <a href="https://www.notion.so/CBOW-Continous-Bag-of-Word-d8b1a8e79e294cdb91f0edd1dccb9ac4?pvs=21"><strong>CBOW: Continous Bag of Word</strong></a></li>
+<li>
+  <a href="https://www.notion.so/SG-Skip-Gram-0efdda659ed345f299b0ee4b0ded2c26?pvs=21"><strong>SG: Skip-Gram</strong></a></li>
+<li>
+  <a href="https://www.notion.so/SGNS-Skip-Gram-with-Negative-Sampling-e3a03df0c93d493a8a266043d4ac3b76?pvs=21"><strong>SGNS: Skip-Gram with Negative Sampling</strong></a></li>
+</ul>
+</li>
+<li>
+  <a href="https://www.notion.so/Item2Vec-9ce90b51bfce4be49bf049f7a4c1e962?pvs=21">Item2Vec</a></li>
+</ul>
+</li>
+</ul>
+<p>
+  <a href="https://www.notion.so/Clustering-18087dfdaaec466086fcff5a1808aa86?pvs=21">Clustering(군집화)</a></p>
+<ul>
+<li>
+<p>
+  <a href="https://www.notion.so/KNN-K-Nearest-Neighbor-K-e3a1dcf5f76c4c33b8f12432a11c466d?pvs=21">KNN: K-Nearest Neighbor(K-최근접 이웃)</a></p>
+</li>
+<li>
+<p>
+  <a href="https://www.notion.so/ANN-Approximate-Nearest-Neighbor-9a41dc0e2de54f7ab83ee8f990f5c086?pvs=21">ANN: Approximate Nearest Neighbor</a></p>
+<ul>
+<li>
+  <a href="https://www.notion.so/ANNOY-Approximate-Nearest-Neighbor-Oh-Yeah-f6e0897863d048ecb2db4843bb337755?pvs=21">ANNOY: Approximate Nearest Neighbor Oh Yeah</a></li>
+<li>
+  <a href="https://www.notion.so/HNSW-Hierarchical-Navigable-Small-World-Graphs-c52ea0f832e84eae9392120f7a05ae99?pvs=21"><strong>HNSW: Hierarchical Navigable Small World Graphs</strong></a></li>
+<li>
+  <a href="https://www.notion.so/IVF-Inverted-File-Index-c382c3cb19634e7cb7e2af6d445cf686?pvs=21">IVF: Inverted File Index</a></li>
+<li>
+  <a href="https://www.notion.so/PQ-Product-Quantization-Compression-cea6b89b3ff14201bbaa75536a6840b3?pvs=21">PQ: Product Quantization — Compression</a></li>
+</ul>
+<p><strong>Clustering의 경우 다른 추천 방법론과 함께 사용하여 효과적인 추천 수행이 가능하다.</strong></p>
+<ul>
+<li>군집내의 다른 사용자가 선호하는 아이템 추천</li>
+<li>군집화 이후 협력 필터링(Collaborative Filtering) 사용을 통해 예측 정확도 향상</li>
+<li>비슷한 사용자 군집의 데이터를 추출하여 아이템 선호도를 계산하고, 이를 사전 확률(prior probability)로 활용하여 베이지안 방법론 적용</li>
+</ul>
+</li>
+</ul>
+  </details>
+</li>
+</ul>
+<h2 id="rl강화-학습">
+  RL(강화 학습)
+  <a class="anchor" href="#rl%ea%b0%95%ed%99%94-%ed%95%99%ec%8a%b5">#</a>
+</h2>
+<h3 id="mab-multi-armed-bandithttpswwwnotionsomab-multi-armed-bandit-b00d09a3729c4f64a8c360f2c922f7a7pvs21">
+  
+  <a href="https://www.notion.so/MAB-Multi-Armed-Bandit-b00d09a3729c4f64a8c360f2c922f7a7?pvs=21">MAB: Multi-Armed Bandit</a>
+  <a class="anchor" href="#mab-multi-armed-bandithttpswwwnotionsomab-multi-armed-bandit-b00d09a3729c4f64a8c360f2c922f7a7pvs21">#</a>
+</h3>
+<h1 id="hybrid-cfhttpswwwnotionsohybrid-cf-103266a4a91643e58bf6f565b7b627capvs21">
+  
+  <a href="https://www.notion.so/Hybrid-CF-103266a4a91643e58bf6f565b7b627ca?pvs=21"><strong>Hybrid CF</strong></a>
+  <a class="anchor" href="#hybrid-cfhttpswwwnotionsohybrid-cf-103266a4a91643e58bf6f565b7b627capvs21">#</a>
+</h1>
+<h2 id="cars-context-aware-recommender-system맥락-기반-추천-시스템httpswwwnotionsocars-context-aware-recommender-system-28277faab5fc4fbf843f2e5108981179pvs21">
+  
+  <a href="https://www.notion.so/CARS-Context-aware-Recommender-System-28277faab5fc4fbf843f2e5108981179?pvs=21"><strong>CARS: Context-aware Recommender System(맥락 기반 추천 시스템)</strong></a>
+  <a class="anchor" href="#cars-context-aware-recommender-system%eb%a7%a5%eb%9d%bd-%ea%b8%b0%eb%b0%98-%ec%b6%94%ec%b2%9c-%ec%8b%9c%ec%8a%a4%ed%85%9chttpswwwnotionsocars-context-aware-recommender-system-28277faab5fc4fbf843f2e5108981179pvs21">#</a>
+</h2>
+<ul>
+<li>
+  <a href="https://www.notion.so/FM-Factorization-Machine-3b520957d16d4f5caa4a8dd648043692?pvs=21">FM: Factorization Machine</a></li>
+<li>
+  <a href="https://www.notion.so/FFM-Field-aware-Factorization-Machine-c6a926483b534648b9f699b0749e575b?pvs=21">FFM: Field-aware Factorization Machine</a></li>
+</ul>
+<h1 id="추천-라이브러리">
+  추천 라이브러리
+  <a class="anchor" href="#%ec%b6%94%ec%b2%9c-%eb%9d%bc%ec%9d%b4%eb%b8%8c%eb%9f%ac%eb%a6%ac">#</a>
+</h1>
+<ul>
+<li><strong>Surprise</strong></li>
+<li><strong>Implicit</strong></li>
+<li><strong>Lightfm</strong></li>
+<li><strong>MSrecommenders</strong></li>
+<li>Spotlight</li>
+<li>Buffalo</li>
+<li>Torchrec</li>
+<li>TFrecommenders</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+
+
+  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
+
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#추천-시스템httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/">추천 시스템</a></a></li>
+            <li><a href="#추천-시스템-평가-패러다임httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c-ed8f89eab080-eca780ed919c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/">추천 시스템 평가 패러다임</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#rule-base">Rule Base</a></li>
+    <li><a href="#cbf-content-based-filteringhttpswwwnotionsocbf-content-based-filtering-ee188eb44e6a4fd38992c8182405128cpvs21"><a href="https://www.notion.so/CBF-Content-Based-Filtering-ee188eb44e6a4fd38992c8182405128c?pvs=21">CBF: Content Based Filtering</a></a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#cf-collaborative-filtering협업-필터링httpswwwnotionsocf-collaborative-filtering-fd1b3079e33d4bf28c3d6e11a833842epvs21"><a href="https://www.notion.so/CF-Collaborative-Filtering-fd1b3079e33d4bf28c3d6e11a833842e?pvs=21">CF: Collaborative Filtering(협업 필터링)</a></a>
+      <ul>
+        <li><a href="#nbcf-neighborhood-based-cf이웃-기반-협업-필터링httpswwwnotionsonbcf-neighborhood-based-cf-4d0471ef262d4a7da8175e095c9f72a2pvs21"><a href="https://www.notion.so/NBCF-Neighborhood-based-CF-4d0471ef262d4a7da8175e095c9f72a2?pvs=21">NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</a></a></li>
+        <li><a href="#mbcf-model-based-collaborative-filtering모델-기반-협업-필터링httpswwwnotionsombcf-model-based-collaborative-filtering-75c21283fe794ad48670abf344ae04b1pvs21"><a href="https://www.notion.so/MBCF-Model-based-Collaborative-Filtering-75c21283fe794ad48670abf344ae04b1?pvs=21">MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링)</a></a></li>
+        <li><a href="#rl강화-학습">RL(강화 학습)</a>
+          <ul>
+            <li><a href="#mab-multi-armed-bandithttpswwwnotionsomab-multi-armed-bandit-b00d09a3729c4f64a8c360f2c922f7a7pvs21"><a href="https://www.notion.so/MAB-Multi-Armed-Bandit-b00d09a3729c4f64a8c360f2c922f7a7?pvs=21">MAB: Multi-Armed Bandit</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hybrid-cfhttpswwwnotionsohybrid-cf-103266a4a91643e58bf6f565b7b627capvs21"><a href="https://www.notion.so/Hybrid-CF-103266a4a91643e58bf6f565b7b627ca?pvs=21"><strong>Hybrid CF</strong></a></a>
+      <ul>
+        <li><a href="#cars-context-aware-recommender-system맥락-기반-추천-시스템httpswwwnotionsocars-context-aware-recommender-system-28277faab5fc4fbf843f2e5108981179pvs21"><a href="https://www.notion.so/CARS-Context-aware-Recommender-System-28277faab5fc4fbf843f2e5108981179?pvs=21"><strong>CARS: Context-aware Recommender System(맥락 기반 추천 시스템)</strong></a></a></li>
+      </ul>
+    </li>
+    <li><a href="#추천-라이브러리">추천 라이브러리</a></li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

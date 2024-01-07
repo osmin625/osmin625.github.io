@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Matrix Decomposition on OMIN</title>
+    <link>https://osmin625.github.io/tags/Matrix-Decomposition/</link>
+    <description>Recent content in Matrix Decomposition on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Matrix-Decomposition/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SVD: Singular Value Decomposition(특이값 분해)</title>
+      <link>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
+      <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD&#xD;#&#xD;기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
+    </item>
+  </channel>
+</rss>

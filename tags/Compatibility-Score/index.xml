@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compatibility Score on OMIN</title>
+    <link>https://osmin625.github.io/tags/Compatibility-Score/</link>
+    <description>Recent content in Compatibility Score on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/tags/Compatibility-Score/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>추천 시스템 평가 패러다임</title>
+      <link>https://osmin625.github.io/posts/2023-06-06-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-06-06-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/</guid>
+      <description>MAP, NDCG&#xA;비즈니스 / 서비스 관점&#xA;추천 시스템 적용으로 인해 매출, PV(Page View) 증가&#xA;추천 아이템으로 인해 유저 CTR(노출 대비 클릭)의 상승&#xA;품질 관점&#xA;정확성(Accuracy)&#xA;연관성(Relevance): 추천된 아이템이 유저에게 관련이 있는가?&#xA;다양성(Diversity): 추천된 Top-K 아이템에 얼마나 다양한 아이템이 추천되는가?&#xA;신뢰성(Confidence) : 추천 결과를 제공하는 시스템이 신뢰할 만한가?&#xA;표준편차가 적은 추천 시스템일수록 더 높은 Confidence를 가진다.&#xA;신뢰성(Trust) : 사용자가 추천 결과에 얼마나 믿음을 가지는가?&#xA;추천 결과에 설명이 추가된다면 사용자가 추천 결과를 더 믿게 된다.</description>
+    </item>
+  </channel>
+</rss>

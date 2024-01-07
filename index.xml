@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Introduction on OMIN</title>
+    <link>https://osmin625.github.io/</link>
+    <description>Recent content in Introduction on OMIN</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://osmin625.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>With ToC</title>
+      <link>https://osmin625.github.io/docs/example/table-of-contents/with-toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/example/table-of-contents/with-toc/</guid>
+      <description>Caput vino delphine in tamen vias&#xD;#&#xD;Cognita laeva illo fracta&#xD;#&#xD;Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.&#xA;Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit Natus quaerere&#xD;#&#xD;Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
+    </item>
+    <item>
+      <title>Without ToC</title>
+      <link>https://osmin625.github.io/docs/example/table-of-contents/without-toc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/example/table-of-contents/without-toc/</guid>
+      <description>At me ipso nepotibus nunc celebratior genus&#xD;#&#xD;Tanto oblite&#xD;#&#xD;Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.&#xA;Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
+    </item>
+    <item>
+      <title>Creating a New Theme</title>
+      <link>https://osmin625.github.io/posts/creating-a-new-theme/</link>
+      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/creating-a-new-theme/</guid>
+      <description>Introduction&#xD;#&#xD;This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.&#xA;We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+    </item>
+    <item>
+      <title>Migrate to Hugo from Jekyll</title>
+      <link>https://osmin625.github.io/posts/migrate-from-jekyll/</link>
+      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/migrate-from-jekyll/</guid>
+      <description>Move static content to static&#xD;#&#xD;Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like&#xA;▾ &amp;lt;root&amp;gt;/&#xD;▾ images/&#xD;logo.png&#xD;should become&#xA;▾ &amp;lt;root&amp;gt;/&#xD;▾ static/&#xD;▾ images/&#xD;logo.png&#xD;Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+    </item>
+    <item>
+      <title>(Hu)go Template Primer</title>
+      <link>https://osmin625.github.io/posts/goisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/goisforlovers/</guid>
+      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.&#xA;This document is a brief primer on using Go templates.</description>
+    </item>
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>https://osmin625.github.io/posts/hugoisforlovers/</link>
+      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/posts/hugoisforlovers/</guid>
+      <description>Step 1. Install Hugo&#xD;#&#xD;Go to Hugo releases and download the appropriate version for your OS and architecture.&#xA;Save it somewhere specific as we will be using it in the next step.&#xA;More complete instructions are available at Install Hugo&#xA;Step 2. Build the Docs&#xD;#&#xD;Hugo has its own example site which happens to also be the documentation site you are reading right now.&#xA;Follow the following steps:</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/example/collapsed/3rd-level/4th-level/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/example/collapsed/3rd-level/4th-level/</guid>
+      <description>4th Level of Menu&#xD;#&#xD;Caesorum illa tu sentit micat vestes papyriferi&#xD;#&#xD;Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.&#xA;Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/example/hidden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/example/hidden/</guid>
+      <description>This page is hidden in menu&#xD;#&#xD;Quondam non pater est dignior ille Eurotas&#xD;#&#xD;Latent te facies&#xD;#&#xD;Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.&#xA;Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor Cum honorum Latona&#xD;#&#xD;O fallor in sustinui iussorum equidem.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/buttons/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/buttons/</guid>
+      <description>&#xD;Buttons&#xD;#&#xD;Buttons are styled links that can lead to local page or external link.&#xA;Example&#xD;#&#xD;{{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#34;] &amp;gt;}}Get Home{{&amp;lt; /button &amp;gt;}} {{&amp;lt; button href=&amp;#34;https://github.com/alex-shpak/hugo-book&amp;#34; &amp;gt;}}Contribute{{&amp;lt; /button &amp;gt;}} Get Home&#xD;Contribute&#xD;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/columns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/columns/</guid>
+      <description>Columns&#xD;#&#xD;Columns help organize shorter pieces of content horizontally for readability.&#xA;{{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic separator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example&#xD;#&#xD;Left Content&#xD;#&#xD;Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/details/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/details/</guid>
+      <description>Details&#xD;#&#xD;Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.&#xA;Example&#xD;#&#xD;{{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} Title&#xD;Markdown content&#xD;#&#xD;Lorem markdownum insigne&amp;hellip;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/expand/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/expand/</guid>
+      <description>Expand&#xD;#&#xD;Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.&#xA;Example&#xD;#&#xD;Default&#xD;#&#xD;{{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Expand&#xD;↕&#xD;Markdown content&#xD;#&#xD;Lorem markdownum insigne&amp;hellip;&#xA;With Custom Label&#xD;#&#xD;{{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}} Custom Label&#xD;...&#xD;Markdown content&#xD;#&#xD;Lorem markdownum insigne.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/hints/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/hints/</guid>
+      <description>Hints&#xD;#&#xD;Hint shortcode can be used as hint/alerts/notification block.&#xA;There are 3 colors to choose: info, warning and danger.&#xA;{{&amp;lt; hint [info|warning|danger] &amp;gt;}} **Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}} Example&#xD;#&#xD;Markdown content&#xA;Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa&#xD;Markdown content</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/katex/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/katex/</guid>
+      <description>KaTeX&#xD;#&#xD;KaTeX shortcode let you render math typesetting in markdown document. See KaTeX&#xA;Example&#xD;#&#xD;{{&amp;lt;/* katex [display] [class=&amp;#34;text-center&amp;#34;] */&amp;gt;}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{&amp;lt;/* /katex */&amp;gt;}} \[&#xD;f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi&#xD;\]&#xD;Display Mode Example&#xD;#&#xD;Here is some inline example: \(\pi(x)\)&#xD;, rendered in the same line. And below is display example, having display: block \[&#xD;f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi&#xD;\]&#xD;Text continues here.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/mermaid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/mermaid/</guid>
+      <description>Mermaid Chart&#xD;#&#xD;MermaidJS is library for generating svg charts and diagrams from text.&#xA;Override Mermaid Initialization Config&#xA;To override the initialization config for Mermaid, create a mermaid.json file in your assets folder!&#xA;Example&#xD;#&#xD;{{&amp;lt;/* mermaid [class=&amp;#34;text-center&amp;#34;]*/&amp;gt;}} stateDiagram-v2 State1: The state with a note note right of State1 Important information! You can write notes. end note State1 --&amp;gt; State2 note left of State2 : This is the note to the left.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/section/first-page/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/section/first-page/</guid>
+      <description>First page&#xD;#&#xD;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&#xA;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/section/second-page/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/section/second-page/</guid>
+      <description>Second Page&#xD;#&#xD;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.&#xA;Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://osmin625.github.io/docs/shortcodes/tabs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://osmin625.github.io/docs/shortcodes/tabs/</guid>
+      <description>Tabs&#xD;#&#xD;Tabs let you organize content by context, for example installation instructions for each supported platform.&#xA;{{&amp;lt; tabs &amp;#34;uniqueid&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;MacOS&amp;#34; &amp;gt;}} # MacOS Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Linux&amp;#34; &amp;gt;}} # Linux Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Windows&amp;#34; &amp;gt;}} # Windows Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} Example&#xD;#&#xD;MacOS&#xD;MacOS&#xD;#&#xD;This is tab MacOS content.&#xA;Lorem markdownum insigne. Olympo signis Delphis!</description>
+    </item>
+  </channel>
+</rss>

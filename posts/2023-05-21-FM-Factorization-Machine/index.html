@@ -203,7 +203,7 @@ https://github.com/alex-shpak/hugo-book
 <p>즉, 특정 데이터 포맷에 특화되어 있다.</p>
 <p>$X:$ (유저, 아이템) → $Y:$ (rating)으로 이루어진 데이터에 대해서만 적용이 가능하다.</p>
 <p>
-  <img src="/assets/post_imgs/FM_5.png" alt="FM" /></p>
+  <img src="/imgs/FM_5.png" alt="FM" /></p>
 <ol>
 <li>일반적인 데이터셋에 바로 적용 불가능</li>
 <li>User-Item 행렬 외의 정보를 활용하기 어렵다.</li>
@@ -231,7 +231,7 @@ $$</p>
 </li>
 </ul>
 <p>
-  <img src="/assets/post_imgs/FM_1.png" alt="FM" /></p>
+  <img src="/imgs/FM_1.png" alt="FM" /></p>
 <ul>
 <li>
 <p>Logistic Regression에 두 Feature의 상호작용을 나타내는 Term이 추가된 형태</p>
@@ -254,7 +254,7 @@ $$</p>
 \hat y(x)=\left(w_0+\sum_{i=1}^n w_i x_i{+\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}\right), \quad w_i, w_{i j} \in \mathbb{R}
 $$</p>
 <p>
-  <img src="/assets/post_imgs/FM_2.png" alt="FM" /></p>
+  <img src="/imgs/FM_2.png" alt="FM" /></p>
 </li>
 <li>
 <p>$x_ix_j$의 상호작용을 하나의 파라미터$(w_{ij})$로 나타낸 Polynomial에 비해,
@@ -275,7 +275,7 @@ $\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle$의 k차원의 Factorizatio
 <p>위의 평점 데이터를 일반적인 입력 데이터로 바꾸면, 입력 값의 차원이 전체 유저와 아이템 수만큼 증가</p>
 <p>ex) 유저 수가 $U$명, 영화의 수가 $M$개일 때</p>
 <p>
-  <img src="/assets/post_imgs/FM_3.png" alt="FM" /></p>
+  <img src="/imgs/FM_3.png" alt="FM" /></p>
 <hr>
 <ul>
 <li>
@@ -285,7 +285,7 @@ $\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle$의 k차원의 Factorizatio
 <p>유저 B,C는 영화 ST 외에 다른 영화도 평가한다.</p>
 <p>$V_A$ — 유저 B,C가 유저 A와 공유하는 영화 SW의 평점 데이터를 통해 학습한다.</p>
 <p>
-  <img src="/assets/post_imgs/FM_4.png" alt="FM" /></p>
+  <img src="/imgs/FM_4.png" alt="FM" /></p>
 </li>
 </ul>
 <p><strong>FM의 장점</strong></p>

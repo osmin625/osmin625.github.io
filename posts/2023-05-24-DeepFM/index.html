@@ -225,7 +225,7 @@ https://github.com/alex-shpak/hugo-book
 $$</p>
 <p>order-2 feature interaction을 효과적으로 잡는다.</p>
 <p>
-  <img src="/assets/post_imgs/DeepFM-1.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-1.png" alt="DeepFM" /></p>
 <p>각 field가 하나의 feature를 의미한다.</p>
 <p>모두 Sparse한 feature로 구성한다.</p>
 <ul>
@@ -238,7 +238,7 @@ $$</p>
 </li>
 </ul>
 <p>
-  <img src="/assets/post_imgs/DeepFM-2.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-2.png" alt="DeepFM" /></p>
 <h3 id="dnn-for-high-order-feature-interaction">
   <strong>DNN for high-order feature interaction</strong>
   <a class="anchor" href="#dnn-for-high-order-feature-interaction">#</a>
@@ -246,7 +246,7 @@ $$</p>
 <p>모든 feature들은 동일한 차원(k)의 임베딩으로 치환된다.</p>
 <p>이 때, 임베딩에 사용되는 가중치는 FM Component의 가중치($v_{ij}$)와 동일하다.</p>
 <p>
-  <img src="/assets/post_imgs/DeepFM-3.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-3.png" alt="DeepFM" /></p>
 <p>$$
 \begin{aligned}&amp; a^0=\left[e_1, e_2, \ldots, e_m\right] \&amp; a^{(l+1)}=\sigma\left(W^l a^l+b^l\right) \&amp; y_{D N N}=W^{|H|+1} a^{|H|}+b^{|H|+1}\end{aligned}
 $$</p>
@@ -261,14 +261,14 @@ $$</p>
 \tt \hat y = sigmoid(y_{FM} + y_{DNN})
 $$</p>
 <p>
-  <img src="/assets/post_imgs/DeepFM-4.png" alt="DeepFM" />
+  <img src="/imgs/DeepFM-4.png" alt="DeepFM" />
 FM과 Deep의 장점을 모두 가진다.</p>
 <h2 id="타-모델과의-비교">
   타 모델과의 비교
   <a class="anchor" href="#%ed%83%80-%eb%aa%a8%eb%8d%b8%ea%b3%bc%ec%9d%98-%eb%b9%84%ea%b5%90">#</a>
 </h2>
 <p>
-  <img src="/assets/post_imgs/DeepFM-5.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-5.png" alt="DeepFM" /></p>
 <h3 id="fnn">
   FNN
   <a class="anchor" href="#fnn">#</a>
@@ -282,13 +282,13 @@ FM과 Deep의 장점을 모두 가진다.</p>
 </h3>
 <p>DeepFM과 흡사하지만, Low-order Interaction(Memorization부분)이 빠져있다.</p>
 <p>
-  <img src="/assets/post_imgs/DeepFM-6.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-6.png" alt="DeepFM" /></p>
 <h3 id="성능">
   성능
   <a class="anchor" href="#%ec%84%b1%eb%8a%a5">#</a>
 </h3>
 <p>
-  <img src="/assets/post_imgs/DeepFM-7.png" alt="DeepFM" /></p>
+  <img src="/imgs/DeepFM-7.png" alt="DeepFM" /></p>
 </article>
  
       

@@ -8,27 +8,6 @@
     <language>en</language>
     <atom:link href="https://osmin625.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Creating a New Theme</title>
-      <link>https://osmin625.github.io/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/creating-a-new-theme/</guid>
-      <description>Introduction&#xD;#&#xD;This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.&#xA;We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://osmin625.github.io/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static&#xD;#&#xD;Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like&#xA;▾ &amp;lt;root&amp;gt;/&#xD;▾ images/&#xD;logo.png&#xD;should become&#xA;▾ &amp;lt;root&amp;gt;/&#xD;▾ static/&#xD;▾ images/&#xD;logo.png&#xD;Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
-    </item>
-    <item>
-      <title>Test1</title>
-      <link>https://osmin625.github.io/posts/test1/</link>
-      <pubDate>Sun, 07 Jan 2024 19:38:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/test1/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>MF: Matrix Factorization</title>
       <link>https://osmin625.github.io/posts/2023-05-14-MF-Matrix-Factorization/</link>
       <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
@@ -41,20 +20,6 @@
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-20-1x1-Convolution/</guid>
       <description>차원 축소를 위해 활용한다.&#xA;이미지에서 단 하나의 픽셀만 보기 때문에, 이미지에서 영역을 살펴보는 의미는 없다.&#xA;다만, 1 * 1 Convolution을 이용하여 기존 Spatial Dimension을 그대로 유지한 채, 채널의 개수를 128개에서 32개로 줄인다.&#xA;![1x1 Conv_1](/assets/post_imgs/1x1 Conv_1.png)&#xA;이를 통해 NN의 층을 더 깊게 쌓으면서도, 채널의 수를 줄여서 파라미터의 수를 줄일 수 있다.&#xA;1 * 1 Convolution을 사용하지 않는 경우&#xA;![1x1 Conv_2](/assets/post_imgs/1x1 Conv_2.png)&#xA;1 * 1 Convolution을 사용한 경우&#xA;![1x1 Conv_3](/assets/post_imgs/1x1 Conv_3.png)&#xA;파라미터 수를 147,456개에서 40,960개로 효과적으로 줄일 수 있다.</description>
-    </item>
-    <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://osmin625.github.io/posts/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.&#xA;This document is a brief primer on using Go templates.</description>
-    </item>
-    <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://osmin625.github.io/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo&#xD;#&#xD;Go to Hugo releases and download the appropriate version for your OS and architecture.&#xA;Save it somewhere specific as we will be using it in the next step.&#xA;More complete instructions are available at Install Hugo&#xA;Step 2. Build the Docs&#xD;#&#xD;Hugo has its own example site which happens to also be the documentation site you are reading right now.&#xA;Follow the following steps:</description>
     </item>
     <item>
       <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>

@@ -16,7 +16,7 @@
 <link rel="icon" href="/favicon.png" >
 <link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous">
   <script defer src="/flexsearch.min.js"></script>
-  <script defer src="/en.search.min.6fe33640a7a1428b7ec4c08712af18d4fcf6e2aff95572556f4ef9b0c234cf8b.js" integrity="sha256-b&#43;M2QKehQot&#43;xMCHEq8Y1Pz24q/5VXJVb075sMI0z4s=" crossorigin="anonymous"></script>
+  <script defer src="/en.search.min.5ddc4228f71d5e2792dd50e09733356a85f0e04e2b36002b36bfdfb60618ff08.js" integrity="sha256-XdxCKPcdXieS3VDglzM1aoXw4E4rNgArNr/ftgYY/wg=" crossorigin="anonymous"></script>
 
   <script defer src="/sw.min.6f6f90fcb8eb1c49ec389838e6b801d0de19430b8e516902f8d75c3c8bd98739.js" integrity="sha256-b2&#43;Q/LjrHEnsOJg45rgB0N4ZQwuOUWkC&#43;NdcPIvZhzk=" crossorigin="anonymous"></script>
 <link rel="alternate" type="application/rss+xml" href="https://osmin625.github.io/posts/index.xml" title="OMIN" />
@@ -149,16 +149,6 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
         <li class="flex justify-between">
-          <a href="/categories/Development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
           <a href="/categories/AI-Knowledge/">AI Knowledge</a>
           <span>6</span>
         </li>
@@ -285,36 +275,6 @@ https://github.com/alex-shpak/hugo-book
         <li class="flex justify-between">
           <a href="/tags/Convolution-Neural-Network/">Convolution Neural Network</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
         </li>
       
         <li class="flex justify-between">
@@ -860,192 +820,6 @@ https://github.com/alex-shpak/hugo-book
   
   <article class="markdown book-post">
     <h2>
-      <a href="/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/">Alexnet 모델의 파라미터 수 계산</a>
-    </h2>
-    
-
-
-  
-  <div>
-    
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Computer-Vision/">Computer Vision</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Convolution-Neural-Network/">Convolution Neural Network</a>, 
-      <a href="/tags/Alex-Net/">Alex-Net</a>
-  </div>
-  
-
-
-
-
-    <p>Conv Layer#Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k
-입력 : 224 * 224 * 3
-filter : 11 * 11 * (3)
-3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.
-모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.
-gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.
-Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k
-        <a href="/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-06-29-Autoregression/">Autoregression</a>
-    </h2>
-    
-
-
-  
-  <div>
-    
-      <a href="/categories/AI-Math/">AI Math</a>, 
-      <a href="/categories/Statistics/">Statistics</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Autoregression/">Autoregression</a>, 
-      <a href="/tags/Autoregressive-Model/">Autoregressive Model</a>
-  </div>
-  
-
-
-
-
-    <p>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것
-즉, Regression을 자기 자신에게 적용하는 것
-$$ y_1, \ldots, y_n \rightarrow y_{n+1} $$
-$$ \mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2 $$
-종류#Moving Average(이동평균)#가장 간단한 방법
-최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.
-        <a href="/posts/2023-06-29-Autoregression/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-09-25-backpropagation/">Back Propagation(오차 역전파 알고리즘)</a>
-    </h2>
-    
-
-
-  
-  <div>
-    
-      <a href="/categories/AI-Knowledge/">AI Knowledge</a>, 
-      <a href="/categories/Loss-Function/">Loss Function</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Loss-Function/">Loss Function</a>, 
-      <a href="/tags/Gradient-Descent/">Gradient Descent</a>, 
-      <a href="/tags/Back-Propagation/">Back Propagation</a>
-  </div>
-  
-
-
-
-
-    <p>이 알고리즘으로 인해 ML Network에서의 학습이 가능하다는 것이 알려져, 암흑기에 있던 신경망 학계가 다시 관심을 받게 되었다.
-출력층에서 시작하여 역방향으로 오류를 전파한다는 뜻에서 오류 역전파라 부른다.
-내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다. 오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다. 직관적인 이해는 끝났다. 이제 제대로 이해해보자.
-오차 역전파가 중요한 이유를 알고 싶다면, 여기를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.
-오차 역전파#신경망을 학습하는 방법.
-        <a href="/posts/2023-09-25-backpropagation/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/">Book Rating Prediction Wrap-up Report</a>
-    </h2>
-    
-
-
-  
-  <div>
-    
-      <a href="/categories/Review/">Review</a>, 
-      <a href="/categories/BoostCamp-AI-Tech/">BoostCamp AI Tech</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Wrap-up-Report/">Wrap-up Report</a>, 
-      <a href="/tags/BoostCampAITech/">BoostCampAITech</a>
-  </div>
-  
-
-
-
-
-    <p>1. 프로젝트 개요#개요
-본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.
-본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.
-주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.
-        <a href="/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
-      <a href="/posts/2023-05-22-CBOW/">CBOW: Continous Bag of Word</a>
-    </h2>
-    
-
-
-  
-  <div>
-    
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Natural-Language-Processing/">Natural Language Processing</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Word2Vec/">Word2Vec</a>, 
-      <a href="/tags/CBOW/">CBOW</a>, 
-      <a href="/tags/Multi-Classification/">Multi Classification</a>
-  </div>
-  
-
-
-
-
-    <p>Word2Vec을 학습하는 방법 중 하나.
-앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법
-input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.
-Multi-Class Classification
-Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.
-학습 파라미터#$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬
-$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬
-        <a href="/posts/2023-05-22-CBOW/">...</a>
-      
-    </p>
-  </article>
-  
-  <article class="markdown book-post">
-    <h2>
       <a href="/posts/2023-05-24-DeepFM/">DeepFM</a>
     </h2>
     
@@ -1234,6 +1008,181 @@ TIL (Today I Learn)#노션에 특정 시간에 자동으로 페이지 생성 �
     </p>
   </article>
   
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/">KPT20230327</a>
+    </h2>
+    
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/KPT/">KPT</a>, 
+      <a href="/tags/TIL/">TIL</a>
+  </div>
+  
+
+
+
+
+    <p>TIL (Today I Learn)#Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep#강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.
+        <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/">KPT20230328</a>
+    </h2>
+    
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/KPT/">KPT</a>, 
+      <a href="/tags/TIL/">TIL</a>
+  </div>
+  
+
+
+
+
+    <p>TIL (Today I Learn)#git-flow 설명하기 TF-IDF UMAP 활용 HDBSCAN 활용 Data Clustering 시각화 Pandas 활용 value_count 활용 Dataframe filter 활용 groupby, get_group 활용 Keep#연구실 과제를 진행하며 차원 축소 알고리즘 UMAP과, 클러스터링 기법인 HDBSCAN을 활용해보았다. 직접 써보니 확실히 기억에 오래 남을 것 같다. Visualization도 직접 활용해보고, Problem#git 강의는 듣지 않았다.
+솔직히 강의 진행이 많이 느리다고 느낀다.
+이미 알고 있는 내용이라, 강의를 안듣고 싶지만… 마음 편히 무시하지는 못해서, 시간이나 집중력이 허비되는 느낌이다.
+        <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">KPT20230401</a>
+    </h2>
+    
+
+
+  
+
+  
+  <div>
+    
+      <a href="/tags/KPT/">KPT</a>, 
+      <a href="/tags/TIL/">TIL</a>
+  </div>
+  
+
+
+
+
+    <p>주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.
+TIL (Today I Learn)#MF, SVD를 완벽하게 이해했다.
+Word2Vec 생성 방법을 완전히 이해했다.
+CBOW — 중간 단어 예측
+SG — CBOW 뒤집은 버전
+SGNS — SG를 이진 분류로 바꾼 것.
+MBCF
+NCF
+AE
+DAE
+Keep#집중을 잘 한 것
+4시 전까지는 만족스럽게 집중하는 시간을 가졌다.
+그 이후는 체력 때문에 집중도가 떨어졌다.
+4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.
+        <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/">KPT20230623</a>
+    </h2>
+    
+
+
+  
+  <div>
+    
+      <a href="/categories/Review/">Review</a>, 
+      <a href="/categories/TIL/">TIL</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/TIL/">TIL</a>, 
+      <a href="/tags/KPT/">KPT</a>
+  </div>
+  
+
+
+
+
+    <p>TIL (Today I Learn)#TIL 작성하는 방법
+이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.
+꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.
+파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.
+학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.
+그러다보면, 자연스레 TIL을 쓰지 않게 된다.
+앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.
+        <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/">...</a>
+      
+    </p>
+  </article>
+  
+  <article class="markdown book-post">
+    <h2>
+      <a href="/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/">KPT20230624</a>
+    </h2>
+    
+
+
+  
+  <div>
+    
+      <a href="/categories/Review/">Review</a>, 
+      <a href="/categories/TIL/">TIL</a>
+  </div>
+  
+
+  
+  <div>
+    
+      <a href="/tags/KPT/">KPT</a>, 
+      <a href="/tags/TIL/">TIL</a>
+  </div>
+  
+
+
+
+
+    <p>TIL (Today I Learn)#하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.
+기록하는 방법
+극단적으로 요약하기
+키워드 중심으로 메모하기
+내 것으로 소화한 후 메모하기
+내 머릿속에 각인된 것들을 중심으로 메모하기.
+하루 일기쓰는 방법
+하루 1~2시간마다 한 줄정도씩 메모하기
+플래너 작성하기
+오전 2개, 오후 1개, 저녁 2개 목표로 잡기.
+시간 단위로 나누게 되면 안하고 자책하게 된다.
+업무 역량 올리기
+일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.
+        <a href="/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/">...</a>
+      
+    </p>
+  </article>
+  
 
   
     <ul class="pagination pagination-default">
@@ -1318,16 +1267,6 @@ TIL (Today I Learn)#노션에 특정 시간에 자동으로 페이지 생성 �
       
         <li class="flex justify-between">
           <a href="/categories/Computer-Vision/">Computer Vision</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/Development/">Development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/categories/golang/">golang</a>
           <span>2</span>
         </li>
       
@@ -1458,36 +1397,6 @@ TIL (Today I Learn)#노션에 특정 시간에 자동으로 페이지 생성 �
         <li class="flex justify-between">
           <a href="/tags/Convolution-Neural-Network/">Convolution Neural Network</a>
           <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/development/">development</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/go/">go</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/golang/">golang</a>
-          <span>2</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/hugo/">hugo</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/templates/">templates</a>
-          <span>1</span>
-        </li>
-      
-        <li class="flex justify-between">
-          <a href="/tags/themes/">themes</a>
-          <span>1</span>
         </li>
       
         <li class="flex justify-between">

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on OMIN</title>
+    <title>OMIN</title>
     <link>https://osmin625.github.io/</link>
-    <description>Recent content in Introduction on OMIN</description>
+    <description>Recent content on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>

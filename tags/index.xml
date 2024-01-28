@@ -5,14 +5,14 @@
     <link>https://osmin625.github.io/tags/</link>
     <description>Recent content in Tags on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>ko</language>
     <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Collaborative Filtering</title>
-      <link>https://osmin625.github.io/tags/Collaborative-Filtering/</link>
+      <link>https://osmin625.github.io/tags/collaborative-filtering/</link>
       <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/tags/Collaborative-Filtering/</guid>
+      <guid>https://osmin625.github.io/tags/collaborative-filtering/</guid>
       <description></description>
     </item>
     <item>
@@ -24,135 +24,135 @@
     </item>
     <item>
       <title>Bottle-neck</title>
-      <link>https://osmin625.github.io/tags/Bottle-neck/</link>
+      <link>https://osmin625.github.io/tags/bottle-neck/</link>
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/tags/Bottle-neck/</guid>
+      <guid>https://osmin625.github.io/tags/bottle-neck/</guid>
       <description></description>
     </item>
     <item>
       <title>Convolution Neural Network</title>
-      <link>https://osmin625.github.io/tags/Convolution-Neural-Network/</link>
+      <link>https://osmin625.github.io/tags/convolution-neural-network/</link>
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/tags/Convolution-Neural-Network/</guid>
+      <guid>https://osmin625.github.io/tags/convolution-neural-network/</guid>
       <description></description>
     </item>
     <item>
       <title>5F</title>
-      <link>https://osmin625.github.io/tags/5F/</link>
+      <link>https://osmin625.github.io/tags/5f/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/5F/</guid>
+      <guid>https://osmin625.github.io/tags/5f/</guid>
       <description></description>
     </item>
     <item>
       <title>Adam</title>
-      <link>https://osmin625.github.io/tags/Adam/</link>
+      <link>https://osmin625.github.io/tags/adam/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Adam/</guid>
+      <guid>https://osmin625.github.io/tags/adam/</guid>
       <description></description>
     </item>
     <item>
       <title>Alex-Net</title>
-      <link>https://osmin625.github.io/tags/Alex-Net/</link>
+      <link>https://osmin625.github.io/tags/alex-net/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Alex-Net/</guid>
+      <guid>https://osmin625.github.io/tags/alex-net/</guid>
       <description></description>
     </item>
     <item>
       <title>Apriori</title>
-      <link>https://osmin625.github.io/tags/Apriori/</link>
+      <link>https://osmin625.github.io/tags/apriori/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Apriori/</guid>
+      <guid>https://osmin625.github.io/tags/apriori/</guid>
       <description></description>
     </item>
     <item>
       <title>Assosication Analysis</title>
-      <link>https://osmin625.github.io/tags/Assosication-Analysis/</link>
+      <link>https://osmin625.github.io/tags/assosication-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Assosication-Analysis/</guid>
+      <guid>https://osmin625.github.io/tags/assosication-analysis/</guid>
       <description></description>
     </item>
     <item>
       <title>Autograd</title>
-      <link>https://osmin625.github.io/tags/Autograd/</link>
+      <link>https://osmin625.github.io/tags/autograd/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Autograd/</guid>
+      <guid>https://osmin625.github.io/tags/autograd/</guid>
       <description></description>
     </item>
     <item>
       <title>Autoregression</title>
-      <link>https://osmin625.github.io/tags/Autoregression/</link>
+      <link>https://osmin625.github.io/tags/autoregression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Autoregression/</guid>
+      <guid>https://osmin625.github.io/tags/autoregression/</guid>
       <description></description>
     </item>
     <item>
       <title>Autoregressive Model</title>
-      <link>https://osmin625.github.io/tags/Autoregressive-Model/</link>
+      <link>https://osmin625.github.io/tags/autoregressive-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Autoregressive-Model/</guid>
+      <guid>https://osmin625.github.io/tags/autoregressive-model/</guid>
       <description></description>
     </item>
     <item>
       <title>Back Propagation</title>
-      <link>https://osmin625.github.io/tags/Back-Propagation/</link>
+      <link>https://osmin625.github.io/tags/back-propagation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Back-Propagation/</guid>
+      <guid>https://osmin625.github.io/tags/back-propagation/</guid>
       <description></description>
     </item>
     <item>
       <title>Backward</title>
-      <link>https://osmin625.github.io/tags/Backward/</link>
+      <link>https://osmin625.github.io/tags/backward/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Backward/</guid>
+      <guid>https://osmin625.github.io/tags/backward/</guid>
       <description></description>
     </item>
     <item>
       <title>Batch Mode</title>
-      <link>https://osmin625.github.io/tags/Batch-Mode/</link>
+      <link>https://osmin625.github.io/tags/batch-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Batch-Mode/</guid>
+      <guid>https://osmin625.github.io/tags/batch-mode/</guid>
       <description></description>
     </item>
     <item>
       <title>Binary Classification</title>
-      <link>https://osmin625.github.io/tags/Binary-Classification/</link>
+      <link>https://osmin625.github.io/tags/binary-classification/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Binary-Classification/</guid>
+      <guid>https://osmin625.github.io/tags/binary-classification/</guid>
       <description></description>
     </item>
     <item>
       <title>BoostCampAITech</title>
-      <link>https://osmin625.github.io/tags/BoostCampAITech/</link>
+      <link>https://osmin625.github.io/tags/boostcampaitech/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/BoostCampAITech/</guid>
+      <guid>https://osmin625.github.io/tags/boostcampaitech/</guid>
       <description></description>
     </item>
     <item>
       <title>Branch</title>
-      <link>https://osmin625.github.io/tags/Branch/</link>
+      <link>https://osmin625.github.io/tags/branch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Branch/</guid>
+      <guid>https://osmin625.github.io/tags/branch/</guid>
       <description></description>
     </item>
     <item>
       <title>CBOW</title>
-      <link>https://osmin625.github.io/tags/CBOW/</link>
+      <link>https://osmin625.github.io/tags/cbow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/CBOW/</guid>
+      <guid>https://osmin625.github.io/tags/cbow/</guid>
       <description></description>
     </item>
     <item>
       <title>Classification</title>
-      <link>https://osmin625.github.io/tags/Classification/</link>
+      <link>https://osmin625.github.io/tags/classification/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Classification/</guid>
+      <guid>https://osmin625.github.io/tags/classification/</guid>
       <description></description>
     </item>
     <item>
       <title>Compatibility Score</title>
-      <link>https://osmin625.github.io/tags/Compatibility-Score/</link>
+      <link>https://osmin625.github.io/tags/compatibility-score/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Compatibility-Score/</guid>
+      <guid>https://osmin625.github.io/tags/compatibility-score/</guid>
       <description></description>
     </item>
     <item>
@@ -164,51 +164,51 @@
     </item>
     <item>
       <title>Context-aware Recsys</title>
-      <link>https://osmin625.github.io/tags/Context-aware-Recsys/</link>
+      <link>https://osmin625.github.io/tags/context-aware-recsys/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Context-aware-Recsys/</guid>
+      <guid>https://osmin625.github.io/tags/context-aware-recsys/</guid>
       <description></description>
     </item>
     <item>
       <title>Cross-Entropy</title>
-      <link>https://osmin625.github.io/tags/Cross-Entropy/</link>
+      <link>https://osmin625.github.io/tags/cross-entropy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Cross-Entropy/</guid>
+      <guid>https://osmin625.github.io/tags/cross-entropy/</guid>
       <description></description>
     </item>
     <item>
       <title>CTR Prediction</title>
-      <link>https://osmin625.github.io/tags/CTR-Prediction/</link>
+      <link>https://osmin625.github.io/tags/ctr-prediction/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/CTR-Prediction/</guid>
+      <guid>https://osmin625.github.io/tags/ctr-prediction/</guid>
       <description></description>
     </item>
     <item>
       <title>DataLoader</title>
-      <link>https://osmin625.github.io/tags/DataLoader/</link>
+      <link>https://osmin625.github.io/tags/dataloader/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/DataLoader/</guid>
+      <guid>https://osmin625.github.io/tags/dataloader/</guid>
       <description></description>
     </item>
     <item>
       <title>Dataset</title>
-      <link>https://osmin625.github.io/tags/Dataset/</link>
+      <link>https://osmin625.github.io/tags/dataset/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Dataset/</guid>
+      <guid>https://osmin625.github.io/tags/dataset/</guid>
       <description></description>
     </item>
     <item>
       <title>Deep Model</title>
-      <link>https://osmin625.github.io/tags/Deep-Model/</link>
+      <link>https://osmin625.github.io/tags/deep-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Deep-Model/</guid>
+      <guid>https://osmin625.github.io/tags/deep-model/</guid>
       <description></description>
     </item>
     <item>
       <title>DHP</title>
-      <link>https://osmin625.github.io/tags/DHP/</link>
+      <link>https://osmin625.github.io/tags/dhp/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/DHP/</guid>
+      <guid>https://osmin625.github.io/tags/dhp/</guid>
       <description></description>
     </item>
     <item>
@@ -220,128 +220,128 @@
     </item>
     <item>
       <title>Factorization Machine</title>
-      <link>https://osmin625.github.io/tags/Factorization-Machine/</link>
+      <link>https://osmin625.github.io/tags/factorization-machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Factorization-Machine/</guid>
+      <guid>https://osmin625.github.io/tags/factorization-machine/</guid>
       <description></description>
     </item>
     <item>
       <title>Field-aware Factorization Machine</title>
-      <link>https://osmin625.github.io/tags/Field-aware-Factorization-Machine/</link>
+      <link>https://osmin625.github.io/tags/field-aware-factorization-machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Field-aware-Factorization-Machine/</guid>
+      <guid>https://osmin625.github.io/tags/field-aware-factorization-machine/</guid>
       <description></description>
     </item>
     <item>
       <title>FP Growth</title>
-      <link>https://osmin625.github.io/tags/FP-Growth/</link>
+      <link>https://osmin625.github.io/tags/fp-growth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/FP-Growth/</guid>
+      <guid>https://osmin625.github.io/tags/fp-growth/</guid>
       <description></description>
     </item>
     <item>
       <title>Frequent Itemset Generation</title>
-      <link>https://osmin625.github.io/tags/Frequent-Itemset-Generation/</link>
+      <link>https://osmin625.github.io/tags/frequent-itemset-generation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Frequent-Itemset-Generation/</guid>
+      <guid>https://osmin625.github.io/tags/frequent-itemset-generation/</guid>
       <description></description>
     </item>
     <item>
       <title>GAN</title>
-      <link>https://osmin625.github.io/tags/GAN/</link>
+      <link>https://osmin625.github.io/tags/gan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/GAN/</guid>
+      <guid>https://osmin625.github.io/tags/gan/</guid>
       <description></description>
     </item>
     <item>
       <title>Git</title>
-      <link>https://osmin625.github.io/tags/Git/</link>
+      <link>https://osmin625.github.io/tags/git/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Git/</guid>
+      <guid>https://osmin625.github.io/tags/git/</guid>
       <description></description>
     </item>
     <item>
       <title>Gradient Descent</title>
-      <link>https://osmin625.github.io/tags/Gradient-Descent/</link>
+      <link>https://osmin625.github.io/tags/gradient-descent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Gradient-Descent/</guid>
+      <guid>https://osmin625.github.io/tags/gradient-descent/</guid>
       <description></description>
     </item>
     <item>
       <title>Highway Network</title>
-      <link>https://osmin625.github.io/tags/Highway-Network/</link>
+      <link>https://osmin625.github.io/tags/highway-network/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Highway-Network/</guid>
+      <guid>https://osmin625.github.io/tags/highway-network/</guid>
       <description></description>
     </item>
     <item>
       <title>Hyperparameter Tuning</title>
-      <link>https://osmin625.github.io/tags/Hyperparameter-Tuning/</link>
+      <link>https://osmin625.github.io/tags/hyperparameter-tuning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Hyperparameter-Tuning/</guid>
+      <guid>https://osmin625.github.io/tags/hyperparameter-tuning/</guid>
       <description></description>
     </item>
     <item>
       <title>IBCF</title>
-      <link>https://osmin625.github.io/tags/IBCF/</link>
+      <link>https://osmin625.github.io/tags/ibcf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/IBCF/</guid>
+      <guid>https://osmin625.github.io/tags/ibcf/</guid>
       <description></description>
     </item>
     <item>
       <title>Imputation</title>
-      <link>https://osmin625.github.io/tags/Imputation/</link>
+      <link>https://osmin625.github.io/tags/imputation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Imputation/</guid>
+      <guid>https://osmin625.github.io/tags/imputation/</guid>
       <description></description>
     </item>
     <item>
       <title>Interpolation</title>
-      <link>https://osmin625.github.io/tags/Interpolation/</link>
+      <link>https://osmin625.github.io/tags/interpolation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Interpolation/</guid>
+      <guid>https://osmin625.github.io/tags/interpolation/</guid>
       <description></description>
     </item>
     <item>
       <title>Inverse Document Frequency</title>
-      <link>https://osmin625.github.io/tags/Inverse-Document-Frequency/</link>
+      <link>https://osmin625.github.io/tags/inverse-document-frequency/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Inverse-Document-Frequency/</guid>
+      <guid>https://osmin625.github.io/tags/inverse-document-frequency/</guid>
       <description></description>
     </item>
     <item>
       <title>Konlpy</title>
-      <link>https://osmin625.github.io/tags/Konlpy/</link>
+      <link>https://osmin625.github.io/tags/konlpy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Konlpy/</guid>
+      <guid>https://osmin625.github.io/tags/konlpy/</guid>
       <description></description>
     </item>
     <item>
       <title>KPT</title>
-      <link>https://osmin625.github.io/tags/KPT/</link>
+      <link>https://osmin625.github.io/tags/kpt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/KPT/</guid>
+      <guid>https://osmin625.github.io/tags/kpt/</guid>
       <description></description>
     </item>
     <item>
       <title>Lagrange Interpolation</title>
-      <link>https://osmin625.github.io/tags/Lagrange-Interpolation/</link>
+      <link>https://osmin625.github.io/tags/lagrange-interpolation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Lagrange-Interpolation/</guid>
+      <guid>https://osmin625.github.io/tags/lagrange-interpolation/</guid>
       <description></description>
     </item>
     <item>
       <title>Latent Factor Model</title>
-      <link>https://osmin625.github.io/tags/Latent-Factor-Model/</link>
+      <link>https://osmin625.github.io/tags/latent-factor-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Latent-Factor-Model/</guid>
+      <guid>https://osmin625.github.io/tags/latent-factor-model/</guid>
       <description></description>
     </item>
     <item>
       <title>LeakGAN</title>
-      <link>https://osmin625.github.io/tags/LeakGAN/</link>
+      <link>https://osmin625.github.io/tags/leakgan/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/LeakGAN/</guid>
+      <guid>https://osmin625.github.io/tags/leakgan/</guid>
       <description></description>
     </item>
     <item>
@@ -353,23 +353,23 @@
     </item>
     <item>
       <title>Linear Model</title>
-      <link>https://osmin625.github.io/tags/Linear-Model/</link>
+      <link>https://osmin625.github.io/tags/linear-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Linear-Model/</guid>
+      <guid>https://osmin625.github.io/tags/linear-model/</guid>
       <description></description>
     </item>
     <item>
       <title>Local minima</title>
-      <link>https://osmin625.github.io/tags/Local-minima/</link>
+      <link>https://osmin625.github.io/tags/local-minima/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Local-minima/</guid>
+      <guid>https://osmin625.github.io/tags/local-minima/</guid>
       <description></description>
     </item>
     <item>
       <title>Long-Short-Term-Memory</title>
-      <link>https://osmin625.github.io/tags/Long-Short-Term-Memory/</link>
+      <link>https://osmin625.github.io/tags/long-short-term-memory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Long-Short-Term-Memory/</guid>
+      <guid>https://osmin625.github.io/tags/long-short-term-memory/</guid>
       <description></description>
     </item>
     <item>
@@ -381,23 +381,23 @@
     </item>
     <item>
       <title>Loss Function</title>
-      <link>https://osmin625.github.io/tags/Loss-Function/</link>
+      <link>https://osmin625.github.io/tags/loss-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Loss-Function/</guid>
+      <guid>https://osmin625.github.io/tags/loss-function/</guid>
       <description></description>
     </item>
     <item>
       <title>LSTM</title>
-      <link>https://osmin625.github.io/tags/LSTM/</link>
+      <link>https://osmin625.github.io/tags/lstm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/LSTM/</guid>
+      <guid>https://osmin625.github.io/tags/lstm/</guid>
       <description></description>
     </item>
     <item>
       <title>MAE</title>
-      <link>https://osmin625.github.io/tags/MAE/</link>
+      <link>https://osmin625.github.io/tags/mae/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/MAE/</guid>
+      <guid>https://osmin625.github.io/tags/mae/</guid>
       <description></description>
     </item>
     <item>
@@ -409,44 +409,44 @@
     </item>
     <item>
       <title>Matrix Decomposition</title>
-      <link>https://osmin625.github.io/tags/Matrix-Decomposition/</link>
+      <link>https://osmin625.github.io/tags/matrix-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Matrix-Decomposition/</guid>
+      <guid>https://osmin625.github.io/tags/matrix-decomposition/</guid>
       <description></description>
     </item>
     <item>
       <title>Merge</title>
-      <link>https://osmin625.github.io/tags/Merge/</link>
+      <link>https://osmin625.github.io/tags/merge/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Merge/</guid>
+      <guid>https://osmin625.github.io/tags/merge/</guid>
       <description></description>
     </item>
     <item>
       <title>MICE</title>
-      <link>https://osmin625.github.io/tags/MICE/</link>
+      <link>https://osmin625.github.io/tags/mice/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/MICE/</guid>
+      <guid>https://osmin625.github.io/tags/mice/</guid>
       <description></description>
     </item>
     <item>
       <title>Mini Batch Mode</title>
-      <link>https://osmin625.github.io/tags/Mini-Batch-Mode/</link>
+      <link>https://osmin625.github.io/tags/mini-batch-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Mini-Batch-Mode/</guid>
+      <guid>https://osmin625.github.io/tags/mini-batch-mode/</guid>
       <description></description>
     </item>
     <item>
       <title>Missing Data</title>
-      <link>https://osmin625.github.io/tags/Missing-Data/</link>
+      <link>https://osmin625.github.io/tags/missing-data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Missing-Data/</guid>
+      <guid>https://osmin625.github.io/tags/missing-data/</guid>
       <description></description>
     </item>
     <item>
       <title>Missing Data Analysis</title>
-      <link>https://osmin625.github.io/tags/Missing-Data-Analysis/</link>
+      <link>https://osmin625.github.io/tags/missing-data-analysis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Missing-Data-Analysis/</guid>
+      <guid>https://osmin625.github.io/tags/missing-data-analysis/</guid>
       <description></description>
     </item>
     <item>
@@ -458,128 +458,128 @@
     </item>
     <item>
       <title>Module</title>
-      <link>https://osmin625.github.io/tags/Module/</link>
+      <link>https://osmin625.github.io/tags/module/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Module/</guid>
+      <guid>https://osmin625.github.io/tags/module/</guid>
       <description></description>
     </item>
     <item>
       <title>MSE</title>
-      <link>https://osmin625.github.io/tags/MSE/</link>
+      <link>https://osmin625.github.io/tags/mse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/MSE/</guid>
+      <guid>https://osmin625.github.io/tags/mse/</guid>
       <description></description>
     </item>
     <item>
       <title>Multi Classification</title>
-      <link>https://osmin625.github.io/tags/Multi-Classification/</link>
+      <link>https://osmin625.github.io/tags/multi-classification/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Multi-Classification/</guid>
+      <guid>https://osmin625.github.io/tags/multi-classification/</guid>
       <description></description>
     </item>
     <item>
       <title>NBCF</title>
-      <link>https://osmin625.github.io/tags/NBCF/</link>
+      <link>https://osmin625.github.io/tags/nbcf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/NBCF/</guid>
+      <guid>https://osmin625.github.io/tags/nbcf/</guid>
       <description></description>
     </item>
     <item>
       <title>Neural Network</title>
-      <link>https://osmin625.github.io/tags/Neural-Network/</link>
+      <link>https://osmin625.github.io/tags/neural-network/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Neural-Network/</guid>
+      <guid>https://osmin625.github.io/tags/neural-network/</guid>
       <description></description>
     </item>
     <item>
       <title>Newton Polynomial interpolation</title>
-      <link>https://osmin625.github.io/tags/Newton-Polynomial-interpolation/</link>
+      <link>https://osmin625.github.io/tags/newton-polynomial-interpolation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Newton-Polynomial-interpolation/</guid>
+      <guid>https://osmin625.github.io/tags/newton-polynomial-interpolation/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimizer</title>
-      <link>https://osmin625.github.io/tags/Optimizer/</link>
+      <link>https://osmin625.github.io/tags/optimizer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Optimizer/</guid>
+      <guid>https://osmin625.github.io/tags/optimizer/</guid>
       <description></description>
     </item>
     <item>
       <title>Overview</title>
-      <link>https://osmin625.github.io/tags/Overview/</link>
+      <link>https://osmin625.github.io/tags/overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Overview/</guid>
+      <guid>https://osmin625.github.io/tags/overview/</guid>
       <description></description>
     </item>
     <item>
       <title>Paper Review</title>
-      <link>https://osmin625.github.io/tags/Paper-Review/</link>
+      <link>https://osmin625.github.io/tags/paper-review/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Paper-Review/</guid>
+      <guid>https://osmin625.github.io/tags/paper-review/</guid>
       <description></description>
     </item>
     <item>
       <title>Parameter</title>
-      <link>https://osmin625.github.io/tags/Parameter/</link>
+      <link>https://osmin625.github.io/tags/parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Parameter/</guid>
+      <guid>https://osmin625.github.io/tags/parameter/</guid>
       <description></description>
     </item>
     <item>
       <title>Pattern Mode</title>
-      <link>https://osmin625.github.io/tags/Pattern-Mode/</link>
+      <link>https://osmin625.github.io/tags/pattern-mode/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Pattern-Mode/</guid>
+      <guid>https://osmin625.github.io/tags/pattern-mode/</guid>
       <description></description>
     </item>
     <item>
       <title>Polynomial Form</title>
-      <link>https://osmin625.github.io/tags/Polynomial-Form/</link>
+      <link>https://osmin625.github.io/tags/polynomial-form/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Polynomial-Form/</guid>
+      <guid>https://osmin625.github.io/tags/polynomial-form/</guid>
       <description></description>
     </item>
     <item>
       <title>PyTorch</title>
-      <link>https://osmin625.github.io/tags/PyTorch/</link>
+      <link>https://osmin625.github.io/tags/pytorch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/PyTorch/</guid>
+      <guid>https://osmin625.github.io/tags/pytorch/</guid>
       <description></description>
     </item>
     <item>
       <title>Ranked Retrieval</title>
-      <link>https://osmin625.github.io/tags/Ranked-Retrieval/</link>
+      <link>https://osmin625.github.io/tags/ranked-retrieval/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Ranked-Retrieval/</guid>
+      <guid>https://osmin625.github.io/tags/ranked-retrieval/</guid>
       <description></description>
     </item>
     <item>
       <title>Recommendation System</title>
-      <link>https://osmin625.github.io/tags/Recommendation-System/</link>
+      <link>https://osmin625.github.io/tags/recommendation-system/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Recommendation-System/</guid>
+      <guid>https://osmin625.github.io/tags/recommendation-system/</guid>
       <description></description>
     </item>
     <item>
       <title>Recsys</title>
-      <link>https://osmin625.github.io/tags/Recsys/</link>
+      <link>https://osmin625.github.io/tags/recsys/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Recsys/</guid>
+      <guid>https://osmin625.github.io/tags/recsys/</guid>
       <description></description>
     </item>
     <item>
       <title>Regression</title>
-      <link>https://osmin625.github.io/tags/Regression/</link>
+      <link>https://osmin625.github.io/tags/regression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Regression/</guid>
+      <guid>https://osmin625.github.io/tags/regression/</guid>
       <description></description>
     </item>
     <item>
       <title>Reinforcement Learning</title>
-      <link>https://osmin625.github.io/tags/Reinforcement-Learning/</link>
+      <link>https://osmin625.github.io/tags/reinforcement-learning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Reinforcement-Learning/</guid>
+      <guid>https://osmin625.github.io/tags/reinforcement-learning/</guid>
       <description></description>
     </item>
     <item>
@@ -591,30 +591,30 @@
     </item>
     <item>
       <title>RMSE</title>
-      <link>https://osmin625.github.io/tags/RMSE/</link>
+      <link>https://osmin625.github.io/tags/rmse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/RMSE/</guid>
+      <guid>https://osmin625.github.io/tags/rmse/</guid>
       <description></description>
     </item>
     <item>
       <title>RNN</title>
-      <link>https://osmin625.github.io/tags/RNN/</link>
+      <link>https://osmin625.github.io/tags/rnn/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/RNN/</guid>
+      <guid>https://osmin625.github.io/tags/rnn/</guid>
       <description></description>
     </item>
     <item>
       <title>Rule-Based</title>
-      <link>https://osmin625.github.io/tags/Rule-Based/</link>
+      <link>https://osmin625.github.io/tags/rule-based/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Rule-Based/</guid>
+      <guid>https://osmin625.github.io/tags/rule-based/</guid>
       <description></description>
     </item>
     <item>
       <title>Saddle point</title>
-      <link>https://osmin625.github.io/tags/Saddle-point/</link>
+      <link>https://osmin625.github.io/tags/saddle-point/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Saddle-point/</guid>
+      <guid>https://osmin625.github.io/tags/saddle-point/</guid>
       <description></description>
     </item>
     <item>
@@ -626,30 +626,30 @@
     </item>
     <item>
       <title>Sequential Model</title>
-      <link>https://osmin625.github.io/tags/Sequential-Model/</link>
+      <link>https://osmin625.github.io/tags/sequential-model/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Sequential-Model/</guid>
+      <guid>https://osmin625.github.io/tags/sequential-model/</guid>
       <description></description>
     </item>
     <item>
       <title>Singular Value Decomposition</title>
-      <link>https://osmin625.github.io/tags/Singular-Value-Decomposition/</link>
+      <link>https://osmin625.github.io/tags/singular-value-decomposition/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Singular-Value-Decomposition/</guid>
+      <guid>https://osmin625.github.io/tags/singular-value-decomposition/</guid>
       <description></description>
     </item>
     <item>
       <title>Skip-Gram</title>
-      <link>https://osmin625.github.io/tags/Skip-Gram/</link>
+      <link>https://osmin625.github.io/tags/skip-gram/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Skip-Gram/</guid>
+      <guid>https://osmin625.github.io/tags/skip-gram/</guid>
       <description></description>
     </item>
     <item>
       <title>Software Engineering</title>
-      <link>https://osmin625.github.io/tags/Software-Engineering/</link>
+      <link>https://osmin625.github.io/tags/software-engineering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Software-Engineering/</guid>
+      <guid>https://osmin625.github.io/tags/software-engineering/</guid>
       <description></description>
     </item>
     <item>
@@ -668,9 +668,9 @@
     </item>
     <item>
       <title>Stochastic Gradient Descent</title>
-      <link>https://osmin625.github.io/tags/Stochastic-Gradient-Descent/</link>
+      <link>https://osmin625.github.io/tags/stochastic-gradient-descent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Stochastic-Gradient-Descent/</guid>
+      <guid>https://osmin625.github.io/tags/stochastic-gradient-descent/</guid>
       <description></description>
     </item>
     <item>
@@ -682,51 +682,51 @@
     </item>
     <item>
       <title>Taylor Approximation</title>
-      <link>https://osmin625.github.io/tags/Taylor-Approximation/</link>
+      <link>https://osmin625.github.io/tags/taylor-approximation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Taylor-Approximation/</guid>
+      <guid>https://osmin625.github.io/tags/taylor-approximation/</guid>
       <description></description>
     </item>
     <item>
       <title>Temperature Parameter</title>
-      <link>https://osmin625.github.io/tags/Temperature-Parameter/</link>
+      <link>https://osmin625.github.io/tags/temperature-parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Temperature-Parameter/</guid>
+      <guid>https://osmin625.github.io/tags/temperature-parameter/</guid>
       <description></description>
     </item>
     <item>
       <title>Tensor</title>
-      <link>https://osmin625.github.io/tags/Tensor/</link>
+      <link>https://osmin625.github.io/tags/tensor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Tensor/</guid>
+      <guid>https://osmin625.github.io/tags/tensor/</guid>
       <description></description>
     </item>
     <item>
       <title>Term Frequency</title>
-      <link>https://osmin625.github.io/tags/Term-Frequency/</link>
+      <link>https://osmin625.github.io/tags/term-frequency/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Term-Frequency/</guid>
+      <guid>https://osmin625.github.io/tags/term-frequency/</guid>
       <description></description>
     </item>
     <item>
       <title>TF-IDF</title>
-      <link>https://osmin625.github.io/tags/TF-IDF/</link>
+      <link>https://osmin625.github.io/tags/tf-idf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/TF-IDF/</guid>
+      <guid>https://osmin625.github.io/tags/tf-idf/</guid>
       <description></description>
     </item>
     <item>
       <title>TIL</title>
-      <link>https://osmin625.github.io/tags/TIL/</link>
+      <link>https://osmin625.github.io/tags/til/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/TIL/</guid>
+      <guid>https://osmin625.github.io/tags/til/</guid>
       <description></description>
     </item>
     <item>
       <title>UBCF</title>
-      <link>https://osmin625.github.io/tags/UBCF/</link>
+      <link>https://osmin625.github.io/tags/ubcf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/UBCF/</guid>
+      <guid>https://osmin625.github.io/tags/ubcf/</guid>
       <description></description>
     </item>
     <item>
@@ -752,16 +752,16 @@
     </item>
     <item>
       <title>Word2Vec</title>
-      <link>https://osmin625.github.io/tags/Word2Vec/</link>
+      <link>https://osmin625.github.io/tags/word2vec/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Word2Vec/</guid>
+      <guid>https://osmin625.github.io/tags/word2vec/</guid>
       <description></description>
     </item>
     <item>
       <title>Wrap-up Report</title>
-      <link>https://osmin625.github.io/tags/Wrap-up-Report/</link>
+      <link>https://osmin625.github.io/tags/wrap-up-report/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/tags/Wrap-up-Report/</guid>
+      <guid>https://osmin625.github.io/tags/wrap-up-report/</guid>
       <description></description>
     </item>
     <item>

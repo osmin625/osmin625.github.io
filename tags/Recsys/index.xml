@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Recsys on OMIN</title>
-    <link>https://osmin625.github.io/tags/Recsys/</link>
+    <link>https://osmin625.github.io/tags/recsys/</link>
     <description>Recent content in Recsys on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/tags/Recsys/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/tags/recsys/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>추천 시스템 개요</title>
-      <link>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</link>
+      <link>https://osmin625.github.io/posts/2023-09-27-recsys-overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</guid>
-      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) Supervised Learning Model&#xD;ML based CF</description>
+      <guid>https://osmin625.github.io/posts/2023-09-27-recsys-overview/</guid>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) ML based CF</description>
     </item>
   </channel>
 </rss>

@@ -18,22 +18,22 @@
 
     
     <title>Tags</title>
-    <meta name="description" content="">
-    <meta name="keywords" content=''>
+    <meta name="description" content="Sky above, sand below and peace within">
+    <meta name="keywords" content='blog, gokarna, hugo'>
 
     <meta property="og:url" content="https://osmin625.github.io/tags/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tags">
-    <meta property="og:description" content="">
-    <meta property="og:image" content="https://osmin625.github.io/">
-    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+    <meta property="og:description" content="Sky above, sand below and peace within">
+    <meta property="og:image" content="https://osmin625.github.io/images/avatar.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/avatar.webp">
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tags">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:description" content="Sky above, sand below and peace within">
     <meta property="twitter:domain" content="https://osmin625.github.io/tags/">
     <meta property="twitter:url" content="https://osmin625.github.io/tags/">
-    <meta name="twitter:image" content="https://osmin625.github.io/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/avatar.webp">
 
     
     <link rel="canonical" href="https://osmin625.github.io/tags/" />
@@ -52,6 +52,26 @@
 
     
     
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
 </head>
 <body>
         <script type="text/javascript">
@@ -61,12 +81,42 @@
     <nav class="header-nav">
 
         
+        <div class="avatar">
+            <a href="https://osmin625.github.io/">
+                <img src='/images/avatar.webp' alt="avatar" />
+            </a>
+        </div>
+        
 
         <div class="nav-title">
             <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
         </div>
 
         <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
             
 
             <span class="nav-icons-divider"></span>
@@ -87,6 +137,30 @@
             
             <ul class="nav-hamburger-list visibility-hidden">
                 
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
                 <li class="nav-item dark-theme-toggle">
                     <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
                     <a>
@@ -101,272 +175,265 @@
 <main id="content">
 <div class="container tags-list">
 
-    <h1 class="list-title">Tags</h1>
+    <h1 class="list-title"></h1>
     
     <ul class="post-tags">
         
         <li class="post-tag">
-            <a href="/tags/KPT/">
-                <div class="tag-name">KPT</div>
+            <a href="/tags/kpt/">
+                <div class="tag-name">kpt</div>
                 <div class="tag-posts-count">8</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/PyTorch/">
-                <div class="tag-name">PyTorch</div>
+            <a href="/tags/pytorch/">
+                <div class="tag-name">pytorch</div>
                 <div class="tag-posts-count">8</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/TIL/">
-                <div class="tag-name">TIL</div>
+            <a href="/tags/til/">
+                <div class="tag-name">til</div>
                 <div class="tag-posts-count">8</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Gradient-Descent/">
-                <div class="tag-name">Gradient-Descent</div>
+            <a href="/tags/gradient-descent/">
+                <div class="tag-name">gradient-descent</div>
                 <div class="tag-posts-count">4</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Loss-Function/">
-                <div class="tag-name">Loss-Function</div>
+            <a href="/tags/loss-function/">
+                <div class="tag-name">loss-function</div>
                 <div class="tag-posts-count">4</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/BoostCampAITech/">
-                <div class="tag-name">BoostCampAITech</div>
+            <a href="/tags/boostcampaitech/">
+                <div class="tag-name">boostcampaitech</div>
                 <div class="tag-posts-count">3</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Factorization-Machine/">
-                <div class="tag-name">Factorization-Machine</div>
-                <div class="tag-posts-count">3</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Word2Vec/">
-                <div class="tag-name">Word2Vec</div>
-                <div class="tag-posts-count">3</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Back-Propagation/">
-                <div class="tag-name">Back-Propagation</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Collaborative-Filtering/">
-                <div class="tag-name">Collaborative-Filtering</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Context-aware-Recsys/">
-                <div class="tag-name">Context-aware-Recsys</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Convolution-Neural-Network/">
-                <div class="tag-name">Convolution-Neural-Network</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/CTR-Prediction/">
-                <div class="tag-name">CTR-Prediction</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Deep-Model/">
-                <div class="tag-name">Deep-Model</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Latent-Factor-Model/">
-                <div class="tag-name">Latent-Factor-Model</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Multi-Classification/">
-                <div class="tag-name">Multi-Classification</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Overview/">
-                <div class="tag-name">Overview</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Ranked-Retrieval/">
-                <div class="tag-name">Ranked-Retrieval</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Skip-Gram/">
-                <div class="tag-name">Skip-Gram</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/TF-IDF/">
-                <div class="tag-name">TF-IDF</div>
-                <div class="tag-posts-count">2</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/5F/">
-                <div class="tag-name">5F</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Adam/">
-                <div class="tag-name">Adam</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Alex-Net/">
-                <div class="tag-name">Alex-Net</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Apriori/">
-                <div class="tag-name">Apriori</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Assosication-Analysis/">
-                <div class="tag-name">Assosication-Analysis</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Autograd/">
-                <div class="tag-name">Autograd</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Autoregression/">
-                <div class="tag-name">Autoregression</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Autoregressive-Model/">
-                <div class="tag-name">Autoregressive-Model</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Backward/">
-                <div class="tag-name">Backward</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/backward/">
-                <div class="tag-name">backward</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Batch-Mode/">
-                <div class="tag-name">Batch-Mode</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Binary-Classification/">
-                <div class="tag-name">Binary-Classification</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Bottle-neck/">
-                <div class="tag-name">Bottle-neck</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Branch/">
-                <div class="tag-name">Branch</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/CBOW/">
-                <div class="tag-name">CBOW</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Classification/">
-                <div class="tag-name">Classification</div>
-                <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
             <a href="/tags/collaborative-filtering/">
                 <div class="tag-name">collaborative-filtering</div>
+                <div class="tag-posts-count">3</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/factorization-machine/">
+                <div class="tag-name">factorization-machine</div>
+                <div class="tag-posts-count">3</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/word2vec/">
+                <div class="tag-name">word2vec</div>
+                <div class="tag-posts-count">3</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/back-propagation/">
+                <div class="tag-name">back-propagation</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/backward/">
+                <div class="tag-name">backward</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/context-aware-recsys/">
+                <div class="tag-name">context-aware-recsys</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/convolution-neural-network/">
+                <div class="tag-name">convolution-neural-network</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/ctr-prediction/">
+                <div class="tag-name">ctr-prediction</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/deep-model/">
+                <div class="tag-name">deep-model</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/latent-factor-model/">
+                <div class="tag-name">latent-factor-model</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/multi-classification/">
+                <div class="tag-name">multi-classification</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/optimizer/">
+                <div class="tag-name">optimizer</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/overview/">
+                <div class="tag-name">overview</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/ranked-retrieval/">
+                <div class="tag-name">ranked-retrieval</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/skip-gram/">
+                <div class="tag-name">skip-gram</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/tf-idf/">
+                <div class="tag-name">tf-idf</div>
+                <div class="tag-posts-count">2</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/5f/">
+                <div class="tag-name">5f</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Compatibility-Score/">
-                <div class="tag-name">Compatibility-Score</div>
+            <a href="/tags/adam/">
+                <div class="tag-name">adam</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/alex-net/">
+                <div class="tag-name">alex-net</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/apriori/">
+                <div class="tag-name">apriori</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/assosication-analysis/">
+                <div class="tag-name">assosication-analysis</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/autograd/">
+                <div class="tag-name">autograd</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/autoregression/">
+                <div class="tag-name">autoregression</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/autoregressive-model/">
+                <div class="tag-name">autoregressive-model</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/batch-mode/">
+                <div class="tag-name">batch-mode</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/binary-classification/">
+                <div class="tag-name">binary-classification</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/bottle-neck/">
+                <div class="tag-name">bottle-neck</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/branch/">
+                <div class="tag-name">branch</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/cbow/">
+                <div class="tag-name">cbow</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/classification/">
+                <div class="tag-name">classification</div>
+                <div class="tag-posts-count">1</div>
+            </a>
+        </li>
+        
+        <li class="post-tag">
+            <a href="/tags/compatibility-score/">
+                <div class="tag-name">compatibility-score</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -379,29 +446,29 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Cross-Entropy/">
-                <div class="tag-name">Cross-Entropy</div>
+            <a href="/tags/cross-entropy/">
+                <div class="tag-name">cross-entropy</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/DataLoader/">
-                <div class="tag-name">DataLoader</div>
+            <a href="/tags/dataloader/">
+                <div class="tag-name">dataloader</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Dataset/">
-                <div class="tag-name">Dataset</div>
+            <a href="/tags/dataset/">
+                <div class="tag-name">dataset</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/DHP/">
-                <div class="tag-name">DHP</div>
+            <a href="/tags/dhp/">
+                <div class="tag-name">dhp</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -414,99 +481,99 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Field-aware-Factorization-Machine/">
-                <div class="tag-name">Field-aware-Factorization-Machine</div>
+            <a href="/tags/field-aware-factorization-machine/">
+                <div class="tag-name">field-aware-factorization-machine</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/FP-Growth/">
-                <div class="tag-name">FP-Growth</div>
+            <a href="/tags/fp-growth/">
+                <div class="tag-name">fp-growth</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Frequent-Itemset-Generation/">
-                <div class="tag-name">Frequent-Itemset-Generation</div>
+            <a href="/tags/frequent-itemset-generation/">
+                <div class="tag-name">frequent-itemset-generation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/GAN/">
-                <div class="tag-name">GAN</div>
+            <a href="/tags/gan/">
+                <div class="tag-name">gan</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Git/">
-                <div class="tag-name">Git</div>
+            <a href="/tags/git/">
+                <div class="tag-name">git</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Highway-Network/">
-                <div class="tag-name">Highway-Network</div>
+            <a href="/tags/highway-network/">
+                <div class="tag-name">highway-network</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Hyperparameter-Tuning/">
-                <div class="tag-name">Hyperparameter-Tuning</div>
+            <a href="/tags/hyperparameter-tuning/">
+                <div class="tag-name">hyperparameter-tuning</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/IBCF/">
-                <div class="tag-name">IBCF</div>
+            <a href="/tags/ibcf/">
+                <div class="tag-name">ibcf</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Imputation/">
-                <div class="tag-name">Imputation</div>
+            <a href="/tags/imputation/">
+                <div class="tag-name">imputation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Interpolation/">
-                <div class="tag-name">Interpolation</div>
+            <a href="/tags/interpolation/">
+                <div class="tag-name">interpolation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Inverse-Document-Frequency/">
-                <div class="tag-name">Inverse-Document-Frequency</div>
+            <a href="/tags/inverse-document-frequency/">
+                <div class="tag-name">inverse-document-frequency</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Konlpy/">
-                <div class="tag-name">Konlpy</div>
+            <a href="/tags/konlpy/">
+                <div class="tag-name">konlpy</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Lagrange-Interpolation/">
-                <div class="tag-name">Lagrange-Interpolation</div>
+            <a href="/tags/lagrange-interpolation/">
+                <div class="tag-name">lagrange-interpolation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/LeakGAN/">
-                <div class="tag-name">LeakGAN</div>
+            <a href="/tags/leakgan/">
+                <div class="tag-name">leakgan</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -519,22 +586,22 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Linear-Model/">
-                <div class="tag-name">Linear-Model</div>
+            <a href="/tags/linear-model/">
+                <div class="tag-name">linear-model</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Local-minima/">
-                <div class="tag-name">Local-minima</div>
+            <a href="/tags/local-minima/">
+                <div class="tag-name">local-minima</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Long-Short-Term-Memory/">
-                <div class="tag-name">Long-Short-Term-Memory</div>
+            <a href="/tags/long-short-term-memory/">
+                <div class="tag-name">long-short-term-memory</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -547,15 +614,15 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/LSTM/">
-                <div class="tag-name">LSTM</div>
+            <a href="/tags/lstm/">
+                <div class="tag-name">lstm</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/MAE/">
-                <div class="tag-name">MAE</div>
+            <a href="/tags/mae/">
+                <div class="tag-name">mae</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -568,8 +635,8 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Matrix-Decomposition/">
-                <div class="tag-name">Matrix-Decomposition</div>
+            <a href="/tags/matrix-decomposition/">
+                <div class="tag-name">matrix-decomposition</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -582,36 +649,36 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Merge/">
-                <div class="tag-name">Merge</div>
+            <a href="/tags/merge/">
+                <div class="tag-name">merge</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/MICE/">
-                <div class="tag-name">MICE</div>
+            <a href="/tags/mice/">
+                <div class="tag-name">mice</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Mini-Batch-Mode/">
-                <div class="tag-name">Mini-Batch-Mode</div>
+            <a href="/tags/mini-batch-mode/">
+                <div class="tag-name">mini-batch-mode</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Missing-Data/">
-                <div class="tag-name">Missing-Data</div>
+            <a href="/tags/missing-data/">
+                <div class="tag-name">missing-data</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Missing-Data-Analysis/">
-                <div class="tag-name">Missing-Data-Analysis</div>
+            <a href="/tags/missing-data-analysis/">
+                <div class="tag-name">missing-data-analysis</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -624,106 +691,92 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Module/">
-                <div class="tag-name">Module</div>
+            <a href="/tags/module/">
+                <div class="tag-name">module</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/MSE/">
-                <div class="tag-name">MSE</div>
+            <a href="/tags/mse/">
+                <div class="tag-name">mse</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/NBCF/">
-                <div class="tag-name">NBCF</div>
+            <a href="/tags/nbcf/">
+                <div class="tag-name">nbcf</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Neural-Network/">
-                <div class="tag-name">Neural-Network</div>
+            <a href="/tags/neural-network/">
+                <div class="tag-name">neural-network</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Newton-Polynomial-interpolation/">
-                <div class="tag-name">Newton-Polynomial-interpolation</div>
+            <a href="/tags/newton-polynomial-interpolation/">
+                <div class="tag-name">newton-polynomial-interpolation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Optimizer/">
-                <div class="tag-name">Optimizer</div>
+            <a href="/tags/paper-review/">
+                <div class="tag-name">paper-review</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/optimizer/">
-                <div class="tag-name">optimizer</div>
+            <a href="/tags/parameter/">
+                <div class="tag-name">parameter</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Paper-Review/">
-                <div class="tag-name">Paper-Review</div>
+            <a href="/tags/pattern-mode/">
+                <div class="tag-name">pattern-mode</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Parameter/">
-                <div class="tag-name">Parameter</div>
+            <a href="/tags/polynomial-form/">
+                <div class="tag-name">polynomial-form</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Pattern-Mode/">
-                <div class="tag-name">Pattern-Mode</div>
+            <a href="/tags/recommendation-system/">
+                <div class="tag-name">recommendation-system</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Polynomial-Form/">
-                <div class="tag-name">Polynomial-Form</div>
+            <a href="/tags/recsys/">
+                <div class="tag-name">recsys</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Recommendation-System/">
-                <div class="tag-name">Recommendation-System</div>
+            <a href="/tags/regression/">
+                <div class="tag-name">regression</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Recsys/">
-                <div class="tag-name">Recsys</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Regression/">
-                <div class="tag-name">Regression</div>
-                <div class="tag-posts-count">1</div>
-            </a>
-        </li>
-        
-        <li class="post-tag">
-            <a href="/tags/Reinforcement-Learning/">
-                <div class="tag-name">Reinforcement-Learning</div>
+            <a href="/tags/reinforcement-learning/">
+                <div class="tag-name">reinforcement-learning</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -736,29 +789,29 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/RMSE/">
-                <div class="tag-name">RMSE</div>
+            <a href="/tags/rmse/">
+                <div class="tag-name">rmse</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/RNN/">
-                <div class="tag-name">RNN</div>
+            <a href="/tags/rnn/">
+                <div class="tag-name">rnn</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Rule-Based/">
-                <div class="tag-name">Rule-Based</div>
+            <a href="/tags/rule-based/">
+                <div class="tag-name">rule-based</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Saddle-point/">
-                <div class="tag-name">Saddle-point</div>
+            <a href="/tags/saddle-point/">
+                <div class="tag-name">saddle-point</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -771,22 +824,22 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Sequential-Model/">
-                <div class="tag-name">Sequential-Model</div>
+            <a href="/tags/sequential-model/">
+                <div class="tag-name">sequential-model</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Singular-Value-Decomposition/">
-                <div class="tag-name">Singular-Value-Decomposition</div>
+            <a href="/tags/singular-value-decomposition/">
+                <div class="tag-name">singular-value-decomposition</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Software-Engineering/">
-                <div class="tag-name">Software-Engineering</div>
+            <a href="/tags/software-engineering/">
+                <div class="tag-name">software-engineering</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -806,8 +859,8 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Stochastic-Gradient-Descent/">
-                <div class="tag-name">Stochastic-Gradient-Descent</div>
+            <a href="/tags/stochastic-gradient-descent/">
+                <div class="tag-name">stochastic-gradient-descent</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -820,36 +873,36 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Taylor-Approximation/">
-                <div class="tag-name">Taylor-Approximation</div>
+            <a href="/tags/taylor-approximation/">
+                <div class="tag-name">taylor-approximation</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Temperature-Parameter/">
-                <div class="tag-name">Temperature-Parameter</div>
+            <a href="/tags/temperature-parameter/">
+                <div class="tag-name">temperature-parameter</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Tensor/">
-                <div class="tag-name">Tensor</div>
+            <a href="/tags/tensor/">
+                <div class="tag-name">tensor</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Term-Frequency/">
-                <div class="tag-name">Term-Frequency</div>
+            <a href="/tags/term-frequency/">
+                <div class="tag-name">term-frequency</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
         
         <li class="post-tag">
-            <a href="/tags/UBCF/">
-                <div class="tag-name">UBCF</div>
+            <a href="/tags/ubcf/">
+                <div class="tag-name">ubcf</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -876,8 +929,8 @@
         </li>
         
         <li class="post-tag">
-            <a href="/tags/Wrap-up-Report/">
-                <div class="tag-name">Wrap-up-Report</div>
+            <a href="/tags/wrap-up-report/">
+                <div class="tag-name">wrap-up-report</div>
                 <div class="tag-posts-count">1</div>
             </a>
         </li>
@@ -898,6 +951,8 @@
     
     
 
+    
+    <span>&copy; 2024 The Marauders</span>
     
     <span>
         Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>

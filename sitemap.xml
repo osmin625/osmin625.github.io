@@ -2,523 +2,392 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://osmin625.github.io/posts/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
+  </url><url>
     <loc>https://osmin625.github.io/categories/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Collaborative-Filtering/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/collaborative-filtering/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/categories/DL-Algorithm/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/dl-algorithm/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/matrix-factorization/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-14-MF-Matrix-Factorization/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-14-mf-matrix-factorization/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Recommendation-System/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/recommendation-system/</loc>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-20-1x1-Convolution/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-20-1x1-convolution/</loc>
+    <lastmod>2023-01-13T15:39:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Bottle-neck/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/bottle-neck/</loc>
+    <lastmod>2023-01-13T15:39:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Computer-Vision/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/computer-vision/</loc>
+    <lastmod>2023-01-13T15:39:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Convolution-Neural-Network/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/convolution-neural-network/</loc>
+    <lastmod>2023-01-13T15:39:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-10-12-LeakGAN/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-10-12-leakgan/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-06-19-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/5F/</loc>
+    <loc>https://osmin625.github.io/tags/5f/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-08-06-5F-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</loc>
+    <loc>https://osmin625.github.io/posts/2023-08-06-5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Adam/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/adam/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/AI-Knowledge/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/ai-knowledge/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/AI-Math/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/ai-math/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Alex-Net/</loc>
+    <loc>https://osmin625.github.io/tags/alex-net/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</loc>
+    <loc>https://osmin625.github.io/posts/2023-05-20-alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Apriori/</loc>
+    <loc>https://osmin625.github.io/tags/apriori/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Assosication-Analysis/</loc>
+    <loc>https://osmin625.github.io/tags/assosication-analysis/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Autograd/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/autograd/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Autoregression/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/autoregression/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-29-Autoregression/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-06-29-autoregression/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Autoregressive-Model/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/autoregressive-model/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Back-Propagation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/back-propagation/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-09-25-backpropagation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Backward/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/backward/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Batch-Mode/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/batch-mode/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Binary-Classification/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/binary-classification/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/</loc>
-    <lastmod>2024-01-07T18:33:23+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-08-16-book-rating-prediction-wrap-up-report/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/boostcamp-ai-tech/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/BoostCamp-AI-Tech/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/boostcampaitech/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/BoostCampAITech/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/branch/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Branch/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/cbow/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/CBOW/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-22-cbow/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-22-CBOW/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/classification/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Classification/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/tags/Compatibility-Score/</loc>
+    <loc>https://osmin625.github.io/tags/compatibility-score/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/confidence/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Context-aware-Recsys/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/context-aware-recsys/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Cross-Entropy/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/cross-entropy/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/CTR-Prediction/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/ctr-prediction/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Data/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/data/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/DataLoader/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/dataloader/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Dataset/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/dataset/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Deep-Model/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/deep-model/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-24-DeepFM/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-24-deepfm/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/DHP/</loc>
+    <loc>https://osmin625.github.io/tags/dhp/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/DL-Framework/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/dl-framework/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/dot/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Factorization-Machine/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/factorization-machine/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-25-ffm-field-aware-factorization-machine/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Field-aware-Factorization-Machine/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/field-aware-factorization-machine/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-21-FM-Factorization-Machine/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-21-fm-factorization-machine/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/FP-Growth/</loc>
+    <loc>https://osmin625.github.io/tags/fp-growth/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Frequent-Itemset-Generation/</loc>
+    <loc>https://osmin625.github.io/tags/frequent-itemset-generation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/GAN/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/gan/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Git/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/git/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Git/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/git/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-02-Git-Branch/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-06-02-git-branch/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Gradient-Descent/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/gradient-descent/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Highway-Network/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/highway-network/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Hyperparameter/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/hyperparameter/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Hyperparameter-Tuning/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/hyperparameter-tuning/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/IBCF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/ibcf/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Imputation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/imputation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Information-Retrieval/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/information-retrieval/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Interpolation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/interpolation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/</loc>
-    <lastmod>2024-01-10T00:56:34+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/inverse-document-frequency/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Inverse-Document-Frequency/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/konlpy/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Konlpy/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/kpt/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/KPT/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-25-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-28-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</loc>
+    <loc>https://osmin625.github.io/posts/2023-06-30-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-30-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</loc>
+    <loc>https://osmin625.github.io/tags/lagrange-interpolation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Lagrange-Interpolation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/latent-factor-model/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Latent-Factor-Model/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/tags/LeakGAN/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/leakgan/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/lift/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Linear-Model/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/linear-model/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Local-minima/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/local-minima/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Long-Short-Term-Memory/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/long-short-term-memory/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/loss/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Loss-Function/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/loss-function/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Loss-Function/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/loss-function/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/LSTM/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/lstm/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-11-28-LSTM/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-11-28-lstm/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/MAE/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/mae/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/matmul/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Matrix-Decomposition/</loc>
+    <loc>https://osmin625.github.io/tags/matrix-decomposition/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Merge/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/merge/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/MICE/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/mice/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-21-MICE/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-06-21-mice/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Mini-Batch-Mode/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/mini-batch-mode/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Missing-Data/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/missing-data/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Missing-Data-Analysis/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/missing-data-analysis/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/mm/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Module/</loc>
+    <loc>https://osmin625.github.io/tags/module/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/MSE/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/mse/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Multi-Classification/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/multi-classification/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Natural-Language-Processing/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/natural-language-processing/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/NBCF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/nbcf/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Neural-Network/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/neural-network/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Newton-Polynomial-interpolation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/newton-polynomial-interpolation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Numerical-Analysis/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/numerical-analysis/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Optimizer/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/optimizer/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Optimizer/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/optimizer/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-23-Optimizer/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-23-optimizer/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Overview/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/overview/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Paper-Review/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/paper-review/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Parameter/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/parameter/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Pattern-Mode/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/pattern-mode/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Polynomial-Form/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/polynomial-form/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-12-Polynomial-Interpolation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-12-polynomial-interpolation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Project-Management/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/project-management/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/PyTorch/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/pytorch/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/PyTorch/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/pytorch/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-06-29-pytorch-overview/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</loc>
+    <loc>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</loc>
+    <loc>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-21-pytorch-nn-parameter/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-06-13-Backward/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-06-13-backward/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-11-16-TF-IDF-Implement/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-11-16-tf-idf-implement/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Ranked-Retrieval/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/ranked-retrieval/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Recommendation-System/</loc>
+    <loc>https://osmin625.github.io/tags/recommendation-system/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Recsys/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/recsys/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Regression/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/regression/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Reinforcement-Learning/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/reinforcement-learning/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/reshape/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Review/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/review/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/RMSE/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/rmse/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/RNN/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/rnn/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Rule-Based/</loc>
+    <loc>https://osmin625.github.io/tags/rule-based/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Saddle-point/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/saddle-point/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/save/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Sequential-Model/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/sequential-model/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-22-SG/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-22-sg/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-22-SGNS/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-22-sgns/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Singular-Value-Decomposition/</loc>
+    <loc>https://osmin625.github.io/tags/singular-value-decomposition/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Skip-Gram/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/skip-gram/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Software-Engineering/</loc>
+    <loc>https://osmin625.github.io/tags/software-engineering/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Software-Engineering/</loc>
+    <loc>https://osmin625.github.io/categories/software-engineering/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/squeeze/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Statistics/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/statistics/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/step/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Stochastic-Gradient-Descent/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/stochastic-gradient-descent/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/support/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</loc>
+    <loc>https://osmin625.github.io/posts/2023-05-28-svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Taylor-Approximation/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/taylor-approximation/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-11-01-Taylor-Polynomials/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-11-01-taylor-polynomials/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Temperature-Parameter/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/temperature-parameter/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Tensor/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/tensor/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-19-Tensor/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-19-tensor/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Term-Frequency/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/term-frequency/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/TF-IDF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/tf-idf/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/TIL/</loc>
+    <loc>https://osmin625.github.io/tags/til/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/TIL/</loc>
+    <loc>https://osmin625.github.io/categories/til/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/UBCF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/ubcf/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/unsqueeze/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/view/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-05-26-WDN-Wide-Deep-Network/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-05-26-wdn-wide-deep-network/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/categories/Weekly/</loc>
+    <loc>https://osmin625.github.io/categories/weekly/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/weight/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Word2Vec/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/word2vec/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Wrap-up-Report/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/tags/wrap-up-report/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/zero_grad/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</loc>
+    <loc>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
+    <loc>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-2-upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-09-24-1-epoch/</loc>
-    <lastmod>2024-01-07T19:54:10+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-19-PyTorch-Datasets-DataLoaders/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-19-pytorch-datasets-dataloaders/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-21-Hyperparameter_tuning/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-21-hyperparameter_tuning/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-11-15-TF-IDF/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-11-15-tf-idf/</loc>
   </url><url>
     <loc>https://osmin625.github.io/categories/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-23-Loss-function/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-23-loss-function/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-24-gradient_descent/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</loc>
-    <lastmod>2024-01-10T01:07:46+09:00</lastmod>
+    <loc>https://osmin625.github.io/posts/2023-09-27-recsys-overview/</loc>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-06-06-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/</loc>
   </url><url>

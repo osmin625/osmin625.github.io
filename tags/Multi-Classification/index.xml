@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Multi Classification on OMIN</title>
-    <link>https://osmin625.github.io/tags/Multi-Classification/</link>
+    <link>https://osmin625.github.io/tags/multi-classification/</link>
     <description>Recent content in Multi Classification on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/tags/Multi-Classification/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/tags/multi-classification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CBOW: Continous Bag of Word</title>
-      <link>https://osmin625.github.io/posts/2023-05-22-CBOW/</link>
+      <link>https://osmin625.github.io/posts/2023-05-22-cbow/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-22-CBOW/</guid>
+      <guid>https://osmin625.github.io/posts/2023-05-22-cbow/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&amp;rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
     </item>
     <item>
       <title>SG: Skip-Gram</title>
-      <link>https://osmin625.github.io/posts/2023-05-22-SG/</link>
+      <link>https://osmin625.github.io/posts/2023-05-22-sg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-22-SG/</guid>
+      <guid>https://osmin625.github.io/posts/2023-05-22-sg/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;CBOW가 뒤집어진 모델&#xA;CBOW와 입력층과 출력층이 반대로 구성되어 있다.&#xA;벡터의 평균을 구하는 과정이 없다.&#xA;CBOW보다 성능이 좋다고 알려져있다.&#xA;참고로 이 때의 성능은 학습 과정의 Loss가 아니라 임베딩 벡터의 표현력을 의미한다.&#xA;CBOW와 마찬가지로 Multi-Classification Model에 해당한다.</description>
     </item>
   </channel>

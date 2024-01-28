@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MAE on OMIN</title>
-    <link>https://osmin625.github.io/tags/MAE/</link>
+    <link>https://osmin625.github.io/tags/mae/</link>
     <description>Recent content in MAE on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/tags/MAE/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/tags/mae/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>손실 함수(Loss Function)에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/2023-09-23-Loss-function/</link>
+      <link>https://osmin625.github.io/posts/2023-09-23-loss-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-23-Loss-function/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-23-loss-function/</guid>
       <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function 신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
     </item>
   </channel>

@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Sequential Model on OMIN</title>
-    <link>https://osmin625.github.io/tags/Sequential-Model/</link>
+    <link>https://osmin625.github.io/tags/sequential-model/</link>
     <description>Recent content in Sequential Model on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/tags/Sequential-Model/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/tags/sequential-model/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LSTM: Long Short Term Memory</title>
-      <link>https://osmin625.github.io/posts/2023-11-28-LSTM/</link>
+      <link>https://osmin625.github.io/posts/2023-11-28-lstm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-11-28-LSTM/</guid>
+      <guid>https://osmin625.github.io/posts/2023-11-28-lstm/</guid>
       <description>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델&#xA;선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.&#xA;그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.&#xA;게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.&#xA;가중치&#xA;순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$&#xA;$i$ : 입력 게이트&#xA;$o$ : 출력 게이트&#xA;다양한 구조 설계가 가능하다.&#xA;Model Concept Cell State LSTM의 핵심</description>
     </item>
   </channel>

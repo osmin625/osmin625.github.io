@@ -5,14 +5,14 @@
     <link>https://osmin625.github.io/tags/matrix-factorization/</link>
     <description>Recent content in matrix factorization on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>ko</language>
     <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/matrix-factorization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MF: Matrix Factorization</title>
-      <link>https://osmin625.github.io/posts/2023-05-14-MF-Matrix-Factorization/</link>
+      <link>https://osmin625.github.io/posts/2023-05-14-mf-matrix-factorization/</link>
       <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-14-MF-Matrix-Factorization/</guid>
+      <guid>https://osmin625.github.io/posts/2023-05-14-mf-matrix-factorization/</guid>
       <description>간단 요약&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;인수분해를 다양하게 시도하여 대상 행렬을 가장 잘 복구하는 최적의 하위행렬을 찾는 과정 {: .prompt-info } Latent Factors, Matrix Factorization, SGD&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;대상 행렬을 두개의 하위 행렬로 분해한다.&#xA;User-Item 행렬을 User와 Item 각각에 대한 저차원의 latent factor 행렬로 분해한다.&#xA;두 하위 행렬을 다시 곱해서 대상 행렬과 동일한 크기의 단일 행렬로 만든다.&#xA;위의 과정에서 기존 행렬의 빈공간이 채워진다.</description>
     </item>
   </channel>

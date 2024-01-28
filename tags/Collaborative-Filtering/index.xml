@@ -2,24 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Collaborative Filtering on OMIN</title>
-    <link>https://osmin625.github.io/tags/Collaborative-Filtering/</link>
+    <link>https://osmin625.github.io/tags/collaborative-filtering/</link>
     <description>Recent content in Collaborative Filtering on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
+    <language>ko</language>
     <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/Collaborative-Filtering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/collaborative-filtering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MF: Matrix Factorization</title>
+      <link>https://osmin625.github.io/posts/2023-05-14-mf-matrix-factorization/</link>
+      <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/2023-05-14-mf-matrix-factorization/</guid>
+      <description>간단 요약&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;인수분해를 다양하게 시도하여 대상 행렬을 가장 잘 복구하는 최적의 하위행렬을 찾는 과정 {: .prompt-info } Latent Factors, Matrix Factorization, SGD&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;대상 행렬을 두개의 하위 행렬로 분해한다.&#xA;User-Item 행렬을 User와 Item 각각에 대한 저차원의 latent factor 행렬로 분해한다.&#xA;두 하위 행렬을 다시 곱해서 대상 행렬과 동일한 크기의 단일 행렬로 만든다.&#xA;위의 과정에서 기존 행렬의 빈공간이 채워진다.</description>
+    </item>
     <item>
       <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
-      <link>https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/</link>
+      <link>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/</guid>
+      <guid>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</guid>
       <description>Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.&#xA;사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법&#xA;Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.&#xA;장점&#xA;구현이 간단하고 이해하기 쉽다. Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다. 최적화나 훈련 과정이 필요 없다. 단점&#xA;Sparsity(희소성) 문제&#xA;NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.&#xA;데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하</description>
     </item>
     <item>
       <title>SVD: Singular Value Decomposition(특이값 분해)</title>
-      <link>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
+      <link>https://osmin625.github.io/posts/2023-05-28-svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
+      <guid>https://osmin625.github.io/posts/2023-05-28-svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
       <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD 기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
     </item>
   </channel>

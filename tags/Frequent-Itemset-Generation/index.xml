@@ -2,11 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Frequent Itemset Generation on OMIN</title>
-    <link>https://osmin625.github.io/tags/Frequent-Itemset-Generation/</link>
+    <link>https://osmin625.github.io/tags/frequent-itemset-generation/</link>
     <description>Recent content in Frequent Itemset Generation on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/tags/Frequent-Itemset-Generation/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/tags/frequent-itemset-generation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>연관 분석(Association Analysis) 정리</title>
       <link>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</link>

@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PyTorch on OMIN</title>
-    <link>https://osmin625.github.io/categories/PyTorch/</link>
+    <link>https://osmin625.github.io/categories/pytorch/</link>
     <description>Recent content in PyTorch on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <atom:link href="https://osmin625.github.io/categories/PyTorch/index.xml" rel="self" type="application/rss+xml" />
+    <language>ko</language>
+    <atom:link href="https://osmin625.github.io/categories/pytorch/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyTorch 개요</title>
-      <link>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</link>
+      <link>https://osmin625.github.io/posts/2023-06-29-pytorch-overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</guid>
+      <guid>https://osmin625.github.io/posts/2023-06-29-pytorch-overview/</guid>
       <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;{: .prompt-info }&#xA;구현 개요(PyTorch) 1. 데이터 준비 Tensor PyTorch Datasets &amp;amp; DataLoaders 2. 모델 정의 (torch.nn.Module) PyTorch 모델 불러오기&#xA;Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning 4. 모델 평가 기준 및 Optimizer 설정 모델 평가 기준 : loss를 어떻게 계산할 것인가? 손실 함수(Loss Function) Optimizer 설정 5.</description>
     </item>
     <item>
       <title>PyTorch 모델 저장하고 불러오기</title>
-      <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
+      <link>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
       <description>model.save() 학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
     </item>
     <item>
       <title>PyTorch 모델 정의하기 - nn.Module</title>
-      <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</link>
+      <link>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-21-pytorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</guid>
       <description>간단 요약&#xA;반복되는 Layer을 만들기 위한 Torch의 가장 기본적인 신경망 모듈&#xA;매개변수를 캡슐화하는 간편한 방법&#xA;GPU로 이동, 내보내기(exporting), 불러오기(loading) 등의 작업을 위한 헬퍼(helper)를 제공한다.&#xA;{: .prompt-info }&#xA;DL 모델은 모두 Layer의 반복이며, 블록 반복의 연속이다.&#xA;Module에서 정의하는 것&#xA;Input&#xA;Output&#xA;Forward&#xA;(Backward)&#xA;이 때, Backward는 자동 미분이 되기 때문에, 해당되는 weight의 값들을 내보내준다.&#xA;즉, weight가 학습의 대상이 되고, 이를 parameter(tensor)로 정의한다.&#xA;일반적으로는 직접 지정해줄 필요가 없다.&#xA;example import torch from torch.</description>
     </item>
     <item>
       <title>PyTorch에서 weight를 저장하는 객체 - nn.Parameter</title>
-      <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</link>
+      <link>https://osmin625.github.io/posts/2023-09-21-pytorch-nn-parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-21-pytorch-nn-parameter/</guid>
       <description>간단 요약&#xA;학습의 대상이 되는 Weight를 정의한다.&#xA;Tensor 객체의 상속 객체 {: .prompt-info }&#xA;Tensor 객체와 매우 비슷하다.&#xA;nn.Module의 attribute가 될 때는 required_grad = True로 자동으로 지정되어 AutoGrad의 대상이 된다.&#xA;대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.&#xA;nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.&#xA;$\tt xw +b$ class MyLinear(nn.Module): def __init__ (self, in_features, out_features, bias=True): super(). init () **self.in_features = in_features self.</description>
     </item>
     <item>
       <title>PyTorch의 Backward에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/2023-06-13-Backward/</link>
+      <link>https://osmin625.github.io/posts/2023-06-13-backward/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-13-Backward/</guid>
+      <guid>https://osmin625.github.io/posts/2023-06-13-backward/</guid>
       <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y + 25\ z = 10 \times w^2 + 25\ {dz\over dw} = 20 \times w = 40 $$</description>
     </item>
     <item>
       <title>Tensor에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/2023-09-19-Tensor/</link>
+      <link>https://osmin625.github.io/posts/2023-09-19-tensor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-19-Tensor/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-19-tensor/</guid>
       <description>간단 요약&#xA;autograd 연산을 지원하는 다차원 배열&#xA;tensor에 대한 미분값을 가진다.&#xA;reshape보다 view를 쓰는 것이 좋다. squeeze와 unsqueeze의 차이 mm, dot, matmul 차이&#xA;{: .prompt-info } 신경망의 가중치(매개변수)를 텐서로 표현한다.&#xA;다차원 Arrays를 표현하는 PyTorch 클래스&#xA;numpy의 ndarray와 호환된다.&#xA;TensorFlow의 Tensor와도 동일&#xA;Tensor을 생성하는 함수도 거의 동일&#xA;numpy — ndarray&#xA;import numpy as np n_array = np.arange(10).reshape(2,5) print(n_array) print(&amp;#34;n_dim :&amp;#34;, n_array.ndim, &amp;#34;shape :&amp;#34;, n_array.shape) pytorch — tensor&#xA;import torch t_array = torch.</description>
     </item>
     <item>
@@ -58,9 +58,9 @@
     </item>
     <item>
       <title>모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)</title>
-      <link>https://osmin625.github.io/posts/2023-09-19-PyTorch-Datasets-DataLoaders/</link>
+      <link>https://osmin625.github.io/posts/2023-09-19-pytorch-datasets-dataloaders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-19-PyTorch-Datasets-DataLoaders/</guid>
+      <guid>https://osmin625.github.io/posts/2023-09-19-pytorch-datasets-dataloaders/</guid>
       <description>모델에 데이터를 먹이는 방법&#xA;1. Dataset 모아놓은 데이터에 대해 Dataset이라는 클래스를 통해 시작, 길이, mapstyle 등을 선언해준다.&#xA;__getitems__() : 하나의 데이터를 불러올 때 어떤 식으로 데이터를 반환할 지를 선언해준다.&#xA;데이터 입력 형태를 정의하는 클래스&#xA;데이터를 입력하는 방식의 표준화&#xA;Image, Text, Audio 등에 따라 다르게 입력이 정의된다.&#xA;데이터의 형태에 따라 각 함수를 다르게 정의한다.&#xA;모든 것을 데이터 생성 시점에 처리할 필요는 없다.&#xA;image의 Tensor 변화는 학습에 필요한 시점에 변환해주면 된다.&#xA;데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.</description>
     </item>
   </channel>

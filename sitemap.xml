@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://osmin625.github.io/posts/theme-documentation-basics/</loc>
+    <lastmod>2020-03-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/theme-documentation-advanced/</loc>
+    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/markdown-syntax/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://osmin625.github.io/categories/</loc>
     <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
@@ -52,6 +61,21 @@
   </url><url>
     <loc>https://osmin625.github.io/tags/convolution-neural-network/</loc>
     <lastmod>2023-01-13T15:39:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/configuration/</loc>
+    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/installation/</loc>
+    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/markdown/</loc>
+    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/css/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/html/</loc>
+    <lastmod>2019-06-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-10-12-leakgan/</loc>
   </url><url>

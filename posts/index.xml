@@ -9,20 +9,6 @@
     <lastBuildDate>Thu, 30 Mar 2023 12:19:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Theme Documentation - Basics</title>
-      <link>https://osmin625.github.io/posts/theme-documentation-basics/</link>
-      <pubDate>Fri, 06 Mar 2020 21:29:01 +0800</pubDate>
-      <guid>https://osmin625.github.io/posts/theme-documentation-basics/</guid>
-      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Installation The following steps are here to help you initialize your new website. If you don’t know Hugo at all, we strongly suggest you learn more about it by following this great documentation for beginners.&#xA;a. Create Your Project Hugo provides a new command to create a new website:&#xA;hugo new site my_website cd my_website b. Install the Theme The theme’s repository is: https://github.</description>
-    </item>
-    <item>
-      <title>Theme Documentation - Advanced</title>
-      <link>https://osmin625.github.io/posts/theme-documentation-advanced/</link>
-      <pubDate>Wed, 06 May 2020 21:29:01 +0800</pubDate>
-      <guid>https://osmin625.github.io/posts/theme-documentation-advanced/</guid>
-      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Content Types This theme supports two types of content types: post and page. To specify them, you need to add them in your markdown metadata.&#xA;Post This is the default blog post type which will be shown in your &amp;ldquo;Posts&amp;rdquo; section and who&amp;rsquo;s tags will be indexed. Basically, a normal blog post.&#xA;--- title: &amp;#34;Hello, world!&amp;#34; date: 2021-01-01 description: &amp;#34;A blog post&amp;#34; image: &amp;#34;/path/to/image.</description>
-    </item>
-    <item>
       <title>Markdown Syntax Guide</title>
       <link>https://osmin625.github.io/posts/markdown-syntax/</link>
       <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
@@ -49,6 +35,20 @@
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-20-1x1-convolution/</guid>
       <description>차원 축소를 위해 활용한다.&#xA;이미지에서 단 하나의 픽셀만 보기 때문에, 이미지에서 영역을 살펴보는 의미는 없다.&#xA;다만, 1 * 1 Convolution을 이용하여 기존 Spatial Dimension을 그대로 유지한 채, 채널의 개수를 128개에서 32개로 줄인다.&#xA;![1x1 Conv_1](/imgs/1x1 Conv_1.png)&#xA;이를 통해 NN의 층을 더 깊게 쌓으면서도, 채널의 수를 줄여서 파라미터의 수를 줄일 수 있다.&#xA;1 * 1 Convolution을 사용하지 않는 경우&#xA;![1x1 Conv_2](/imgs/1x1 Conv_2.png)&#xA;1 * 1 Convolution을 사용한 경우&#xA;![1x1 Conv_3](/imgs/1x1 Conv_3.png)&#xA;파라미터 수를 147,456개에서 40,960개로 효과적으로 줄일 수 있다.</description>
+    </item>
+    <item>
+      <title>Theme Documentation - Advanced</title>
+      <link>https://osmin625.github.io/posts/theme-documentation-advanced/</link>
+      <pubDate>Wed, 06 May 2020 21:29:01 +0800</pubDate>
+      <guid>https://osmin625.github.io/posts/theme-documentation-advanced/</guid>
+      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Content Types This theme supports two types of content types: post and page. To specify them, you need to add them in your markdown metadata.&#xA;Post This is the default blog post type which will be shown in your &amp;ldquo;Posts&amp;rdquo; section and who&amp;rsquo;s tags will be indexed. Basically, a normal blog post.&#xA;--- title: &amp;#34;Hello, world!&amp;#34; date: 2021-01-01 description: &amp;#34;A blog post&amp;#34; image: &amp;#34;/path/to/image.</description>
+    </item>
+    <item>
+      <title>Theme Documentation - Basics</title>
+      <link>https://osmin625.github.io/posts/theme-documentation-basics/</link>
+      <pubDate>Fri, 06 Mar 2020 21:29:01 +0800</pubDate>
+      <guid>https://osmin625.github.io/posts/theme-documentation-basics/</guid>
+      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Installation The following steps are here to help you initialize your new website. If you don’t know Hugo at all, we strongly suggest you learn more about it by following this great documentation for beginners.&#xA;a. Create Your Project Hugo provides a new command to create a new website:&#xA;hugo new site my_website cd my_website b. Install the Theme The theme’s repository is: https://github.</description>
     </item>
     <item>
       <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>

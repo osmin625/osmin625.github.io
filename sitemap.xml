@@ -2,12 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://osmin625.github.io/posts/theme-documentation-basics/</loc>
-    <lastmod>2020-03-06T21:29:01+08:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/posts/theme-documentation-advanced/</loc>
-    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
-  </url><url>
     <loc>https://osmin625.github.io/posts/markdown-syntax/</loc>
     <lastmod>2019-06-19T00:00:00+00:00</lastmod>
   </url><url>
@@ -70,6 +64,12 @@
   </url><url>
     <loc>https://osmin625.github.io/tags/markdown/</loc>
     <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/theme-documentation-advanced/</loc>
+    <lastmod>2020-05-06T21:29:01+08:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/theme-documentation-basics/</loc>
+    <lastmod>2020-03-06T21:29:01+08:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/css/</loc>
     <lastmod>2019-06-19T00:00:00+00:00</lastmod>

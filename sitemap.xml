@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</loc>
+    <lastmod>2023-03-29T14:03:00+09:00</lastmod>
+  </url><url>
     <loc>https://osmin625.github.io/posts/</loc>
     <lastmod>2023-03-30T12:19:00+09:00</lastmod>
   </url><url>
@@ -28,6 +31,15 @@
   </url><url>
     <loc>https://osmin625.github.io/tags/</loc>
     <lastmod>2023-03-30T12:19:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/ibcf/</loc>
+    <lastmod>2023-03-29T14:03:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/nbcf/</loc>
+    <lastmod>2023-03-29T14:03:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/ubcf/</loc>
+    <lastmod>2023-03-29T14:03:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/2023-05-20-1x1-convolution/</loc>
     <lastmod>2023-01-13T15:39:00+09:00</lastmod>
@@ -149,8 +161,6 @@
   </url><url>
     <loc>https://osmin625.github.io/tags/hyperparameter-tuning/</loc>
   </url><url>
-    <loc>https://osmin625.github.io/tags/ibcf/</loc>
-  </url><url>
     <loc>https://osmin625.github.io/tags/imputation/</loc>
   </url><url>
     <loc>https://osmin625.github.io/categories/information-retrieval/</loc>
@@ -230,10 +240,6 @@
     <loc>https://osmin625.github.io/tags/multi-classification/</loc>
   </url><url>
     <loc>https://osmin625.github.io/categories/natural-language-processing/</loc>
-  </url><url>
-    <loc>https://osmin625.github.io/tags/nbcf/</loc>
-  </url><url>
-    <loc>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/neural-network/</loc>
   </url><url>
@@ -344,8 +350,6 @@
     <loc>https://osmin625.github.io/tags/til/</loc>
   </url><url>
     <loc>https://osmin625.github.io/categories/til/</loc>
-  </url><url>
-    <loc>https://osmin625.github.io/tags/ubcf/</loc>
   </url><url>
     <loc>https://osmin625.github.io/tags/unsqueeze/</loc>
   </url><url>

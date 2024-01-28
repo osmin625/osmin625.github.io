@@ -72,13 +72,6 @@
       <description>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델&#xA;선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.&#xA;그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.&#xA;게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.&#xA;가중치&#xA;순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$&#xA;$i$ : 입력 게이트&#xA;$o$ : 출력 게이트&#xA;다양한 구조 설계가 가능하다.&#xA;Model Concept Cell State LSTM의 핵심</description>
     </item>
     <item>
-      <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
-      <link>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-03-29-nbcf-neighborhood-based-cf/</guid>
-      <description>Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.&#xA;사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법&#xA;Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.&#xA;장점&#xA;구현이 간단하고 이해하기 쉽다. Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다. 최적화나 훈련 과정이 필요 없다. 단점&#xA;Sparsity(희소성) 문제&#xA;NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.&#xA;데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하</description>
-    </item>
-    <item>
       <title>SG: Skip-Gram</title>
       <link>https://osmin625.github.io/posts/2023-05-22-sg/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

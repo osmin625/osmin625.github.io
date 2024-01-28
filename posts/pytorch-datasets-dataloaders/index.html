@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Dataset, DataLoader, PyTorch'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/pytorch-datasets-dataloaders/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/pytorch-datasets-dataloaders/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/pytorch-datasets-dataloaders/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/pytorch-datasets-dataloaders/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">3월 14, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/dataset">Dataset</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/dataloader">DataLoader</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/pytorch">PyTorch</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>모델에 데이터를 먹이는 방법</p>
+<p><img src="/imgs/dataset_dataloader.png" alt="dataset"></p>
+<h3 id="1-dataset">1. Dataset</h3>
+<p>모아놓은 데이터에 대해 Dataset이라는 클래스를 통해 시작, 길이, mapstyle 등을 선언해준다.</p>
+<p><code>__getitems__()</code> : 하나의 데이터를 불러올 때 어떤 식으로 데이터를 반환할 지를 선언해준다.</p>
+<hr>
+<p>데이터 입력 형태를 정의하는 클래스</p>
+<p>데이터를 입력하는 방식의 표준화</p>
+<p>Image, Text, Audio 등에 따라 다르게 입력이 정의된다.</p>
+<p>데이터의 형태에 따라 각 함수를 다르게 정의한다.</p>
+<p><strong>모든 것을 데이터 생성 시점에 처리할 필요는 없다.</strong></p>
+<p>image의 Tensor 변화는 학습에 필요한 시점에 변환해주면 된다.</p>
+<p>데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.</p>
+<p>후속 연구자 또는 동료들에게는 빛과 같은 존재가 될 수 있다.</p>
+<p>최근에는 HuggingFace 등 표준화된 라이브러리를 사용한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch.utils.data <span style="color:#f92672">import</span> Dataset
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CustomDataset</span>(Dataset): 
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">def</span> __init__(self, text, labels): <span style="color:#75715e"># 초기 데이터 생성 방법을 지정</span>
+</span></span><span style="display:flex;"><span>				self<span style="color:#f92672">.</span>labels <span style="color:#f92672">=</span> labels 
+</span></span><span style="display:flex;"><span>				self<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> text
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">def</span> __len__(self):
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>labels) <span style="color:#75715e"># 데이터의 전체 길이</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">def</span> __getitem__(self, idx): <span style="color:#75715e"># idx 값을 입력으로 받고, dict 타입으로 데이터를 반환해준다.</span>
+</span></span><span style="display:flex;"><span>				label <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>labels[idx] <span style="color:#75715e"># 반환되는 데이터의 형태 (X,y)</span>
+</span></span><span style="display:flex;"><span>				text <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>data[idx]
+</span></span><span style="display:flex;"><span>				sample <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;Text&#34;</span>: text, 
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;Class&#34;</span>: label} 
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> sample
+</span></span></code></pre></div><h3 id="2-transforms">2. Transforms</h3>
+<p>Data Augumentation 등의 동작을 수행한다.</p>
+<p><code>ToTensor()</code> : 모아놓은 데이터를 Tensor로 변환해준다.</p>
+<h3 id="3-dataloader">3. DataLoader</h3>
+<p>Data의 Batch를 생성해주는 클래스</p>
+<p>정리된 데이터를 묶어서 모델에 넣어준다.</p>
+<p>batch를 만들거나, shuffle 등의 역할을 수행한다.</p>
+<p>학습 직전(GPU feed 전) 데이터의 변환을 책임진다.</p>
+<p>Tensor로 변환 + Batch 처리가 메인 업무이다.</p>
+<p>병렬적인 데이터 전처리 코드를 고민하게 된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DataLoader(dataset, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, <span style="color:#f92672">**</span>sampler<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span><span style="color:#f92672">**</span>, 
+</span></span><span style="display:flex;"><span>					 <span style="color:#f92672">**</span>batch_sampler<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span><span style="color:#f92672">**</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, collate_fn<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, 
+</span></span><span style="display:flex;"><span>					 pin_memory<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, drop_last<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, 
+</span></span><span style="display:flex;"><span>					 worker_init_fn<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, <span style="color:#f92672">*</span>, prefetch_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, persistent_workers<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span></code></pre></div><p>sampler : Data를 어떻게 뽑을 지 index를 정해주는 기법</p>
+<p><strong>collate_fn</strong> : [[data,label],[data,label]] 형태로 묶인 데이터를 [data,data],[label,label]로 바꿔준다.</p>
+<p>흔하게 사용되지는 않는다.</p>
+<ul>
+<li>variable length(가변인자) 텍스트 처리에서 padding을 위해 많이 쓰인다.</li>
+<li>Sequence형 데이터를 처리할 때도 많이 쓰인다.</li>
+</ul>
+<h3 id="4-model">4. Model</h3>
+<hr>
+<h3 id="예제">예제</h3>
+<p><a href="https://pytorch.org/vision/stable/datasets.html#built-in-datasets">Datasets — Torchvision main documentation</a></p>
+<p><a href="https://pytorch.org/tutorials/beginner/basics/data_tutorial.html">Datasets &amp; DataLoaders — PyTorch Tutorials 2.0.1+cu117 documentation</a></p>
+<ol>
+<li>DataLoader에서 사용할 수 있는 각 sampler들을 언제 사용하면 좋을지 논의해보기</li>
+<li>데이터의 크기가 너무 커서 메모리에 한번에 올릴 수 없을 때 Dataset에서 어떻게 데이터를 불러오는 것이 좋을지 논의해보기</li>
+</ol>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

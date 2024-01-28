@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Loss Function, Gradient Descent, Stochastic Gradient Descent, Batch Mode, Mini Batch Mode, Pattern Mode'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/gradient_descent/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/gradient_descent/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/gradient_descent/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/gradient_descent/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">4월 22, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/loss-function">Loss Function</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/gradient-descent">Gradient Descent</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/batch-mode">Batch Mode</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/mini-batch-mode">Mini Batch Mode</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/pattern-mode">Pattern Mode</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer</p>
+</blockquote>
+<h2 id="gradient-descent경사하강법">Gradient Descent(경사하강법)</h2>
+<p>자연 과학과 공학에서 오랫동안 사용해온 최적화 방법</p>
+<p><strong>손실 함수의 최적 해를 찾기 위한 방법</strong></p>
+<p>1차 근삿값 발견을 위한 최적화 알고리즘</p>
+<p>미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 <strong>방향</strong>이다.</p>
+<p>따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.</p>
+<ul>
+<li><strong>굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</strong>
+<ul>
+<li>일반적으로 손실 함수가 매우 복잡하고 비선형적인 경우가 많기 때문에, 미분을 통해 극값을 계산하기 어렵다.</li>
+<li>미분을 구현하는 것보다 경사 하강법으로 최솟값을 찾는 것이 더 효율적이다.</li>
+</ul>
+</li>
+</ul>
+<!-- raw HTML omitted -->
+<p>$$
+w_{t+1} = w_t + \rho\left(-{\partial J\over\partial w_t}\right)
+$$</p>
+<p>$$
+w \leftarrow w + \eta \left( -\frac{\partial L}{\partial w}\right)
+$$</p>
+<ul>
+<li>$J, L$ : 손실 함수</li>
+<li>$\rho,\eta \text{(로, 에타)}$ : 학습률</li>
+<li>$\leftarrow$ : 업데이트를 의미한다.</li>
+</ul>
+<p>표기는 다양하다.</p>
+<p><img src="gd.png" alt="GD"></p>
+<hr>
+<p>매개변수가 여럿인 경우, 편미분으로 구한 기울기를 사용한다.</p>
+<p>매개변수마다 독립적으로 미분한다.</p>
+<p>$$
+{\tt{w = w + \rho\left(\tt-\triangledown w\right)}}
+\
+\tt\triangledown w = \left({\partial J\over\partial w_0},{\partial J\over\partial w_1},{\partial J\over\partial w_2},&hellip;,{\partial J\over\partial w_d}\right)
+$$</p>
+<p><img src="gd1.png" alt="GD"></p>
+<!-- raw HTML omitted -->
+<h3 id="적절한-학습률">적절한 학습률</h3>
+<p>학습률은 한번에 최적해를 향해 나아가는 거리를 의미한다.</p>
+<p>학습률이 너무 낮다면, 수렴하는 데 시간이 너무 오래 걸리게 되고,</p>
+<p>학습률이 너무 높다면, 최적해에 수렴하지 못하고 다른곳으로 발산하게 된다.</p>
+<p><img src="gd2.png" alt="GD"></p>
+<h2 id="학습률을-적절히-조정하는-것이-매우-중요하다">학습률을 적절히 조정하는 것이 매우 중요하다.</h2>
+<h3 id="기계-학습의-경사-하강법">기계 학습의 경사 하강법</h3>
+<ul>
+<li>여러 측면에서 표준 경사 하강법과 다르다.
+<ul>
+<li>잡음이 섞인 데이터의 개입</li>
+<li>방대한 매개변수</li>
+<li>일반화 능력이 필요</li>
+</ul>
+</li>
+<li>기계 학습에서 최적 해를 찾는 것은 쉽지 않다.
+<ul>
+<li>정확률이 등락을 거듭하며 수렴하지 않는 문제</li>
+<li>훈련 집합에서의 높은 성능이 테스트 집합에서의 성능으로 이어지지 않는 문제</li>
+</ul>
+</li>
+</ul>
+<h2 id="경사-하강법-적용-방법">경사 하강법 적용 방법</h2>
+<h3 id="1-bgd-batch-gradient-descent">1. <strong>BGD: Batch Gradient Descent</strong></h3>
+<ul>
+<li>
+<p><strong>배치 모드</strong></p>
+<p>틀린 샘플을 모은 다음 한꺼번에 매개변수 갱신한다.</p>
+<p>한 epoch에 매개변수 갱신이 단 한번만 일어난다.</p>
+<p>즉, 모든 샘플을 확인한 후, 최적의 방향으로 한 걸음 움직인다.</p>
+<p>계산량이 많고 시간이 오래 걸린다.</p>
+</li>
+</ul>
+<h3 id="2-sgd-stochastic-gradient-descent확률적-경사-하강법">2. SGD: Stochastic gradient descent(확률적 경사 하강법)</h3>
+<p>패턴 모드와 미니배치 모드의 경사하강법에는 랜덤 샘플링이 적용되기 때문에, Stochastic(확률적)이라는 수식어를 붙인다.</p>
+<p>데이터를 무작위로 선택하여 훨씬 적은 데이터셋으로 평균값을 추정할 수 있다.</p>
+<ul>
+<li>
+<p><strong>패턴 모드</strong></p>
+<p>샘플 하나에 대해 전방 계산을 수행하고 오류에 따라 바로 매개변수 갱신</p>
+<p>패턴 별로 매개변수 갱신</p>
+<p>epoch가 시작할 때 샘플을 뒤섞어 <strong>랜덤 샘플링</strong> 효과 발생</p>
+<p>하나의 샘플을 확인한 후, 정보를 반영하여 바로 한 걸음 움직인다.</p>
+<p>반복이 충분하면 SGD가 효과를 볼 수 있지만, 노이즈가 매우 심해 최저점을 찾지 못할 수도 있다.</p>
+</li>
+<li>
+<p><strong>미니 배치모드(딥러닝)</strong></p>
+<p>배치 모드와 패턴 모드의 중간</p>
+<p>훈련 집합을 일정한 크기의 부분 집합으로 나눈 다음 부분 집합별로 처리한다.</p>
+<p>부분 집합으로 나눌 때 <strong>랜덤 샘플링</strong>을 적용한다.</p>
+<p>계산 속도가 훨씬 빠르다.</p>
+<p>Local Minima에 빠지지 않고, Global Minima에 수렴할 가능성이 더 높다.</p>
+<p><strong>batch size</strong></p>
+<p>미니배치 모드에서의 매개변수.</p>
+<p>배치 크기를 작게 두는 것이 Generalization 성능이 좋다.</p>
+<p>배치사이즈가 너무 커지면 <strong>Sharp Minimum</strong>에 빠지게 된다.</p>
+<p>Flat Minimum은 Generalization 성능이 좋다.</p>
+<p>반대로, 배치사이즈가 작을수록 noise의 영향력이 커지므로 Sharp Minimum에서 탈출할 확률이 높다.</p>
+<p><img src="gd3.png" alt="GD"></p>
+<p><strong>참고 논문 :</strong> <a href="https://arxiv.org/pdf/1609.04836.pdf">On Large-batch Training for Deep Learning : Generalization Gap and Sharp Minima, 2017</a></p>
+</li>
+</ul>
+<p>Gradient Descent Algorithm에는 여러 문제점들이 존재하는데, 이를 해결한 <a href="https://osmin625.github.io/posts/Optimizer/">Optimizer</a>들이 등장한다.</p>
+<ul>
+<li>
+<p>Quiz. $f(x,y,z)$의 그래디언트 벡터는?</p>
+<p>$f(x,y,z) = 9x^2 + 5y^3 - 3z$</p>
+<p>$\tt ans = (18x, 15y^2, -3)$</p>
+</li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

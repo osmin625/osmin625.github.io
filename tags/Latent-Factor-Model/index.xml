@@ -6,19 +6,20 @@
     <description>Recent content in Latent Factor Model on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Mon, 03 Apr 2023 14:17:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/latent-factor-model/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FFM: Field-aware Factorization Machine</title>
-      <link>https://osmin625.github.io/posts/2023-05-25-ffm-field-aware-factorization-machine/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-25-ffm-field-aware-factorization-machine/</guid>
+      <link>https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/</link>
+      <pubDate>Mon, 03 Apr 2023 14:17:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/</guid>
       <description>개요 Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM) FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
     </item>
     <item>
       <title>FM: Factorization Machine</title>
-      <link>https://osmin625.github.io/posts/2023-05-21-fm-factorization-machine/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-21-fm-factorization-machine/</guid>
+      <link>https://osmin625.github.io/posts/fm-factorization-machine/</link>
+      <pubDate>Mon, 03 Apr 2023 02:17:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/fm-factorization-machine/</guid>
       <description>General Predictor에 Latent Factor Model을 추가한 모델.&#xA;Background Factorization Machines&#xA;SVM과 Factorization Model의 장점을 결합한 FM을 처음 소개한 논문&#xA;등장 배경&#xA;딥러닝이 등장하기 이전 SVM이 가장 많이 사용됐다.&#xA;매우 희소한 데이터가 많은 CF 환경에서는 SVM보다 MF 계열의 모델이 더 높은 성능을 내왔다.&#xA;SVM과 MF의 장점을 결합할 수 없을까? ⇒ FM 탄생.&#xA;MF 기반 모델의 한계 ⇒ User-Item 행렬 기반&#xA;즉, 특정 데이터 포맷에 특화되어 있다.&#xA;$X:$ (유저, 아이템) → $Y:$ (rating)으로 이루어진 데이터에 대해서만 적용이 가능하다.</description>
     </item>
   </channel>

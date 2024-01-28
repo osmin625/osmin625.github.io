@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Ranked Retreival 모델 구현(TF-IDF)</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, TF-IDF, Ranked Retrieval, Konlpy'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/tf-idf-implement/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ranked Retreival 모델 구현(TF-IDF)">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Ranked Retreival 모델 구현(TF-IDF)">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/tf-idf-implement/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/tf-idf-implement/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/tf-idf-implement/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Ranked Retreival 모델 구현(TF-IDF)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">3월 1, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/tf-idf">TF-IDF</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/ranked-retrieval">Ranked Retrieval</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/konlpy">Konlpy</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>우선, 시작하기에 앞서 corpus 구성을 확인했다.</p>
+<p>한글로 작성되었으며, 제목과 문서 내용으로 구성되어있는 것을 확인했다.</p>
+<p><img src="tfi.png" alt="tfi">
+일단 데이터를 처리하기 위해 코드에서 파일을 열어야 하는데, 문서가 한글파일로 제공되었기 때문에 한글 문서를 txt 문서로 변환해주었다.</p>
+<p><img src="tfi1.png" alt="tfi">{: w=&ldquo;200&rdquo; h=&ldquo;100&rdquo; }</p>
+<p>언어는 파이썬을 선택했다.</p>
+<p>처음 프로젝트를 시작했을 때, 나는 colab 환경에서 파이썬 코드를 실행시키고자 했으므로 Google Drive에 corpus 파일을 업로드하고, 코드 작성을 시작했다.</p>
+<p><img src="tfi2.png" alt="tfi"></p>
+<p>수업 내용에서는 영어를 기준으로 다뤄왔었는데 한글을 토큰화하는 방법이 떠오르지 않았다.</p>
+<p>다행스럽게도 한글 형태소 분석 라이브러리 Konlpy가 있어서 이를 활용하고자 했다.</p>
+<p>하지만 해당 Konlpy 라이브러리가 자바를 기반으로 짜여졌고, 파이썬으로 wrapping한 채로 사용하는 방식이었다.</p>
+<p>해당 라이브러리를 사용하기 위해서는 라이브러리에서 지원하는 파이썬 버전과 자바 버전이 일치해야 했다.</p>
+<p>코랩 환경에서 해당 라이브러리를 사용하기 위해 수많은 블로그를 탐색하고, 깃허브 라이브러리 페이지를 방문하여 issue를 살펴봤었지만 해당 문제는 쉽사리 해결되지 않았다.</p>
+<p>그래서 거의 포기하고 직접 문서의 조사를 제거하여 활용하고자 마음 먹고 작업을 수행했다.</p>
+<p>하지만 결국 이 과정은 학습에 도움이 되지 않는다고 판단해 colab 환경을 pycharm 환경으로 바꿔서 다시 한번 해보자고 마음먹었고, 시행착오 끝에 라이브러리를 사용할 수 있게 되었다.</p>
+<p><img src="tfi3.png" alt="tfi"></p>
+<p>라이브러리 활용을 포기하고 직접 문서의 단어를 추출하고 있었다.</p>
+<p><a href="https://colab.research.google.com/drive/1f_27zf6HxhjM12BmVw_GBp--ByCZK4tj?usp=sharing">Google Colaboratory</a></p>
+<p>한글 단어를 직접 추출하던 코드다. 나의 고통의 흔적이 보인다.</p>
+<p><img src="tfi4.png" alt="tfi"></p>
+<p>라이브러리 실행을 성공시킨 마지막 명령어.</p>
+<p>JPype1.1.2와 JPype3-1, Python 3.6, Python 3.7, Python 3.10의 조합을 활용해보았고, 실행되지 않았다.</p>
+<p>하지만 결국 위 사진에서 보이듯이, JPype1의 1.4.0 버전과 python 3.9.5 버전을 활용하여 성공했다.</p>
+<p>아래는 내가 문제를 해결하는 데 도움을 받은 글이다.</p>
+<p><a href="https://blog.naver.com/myincizor/221624979283">https://blog.naver.com/myincizor/221624979283</a></p>
+<p><a href="https://ingu627.github.io/tips/install_konlpy/">https://ingu627.github.io/tips/install_konlpy/</a></p>
+<hr>
+<p>검색엔진 코드 작성</p>
+<p>이후 검색엔진의 코드를 작성하는 것은 어렵지 않았는데, 다만 강의 내용을 완벽히 이해하고 있어야 코드를 수월하게 짤 수 있는 것 같다.</p>
+<p>수업에서 배운 대로 tf-idf Weighting을 기준으로 문서의 순서를 매기고, 쿼리를 입력받았을 때 Score가 높은 순서대로 결과를 보여주고자 했다.</p>
+<p>이를 구현 순서대로 나열하면 다음과 같다.</p>
+<h3 id="1-corpus-파일-읽기-open함수-활용">1. corpus 파일 읽기: open()함수 활용</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>file <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;corpus.txt&#34;</span>, <span style="color:#e6db74">&#39;r&#39;</span>, encoding<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;UTF8&#39;</span>)
+</span></span><span style="display:flex;"><span>corpus <span style="color:#f92672">=</span> file<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>corpus <span style="color:#f92672">=</span> [line[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> corpus <span style="color:#66d9ef">if</span> line <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>]
+</span></span><span style="display:flex;"><span>corpus
+</span></span></code></pre></div><h3 id="2-corpus를-dictionary에-key-제목-value-문서내용-으로-저장하기">2. corpus를 dictionary에 {key: 제목, value: 문서내용 }으로 저장하기.</h3>
+<p>해당 부분은 문자열 패턴을 추출하고 검사하는 re 라이브러리를 활용하여 비교적 쉽게 수행할 수 있다.</p>
+<ul>
+<li>
+<p>해당 지점을 수행하며 기타 오탈자의 존재를 파악했으며 (ex: &lt;title&gt;~~~&lt;title&gt;)</p>
+</li>
+<li>
+<p>특이 사항으로 하나의 제목으로 두 개의 문서 내용을 가진 경우가 있었다.</p>
+<p>해당 부분을 처리해주기 위해 dictionary에서 value를 바로 문서 내용으로 하지 않고, 리스트로 만들어서 extend()함수를 통해 두 문서 내용을 이어 붙였다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> corpus:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> re<span style="color:#f92672">.</span><span style="color:#66d9ef">match</span>(<span style="color:#e6db74">&#34;&lt;title&gt;&#34;</span>, line):
+</span></span><span style="display:flex;"><span>        line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#39;&lt;title&gt;\d+. |&lt;/title&gt;|&lt;title&gt;|\d+.&#39;</span>, <span style="color:#e6db74">&#39;&#39;</span>, line)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># line = line.replace(&#39;&lt;title&gt;&#39;, &#39;&#39;).replace(&#39;&lt;/title&gt;&#39;,&#39;&#39;)</span>
+</span></span><span style="display:flex;"><span>        key <span style="color:#f92672">=</span> line
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># print(key)</span>
+</span></span><span style="display:flex;"><span>        dic[key] <span style="color:#f92672">=</span> []  <span style="color:#75715e"># value에 해당하는 리스트를 만들어주기.</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        line <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>sub(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\xa0</span><span style="color:#e6db74">&#39;</span>, <span style="color:#e6db74">&#39; &#39;</span>, line)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># print(line)</span>
+</span></span><span style="display:flex;"><span>        dic[key]<span style="color:#f92672">.</span>append(line) <span style="color:#75715e"># value 리스트에 문서 내용 담기.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> len(doc) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        doc[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+=</span> doc[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>        doc<span style="color:#f92672">.</span>pop()
+</span></span></code></pre></div></li>
+</ul>
+<h3 id="3-문서별-term-frequency-구하기">3. 문서별 term frequency 구하기</h3>
+<p>문서에 포함되는 단어들의 term frequency를 구해야 했다.</p>
+<p>우선 단어의 빈도는 okt 라이브러리를 활용해서 쉽게 구할 수 있었다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>    doc_term <span style="color:#f92672">=</span> dict(Counter(okt<span style="color:#f92672">.</span>nouns(doc[<span style="color:#ae81ff">0</span>])))
+</span></span></code></pre></div><p>이후, 해당 raw term frequency들을 log frequency weighting으로 바꿔주기 위해 함수를 선언했다.</p>
+<p>$$
+w_{t, d}=\left{\begin{array}{cc}1+\log <em>{10} \mathrm{tf}</em>{t, d}, &amp; \text { if } \mathrm{tf}_{t, d}&gt;0 \0, &amp; \text { otherwise }\end{array}\right.
+$$</p>
+<p>단어의 빈도가 크지 않기 때문에, 나는 log의 base를 <strong>2</strong>로 설정했다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">lf_weighting</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> x:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> round(<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> math<span style="color:#f92672">.</span>log(x, <span style="color:#f92672">**</span><span style="color:#ae81ff">2</span><span style="color:#f92672">**</span>), <span style="color:#ae81ff">4</span>) <span style="color:#75715e"># 소수점 넷째에서 반올림을 수행했다.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span></code></pre></div><p>이후 map 함수를 활용하여 모든 tf 값들을 lf_weighting 값으로 변경해주었다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>    doc_term <span style="color:#f92672">=</span> dict(Counter(okt<span style="color:#f92672">.</span>nouns(doc[<span style="color:#ae81ff">0</span>])))
+</span></span><span style="display:flex;"><span>    tf_raw <span style="color:#f92672">=</span> list(doc_term<span style="color:#f92672">.</span>values())
+</span></span><span style="display:flex;"><span>    tf <span style="color:#f92672">=</span> list(map(lf_weighting, tf_raw))
+</span></span></code></pre></div><h3 id="4-단어의-idf-구하기">4. 단어의 idf 구하기</h3>
+<p>문서에 포함되는 단어들이 문서를 구분하는 데 얼마나 영향력이 있는지 판별하기 위해 idf를 계산해야 한다.</p>
+<p>아래 내용은 내 강의 노트의 일부분을 가져왔다.</p>
+<p>📌 <strong>idf weight</strong></p>
+<ul>
+<li>
+<p>$df_{term}$는 term를 포함하는 <strong>문서</strong>의 빈도이다.</p>
+</li>
+<li>
+<p>우리는 df가 작은 term의 점수를 더 높게 주고 싶기 때문에, df을 뒤집어서 분모로 사용하자.</p>
+</li>
+<li>
+<p><strong>idf(inverse document frequency)</strong></p>
+<p>$idf_t=log_{10}(N/df_t)$</p>
+<ul>
+<li>
+<p>N = 전체 document 수</p>
+</li>
+<li>
+<p>idf값을 완화 시키기 위해 log를 취해준다.</p>
+<p>log의 base가 꼭 10일 필요는 없다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>우선 lf_weight와 마찬가지로 idf를 계산하기 위한 함수를 선언해주었다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">idf_cal</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> round(math<span style="color:#f92672">.</span>log(N <span style="color:#f92672">/</span> x, <span style="color:#ae81ff">2</span>), <span style="color:#ae81ff">4</span>)
+</span></span></code></pre></div><p>단어의 idf를 구하기 위해, 단어가 전체 문서 중 몇 개의 문서에 포함 되는지 알아야 하는데, 해당 부분은 다음과 같은 과정으로 수행됐다.</p>
+<ol>
+<li>
+<p>corpus 전체 내용에서 okt를 통해 단어를 추출하고, 중복 단어를 제거하여 단어 목록을 만든다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>words <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>    doc_term <span style="color:#f92672">=</span> dict(Counter(okt<span style="color:#f92672">.</span>nouns(doc[<span style="color:#ae81ff">0</span>])))
+</span></span><span style="display:flex;"><span>    words<span style="color:#f92672">.</span>extend(list(doc_term))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>words <span style="color:#f92672">=</span> set(words)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># print(words)</span>
+</span></span></code></pre></div></li>
+<li>
+<p>단어 목록에서 단어마다 몇 개의 문서에 포함 되는지 확인한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> w <span style="color:#f92672">in</span> words:
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> w <span style="color:#f92672">in</span> doc[<span style="color:#ae81ff">0</span>]:
+</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    df[w] <span style="color:#f92672">=</span> count
+</span></span><span style="display:flex;"><span>df <span style="color:#f92672">=</span> dict(sorted(df<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
+</span></span></code></pre></div></li>
+<li>
+<p>단어마다 포함되는 문서의 개수를 dictionary에 저장한 후, 해당 값을 idf로 변환한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>df_raw <span style="color:#f92672">=</span> list(df<span style="color:#f92672">.</span>values())
+</span></span><span style="display:flex;"><span>idf <span style="color:#f92672">=</span> list(map(idf_cal, df_raw))
+</span></span></code></pre></div></li>
+<li>
+<p>나중에 단어의 idf를 탐색하기 위해 idf list를 dictionary 형태{key: word, value: idf}로 저장한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> df:
+</span></span><span style="display:flex;"><span>    df[key] <span style="color:#f92672">=</span> idf[i]
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>word_idf <span style="color:#f92672">=</span> dict(sorted(df<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>))
+</span></span></code></pre></div></li>
+</ol>
+<h3 id="5-문서의-tf-idf-weight-계산하기">5. 문서의 tf-idf Weight 계산하기.</h3>
+<p>📌 <strong>tf-idf weighting</strong></p>
+<ul>
+<li>
+<p>term의 tf-idf 가중치는 tf 가중치와 idf 가중치의 곱이다.</p>
+<p>$$
+W_{t,d}=(1+log_{10}tf_{t,d}) \times log_{10}(N/df_t)
+$$</p>
+</li>
+<li>
+<p>IR에서 가장 핵심적인 가중치 공식이다.</p>
+<p><strong>tf.idf</strong>나 <strong>tf x idf</strong>라고 부르기도 한다.</p>
+</li>
+<li>
+<p>가중치는 collection에서 term의 발생 빈도에 따라 증가한다.</p>
+</li>
+<li>
+<p>가중치는 컬렉션 내에 term이 희귀할수록 증가한다.</p>
+</li>
+</ul>
+<p>이제 거의 다 왔다. 그저 문서 각각에 포함된 단어별 tf 값에, 해당 단어를 word-idf 사전에 검색하여 값을 곱해주기만 하면 된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> doc[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>        doc[<span style="color:#ae81ff">1</span>][word] <span style="color:#f92672">=</span> round(word_idf[word] <span style="color:#f92672">*</span> doc[<span style="color:#ae81ff">1</span>][word], <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># print(doc[1])</span>
+</span></span></code></pre></div><p>이제 인덱싱은 완료되었으니, Query를 입력 받고 score를 계산하기만 하면 된다.</p>
+<h3 id="6-query-입력-창-구현하기">6. <strong>query 입력 창 구현하기</strong></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>    query <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;Enter Your Query:&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;query: &#34;</span> <span style="color:#f92672">+</span> query)
+</span></span><span style="display:flex;"><span>    query_term <span style="color:#f92672">=</span> okt<span style="color:#f92672">.</span>nouns(query)
+</span></span><span style="display:flex;"><span>    print(query_term)
+</span></span></code></pre></div><h3 id="7-score-계산하기">7. <strong>Score 계산하기</strong></h3>
+<p>$$
+\operatorname{Score}(q, d)=\sum_{t \in q\urcorner d} t f . i d f_{t, d}
+$$</p>
+<p>위 수식은 q(query)와 d(document)에서 공통되는 term을 가진 document의 score만 계산한다는 의미이다.</p>
+<p>score 계산은 위 수식처럼, 쿼리에 포함되는 단어 중 문서에 포함된 단어의 tf-idf를 더하면 된다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> doc <span style="color:#f92672">in</span> dic<span style="color:#f92672">.</span>values():
+</span></span><span style="display:flex;"><span>        score <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> q <span style="color:#f92672">in</span> query_term:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> doc[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>keys():
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> word <span style="color:#f92672">==</span> q:
+</span></span><span style="display:flex;"><span>                    score <span style="color:#f92672">+=</span> doc[<span style="color:#ae81ff">1</span>][word]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(doc) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>            doc<span style="color:#f92672">.</span>append(score)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            doc[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> score
+</span></span></code></pre></div><h3 id="8-문서의-score가-높은-순서대로-보여주기">8. 문서의 Score가 높은 순서대로 보여주기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    fin_dic <span style="color:#f92672">=</span> sorted(dic<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">2</span>], reverse<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> result <span style="color:#f92672">in</span> fin_dic:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> i <span style="color:#f92672">&gt;=</span> OUT:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> result[<span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">2</span>]:
+</span></span><span style="display:flex;"><span>            print(i, result)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            print(i, <span style="color:#e6db74">&#34;검색 결과가 없습니다.&#34;</span>)
+</span></span></code></pre></div><p><img src="tfi5.png" alt="tfi"></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

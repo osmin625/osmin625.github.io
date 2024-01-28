@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>SGNS: Skip-Gram with Negative Sampling</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Word2Vec, Skip-Gram, Binary Classification'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/sgns/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SGNS: Skip-Gram with Negative Sampling">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SGNS: Skip-Gram with Negative Sampling">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/sgns/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/sgns/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/sgns/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>SGNS: Skip-Gram with Negative Sampling</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">3월 31, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/word2vec">Word2Vec</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/skip-gram">Skip-Gram</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/binary-classification">Binary Classification</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>SG를 이진 분류 문제로 바꾼 모델</p>
+<h3 id="negative-sampling">Negative Sampling</h3>
+<p>주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것</p>
+<p><img src="/imgs/SGNS-2.png" alt="SGNS"></p>
+<p>Negative Sampling의 개수는 하이퍼파라미터에 해당한다.</p>
+<ul>
+<li>학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다.</li>
+<li>positive sample 하나당 k개 샘플링</li>
+</ul>
+<p>중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.</p>
+<!-- raw HTML omitted -->
+<blockquote>
+<p>만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,</p>
+<p>특정 단어, 가령 &ldquo;dog&quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &ldquo;dog dog&quot;를 연속으로 쓸 일은 없으니..) word2vec 모델 상으로는 높은 값을 뱉어낼 수 밖에 없습니다.</p>
+<p>이러한 언어의 특수성을 통해 유추해보건대, 
+문장 내에서는 하나의 단어가 중심 단어의 역할을 할 때와 주변(맥락) 단어의 역할을 할 때에 
+서로 다른 표현력(representation power)을 가지는 것이 아닐까 싶습니다.</p>
+<p>해당 stackoverflow 답변에서 혹자는 
+“&lsquo;문장 내 단어 간 유사도/거리&rsquo;를 측정할 때 하나의 벡터 공간만을 사용하게 되면
+결국 그냥 두 단어 임베딩 간의 유사도/거리를 측정하는 것과 별반 다르지 않기 때문에 
+문장의 문맥을 담을 수 없다”는 식으로 설명하는데, 
+이 또한 비슷한 맥락이라고 볼 수 있을 것 같습니다.</p>
+</blockquote>
+<!-- raw HTML omitted -->
+<h2 id="학습-과정">학습 과정</h2>
+<ol>
+<li>
+<p>중심 단어를 기준으로 주변 단어들과의 내적 연산 수행</p>
+</li>
+<li>
+<p>실수 내적값에 sigmoid을 취하여 예측값을 구한다.</p>
+</li>
+<li>
+<p>예측값과 레이블(0,1)의 오차를 구한다.</p>
+</li>
+<li>
+<p>역전파(backpropagation)를 통해 각 임베딩이 갱신되며 모델이 수렴한다.</p>
+</li>
+<li>
+<p>이 때, 최종적으로 생성된 워드 임베딩이 2개이므로 선택적으로 하나만 사용하거나 평균내어 사용한다.</p>
+<p><img src="/imgs/SGNS-1.png" alt="SGNS"></p>
+</li>
+</ol>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

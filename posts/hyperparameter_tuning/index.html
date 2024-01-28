@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Hyperparameter Tuning'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/hyperparameter_tuning/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/hyperparameter_tuning/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/hyperparameter_tuning/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/hyperparameter_tuning/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">3월 13, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/hyperparameter-tuning">Hyperparameter Tuning</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><strong>하이퍼 파라미터</strong></p>
+<p>모델 스스로 학습하지 않는 값.</p>
+<p>사람이 직접 지정해주어야 한다.</p>
+<h3 id="결과를-개선하고-싶을-때">결과를 개선하고 싶을 때</h3>
+<ol>
+<li>
+<p>모델을 바꾸기</p>
+<p>중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.</p>
+</li>
+<li>
+<p><strong>데이터를 바꾸기 →</strong> 성능 개선을 위해 가장 중요하다.</p>
+</li>
+<li>
+<p>하이퍼 파라미터 Tuning</p>
+<p>약간의 성능 개선이 간절한 경우 수행한다.</p>
+<p>마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.</p>
+</li>
+<li>
+<p>generalization 등 적용</p>
+</li>
+</ol>
+<h3 id="hyperparameter-tuning">Hyperparameter Tuning</h3>
+<p>가장 기본적인 방법 - grid vs random</p>
+<ul>
+<li>
+<p>grid</p>
+<p>적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</p>
+</li>
+<li>
+<p>random</p>
+<p>값을 랜덤하게 찾아서 가장 성능이 잘나오는 것을 선택한다.</p>
+</li>
+</ul>
+<p><img src="hyperparameter_tuning.png" alt="hyperparameter"></p>
+<p>요즘에는 잘 쓰이지 않고, 베이지안 기반 기법이 많이 쓰인다.</p>
+<h3 id="ray">Ray</h3>
+<p>multi-node multi processing 지원 모듈</p>
+<p>ML/DL의 병렬 처리를 위해 개발된 모듈</p>
+<p>기본적으로 현재의 분산병렬 ML/DL 모듈의 표준</p>
+<p>Hyperparameter Search를 위한 다양한 모듈 제공</p>
+<p><img src="hyperparameter_tuning1.png" alt="hyperparameter"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#34;./data&#34;</span>)
+</span></span><span style="display:flex;"><span>load_data(data_dir)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># search space 지정</span>
+</span></span><span style="display:flex;"><span>config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;l1&#34;</span>: tune<span style="color:#f92672">.</span>sample_from(<span style="color:#66d9ef">lambda</span> _: <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>)),
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;l2&#34;</span>: tune<span style="color:#f92672">.</span>sample_from(<span style="color:#66d9ef">lambda</span> _: <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>)),
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;lr&#34;</span>: tune<span style="color:#f92672">.</span>loguniform(<span style="color:#ae81ff">1e-4</span>, <span style="color:#ae81ff">1e-1</span>),
+</span></span><span style="display:flex;"><span>		<span style="color:#e6db74">&#34;batch_size&#34;</span>: tune<span style="color:#f92672">.</span>choice([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">16</span>])
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 학습 스케줄링 알고리즘 지정</span>
+</span></span><span style="display:flex;"><span>scheduler <span style="color:#f92672">=</span> ASHAScheduler(
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># ASHAS : 실행 도중 낮은 loss를 가지는 metric들을 버리는 알고리즘</span>
+</span></span><span style="display:flex;"><span>		metric<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;loss&#34;</span>, mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;min&#34;</span>, max_t<span style="color:#f92672">=</span>max_num_epochs, grace_period<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, reduction_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 결과 출력 양식 지정</span>
+</span></span><span style="display:flex;"><span>reporter <span style="color:#f92672">=</span> CLIReporter(
+</span></span><span style="display:flex;"><span>		metric_columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;loss&#34;</span>, <span style="color:#e6db74">&#34;accuracy&#34;</span>, <span style="color:#e6db74">&#34;training_iteration&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 병렬 처리 양식으로 학습 시행</span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> tune<span style="color:#f92672">.</span>run(
+</span></span><span style="display:flex;"><span>		partial(train_cifar, data_dir<span style="color:#f92672">=</span>data_dir),
+</span></span><span style="display:flex;"><span>		resources_per_trial<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;cpu&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;gpu&#34;</span>: gpus_per_trial},
+</span></span><span style="display:flex;"><span>		config<span style="color:#f92672">=</span>config, num_samples<span style="color:#f92672">=</span>num_samples,
+</span></span><span style="display:flex;"><span>		scheduler<span style="color:#f92672">=</span>scheduler,
+</span></span><span style="display:flex;"><span>		progress_reporter<span style="color:#f92672">=</span>reporter)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>data_dir <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>abspath(<span style="color:#e6db74">&#34;./data&#34;</span>)
+</span></span><span style="display:flex;"><span>    load_data(data_dir)
+</span></span><span style="display:flex;"><span>    config <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;l1&#34;</span>: tune<span style="color:#f92672">.</span>sample_from(<span style="color:#66d9ef">lambda</span> _: <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>)),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;l2&#34;</span>: tune<span style="color:#f92672">.</span>sample_from(<span style="color:#66d9ef">lambda</span> _: <span style="color:#ae81ff">2</span> <span style="color:#f92672">**</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">9</span>)),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;lr&#34;</span>: tune<span style="color:#f92672">.</span>loguniform(<span style="color:#ae81ff">1e-4</span>, <span style="color:#ae81ff">1e-1</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;batch_size&#34;</span>: tune<span style="color:#f92672">.</span>choice([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">16</span>])
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    scheduler <span style="color:#f92672">=</span> ASHAScheduler(
+</span></span><span style="display:flex;"><span>        metric<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;loss&#34;</span>,
+</span></span><span style="display:flex;"><span>        mode<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;min&#34;</span>,
+</span></span><span style="display:flex;"><span>        max_t<span style="color:#f92672">=</span>max_num_epochs,
+</span></span><span style="display:flex;"><span>        grace_period<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>        reduction_factor<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    reporter <span style="color:#f92672">=</span> CLIReporter(
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># parameter_columns=[&#34;l1&#34;, &#34;l2&#34;, &#34;lr&#34;, &#34;batch_size&#34;],</span>
+</span></span><span style="display:flex;"><span>        metric_columns<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;loss&#34;</span>, <span style="color:#e6db74">&#34;accuracy&#34;</span>, <span style="color:#e6db74">&#34;training_iteration&#34;</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> tune<span style="color:#f92672">.</span>run(
+</span></span><span style="display:flex;"><span>        partial(train_cifar, data_dir<span style="color:#f92672">=</span>data_dir),
+</span></span><span style="display:flex;"><span>        resources_per_trial<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;cpu&#34;</span>: <span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;gpu&#34;</span>: gpus_per_trial},
+</span></span><span style="display:flex;"><span>        config<span style="color:#f92672">=</span>config,
+</span></span><span style="display:flex;"><span>        num_samples<span style="color:#f92672">=</span>num_samples,
+</span></span><span style="display:flex;"><span>        scheduler<span style="color:#f92672">=</span>scheduler,
+</span></span><span style="display:flex;"><span>        progress_reporter<span style="color:#f92672">=</span>reporter)
+</span></span></code></pre></div><hr>
+<ol>
+<li>모델의 모든 layer에서 learning rate가 항상 같아야 할까?</li>
+<li>하이퍼 파라미터 탐색의 우선순위 어떻게 될까?</li>
+</ol>
+<ul>
+<li><a href="https://pytorch.org/tutorials/beginner/hyperparameter_tuning_tutorial.html">Pytorch와 Ray 같이 사용하기</a></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

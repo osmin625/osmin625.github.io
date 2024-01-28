@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>손실 함수(Loss Function)에 대해 알아보자.</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Loss Function, MAE, MSE, RMSE, Cross-Entropy, Regression, Classification'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/loss-function/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="손실 함수(Loss Function)에 대해 알아보자.">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="손실 함수(Loss Function)에 대해 알아보자.">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/loss-function/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/loss-function/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/loss-function/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>손실 함수(Loss Function)에 대해 알아보자.</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">11월 19, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/loss-function">Loss Function</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/mae">MAE</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/mse">MSE</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/rmse">RMSE</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/cross-entropy">Cross-Entropy</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/regression">Regression</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/classification">Classification</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p>✔️ 간단 요약<br>
+신경망의 학습 중 받는 벌점의 기준<br>
+회귀와 분류 문제에서 다른 loss function을 사용한다.<br>
+{: .prompt-info }
+Gradient, MAE, MSE, RMSE</p>
+</blockquote>
+<p><strong>Loss : 예측 값과 실제 값의 차이</strong></p>
+<p>신경망의 학습 중 오답에 대해 받는 벌점</p>
+<p>두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.</p>
+<p>ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.</p>
+<h3 id="loss-function"><strong>Loss Function</strong></h3>
+<p>신경망이 벌점을 받는 기준</p>
+<p>신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 <strong>함수</strong>.</p>
+<p>나는 손실 함수가 함수라는 것을 제대로 인지하지 못했을 때 모델 평가 Metric과 헷갈렸기 때문에, 손실 <strong>함수</strong>라는 것을 다시 한번 인지하고 지나가자.</p>
+<p>2차원 그래프로 비유했을 때, 가중치 $\mathbf w$는 x좌표에 해당하고 손실 함수의 값은 y좌표에 해당한다.</p>
+<p>손실 함수의 최솟값이 되는 지점에 $\mathbf w$를 위치시키는 것이 신경망의 목표이다.</p>
+<p>고등 수학을 빌려 설명하자면, 단순히 미분값이 0이 되는 지점을 파악하여 손실 함수의 최솟값을 구하면 된다.</p>
+<p>하지만 고차원에서의 손실 함수 미분은 쉽지 않을 뿐더러, 함수 전체에서 미분값이 0이 되는 지점을 바로 찾아내는 것은 현실적으로 불가능하다.</p>
+<p>따라서, 신경망은 $\mathbf w$에서 손실 함수의 기울기를 측정하여 loss가 낮아지는 방향으로 가중치를 조금씩 이동하는 전략을 사용한다.</p>
+<p>이 때의 조금을 결정하는 것이 Optimizer이다.</p>
+<p>해결하고자 하는 문제에 맞게 loss function을 설정해 사용해주면 된다.</p>
+<p><img src="loss_function.png" alt="Loss"></p>
+<p>신경망 학습을 통해 손실 함수 $J$의 최저점을 찾아야 한다.</p>
+<h2 id="신경망의-학습-알고리즘"><strong>신경망의 학습 알고리즘</strong></h2>
+<ol>
+<li>훈련 데이터 입력</li>
+<li>매개변수 $\mathbf w$를 난수로 초기화</li>
+<li>while (true):
+<ol>
+<li>손실 함수$J(\mathbf w)$ 계산(loss 계산)</li>
+<li>loss를 낮추는 방향 $\Delta \mathbf w$ 계산</li>
+<li>$\mathbf w = \mathbf w + \Delta \mathbf w$</li>
+</ol>
+</li>
+<li>return 가중치(매개변수)</li>
+</ol>
+<h2 id="손실-함수-jw의-조건"><strong>손실 함수 J(w)의 조건</strong></h2>
+<ul>
+<li>w가 훈련 집합에 있는 샘플을 모두 맞히면, $J(w) = 0$이다.</li>
+<li>w가 틀리는 샘플이 많을수록 $J(w)$의 값이 크다.</li>
+</ul>
+<p>위의 조건을 만족하는 수식은 아주 다양하기 때문에, 적절한 손실 함수를 선택해야 한다.</p>
+<h2 id="손실-함수의-종류">손실 함수의 종류</h2>
+<h3 id="회귀regression">회귀(Regression)</h3>
+<ul>
+<li>
+<p><strong>MAE(Mean Absolute Error)</strong> — $\left|정답 - 예측값\right|$의 평균</p>
+<blockquote>
+<p><strong>간단 요약</strong></p>
+<p>틀린 만큼 벌점을 얻는다.</p>
+<p>모든 지점에서 그래디언트는 동일하다.</p>
+</blockquote>
+<p>가장 간단한 손실 함수.</p>
+<p>제곱을 취하지 않기 때문에, 모든 오차는 그대로 반영된다.</p>
+<p>직관적으로 말하자면, 오차만큼 벌점이 쌓인다.</p>
+<p>기울기 관점으로, 모든 가중치에서 그래디언트의 크기가 동일하다.</p>
+<p>따라서 MSE나 RMSE에 비해 상대적으로 이상치에 대해 Robust하다.</p>
+<p>(이상치도 오차만큼만 벌점이 쌓이기 때문)</p>
+<p>$$
+\frac{1}{n} \sum_{i=1}^n\left|{y_i}-\hat y_i\right|
+$$</p>
+<p><img src="loss_function1.png" alt="Loss_function"></p>
+</li>
+<li>
+<p><strong>MSE(Mean Squared Error)</strong> — $(정답 - 예측값)^2$의 평균</p>
+<blockquote>
+<p><strong>간단 요약</strong></p>
+<p>정답과의 거리가 멀수록 더 많은 벌점을 부여하자!</p>
+<p>오차를 제곱 하면 되겠네?</p>
+<p>정답에서 멀어질수록 그래디언트의 크기가 증가한다.</p>
+</blockquote>
+<p>$$
+M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
+$$</p>
+<p><img src="loss_function2.png" alt="Loss_function"></p>
+<p>미니 배치 단위로 처리(샘플의 오차를 평균 낸다.)</p>
+<p>$$
+\begin{aligned}J\left(\mathbf{U}^1, \mathbf{U}^2\right) &amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}|\mathbf{y}-\mathbf{0}|^2 \&amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\left|\mathbf{y}-\tau_2\left(\mathbf{U}^2 \tau_1\left(\mathbf{U}^1 \mathbf{x}^{\mathrm{T}}\right)\right)\right|^2\end{aligned}
+$$</p>
+<ul>
+<li>오차값에 제곱을 취하기 때문에 0~1 사이의 값은 상대적으로 작게 반영되고, 1보다 큰 값은 상대적으로 더 크게 반영된다.</li>
+<li>학습이 느려지거나 학습이 안되는 상황을 초래할 가능성이 있다.</li>
+<li>정답과 예측값의 차이가 클수록 더 크게 반영되기 때문에, 이상치에 매우 민감하다.</li>
+</ul>
+</li>
+<li>
+<p><strong>RMSE(Root MSE)</strong> — $\sqrt{(정답 - 예측값)^2\text {의 평}균}$</p>
+<blockquote>
+<p><strong>간단 요약</strong></p>
+<p>MSE에 루트 씌운 값.</p>
+<p>얼핏 MAE와 동일한 것 아니야? 생각할 수 있지만, 계산 순서에서 차이가 발생하고, $1\over n$이 아니라 $1\over \sqrt n$을 했다는 점이 MAE와 다르다.</p>
+</blockquote>
+<p>$$
+R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2}
+$$</p>
+<p><img src="loss_function3.png" alt="Loss_function"></p>
+<p>MSE와 마찬가지로 각 오차값의 크기에 따라 다른 그래디언트를 가지게 된다.</p>
+</li>
+</ul>
+<p><img src="loss_function4.png" alt="Loss_function"></p>
+<h3 id="분류classification">분류(Classification)</h3>
+<p><strong>Entropy</strong></p>
+<p>확률 분포의 무작위성(불확실성)을 측정하는 함수</p>
+<p>$$
+H(x)=-\sum_{i=1, k} P\left(e_i\right) \log P\left(e_i\right)
+$$</p>
+<ul>
+<li>
+<p><strong>Cross-Entropy</strong></p>
+<p><strong>정보량을 상징한다. → 불공정성 문제 해결</strong></p>
+<p>두 확률 분포 P와 Q가 다른 정도를 측정하는 함수</p>
+<p>$$
+H(P, Q)=-\sum_{i=1, k} P\left(e_i\right) \log Q\left(e_i\right)
+$$</p>
+<ul>
+<li>
+<p>공정한 주사위에는 특별한 정보가 존재하지 않는다.</p>
+<p>$$
+-\left(\frac{1}{6} \log \frac{1}{6}+\ldots+\frac{1}{6} \log \frac{1}{6}\right)=1.7918
+$$</p>
+</li>
+<li>
+<p>찌그러진 주사위에서는 특정 값이 더 잘나온다는 정보가 추가된다.</p>
+<p>공정한 주사위와 찌그러진 주사위의 교차 엔트로피</p>
+<p>$$
+-\left(\frac{1}{6} \log \frac{1}{2}+\frac{1}{6} \log \frac{1}{10}+\cdots+\frac{1}{6} \log \frac{1}{10}\right)=2.0343
+$$</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Binary Cross-Entropy</strong></p>
+<p><code>tf.nn.sigmoid_cross_entropy_with_logits( )</code></p>
+<p>$$
+B C E=-\frac{1}{N} \sum_{i=0}^N y_i \cdot \log \left(\hat{y_i}\right)+\left(1-y_i\right) \cdot \log \left(1-\hat{y_i}\right)
+$$</p>
+</li>
+<li>
+<p><strong>Categorical Cross-Entropy</strong></p>
+<p><code>tf.nn.softmax_cross_entropy_with_logits_v2( )</code></p>
+<p>$$
+C C E=-\frac{1}{N} \sum_{i=0}^N \sum_{j=0}^J y_j \cdot \log \left(\hat{y_j}\right)+\left(1-y_j\right) \cdot \log \left(1-\hat{y_j}\right)
+$$</p>
+</li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

@@ -6,12 +6,13 @@
     <description>Recent content in Weekly on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Sun, 06 Aug 2023 01:22:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/categories/weekly/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>5F 8월 1주차 주간회고록</title>
-      <link>https://osmin625.github.io/posts/2023-08-06-5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-08-06-5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</guid>
+      <link>https://osmin625.github.io/posts/5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</link>
+      <pubDate>Sun, 06 Aug 2023 01:22:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</guid>
       <description>8월 2일 네트워킹 데이 때 기업에서 채용담당자 분들과 면담할 기회가 있었다.&#xA;어떤 캠퍼가 기업관계자분께 *“신입 개발자에게 가장 중요한 것이 무엇이냐”*고 물었고, 이에 대한 대답으로&#xA;문제를 잘 정의하고, 다양한 솔루션을 시도하는 역량&#xA;이 중요하다고 말씀해주셨다.&#xA;이 말을 캠퍼 50명과 함께 듣고 있었는데, 마치 나를 해주는 충고처럼 느껴졌다.&#xA;아무래도 PM으로 프로젝트를 주도하다보니, 문제 정의와 다양한 솔루션 제안에서 많은 고민을 했기 때문에 더 크게 와닿았던 것이 아닐까 생각한다.&#xA;그 충고를 듣고 보니 나는 일부 솔루션에 매몰되는 성향이 있었다.</description>
     </item>
   </channel>

@@ -9,18 +9,11 @@
     <lastBuildDate>Wed, 06 May 2020 21:29:01 +0800</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://osmin625.github.io/posts/markdown-syntax/</link>
-      <pubDate>Wed, 19 Jun 2019 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    <item>
       <title>Theme Documentation - Advanced</title>
       <link>https://osmin625.github.io/posts/theme-documentation-advanced/</link>
       <pubDate>Wed, 06 May 2020 21:29:01 +0800</pubDate>
       <guid>https://osmin625.github.io/posts/theme-documentation-advanced/</guid>
-      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Content Types This theme supports two types of content types: post and page. To specify them, you need to add them in your markdown metadata.&#xA;Post This is the default blog post type which will be shown in your &amp;ldquo;Posts&amp;rdquo; section and who&amp;rsquo;s tags will be indexed. Basically, a normal blog post.&#xA;--- title: &amp;#34;Hello, world!&amp;#34; date: 2021-01-01 description: &amp;#34;A blog post&amp;#34; image: &amp;#34;/path/to/image.</description>
+      <description>Gokarna is an opinionated theme with a focus on minimalism and simplicity.&#xA;Content Types This theme supports two types of content types: post and page. To specify them, you need to add them in your markdown metadata.&#xA;Post This is the default blog post type which will be shown in your &amp;ldquo;Posts&amp;rdquo; section and who&amp;rsquo;s tags will be indexed. Basically, a normal blog post.&#xA;--- title: &amp;#34;Hello, world!&amp;#34; date: 2021-01-01Tdescription: &amp;#34;A blog post&amp;#34; image: &amp;#34;/path/to/image.</description>
     </item>
     <item>
       <title>Theme Documentation - Basics</title>

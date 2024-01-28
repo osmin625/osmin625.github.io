@@ -173,6 +173,288 @@
     </nav>
 </header>
 <main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Theme Documentation - Basics</h1>
+        <small role="doc-subtitle">A guide to getting started with Gokarna</small>
+        <p class="post-date">3월 6, 2020
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/installation">installation</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/configuration">configuration</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/markdown">markdown</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p>Gokarna is an opinionated theme with a focus on minimalism and simplicity.</p>
+<h2 id="installation">Installation</h2>
+<p>The following steps are here to help you initialize your new website. If you don’t know Hugo at all, we strongly suggest you learn more about it by following this <a href="https://gohugo.io/getting-started/quick-start/">great documentation for beginners</a>.</p>
+<h3 id="a-create-your-project">a. Create Your Project</h3>
+<p>Hugo provides a <code>new</code> command to create a new website:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new site my_website
+</span></span><span style="display:flex;"><span>cd my_website
+</span></span></code></pre></div><h3 id="b-install-the-theme">b. Install the Theme</h3>
+<p>The theme’s repository is: <a href="https://github.com/526avijitgupta/gokarna">https://github.com/526avijitgupta/gokarna</a>.</p>
+<p>You can clone this repository to the <code>themes</code> directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git clone https://github.com/526avijitgupta/gokarna.git themes/gokarna
+</span></span></code></pre></div><p>Or, create an empty git repository and make this repository a submodule of your site directory:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git submodule add https://github.com/526avijitgupta/gokarna.git themes/gokarna
+</span></span></code></pre></div><h3 id="basic-configuration">c. Basic Configuration</h3>
+<p>The following is a basic configuration for the gokarna theme:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#34;http://example.org/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">defaultContentLanguage</span> = <span style="color:#e6db74">&#34;en&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;en&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;My New Hugo Site&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;gokarna&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Automatically generate robots.txt</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">enableRobotsTXT</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">menu</span>]
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Unique identifier for a menu item</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;posts&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/posts/&#34;</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># You can add extra information before the name (HTML format is supported), such as icons</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pre</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># You can add extra information after the name (HTML format is supported), such as icons</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">post</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Display name</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Posts&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Weights are used to determine the ordering</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;tags&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Tags&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;/tags/&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;github&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">url</span> = <span style="color:#e6db74">&#34;https://github.com&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># We use feather-icons: https://feathericons.com/</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pre</span> = <span style="color:#e6db74">&#34;&lt;span data-feather=&#39;github&#39;&gt;&lt;/span&gt;&#34;</span>
+</span></span></code></pre></div><h3 id="d-create-your-first-post">d. Create Your First Post</h3>
+<p>Here is the way to create your first post:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo new posts/first_post.md
+</span></span></code></pre></div><p>Feel free to edit the post file by adding some sample content and replacing the title value in the beginning of the file.</p>
+<p>For posts you need to add <code>type: &quot;post&quot;</code> in the markdown metadata. We currently support 2 types of content:</p>
+<ol>
+<li>Post (<code>type: &quot;post&quot;</code>): A normal blog-post with tags, date, &amp; content.</li>
+<li>Page (<code>type: &quot;page&quot;</code>): A standalone content page that will just render the markdown you wrote. You can use it to write custom pages which should not be a part of posts. Like showing your projects portfolio. You can read in detail about this on the <a href="/posts/theme-documentation-advanced/#content-types">Theme Documentation - Advanced</a> page.</li>
+</ol>
+<h3 id="e-launching-the-website-locally">e. Launching the Website Locally</h3>
+<p>Launch by using the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo serve
+</span></span></code></pre></div><p>Go to <code>http://localhost:1313</code>.</p>
+<h3 id="f-build-the-website">f. Build the Website</h3>
+<p>When your site is ready to deploy, run the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
+</span></span></code></pre></div><p>A <code>public</code> folder will be generated, containing all static content and assets for your website. It can now be deployed on any web server.</p>
+<p>The website can be automatically published and hosted with <a href="https://www.netlify.com/">Netlify</a>, <a href="https://gohugo.io/hosting-and-deployment/hosting-on-aws-amplify/">AWS Amplify</a>, <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Github pages</a>, <a href="https://gohugo.io/hosting-and-deployment/hosting-on-render/">Render</a> and more&hellip;</p>
+<h2 id="configuration">Configuration</h2>
+<p>In addition to <a href="https://gohugo.io/overview/configuration/">Hugo global configuration</a> and <a href="#basic-configuration">menu configuration</a>, <strong>gokarna</strong> lets you define the following parameters in your site configuration (here is a <code>config.toml</code>, whose values are default).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># URL for the avatar on homepage</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">avatarURL</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Choose one of size-xs, size-s, size-m, size-l &amp; size-xl. (Default: size-m)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">avatarSize</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Description to display on homepage</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Sky above, sand below &amp; peace within&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Accent color is displayed when you hover over &lt;a&gt; tags</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">accentColor</span> = <span style="color:#e6db74">&#34;#FF4D4D&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Display &#34;back to top&#34; button on posts</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ShowBackToTopButton</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># You can use this to inject any HTML in the &lt;head&gt; tag.</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Ideal usecase for this is to import custom js/css or add your analytics snippet</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">customHeadHTML</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Keywords relevant for SEO</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">metaKeywords</span> = [<span style="color:#e6db74">&#34;blog&#34;</span>, <span style="color:#e6db74">&#34;gokarna&#34;</span>, <span style="color:#e6db74">&#34;hugo&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># If you want to display posts on the homepage, the options are</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># &#34;popular&#34; (order posts by weight), &#34;recent&#34; (order posts by date)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># or &#34;&#34; (do not display, default option)</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">showPostsOnHomePage</span> = <span style="color:#e6db74">&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># Footer text</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">footer</span> = <span style="color:#e6db74">&#34;The Marauders&#34;</span>
+</span></span></code></pre></div><h3 id="avatar-url">Avatar URL</h3>
+<p>This is the image url for the avatar on the homepage and the header.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">avatarURL</span> = <span style="color:#e6db74">&#34;/images/avatar.jpg&#34;</span>
+</span></span></code></pre></div><h3 id="avatar-size">Avatar Size</h3>
+<p>You have an option to change the avatar size on the homepage. Options are: <code>size-xs</code>, <code>size-s</code>, <code>size-m</code>, <code>size-l</code> &amp; <code>size-xl</code>. (Default: <code>size-m</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">avatarSize</span> = <span style="color:#e6db74">&#34;size-l&#34;</span>
+</span></span></code></pre></div><h3 id="description">Description</h3>
+<p>Description to display on homepage below the title and avatar.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">description</span> = <span style="color:#e6db74">&#34;Hello, world!&#34;</span>
+</span></span></code></pre></div><h3 id="accent-color">Accent Color</h3>
+<p>Accent color is displayed when you hover over <code>&lt;a&gt;</code> tags. It takes a hex/rgb color code. Default is <code>#FF4D4D</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">accentColor</span> = <span style="color:#e6db74">&#34;#08F&#34;</span>
+</span></span></code></pre></div><h3 id="posts-on-home-page">Posts on home page</h3>
+<p>If you want to display posts on the homepage, the options are:</p>
+<ul>
+<li><code>popular</code>: Show popular posts on home page if the value is set to popular. It sorts the all the posts by it’s weight attribute in ascending order. Read more about it <a href="/posts/theme-documentation-advanced/#weights">here</a>.</li>
+<li><code>recent</code>: Show recent posts on home page if the value is set to recent</li>
+<li>Do not show anything if the variable is unset or an empty string.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">showPostsOnHomePage</span> = <span style="color:#e6db74">&#34;popular&#34;</span>
+</span></span></code></pre></div><h3 id="date-format">Date format</h3>
+<p>The date format being used across can be chaged. For valid date strings see: <a href="https://pkg.go.dev/time#pkg-constants">https://pkg.go.dev/time#pkg-constants</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">dateFormat</span> = <span style="color:#e6db74">&#34;2 January, 2006&#34;</span>
+</span></span></code></pre></div><h3 id="footer">Footer</h3>
+<p>Text to display in the footer section</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">footer</span> = <span style="color:#e6db74">&#34;Text in footer&#34;</span>
+</span></span></code></pre></div><h3 id="previous-and-next-buttons">Previous and Next buttons</h3>
+<p>At the bottom of a post, show the previous and next post chronologically.</p>
+<p><strong>Warning</strong>: Not compatible with the <code>.Weight</code> parameter.</p>
+<p>If any post YAML contains <code>weight:</code>, the posts will not appear by Date. See <a href="https://gohugo.io/templates/lists#default-weight--date--linktitle--filepath">Hugo&rsquo;s default sort</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">togglePreviousAndNextButtons</span> = <span style="color:#e6db74">&#34;true&#34;</span>
+</span></span></code></pre></div><h3 id="displaying-content-on-the-homepage">Displaying content on the homepage</h3>
+<p>Content to display on homepage below the social icons, using the contents of <code>content/_index.md</code>.</p>
+<h3 id="custom-head-html">Custom Head HTML</h3>
+<p>You can add custom HTML in head section</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">customHeadHTML</span> = <span style="color:#e6db74">&#34;&lt;script&gt;console.log(&#39;Any HTML&#39;)&lt;/script&gt;&#34;</span>
+</span></span></code></pre></div><p>Read more in the advanced section <a href="/posts/theme-documentation-advanced/#custom-head-html">here</a></p>
+<h3 id="robotstxt">robots.txt</h3>
+<p>Automatically generate robots.txt</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">enableRobotsTXT</span> = <span style="color:#66d9ef">true</span>
+</span></span></code></pre></div><h3 id="favicons-browserconfig-manifest">Favicons, Browserconfig, Manifest</h3>
+<p>It is recommended to put your own favicons:</p>
+<ul>
+<li>apple-touch-icon.png (180x180)</li>
+<li>favicon-32x32.png (32x32)</li>
+<li>favicon-16x16.png (16x16)</li>
+<li>mstile-150x150.png (150x150)</li>
+<li>android-chrome-192x192.png (192x192)</li>
+<li>android-chrome-512x512.png (512x512)</li>
+</ul>
+<p>into <code>/static</code> directory. They’re easily created via <a href="https://favicon.io">favicon.io</a> or <a href="https://realfavicongenerator.net/">realfavicongenerator.net</a>.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#installation">Installation</a>
+          <ul>
+            <li><a href="#a-create-your-project">a. Create Your Project</a></li>
+            <li><a href="#b-install-the-theme">b. Install the Theme</a></li>
+            <li><a href="#basic-configuration">c. Basic Configuration</a></li>
+            <li><a href="#d-create-your-first-post">d. Create Your First Post</a></li>
+            <li><a href="#e-launching-the-website-locally">e. Launching the Website Locally</a></li>
+            <li><a href="#f-build-the-website">f. Build the Website</a></li>
+          </ul>
+        </li>
+        <li><a href="#configuration">Configuration</a>
+          <ul>
+            <li><a href="#avatar-url">Avatar URL</a></li>
+            <li><a href="#avatar-size">Avatar Size</a></li>
+            <li><a href="#description">Description</a></li>
+            <li><a href="#accent-color">Accent Color</a></li>
+            <li><a href="#posts-on-home-page">Posts on home page</a></li>
+            <li><a href="#date-format">Date format</a></li>
+            <li><a href="#footer">Footer</a></li>
+            <li><a href="#previous-and-next-buttons">Previous and Next buttons</a></li>
+            <li><a href="#displaying-content-on-the-homepage">Displaying content on the homepage</a></li>
+            <li><a href="#custom-head-html">Custom Head HTML</a></li>
+            <li><a href="#robotstxt">robots.txt</a></li>
+            <li><a href="#favicons-browserconfig-manifest">Favicons, Browserconfig, Manifest</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+
+    
+
         </main><footer class="footer">
     
     

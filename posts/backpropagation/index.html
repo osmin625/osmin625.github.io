@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Back Propagation(오차 역전파 알고리즘)</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Loss Function, Gradient Descent, Back Propagation'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/backpropagation/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Back Propagation(오차 역전파 알고리즘)">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Back Propagation(오차 역전파 알고리즘)">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/backpropagation/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/backpropagation/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/backpropagation/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Back Propagation(오차 역전파 알고리즘)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">4월 22, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/loss-function">Loss Function</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/gradient-descent">Gradient Descent</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/back-propagation">Back Propagation</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><strong>이 알고리즘으로 인해 ML Network에서의 학습이 가능하다는 것이 알려져, 암흑기에 있던 신경망 학계가 다시 관심을 받게 되었다.</strong></p>
+<p>출력층에서 시작하여 역방향으로 오류를 전파한다는 뜻에서 오류 역전파라 부른다.</p>
+<ol>
+<li>내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다.</li>
+<li>오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다.</li>
+</ol>
+<p><img src="bp.png" alt="bp"></p>
+<p>직관적인 이해는 끝났다. 이제 제대로 이해해보자.</p>
+<p>오차 역전파가 중요한 이유를 알고 싶다면, <a href="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">여기</a>를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.</p>
+<h2 id="오차-역전파">오차 역전파</h2>
+<p>신경망을 학습하는 방법.</p>
+<p>연쇄 법칙을 활용하여 수치 미분에서의 연산량을 대폭 감소시킨다.</p>
+<p>수치 미분과 마찬가지로 손실 함수 위에서의 가중치의 기울기를 알게 해준다.</p>
+<p>즉, 해당 가중치가 얼마나 오차에 영향을 끼치는지 알게 해준다.</p>
+<p>(기울기에 대한 손실 함수의 미분)</p>
+<p>특정 가중치 w에 대해, 오차 L 위에서의 기울기는 $\partial L\over \partial w$이다.</p>
+<h3 id="연쇄-법칙chain-rule">연쇄 법칙(chain rule)</h3>
+<p><strong>합성 함수의 미분은 합성 함수를 구성하는 각 함수의 미분의 곱으로 나타낼 수 있다.</strong></p>
+<p>$$
+{\partial z\over \partial x} = {\partial z\over \partial t}{\partial t\over \partial x}
+$$</p>
+<p>합성 함수</p>
+<p>여러 함수로 구성된 함수</p>
+<ul>
+<li>ex) $z = (x + y)^2$
+<ul>
+<li>$z = t^2$</li>
+<li>$t = x + y$</li>
+</ul>
+</li>
+</ul>
+<h3 id="순전파-역전파-국소적-계산">순전파, 역전파, 국소적 계산</h3>
+<p>ex) $f(x) = y$</p>
+<p><img src="bp1.png" alt="bp"></p>
+<p><strong>f에 x를 집어넣으면 y가 튀어나온다.</strong></p>
+<p>위의 그림처럼 어딘가에서 갑자기 등장한 $L$이라는 함수를 $y$로 미분한 값($\partial L\over \partial y$)이 제공된다면?</p>
+<p>우리는 $L$이라는 함수를 모르지만, $x$로 미분한 값을 알 수 있다.</p>
+<p>연쇄법칙을 활용하면 된다.</p>
+<p>$$
+{\partial L\over \partial x} = {\partial L\over \partial y}{\partial y\over \partial x}
+$$</p>
+<p>우리는 $\partial L\over \partial y$를 알고 있으니, $\partial y\over \partial x$만 계산하면 된다.</p>
+<p>${\partial y\over \partial x} = f&rsquo;(x)$이므로, x에 대한 함수인 $f(x)$를 미분하면 된다.</p>
+<p>ex) $f(x) = x^2 ⇒ f&rsquo;(x) = 2x$</p>
+<p>이 때, 위의 예시에서 왼쪽에서 오른쪽으로 진행하는 단계를 <strong>순전파(forward propagation)</strong>,</p>
+<p>오른쪽에서 왼쪽으로 진행하는 단계를 **역전파(backward propagation)**이라고 한다.</p>
+<p>국소적 계산</p>
+<p>전체에서 어떤 일이 벌어지든 상관없이 자신과 관계된 정보만을 결과로 출력할 수 있다.</p>
+<p>위의 예시처럼, 각 단계에서는 그저 $f(x)$의 미분값만 곱해서 하류로 흘러보낸 것이 전부다.</p>
+<p>단순한 국소적 계산이 연결되어 전체를 구성하는 복잡한 계산을 수행하게 된다.</p>
+<h3 id="덧셈-노드에서의-역전파">덧셈 노드에서의 역전파</h3>
+<p>ex) $z = x + y$</p>
+<ul>
+<li>$\partial z\over \partial x$ = 1</li>
+<li>$\partial z\over \partial y$ = 1</li>
+</ul>
+<p><img src="bp2.png" alt="bp"></p>
+<p>상류에서 내려온 신호인 $\partial L\over \partial z$에 $\partial z\over \partial x$를 곱함으로써 $\partial L\over \partial x$을 구했다.</p>
+<p>단순한 덧셈 연산이기 때문에 미분값은 1이다.</p>
+<p>즉, 덧셈에서는 상류에서 내려온 값을 그대로 하류로 전달한다.</p>
+<h3 id="곱셈-노드에서의-역전파">곱셈 노드에서의 역전파</h3>
+<p>ex) $z = xy$</p>
+<ul>
+<li>${\partial z\over \partial x} = y$</li>
+<li>${\partial z\over \partial y} = x$</li>
+</ul>
+<p>이므로,</p>
+<p><img src="bp3.png" alt="bp">
+이 된다.</p>
+<p>즉, 단순한 곱셈 노드는 상류에서 내려온 신호를 교차시켜 곱한 후, 다시 하류로 보낸다.</p>
+<p>하지만 본질은 미분이다.</p>
+<p>$z = x^2$의 경우, 미분값은 $2x$가 되는 것을 명심하자.</p>
+<h3 id="연쇄-법칙과-계산-그래프">연쇄 법칙과 계산 그래프</h3>
+<p><img src="bp4.png" alt="bp"></p>
+<p><img src="bp5.png" alt="bp"></p>
+<p>처음에 예시로 들었던 함수 $z = (x+y)^2$를 그래프화 한 것이다.</p>
+<h3 id="결론">결론</h3>
+<p>역전파는 오차(손실 함수)를 상류에서 하류로 내려보내면서 각 가중치가 손실 함수에서의 기울기를 알 수 있도록 해주는 기법이다.</p>
+<p>이 때 수많은 노드와 복잡한 활성화 함수 등이 각 노드에서 국소적 계산을 한다.</p>
+<p>이런 값들이 누적되고 확산되어 단 한번의 신경망 계산(역방향)만으로도 모든 가중치와 편향을 갱신할 수 있다.</p>
+<p>곱셈 노드, 덧셈 노드뿐만 아니라 exp 노드, log 노드 등 수많은 노드들이 있지만,</p>
+<p>결국 <strong>기본 원리는 상류 노드에 해당 노드에서의 미분 값을 찾아서 곱한 뒤, 하류로 흘려보내는 것</strong>이 전부이다.</p>
+<p>그러므로 수치 미분보다는 당연히 빠르다.</p>
+<p><img src="bp6.png" alt="bp"></p>
+<ul>
+<li>
+<p>구현 코드</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MulLayer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 곱셈 계층</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x, y):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 순전파, x와 y의 값을 저장해야만 backward때 사용할 수 있다.</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>x <span style="color:#f92672">=</span> x
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>y <span style="color:#f92672">=</span> y
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> x <span style="color:#f92672">*</span> y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>(self, dout):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 역전파로 상위 계층에서의 미분 값 * 반대 노드의 값을 출력한다.</span>
+</span></span><span style="display:flex;"><span>        dx <span style="color:#f92672">=</span> dout <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>y
+</span></span><span style="display:flex;"><span>        dy <span style="color:#f92672">=</span> dout <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dx, dy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AddLayer</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 덧셈 계층</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x, y):
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 순전파, x와 y 값을 저장하지 않아도 된다.</span>
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>(self, dout):
+</span></span><span style="display:flex;"><span>        dx <span style="color:#f92672">=</span> dout <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>        dy <span style="color:#f92672">=</span> dout <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> dx, dy
+</span></span></code></pre></div></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

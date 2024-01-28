@@ -6,12 +6,13 @@
     <description>Recent content in Recommendation System on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Mon, 27 Mar 2023 10:36:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/recommendation-system/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>추천 시스템이란?</title>
-      <link>https://osmin625.github.io/posts/2023-10-05-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-10-05-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</guid>
+      <link>https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</link>
+      <pubDate>Mon, 27 Mar 2023 10:36:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</guid>
       <description>정보 필터링(IF) 기술의 일종. 특정 사용자가 관심 가질 만한 정보를 추천하는 것. Background 기존&#xA;유저가 원하는 것을 검색하여 이에 맞는 아이템 결과를 보여주는 Pull 방식&#xA;추천 시스템&#xA;유저가 원하는 것을 유추하여 제시하는 Push 방식&#xA;유저가 자신의 니즈를 쿼리로 표현하지 않아도 된다.&#xA;다양한 종류의 아이템들을 유저에게 노출시킬 수 있다.&#xA;추천 시스템의 필요성&#xA;과거에는 유저가 접할 수 있는 상품, 컨텐츠가 제한적&#xA;TV 채널, 영화관, 백화점, 신문 등&#xA;웹/모바일 환경에 의해 다양한 상품, 컨텐츠 등장 → 정보 과다.</description>
     </item>
   </channel>

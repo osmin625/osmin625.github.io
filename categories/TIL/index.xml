@@ -6,34 +6,35 @@
     <description>Recent content in TIL on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Thu, 29 Jun 2023 05:00:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/categories/til/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>KPT20230623</title>
-      <link>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-24-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
-      <description>TIL (Today I Learn) TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
-    </item>
-    <item>
-      <title>KPT20230624</title>
-      <link>https://osmin625.github.io/posts/2023-06-25-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-25-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
-      <description>TIL (Today I Learn) 하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
+      <title>KPT20230629</title>
+      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
+      <pubDate>Thu, 29 Jun 2023 05:00:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
+      <description>TIL (Today I Learn) Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
     </item>
     <item>
       <title>KPT20230628</title>
-      <link>https://osmin625.github.io/posts/2023-06-28-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-28-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
+      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
+      <pubDate>Wed, 28 Jun 2023 05:00:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
       <description>TIL (Today I Learn) CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
     </item>
     <item>
-      <title>KPT20230629</title>
-      <link>https://osmin625.github.io/posts/2023-06-30-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-06-30-kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
-      <description>TIL (Today I Learn) Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
+      <title>KPT20230624</title>
+      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
+      <pubDate>Sat, 24 Jun 2023 16:00:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
+      <description>TIL (Today I Learn) 하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
+    </item>
+    <item>
+      <title>KPT20230623</title>
+      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
+      <pubDate>Sat, 24 Jun 2023 02:08:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
+      <description>TIL (Today I Learn) TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
     </item>
   </channel>
 </rss>

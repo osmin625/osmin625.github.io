@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Loss Function, Gradient Descent, Back Propagation'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">5월 27, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/loss-function">Loss Function</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/gradient-descent">Gradient Descent</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/back-propagation">Back Propagation</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p>손실 함수, Gradient Descent, Back Propagation</p>
+</blockquote>
+<h3 id="수치-미분">수치 미분</h3>
+<p>한 점에서의 기울기. 변화량을 의미한다.</p>
+<p>경사 하강법을 사용하기 위해서는 미분값이 필요하다.</p>
+<p>$$
+{df(x)\over dx} = \lim_{h \to 0} {f(x+h) - f(x)\over h}
+$$</p>
+<hr>
+<h3 id="수치-미분이-경사-하강법에-사용되는-방법">수치 미분이 경사 하강법에 사용되는 방법</h3>
+<p>경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.</p>
+<p>손실 함수는 대상 값과 예측 값의 오차를 의미하므로,</p>
+<ol>
+<li>손실 함수에 대한 미분 값을 구한 후,</li>
+<li>오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.</li>
+</ol>
+<p>쉽게 납득이 가능한 과정을 굳이 숫자까지 붙여가며 나눈 이유가 있다.</p>
+<p>이 과정에서는 치명적인 문제가 존재한다.</p>
+<hr>
+<p>위의 미분 값 공식을 자세히 살펴보자.</p>
+<p>경사 하강법에서는 $f(x)$가 손실 함수를 의미하는데, 손실 함수는 예측 값과 목표 값의 오류를 의미한다.</p>
+<p>또한 x는 현재의 가중치나 bias를 의미한다.</p>
+<p>즉, $f(x)$를 계산하기 위해서는 신경망이 예측을 한 번 수행하고, 목표 값과의 차이를 계산해야 한다.</p>
+<p>여기까지만 하더라도 계산이 상당히 크다는 것을 짐작할 수 있으나, 미분 값을 구하기 위해서는</p>
+<p>$f(x), f(x + h)$를 구해야 하므로, 두 지점에서 신경망의 예측이 필요하다.</p>
+<p><strong>요약하면, 단 하나의 가중치를 계산하는 데 신경망이 두 번이나 동작한다.</strong></p>
+<p>하나의 epoch에 가중치 하나, bias 하나가 있다고 생각하면, 학습을 위한 망 계산은 총 4번이 된다.</p>
+<p>아무리 단순한 모델을 구성하더라도, 연산량이 너무 많다.</p>
+<p>ex) layer 3층, 은닉층 노드 10개, epoch 1000인 경우</p>
+<p>가중치 뭉치 3개, 편차 3개 존재</p>
+<p>(4 * 3) * 1000 = 12,000번의 신경망 예측.</p>
+<p><strong>수치 미분은 속도가 너무 느리다.</strong></p>
+<p>이를 보완하기 위해 오류 역전파 알고리즘이 등장했다.</p>
+<p>오류 역전파 알고리즘은 위와 같은 상황에서 신경망이 단 두 번만 동작하여 한 번의 가중치 학습을 완료한다.</p>
+<p>즉, 위의 예시에서 오류 역전파를 사용하면 총 2000번의 망 계산만 필요하다.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

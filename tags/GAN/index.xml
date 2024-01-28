@@ -6,12 +6,13 @@
     <description>Recent content in GAN on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Sat, 07 Oct 2023 02:40:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/gan/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>
-      <link>https://osmin625.github.io/posts/2023-10-12-leakgan/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-10-12-leakgan/</guid>
+      <link>https://osmin625.github.io/posts/leakgan/</link>
+      <pubDate>Sat, 07 Oct 2023 02:40:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/leakgan/</guid>
       <description>✔️ 간단 요약&#xA;Sparsity와 Non-Informative를 효과적으로 해결한다.&#xA;분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.&#xA;Hierarchical RL architecture (MANAGER, WORKER)&#xA;MANAGER (LSTM)&#xA;중재자 역할 D로부터 고수준 feature representation을 받음 → Leakage WORKER (LSTM)&#xA;$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적) D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다. {: .prompt-info } logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization</description>
     </item>
   </channel>

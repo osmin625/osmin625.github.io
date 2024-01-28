@@ -6,12 +6,13 @@
     <description>Recent content in Binary Classification on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Fri, 31 Mar 2023 06:05:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/binary-classification/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SGNS: Skip-Gram with Negative Sampling</title>
-      <link>https://osmin625.github.io/posts/2023-05-22-sgns/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-05-22-sgns/</guid>
+      <link>https://osmin625.github.io/posts/sgns/</link>
+      <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/sgns/</guid>
       <description>SG를 이진 분류 문제로 바꾼 모델&#xA;Negative Sampling 주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것&#xA;Negative Sampling의 개수는 하이퍼파라미터에 해당한다.&#xA;학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다. positive sample 하나당 k개 샘플링 중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.&#xA;만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,&#xA;특정 단어, 가령 &amp;ldquo;dog&amp;quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &amp;ldquo;dog dog&amp;quot;를 연속으로 쓸 일은 없으니.</description>
     </item>
   </channel>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>FFM: Field-aware Factorization Machine</title>
+    <meta name="description" content="ML Engineer, Data Science">
+    <meta name="keywords" content='blog, gokarna, hugo, Context-aware Recsys, Factorization Machine, Latent Factor Model, Field-aware Factorization Machine, CTR Prediction'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="FFM: Field-aware Factorization Machine">
+    <meta property="og:description" content="ML Engineer, Data Science">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FFM: Field-aware Factorization Machine">
+    <meta name="twitter:description" content="ML Engineer, Data Science">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
+        <!-- KaTeX -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          // customised options
+          // • auto-render specific keys, e.g.:
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+          ],
+          // • rendering keys, e.g.:
+          throwOnError : false
+        });
+      });
+    </script>
+  
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">OMIN</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/osmin625"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/index.xml"><span data-feather='rss'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>FFM: Field-aware Factorization Machine</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">4월 3, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/context-aware-recsys">Context-aware Recsys</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/factorization-machine">Factorization Machine</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/latent-factor-model">Latent Factor Model</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/field-aware-factorization-machine">Field-aware Factorization Machine</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/ctr-prediction">CTR Prediction</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h2 id="개요">개요</h2>
+<p>Field-aware Factorization Machines for CTR Prediction</p>
+<ul>
+<li>FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문</li>
+</ul>
+<p>FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.</p>
+<h2 id="field-aware-factorization-machine-ffm">Field-aware Factorization Machine (FFM)</h2>
+<ul>
+<li>
+<p>FM을 발전시킨 모델</p>
+</li>
+<li>
+<p>PITF 모델에서 아이디어를 얻었다.</p>
+</li>
+</ul>
+<h3 id="pitf--pairwise-interaction-tensor-factorization">PITF : Pairwise Interaction Tensor Factorization</h3>
+<p>MF를 3차원으로 확장시킨 모델</p>
+<p>PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해</p>
+<p>(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</p>
+<p>⇒ 이를 일반화하여 여러 개의 필드에 대해서 latent factor를 정의한 것이 FFM</p>
+<h2 id="ffm의-특징">FFM의 특징</h2>
+<ul>
+<li>
+<p>입력 변수를 필드(field)로 나누어, 필드별로 서로 다른 latent factor를 가지도록 factorize한다.</p>
+<p>기존의 FM은 하나의 변수에 대해서 k개로 factorize했으나 FFM은 f개의 필드에 대해 각각 k개로 factorize한다.</p>
+</li>
+<li>
+<p>Field</p>
+<ul>
+<li>
+<p>같은 의미를 갖는 변수들의 집합으로 설정</p>
+<p>유저: 성별, 디바이스, 운영체제</p>
+<p>아이템: 광고, 카테고리</p>
+<p>컨텍스트: 어플리케이션, 배너</p>
+</li>
+<li>
+<p>모델을 설계할 때 함께 정의</p>
+</li>
+</ul>
+</li>
+<li>
+<p>CTR 예측에 사용되는 피쳐는 이보다 훨씬 다양하다.</p>
+<p>보통 피쳐의 개수만큼 필드를 정의하여 사용할 수 있다.</p>
+</li>
+</ul>
+<h2 id="ffm-공식">FFM 공식</h2>
+<p>$$
+\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}<em>{i, f_j}, \mathrm{v}</em>{j, f_i}\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_{i, f} \in \mathbb{R}^k\end{gathered}</p>
+<p>$$</p>
+<p><img src="/imgs/FFM1.png" alt="FFM"></p>
+<!-- raw HTML omitted -->
+<p>$$
+\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k\end{gathered}
+$$</p>
+<p>FM은 k차원의 파라미터를 $v_i$와 $v_j$가 내적이 된 형태로 상호작용을 표현하는 반면,</p>
+<p>FFM은 $x_i$에 대응되는 파라미터가 $v_i$가 아니라, $v_{i,f_j}$가 된다.</p>
+<p>즉, field $(f_i)$별로 Factorization 파라미터가 정의된다.</p>
+<!-- raw HTML omitted -->
+<p>ex) 광고 클릭 데이터가 존재하고 사용할 수 있는 feature가 총 세 개(Publisher, Advertiser, Gender)일 때,</p>
+<table>
+<thead>
+<tr>
+<th>Cliked</th>
+<th>Publisher (P)</th>
+<th>Advertiser (A)</th>
+<th>Gender (G)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Yes</td>
+<td>ESPN</td>
+<td>Nike</td>
+<td>Male</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>FM</strong></p>
+<p>필드가 존재하지 않는다.</p>
+<p>하나의 변수에 대해 factorization 차원$(k)$ 만큼의 파라미터를 학습한다.</p>
+<p>$$
+\hat{y}(\mathrm{x})
+=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\mathrm{Nike}}\
++\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\text {Male }}+\mathrm{v}<em>{\mathrm{Nike}} \cdot \mathrm{v}</em>{\text {Male }}}
+$$</p>
+</li>
+<li>
+<p><strong>FFM</strong></p>
+<p>각각의 feature를 필드 P,A,G로 정의</p>
+<p>하나의 변수에 대해 필드 개수$(f)$와 factorization 차원$(k)$의 곱 $(=fk)$만큼의 파라미터를 학습한다.</p>
+<p>$$
+\hat{y}(\mathrm{x})
+=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{A}} \cdot \mathrm{v}</em>{\mathrm{Nike}, \mathrm{P}}\</p>
+<p>+\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{G}} \cdot \mathrm{v}</em>{\text {Male,P }}+\mathrm{v}<em>{\mathrm{Nike}, \mathrm{G}} \cdot \mathrm{v}</em>{\mathrm{Male}, \mathrm{A}}}
+$$</p>
+</li>
+</ul>
+<h2 id="ffm의-필드-구성">FFM의 필드 구성</h2>
+<h3 id="categorical-feature">Categorical Feature</h3>
+<p>FM</p>
+<p><img src="/imgs/FFM2.png" alt="FFM"></p>
+<p>FFM</p>
+<p><img src="/imgs/FFM3.png" alt="FFM"></p>
+<h3 id="numerical-feature">Numerical Feature</h3>
+<p>실수도 반드시 특정 필드에 속해야 한다.</p>
+<ol>
+<li>
+<p><strong>dummy field</strong></p>
+<p>numeric feature 한 개당 하나의 필드에 할당하고 실수 값을 사용</p>
+<p><img src="/imgs/FFM4.png" alt="FFM"></p>
+<p>field가 크게 의미를 갖지 않는다.</p>
+</li>
+<li>
+<p><strong>discretize</strong></p>
+<p>numeric feature를 n개의 구간으로 나누어 이진 값을 사용하고, n개의 변수를 하나의 필드에 할당한다.</p>
+<p><img src="/imgs/FFM5.png" alt="FFM"></p>
+</li>
+</ol>
+<h2 id="fm--ffm-성능-비교">FM / FFM 성능 비교</h2>
+<p>LR에 비해 FM, FFM의 성능이 더 낫다.</p>
+<p><img src="/imgs/FFM6.png" alt="FFM"></p>
+<p>필드를 사용하는 것이 적절하지 않은 데이터셋의 경우 FFM보다 FM이 성능이 더 잘나온다.</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

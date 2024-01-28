@@ -6,12 +6,13 @@
     <description>Recent content in squeeze on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
+    <lastBuildDate>Mon, 13 Mar 2023 10:44:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/squeeze/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tensor에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/2023-09-19-tensor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://osmin625.github.io/posts/2023-09-19-tensor/</guid>
+      <link>https://osmin625.github.io/posts/tensor/</link>
+      <pubDate>Mon, 13 Mar 2023 10:44:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/tensor/</guid>
       <description>간단 요약&#xA;autograd 연산을 지원하는 다차원 배열&#xA;tensor에 대한 미분값을 가진다.&#xA;reshape보다 view를 쓰는 것이 좋다. squeeze와 unsqueeze의 차이 mm, dot, matmul 차이&#xA;{: .prompt-info } 신경망의 가중치(매개변수)를 텐서로 표현한다.&#xA;다차원 Arrays를 표현하는 PyTorch 클래스&#xA;numpy의 ndarray와 호환된다.&#xA;TensorFlow의 Tensor와도 동일&#xA;Tensor을 생성하는 함수도 거의 동일&#xA;numpy — ndarray&#xA;import numpy as np n_array = np.arange(10).reshape(2,5) print(n_array) print(&amp;#34;n_dim :&amp;#34;, n_array.ndim, &amp;#34;shape :&amp;#34;, n_array.shape) pytorch — tensor&#xA;import torch t_array = torch.</description>
     </item>
   </channel>

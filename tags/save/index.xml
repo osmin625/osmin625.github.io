@@ -12,7 +12,7 @@
       <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
-      <description>model.save()&#xD;#&#xD;학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
+      <description>model.save() 학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
     </item>
   </channel>
 </rss>

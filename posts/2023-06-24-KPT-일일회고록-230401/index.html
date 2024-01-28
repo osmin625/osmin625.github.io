@@ -1,311 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.
-TIL (Today I Learn)#MF, SVD를 완벽하게 이해했다.
-Word2Vec 생성 방법을 완전히 이해했다.
-CBOW — 중간 단어 예측
-SG — CBOW 뒤집은 버전
-SGNS — SG를 이진 분류로 바꾼 것.
-MBCF
-NCF
-AE
-DAE
-Keep#집중을 잘 한 것
-4시 전까지는 만족스럽게 집중하는 시간을 가졌다.
-그 이후는 체력 때문에 집중도가 떨어졌다.
-4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="KPT20230401" />
-<meta property="og:description" content="주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.
-TIL (Today I Learn)#MF, SVD를 완벽하게 이해했다.
-Word2Vec 생성 방법을 완전히 이해했다.
-CBOW — 중간 단어 예측
-SG — CBOW 뒤집은 버전
-SGNS — SG를 이진 분류로 바꾼 것.
-MBCF
-NCF
-AE
-DAE
-Keep#집중을 잘 한 것
-4시 전까지는 만족스럽게 집중하는 시간을 가졌다.
-그 이후는 체력 때문에 집중도가 떨어졌다.
-4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
+    
+    
+    
+    
+    
+    
 
-<title>KPT20230401 | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    <title>KPT20230401</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='KPT, TIL'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KPT20230401">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KPT20230401">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>KPT20230401</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
-            <li><a href="#keep"><strong>Keep</strong></a></li>
-            <li><a href="#problem"><strong>Problem</strong></a></li>
-            <li><a href="#try"><strong>Try</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/">KPT20230401</a>
-  </h1>
-  
-
-
-  
-
-  
-  <div>
     
-      <a href="/tags/KPT/">KPT</a>, 
-      <a href="/tags/TIL/">TIL</a>
-  </div>
-  
-
-
-
-<p>주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.</p>
-<h3 id="til-today-i-learn">
-  <strong>TIL (Today I Learn)</strong>
-  <a class="anchor" href="#til-today-i-learn">#</a>
-</h3>
-<p>MF, SVD를 완벽하게 이해했다.</p>
-<p>Word2Vec 생성 방법을 완전히 이해했다.</p>
-<p>CBOW — 중간 단어 예측</p>
-<p>SG — CBOW 뒤집은 버전</p>
-<p>SGNS — SG를 이진 분류로 바꾼 것.</p>
-<p>MBCF</p>
-<p>NCF</p>
-<p>AE</p>
-<p>DAE</p>
-<h3 id="keep">
-  <strong>Keep</strong>
-  <a class="anchor" href="#keep">#</a>
-</h3>
-<ul>
-<li>
-<p>집중을 잘 한 것</p>
-<p>4시 전까지는 만족스럽게 집중하는 시간을 가졌다.</p>
-<p>그 이후는 체력 때문에 집중도가 떨어졌다.</p>
-<p>4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.</p>
-</li>
-</ul>
-<h3 id="problem">
-  <strong>Problem</strong>
-  <a class="anchor" href="#problem">#</a>
-</h3>
-<ul>
-<li>
-<p>늘 그랬듯이, 잠을 늦게 자는 것.</p>
-<p>저녁 8시쯤에 잠이 와서 엄청 불편한 자세로 한시간 반정도 잠들어버렸다. 차라리 집약적으로 공부한 후 일찍 자거나, 아니면 편하게 짧게 자는 게 더 나았을 텐데…</p>
-</li>
-<li>
-<p>연락을 못받은 것</p>
-<p>알고보니 전화가 음소거 상태였다.</p>
-</li>
-</ul>
-<h3 id="try">
-  <strong>Try</strong>
-  <a class="anchor" href="#try">#</a>
-</h3>
-<ul>
-<li>잠을 더 자자.</li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
-            <li><a href="#keep"><strong>Keep</strong></a></li>
-            <li><a href="#problem"><strong>Problem</strong></a></li>
-            <li><a href="#try"><strong>Try</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

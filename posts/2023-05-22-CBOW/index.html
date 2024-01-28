@@ -1,337 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Word2Vec을 학습하는 방법 중 하나.
-앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법
-input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.
-Multi-Class Classification
-Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.
-학습 파라미터#$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬
-$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="CBOW: Continous Bag of Word" />
-<meta property="og:description" content="Word2Vec을 학습하는 방법 중 하나.
-앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법
-input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.
-Multi-Class Classification
-Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.
-학습 파라미터#$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬
-$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-05-22-CBOW/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>CBOW: Continous Bag of Word | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>CBOW: Continous Bag of Word</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Word2Vec, CBOW, Multi Classification'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-05-22-CBOW/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CBOW: Continous Bag of Word">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CBOW: Continous Bag of Word">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-05-22-CBOW/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-05-22-CBOW/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-05-22-CBOW/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>CBOW: Continous Bag of Word</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#학습-파라미터">학습 파라미터</a></li>
-            <li><a href="#학습과정">학습과정</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-05-22-CBOW/">CBOW: Continous Bag of Word</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Natural-Language-Processing/">Natural Language Processing</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Word2Vec/">Word2Vec</a>, 
-      <a href="/tags/CBOW/">CBOW</a>, 
-      <a href="/tags/Multi-Classification/">Multi Classification</a>
-  </div>
-  
-
-
-
-<ul>
-<li>
-<p>Word2Vec을 학습하는 방법 중 하나.</p>
-</li>
-<li>
-<p>앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법</p>
-<p>
-  <img src="/imgs/CBOW-5.png" alt="CBOW" /></p>
-<p>
-  <img src="/imgs/CBOW-1.png" alt="CBOW" /></p>
-<ul>
-<li>input — quick, brown, jumps, over</li>
-<li>output — fox</li>
-</ul>
-</li>
-</ul>
-<p>단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.</p>
-<ul>
-<li>
-<p>Multi-Class Classification</p>
-<p>Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.</p>
-</li>
-</ul>
-<h3 id="학습-파라미터">
-  학습 파라미터
-  <a class="anchor" href="#%ed%95%99%ec%8a%b5-%ed%8c%8c%eb%9d%bc%eb%af%b8%ed%84%b0">#</a>
-</h3>
-<ul>
-<li>
-<p>$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬</p>
-<ul>
-<li>$V$: 단어의 총 개수(One-Hot Vector의 크기)</li>
-<li>$M$: 임베딩 벡터의 크기</li>
-</ul>
-<p>
-  <img src="/imgs/CBOW-2.png" alt="CBOW" /></p>
-</li>
-<li>
-<p>$W&rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</p>
-</li>
-</ul>
-<h3 id="학습과정">
-  학습과정
-  <a class="anchor" href="#%ed%95%99%ec%8a%b5%ea%b3%bc%ec%a0%95">#</a>
-</h3>
-<h4 id="input-layer">
-  Input Layer
-  <a class="anchor" href="#input-layer">#</a>
-</h4>
-<ol>
-<li>주변의 단어를 One-Hot Vector로 입력받는다.</li>
-<li>입력받은 One-Hot Vector를 임베딩 벡터로 변환한다.($W_{V\times M}$)</li>
-</ol>
-<h4 id="projection-layer">
-  Projection Layer
-  <a class="anchor" href="#projection-layer">#</a>
-</h4>
-<ol start="3">
-<li>변환된 임베딩 벡터들을 평균내어 임베딩 벡터 $v$를 구한다. → Word2Vec</li>
-</ol>
-<ul>
-<li>
-<p>임베딩 벡터 $v$를 One-Hot Vector와 동일한 크기로 변환한다.($W&rsquo;_{M\times V}$)</p>
-<p>
-  <img src="/imgs/CBOW-3.png" alt="CBOW" /></p>
-</li>
-</ul>
-<ol>
-<li>변환된 벡터 $z$를 Output Layer로 보낸다.</li>
-</ol>
-<h4 id="output-layer">
-  Output Layer
-  <a class="anchor" href="#output-layer">#</a>
-</h4>
-<ol>
-<li>
-<p>Softmax 함수를 통해 벡터 $z$를 확률 벡터로 변환한다.</p>
-</li>
-<li>
-<p><strong>출력($\hat y$)을 평가하기 위해 중앙 단어의 One-Hot Vector($y$)와 CE를 계산한다.</strong></p>
-<p>
-  <img src="/imgs/CBOW-4.png" alt="CBOW" /></p>
-</li>
-</ol>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#학습-파라미터">학습 파라미터</a></li>
-            <li><a href="#학습과정">학습과정</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -12,7 +12,7 @@
       <link>https://osmin625.github.io/posts/2023-09-24-1-epoch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-24-1-epoch/</guid>
-      <description>criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화&#xD;#&#xD;optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.&#xA;해당 코드는 왜 필요할까?&#xA;zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.&#xA;왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?&#xA;RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.</description>
+      <description>criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화 optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.&#xA;해당 코드는 왜 필요할까?&#xA;zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.&#xA;왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?&#xA;RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.</description>
     </item>
   </channel>
 </rss>

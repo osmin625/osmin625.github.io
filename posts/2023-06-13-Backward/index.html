@@ -1,392 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="✔️ 간단 요약
-forward함수를 정의하면 자동으로 정의된다.
-동작 과정
-tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.
-{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.
-Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.
-기본 예제
-w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y &#43; 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y &#43; 25\ z = 10 \times w^2 &#43; 25\ {dz\over dw} = 20 \times w = 40 $$">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="PyTorch의 Backward에 대해 알아보자." />
-<meta property="og:description" content="✔️ 간단 요약
-forward함수를 정의하면 자동으로 정의된다.
-동작 과정
-tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.
-{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.
-Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.
-기본 예제
-w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y &#43; 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y &#43; 25\ z = 10 \times w^2 &#43; 25\ {dz\over dw} = 20 \times w = 40 $$" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-13-Backward/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-07T19:54:10+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>PyTorch의 Backward에 대해 알아보자. | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>PyTorch의 Backward에 대해 알아보자.</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='PyTorch, Backward, Autograd'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-06-13-Backward/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PyTorch의 Backward에 대해 알아보자.">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PyTorch의 Backward에 대해 알아보자.">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-06-13-Backward/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-06-13-Backward/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-06-13-Backward/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>PyTorch의 Backward에 대해 알아보자.</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#예제--logistic-regression">예제 — Logistic Regression</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-06-13-Backward/">PyTorch의 Backward에 대해 알아보자.</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Framework/">DL Framework</a>, 
-      <a href="/categories/PyTorch/">PyTorch</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/PyTorch/">PyTorch</a>, 
-      <a href="/tags/Backward/">Backward</a>, 
-      <a href="/tags/Autograd/">Autograd</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>✔️ 간단 요약<br>
-<code>forward</code>함수를 정의하면 자동으로 정의된다.<br>
-<strong>동작 과정</strong></p>
-<ol>
-<li>tensor(loss에 해당)가 포함된 식을 미분한다.</li>
-<li>미분 값을 tensor에 저장한다.<br>
-{: .prompt-info }
-Autograd, loss, optimizer, nn.Module</li>
-</ol>
-</blockquote>
-<ol>
-<li>
-<p><strong>tensor(loss에 해당)가 포함된 식을 미분한다.</strong></p>
-<p>Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.</p>
-<p><strong>기본 예제</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>w <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(<span style="color:#ae81ff">2.0</span>, requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> w<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span><span style="color:#f92672">*</span>y <span style="color:#f92672">+</span> <span style="color:#ae81ff">25</span>
-</span></span><span style="display:flex;"><span>z<span style="color:#f92672">.</span>backward()
-</span></span><span style="display:flex;"><span>w<span style="color:#f92672">.</span>grad()
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># output : tensor(40.)</span>
-</span></span></code></pre></div><p>$$
-w = 2\
-y = w^2\
-z = 10\times y  + 25\
-z = 10 \times w^2 + 25\
-{dz\over dw} = 20 \times w = 40
-$$</p>
-<p><strong>미분 값이 여러 개인 경우</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">2.</span>,<span style="color:#ae81ff">3.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">6.</span>,<span style="color:#ae81ff">4.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>Q <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> a <span style="color:#f92672">**</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">-</span> b <span style="color:#f92672">**</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 미분값이 두 개가 나와야하기 때문에, </span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># gradient 값의 크기를 잡아준다.</span>
-</span></span><span style="display:flex;"><span>external_grad <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">1.</span>, <span style="color:#ae81ff">1.</span>])
-</span></span><span style="display:flex;"><span>Q<span style="color:#f92672">.</span>backward(gradient<span style="color:#f92672">=</span>external_grad)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>grad
-</span></span><span style="display:flex;"><span>b<span style="color:#f92672">.</span>grad
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([36.,81.])</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([-12.,-8.])</span>
-</span></span></code></pre></div><p>$$
-\begin{aligned}
-&amp;Q = 3a^3 - b^2\
-&amp; \frac{\partial Q}{\partial a}=9 a^2 \
-&amp; \frac{\partial Q}{\partial b}=-2 b
-\end{aligned}
-$$</p>
-</li>
-<li>
-<p><strong>미분 값을 tensor에 저장한다.</strong></p>
-<p>tensor를 선언할 때 require_grad=True로 설정하면 tensor에 grad_fn 정보가 저장된다.</p>
-<p>e.g. <code>tensor(6.2564e-05, grad_fn=&lt;MseLossBackward0&gt;)</code></p>
-<p>또한, <code>tensor.grad()</code>를 통해 미분 값을 확인할 수 있다.</p>
-<p>grad_fn에는 텐서가 어떤 연산을 했는 연산 정보를 담고 있고, 이 정보는 역전파에 사용된다.</p>
-</li>
-</ol>
-<p>
-  <a href="https://gaussian37.github.io/dl-pytorch-gradient/">PyTorch Gradient 관련 설명 (Autograd)</a></p>
-<p>실제 backward는 Module 단계에서 직접 지정이 가능하다.</p>
-<p>Module에서 backward와 optimizer를 오버라이딩 해주면 된다.</p>
-<p>사용자가 직접 미분 수식을 써야 하는 부담이 있다.</p>
-<p>쓸 일은 없지만, 순서를 이해할 필요는 있다.</p>
-<h3 id="예제--logistic-regression">
-  예제 — Logistic Regression
-  <a class="anchor" href="#%ec%98%88%ec%a0%9c--logistic-regression">#</a>
-</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LR</span>(nn<span style="color:#f92672">.</span>Module):
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">init</span> (self, dim, lr<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0.01</span>)):
-</span></span><span style="display:flex;"><span>		super(LR, self)<span style="color:#f92672">.</span> init () 
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># intialize parameters</span>
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>zeros(dim, <span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>grads <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;dw&#34;</span>: torch<span style="color:#f92672">.</span>zeros(dim, <span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(device), 
-</span></span><span style="display:flex;"><span>					  <span style="color:#e6db74">&#34;db&#34;</span>: torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to(device)}
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>lr <span style="color:#f92672">=</span> lr<span style="color:#f92672">.</span>to(device)
-</span></span></code></pre></div><p>$$
-h_\theta(x)=\frac{1}{1+e^{-\theta^T \mathbf{x}}}
-$$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x): 
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">## compute forward</span>
-</span></span><span style="display:flex;"><span>	z <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mm(self<span style="color:#f92672">.</span>w<span style="color:#f92672">.</span>T, x) 
-</span></span><span style="display:flex;"><span>	a <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sigmoid(z) 
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> a
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sigmoid</span>(self, z):
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>z))
-</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>(self, x, yhat, y): 
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">## compute backward</span>
-</span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>mm(x, (yhat <span style="color:#f92672">-</span> y)<span style="color:#f92672">.</span>T) 
-</span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>sum(yhat <span style="color:#f92672">-</span> y)
-</span></span></code></pre></div><p>$$
-\begin{aligned}&amp;\frac{\partial}{\partial \theta_j} J(\theta)=\frac{1}{m} \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned}
-$$</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">optimize</span>(self):
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">## optimization step</span>
-</span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>w <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>]
-</span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>b <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>]
-</span></span></code></pre></div><p>기존의 $\theta$, 즉, $\tt w$ 값에 미분값 만큼의 업데이트를 수행해주는 함수.</p>
-<p>$$
-\begin{aligned}\theta_j &amp; :=\theta_j-\alpha \frac{\partial}{\partial \theta_j} J(\theta) \&amp; :=\theta_j-\alpha \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned}
-$$</p>
-<ul>
-<li>
-<p>전체 코드</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LR</span>(nn<span style="color:#f92672">.</span>Module):
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">init</span> (self, dim, lr<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0.01</span>)):
-</span></span><span style="display:flex;"><span>		super(LR, self)<span style="color:#f92672">.</span> init () 
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># intialize parameters</span>
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>zeros(dim, <span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>grads <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;dw&#34;</span>: torch<span style="color:#f92672">.</span>zeros(dim, <span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(device), 
-</span></span><span style="display:flex;"><span>					  <span style="color:#e6db74">&#34;db&#34;</span>: torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to(device)}
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>lr <span style="color:#f92672">=</span> lr<span style="color:#f92672">.</span>to(device)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x): 
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">## compute forward</span>
-</span></span><span style="display:flex;"><span>		z <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>mm(self<span style="color:#f92672">.</span>w<span style="color:#f92672">.</span>T, x) 
-</span></span><span style="display:flex;"><span>		a <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sigmoid(z) 
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> a
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sigmoid</span>(self, z):
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">/</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>z))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backward</span>(self, x, yhat, y): 
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">## compute backward</span>
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>mm(x, (yhat <span style="color:#f92672">-</span> y)<span style="color:#f92672">.</span>T) 
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>sum(yhat <span style="color:#f92672">-</span> y)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">optimize</span>(self):
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e">## optimization step</span>
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>w <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>]
-</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>b <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>]
-</span></span></code></pre></div></li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#예제--logistic-regression">예제 — Logistic Regression</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

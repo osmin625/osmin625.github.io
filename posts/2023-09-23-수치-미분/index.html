@@ -1,295 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="손실 함수, Gradient Descent, Back Propagation
-수치 미분#한 점에서의 기울기. 변화량을 의미한다.
-경사 하강법을 사용하기 위해서는 미분값이 필요하다.
-$$ {df(x)\over dx} = \lim_{h \to 0} {f(x&#43;h) - f(x)\over h} $$
-수치 미분이 경사 하강법에 사용되는 방법#경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.
-손실 함수는 대상 값과 예측 값의 오차를 의미하므로,
-손실 함수에 대한 미분 값을 구한 후, 오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?" />
-<meta property="og:description" content="손실 함수, Gradient Descent, Back Propagation
-수치 미분#한 점에서의 기울기. 변화량을 의미한다.
-경사 하강법을 사용하기 위해서는 미분값이 필요하다.
-$$ {df(x)\over dx} = \lim_{h \to 0} {f(x&#43;h) - f(x)\over h} $$
-수치 미분이 경사 하강법에 사용되는 방법#경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.
-손실 함수는 대상 값과 예측 값의 오차를 의미하므로,
-손실 함수에 대한 미분 값을 구한 후, 오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
+    
+    
+    
+    
+    
+    
 
-<title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까? | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    <title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Loss Function, Gradient Descent, Back Propagation'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#수치-미분">수치 미분</a></li>
-            <li><a href="#수치-미분이-경사-하강법에-사용되는-방법">수치 미분이 경사 하강법에 사용되는 방법</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/AI-Knowledge/">AI Knowledge</a>, 
-      <a href="/categories/Loss-Function/">Loss Function</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Loss-Function/">Loss Function</a>, 
-      <a href="/tags/Gradient-Descent/">Gradient Descent</a>, 
-      <a href="/tags/Back-Propagation/">Back Propagation</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>손실 함수, Gradient Descent, Back Propagation</p>
-</blockquote>
-<h3 id="수치-미분">
-  수치 미분
-  <a class="anchor" href="#%ec%88%98%ec%b9%98-%eb%af%b8%eb%b6%84">#</a>
-</h3>
-<p>한 점에서의 기울기. 변화량을 의미한다.</p>
-<p>경사 하강법을 사용하기 위해서는 미분값이 필요하다.</p>
-<p>$$
-{df(x)\over dx} = \lim_{h \to 0} {f(x+h) - f(x)\over h}
-$$</p>
-<hr>
-<h3 id="수치-미분이-경사-하강법에-사용되는-방법">
-  수치 미분이 경사 하강법에 사용되는 방법
-  <a class="anchor" href="#%ec%88%98%ec%b9%98-%eb%af%b8%eb%b6%84%ec%9d%b4-%ea%b2%bd%ec%82%ac-%ed%95%98%ea%b0%95%eb%b2%95%ec%97%90-%ec%82%ac%ec%9a%a9%eb%90%98%eb%8a%94-%eb%b0%a9%eb%b2%95">#</a>
-</h3>
-<p>경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.</p>
-<p>손실 함수는 대상 값과 예측 값의 오차를 의미하므로,</p>
-<ol>
-<li>손실 함수에 대한 미분 값을 구한 후,</li>
-<li>오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.</li>
-</ol>
-<p>쉽게 납득이 가능한 과정을 굳이 숫자까지 붙여가며 나눈 이유가 있다.</p>
-<p>이 과정에서는 치명적인 문제가 존재한다.</p>
-<hr>
-<p>위의 미분 값 공식을 자세히 살펴보자.</p>
-<p>경사 하강법에서는 $f(x)$가 손실 함수를 의미하는데, 손실 함수는 예측 값과 목표 값의 오류를 의미한다.</p>
-<p>또한 x는 현재의 가중치나 bias를 의미한다.</p>
-<p>즉, $f(x)$를 계산하기 위해서는 신경망이 예측을 한 번 수행하고, 목표 값과의 차이를 계산해야 한다.</p>
-<p>여기까지만 하더라도 계산이 상당히 크다는 것을 짐작할 수 있으나, 미분 값을 구하기 위해서는</p>
-<p>$f(x), f(x + h)$를 구해야 하므로, 두 지점에서 신경망의 예측이 필요하다.</p>
-<p><strong>요약하면, 단 하나의 가중치를 계산하는 데 신경망이 두 번이나 동작한다.</strong></p>
-<p>하나의 epoch에 가중치 하나, bias 하나가 있다고 생각하면, 학습을 위한 망 계산은 총 4번이 된다.</p>
-<p>아무리 단순한 모델을 구성하더라도, 연산량이 너무 많다.</p>
-<p>ex) layer 3층, 은닉층 노드 10개, epoch 1000인 경우</p>
-<p>가중치 뭉치 3개, 편차 3개 존재</p>
-<p>(4 * 3) * 1000 = 12,000번의 신경망 예측.</p>
-<p><strong>수치 미분은 속도가 너무 느리다.</strong></p>
-<p>이를 보완하기 위해 오류 역전파 알고리즘이 등장했다.</p>
-<p>오류 역전파 알고리즘은 위와 같은 상황에서 신경망이 단 두 번만 동작하여 한 번의 가중치 학습을 완료한다.</p>
-<p>즉, 위의 예시에서 오류 역전파를 사용하면 총 2000번의 망 계산만 필요하다.</p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#수치-미분">수치 미분</a></li>
-            <li><a href="#수치-미분이-경사-하강법에-사용되는-방법">수치 미분이 경사 하강법에 사용되는 방법</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

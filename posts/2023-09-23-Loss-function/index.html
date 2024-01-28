@@ -1,446 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="✔️ 간단 요약
-신경망의 학습 중 받는 벌점의 기준
-회귀와 분류 문제에서 다른 loss function을 사용한다.
-{: .prompt-info } Gradient, MAE, MSE, RMSE
-Loss : 예측 값과 실제 값의 차이
-신경망의 학습 중 오답에 대해 받는 벌점
-두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.
-ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.
-Loss Function#신경망이 벌점을 받는 기준
-신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="손실 함수(Loss Function)에 대해 알아보자." />
-<meta property="og:description" content="✔️ 간단 요약
-신경망의 학습 중 받는 벌점의 기준
-회귀와 분류 문제에서 다른 loss function을 사용한다.
-{: .prompt-info } Gradient, MAE, MSE, RMSE
-Loss : 예측 값과 실제 값의 차이
-신경망의 학습 중 오답에 대해 받는 벌점
-두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.
-ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.
-Loss Function#신경망이 벌점을 받는 기준
-신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-Loss-function/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>손실 함수(Loss Function)에 대해 알아보자. | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>손실 함수(Loss Function)에 대해 알아보자.</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Loss Function, MAE, MSE, RMSE, Cross-Entropy, Regression, Classification'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-Loss-function/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="손실 함수(Loss Function)에 대해 알아보자.">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="손실 함수(Loss Function)에 대해 알아보자.">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-09-23-Loss-function/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-09-23-Loss-function/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-09-23-Loss-function/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>손실 함수(Loss Function)에 대해 알아보자.</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#loss-function"><strong>Loss Function</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#신경망의-학습-알고리즘"><strong>신경망의 학습 알고리즘</strong></a></li>
-        <li><a href="#손실-함수-jw의-조건"><strong>손실 함수 J(w)의 조건</strong></a></li>
-        <li><a href="#손실-함수의-종류">손실 함수의 종류</a>
-          <ul>
-            <li><a href="#회귀regression">회귀(Regression)</a></li>
-            <li><a href="#분류classification">분류(Classification)</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-09-23-Loss-function/">손실 함수(Loss Function)에 대해 알아보자.</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/AI-Knowledge/">AI Knowledge</a>, 
-      <a href="/categories/Loss-Function/">Loss Function</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Loss-Function/">Loss Function</a>, 
-      <a href="/tags/MAE/">MAE</a>, 
-      <a href="/tags/MSE/">MSE</a>, 
-      <a href="/tags/RMSE/">RMSE</a>, 
-      <a href="/tags/Cross-Entropy/">Cross-Entropy</a>, 
-      <a href="/tags/Regression/">Regression</a>, 
-      <a href="/tags/Classification/">Classification</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>✔️ 간단 요약<br>
-신경망의 학습 중 받는 벌점의 기준<br>
-회귀와 분류 문제에서 다른 loss function을 사용한다.<br>
-{: .prompt-info }
-Gradient, MAE, MSE, RMSE</p>
-</blockquote>
-<p><strong>Loss : 예측 값과 실제 값의 차이</strong></p>
-<p>신경망의 학습 중 오답에 대해 받는 벌점</p>
-<p>두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.</p>
-<p>ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.</p>
-<h3 id="loss-function">
-  <strong>Loss Function</strong>
-  <a class="anchor" href="#loss-function">#</a>
-</h3>
-<p>신경망이 벌점을 받는 기준</p>
-<p>신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 <strong>함수</strong>.</p>
-<p>나는 손실 함수가 함수라는 것을 제대로 인지하지 못했을 때 모델 평가 Metric과 헷갈렸기 때문에, 손실 <strong>함수</strong>라는 것을 다시 한번 인지하고 지나가자.</p>
-<p>2차원 그래프로 비유했을 때, 가중치 $\mathbf w$는 x좌표에 해당하고 손실 함수의 값은 y좌표에 해당한다.</p>
-<p>손실 함수의 최솟값이 되는 지점에 $\mathbf w$를 위치시키는 것이 신경망의 목표이다.</p>
-<p>고등 수학을 빌려 설명하자면, 단순히 미분값이 0이 되는 지점을 파악하여 손실 함수의 최솟값을 구하면 된다.</p>
-<p>하지만 고차원에서의 손실 함수 미분은 쉽지 않을 뿐더러, 함수 전체에서 미분값이 0이 되는 지점을 바로 찾아내는 것은 현실적으로 불가능하다.</p>
-<p>따라서, 신경망은 $\mathbf w$에서 손실 함수의 기울기를 측정하여 loss가 낮아지는 방향으로 가중치를 조금씩 이동하는 전략을 사용한다.</p>
-<p>이 때의 조금을 결정하는 것이 Optimizer이다.</p>
-<p>해결하고자 하는 문제에 맞게 loss function을 설정해 사용해주면 된다.</p>
-<p>
-  <img src="loss_function.png" alt="Loss" /></p>
-<p>신경망 학습을 통해 손실 함수 $J$의 최저점을 찾아야 한다.</p>
-<h2 id="신경망의-학습-알고리즘">
-  <strong>신경망의 학습 알고리즘</strong>
-  <a class="anchor" href="#%ec%8b%a0%ea%b2%bd%eb%a7%9d%ec%9d%98-%ed%95%99%ec%8a%b5-%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98">#</a>
-</h2>
-<ol>
-<li>훈련 데이터 입력</li>
-<li>매개변수 $\mathbf w$를 난수로 초기화</li>
-<li>while (true):
-<ol>
-<li>손실 함수$J(\mathbf w)$ 계산(loss 계산)</li>
-<li>loss를 낮추는 방향 $\Delta \mathbf w$ 계산</li>
-<li>$\mathbf w = \mathbf w + \Delta \mathbf w$</li>
-</ol>
-</li>
-<li>return 가중치(매개변수)</li>
-</ol>
-<h2 id="손실-함수-jw의-조건">
-  <strong>손실 함수 J(w)의 조건</strong>
-  <a class="anchor" href="#%ec%86%90%ec%8b%a4-%ed%95%a8%ec%88%98-jw%ec%9d%98-%ec%a1%b0%ea%b1%b4">#</a>
-</h2>
-<ul>
-<li>w가 훈련 집합에 있는 샘플을 모두 맞히면, $J(w) = 0$이다.</li>
-<li>w가 틀리는 샘플이 많을수록 $J(w)$의 값이 크다.</li>
-</ul>
-<p>위의 조건을 만족하는 수식은 아주 다양하기 때문에, 적절한 손실 함수를 선택해야 한다.</p>
-<h2 id="손실-함수의-종류">
-  손실 함수의 종류
-  <a class="anchor" href="#%ec%86%90%ec%8b%a4-%ed%95%a8%ec%88%98%ec%9d%98-%ec%a2%85%eb%a5%98">#</a>
-</h2>
-<h3 id="회귀regression">
-  회귀(Regression)
-  <a class="anchor" href="#%ed%9a%8c%ea%b7%80regression">#</a>
-</h3>
-<ul>
-<li>
-<p><strong>MAE(Mean Absolute Error)</strong> — $\left|정답 - 예측값\right|$의 평균</p>
-<blockquote>
-<p><strong>간단 요약</strong></p>
-<p>틀린 만큼 벌점을 얻는다.</p>
-<p>모든 지점에서 그래디언트는 동일하다.</p>
-</blockquote>
-<p>가장 간단한 손실 함수.</p>
-<p>제곱을 취하지 않기 때문에, 모든 오차는 그대로 반영된다.</p>
-<p>직관적으로 말하자면, 오차만큼 벌점이 쌓인다.</p>
-<p>기울기 관점으로, 모든 가중치에서 그래디언트의 크기가 동일하다.</p>
-<p>따라서 MSE나 RMSE에 비해 상대적으로 이상치에 대해 Robust하다.</p>
-<p>(이상치도 오차만큼만 벌점이 쌓이기 때문)</p>
-<p>$$
-\frac{1}{n} \sum_{i=1}^n\left|{y_i}-\hat y_i\right|
-$$</p>
-<p>
-  <img src="loss_function1.png" alt="Loss_function" /></p>
-</li>
-<li>
-<p><strong>MSE(Mean Squared Error)</strong> — $(정답 - 예측값)^2$의 평균</p>
-<blockquote>
-<p><strong>간단 요약</strong></p>
-<p>정답과의 거리가 멀수록 더 많은 벌점을 부여하자!</p>
-<p>오차를 제곱 하면 되겠네?</p>
-<p>정답에서 멀어질수록 그래디언트의 크기가 증가한다.</p>
-</blockquote>
-<p>$$
-M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
-$$</p>
-<p>
-  <img src="loss_function2.png" alt="Loss_function" /></p>
-<p>미니 배치 단위로 처리(샘플의 오차를 평균 낸다.)</p>
-<p>$$
-\begin{aligned}J\left(\mathbf{U}^1, \mathbf{U}^2\right) &amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}|\mathbf{y}-\mathbf{0}|^2 \&amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\left|\mathbf{y}-\tau_2\left(\mathbf{U}^2 \tau_1\left(\mathbf{U}^1 \mathbf{x}^{\mathrm{T}}\right)\right)\right|^2\end{aligned}
-$$</p>
-<ul>
-<li>오차값에 제곱을 취하기 때문에 0~1 사이의 값은 상대적으로 작게 반영되고, 1보다 큰 값은 상대적으로 더 크게 반영된다.</li>
-<li>학습이 느려지거나 학습이 안되는 상황을 초래할 가능성이 있다.</li>
-<li>정답과 예측값의 차이가 클수록 더 크게 반영되기 때문에, 이상치에 매우 민감하다.</li>
-</ul>
-</li>
-<li>
-<p><strong>RMSE(Root MSE)</strong> — $\sqrt{(정답 - 예측값)^2\text {의 평}균}$</p>
-<blockquote>
-<p><strong>간단 요약</strong></p>
-<p>MSE에 루트 씌운 값.</p>
-<p>얼핏 MAE와 동일한 것 아니야? 생각할 수 있지만, 계산 순서에서 차이가 발생하고, $1\over n$이 아니라 $1\over \sqrt n$을 했다는 점이 MAE와 다르다.</p>
-</blockquote>
-<p>$$
-R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2}
-$$</p>
-<p>
-  <img src="loss_function3.png" alt="Loss_function" /></p>
-<p>MSE와 마찬가지로 각 오차값의 크기에 따라 다른 그래디언트를 가지게 된다.</p>
-</li>
-</ul>
-<p>
-  <img src="loss_function4.png" alt="Loss_function" /></p>
-<h3 id="분류classification">
-  분류(Classification)
-  <a class="anchor" href="#%eb%b6%84%eb%a5%98classification">#</a>
-</h3>
-<p><strong>Entropy</strong></p>
-<p>확률 분포의 무작위성(불확실성)을 측정하는 함수</p>
-<p>$$
-H(x)=-\sum_{i=1, k} P\left(e_i\right) \log P\left(e_i\right)
-$$</p>
-<ul>
-<li>
-<p><strong>Cross-Entropy</strong></p>
-<p><strong>정보량을 상징한다. → 불공정성 문제 해결</strong></p>
-<p>두 확률 분포 P와 Q가 다른 정도를 측정하는 함수</p>
-<p>$$
-H(P, Q)=-\sum_{i=1, k} P\left(e_i\right) \log Q\left(e_i\right)
-$$</p>
-<ul>
-<li>
-<p>공정한 주사위에는 특별한 정보가 존재하지 않는다.</p>
-<p>$$
--\left(\frac{1}{6} \log \frac{1}{6}+\ldots+\frac{1}{6} \log \frac{1}{6}\right)=1.7918
-$$</p>
-</li>
-<li>
-<p>찌그러진 주사위에서는 특정 값이 더 잘나온다는 정보가 추가된다.</p>
-<p>공정한 주사위와 찌그러진 주사위의 교차 엔트로피</p>
-<p>$$
--\left(\frac{1}{6} \log \frac{1}{2}+\frac{1}{6} \log \frac{1}{10}+\cdots+\frac{1}{6} \log \frac{1}{10}\right)=2.0343
-$$</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>Binary Cross-Entropy</strong></p>
-<p><code>tf.nn.sigmoid_cross_entropy_with_logits( )</code></p>
-<p>$$
-B C E=-\frac{1}{N} \sum_{i=0}^N y_i \cdot \log \left(\hat{y_i}\right)+\left(1-y_i\right) \cdot \log \left(1-\hat{y_i}\right)
-$$</p>
-</li>
-<li>
-<p><strong>Categorical Cross-Entropy</strong></p>
-<p><code>tf.nn.softmax_cross_entropy_with_logits_v2( )</code></p>
-<p>$$
-C C E=-\frac{1}{N} \sum_{i=0}^N \sum_{j=0}^J y_j \cdot \log \left(\hat{y_j}\right)+\left(1-y_j\right) \cdot \log \left(1-\hat{y_j}\right)
-$$</p>
-</li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#loss-function"><strong>Loss Function</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#신경망의-학습-알고리즘"><strong>신경망의 학습 알고리즘</strong></a></li>
-        <li><a href="#손실-함수-jw의-조건"><strong>손실 함수 J(w)의 조건</strong></a></li>
-        <li><a href="#손실-함수의-종류">손실 함수의 종류</a>
-          <ul>
-            <li><a href="#회귀regression">회귀(Regression)</a></li>
-            <li><a href="#분류classification">분류(Classification)</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

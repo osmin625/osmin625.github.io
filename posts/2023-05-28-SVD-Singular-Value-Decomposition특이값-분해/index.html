@@ -1,324 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="간단 요약
-2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value
-2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.
-Full SVD#기존 행렬을 온전하게 3개의 행렬로 분해한다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="SVD: Singular Value Decomposition(특이값 분해)" />
-<meta property="og:description" content="간단 요약
-2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value
-2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.
-Full SVD#기존 행렬을 온전하게 3개의 행렬로 분해한다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
+    
+    
+    
+    
+    
+    
 
-<title>SVD: Singular Value Decomposition(특이값 분해) | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    <title>SVD: Singular Value Decomposition(특이값 분해)</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Collaborative Filtering, Matrix Decomposition, Singular Value Decomposition'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SVD: Singular Value Decomposition(특이값 분해)">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="SVD: Singular Value Decomposition(특이값 분해)">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>SVD: Singular Value Decomposition(특이값 분해)</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#full-svd"><strong>Full SVD</strong></a></li>
-            <li><a href="#truncated-svd"><strong>Truncated SVD</strong></a></li>
-            <li><a href="#svd의-한계"><strong>SVD의 한계</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/">SVD: Singular Value Decomposition(특이값 분해)</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/AI-Math/">AI Math</a>, 
-      <a href="/categories/%EC%84%A0%ED%98%95%EB%8C%80%EC%88%98/">선형대수</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Collaborative-Filtering/">Collaborative Filtering</a>, 
-      <a href="/tags/Matrix-Decomposition/">Matrix Decomposition</a>, 
-      <a href="/tags/Singular-Value-Decomposition/">Singular Value Decomposition</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>간단 요약<br>
-2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법
-{: .prompt-info }
-eigen vector, eigen value</p>
-</blockquote>
-<ul>
-<li><strong>2차원 행렬 분해 기법</strong>
-<ul>
-<li>유저 잠재요인 행렬 ⇒ 유저 임베딩</li>
-<li>잠재요인 대각행렬  ⇒ 임베딩의 중요도</li>
-<li>아이템 잠재요인 행렬 ⇒ 아이템 임베딩</li>
-</ul>
-</li>
-<li><strong>차원축소 기법</strong></li>
-<li><strong>행렬을 대각화하는 방법</strong></li>
-<li><strong>모든 m x n 행렬에 대해 적용 가능</strong></li>
-</ul>
-<p>Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.</p>
-<h3 id="full-svd">
-  <strong>Full SVD</strong>
-  <a class="anchor" href="#full-svd">#</a>
-</h3>
-<p>기존 행렬을 온전하게 3개의 행렬로 분해한다.</p>
-<p>$$
-\tt Full\ \ SVD :R = U\Sigma V^T
-$$</p>
-<ul>
-<li>
-<p>$U$: 유저와 Latent Factor의 관계</p>
-<p>$U$의 열벡터는 $R$의 left singular vector</p>
-</li>
-<li>
-<p>$V$: 아이템과 Latent Factor의 관계</p>
-<p>$V$의 열벡터는 $R$의 right singular vector</p>
-</li>
-<li>
-<p>$\Sigma$: Latent Factor의 중요도</p>
-<p>$RR^T$을 고유값 분해해서 얻은 직사각 대각 행렬</p>
-<p>대각 원소들은 $R$의 singular value(특이치)</p>
-</li>
-</ul>
-<h3 id="truncated-svd">
-  <strong>Truncated SVD</strong>
-  <a class="anchor" href="#truncated-svd">#</a>
-</h3>
-<p>$\Sigma$를 일부만 사용한다.</p>
-<p>$$
-\tt Truncated \ \  SVD: R \approx \widehat{U} \Sigma_k \widehat{V^T}=\hat{R}
-$$</p>
-<p>$\Sigma$는 중요도로 정렬되어 있기 때문에, 상위 k개만 활용하여 기존의 행렬을 거의 유사하게 나타낼 수 있다.</p>
-<p>즉, 몇 개의 특이치만을 가지고도 유용한 정보를 유지한다.</p>
-<p>분해된 행렬이 부분 복원되면서 가장 중요한 정보로 요약된다.</p>
-<p>$\widehat R$은 축소된 $\widehat U, \widehat {V^T}, \Sigma_k$에 의해 계산된다.</p>
-<p>각각의 K개의 Latent Factor는 유추할 수 있을 뿐, 정확히 무엇을 의미하는지 알 수 없다.</p>
-<h3 id="svd의-한계">
-  <strong>SVD의 한계</strong>
-  <a class="anchor" href="#svd%ec%9d%98-%ed%95%9c%ea%b3%84">#</a>
-</h3>
-<ul>
-<li>
-<p><strong>분해(Decomposition)하려는 행렬에 결측치가 없어야 한다.</strong></p>
-<p>User-Item 행렬의 경우 모든 값이 채워져야 한다.</p>
-<p>Sparsity가 높은 데이터의 경우 결측치가 매우 많다.</p>
-<p>실제 데이터는 대부분 Sparse Matrix</p>
-</li>
-<li>
-<p><strong>Imputation 후 SVD를 수행 → Computation 비용 증가</strong></p>
-<p>Imputation은 데이터의 양을 상당히 증가시키기 때문</p>
-<p>Imputation에 의해 데이터 왜곡 발생 시 성능 저하</p>
-<p>행렬의 entry가 매우 적을 때 SVD를 적용하면 과적합 되기 쉽다.</p>
-</li>
-</ul>
-<p>
-  <a href="https://angeloyeo.github.io/2019/08/01/SVD.html">참고하면 좋은 자료 &ndash; SVD의 의미</a></p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#full-svd"><strong>Full SVD</strong></a></li>
-            <li><a href="#truncated-svd"><strong>Truncated SVD</strong></a></li>
-            <li><a href="#svd의-한계"><strong>SVD의 한계</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

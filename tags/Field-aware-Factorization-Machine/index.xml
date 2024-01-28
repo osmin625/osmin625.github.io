@@ -12,7 +12,7 @@
       <link>https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/</guid>
-      <description>개요&#xD;#&#xD;Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM)&#xD;#&#xD;FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization&#xD;#&#xD;MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
+      <description>개요 Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM) FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
     </item>
   </channel>
 </rss>

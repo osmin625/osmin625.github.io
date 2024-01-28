@@ -1,409 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.
-사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법
-Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.
-장점
-구현이 간단하고 이해하기 쉽다. Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다. 최적화나 훈련 과정이 필요 없다. 단점
-Sparsity(희소성) 문제
-NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.
-데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)" />
-<meta property="og:description" content="Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.
-사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법
-Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.
-장점
-구현이 간단하고 이해하기 쉽다. Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다. 최적화나 훈련 과정이 필요 없다. 단점
-Sparsity(희소성) 문제
-NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.
-데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='NBCF, UBCF, IBCF, Collaborative Filtering'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-03-29-NBCF-Neighborhood-based-CF/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#ubcf-user-based-cf유저-기반-협업-필터링">UBCF: User-based CF(유저 기반 협업 필터링)</a></li>
-            <li><a href="#ibcf-item-based-cf아이템-기반-협업-필터링">IBCF: Item-based CF(아이템 기반 협업 필터링)</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-03-29-NBCF-Neighborhood-based-CF/">NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Recommendation-System/">Recommendation System</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/NBCF/">NBCF</a>, 
-      <a href="/tags/UBCF/">UBCF</a>, 
-      <a href="/tags/IBCF/">IBCF</a>, 
-      <a href="/tags/Collaborative-Filtering/">Collaborative Filtering</a>
-  </div>
-  
-
-
-
-<p>Neighborhood-based CF 혹은 Memory Based CF라고 부르기도 한다.</p>
-<p>사용자 또는 아이템 간의 similarity 값을 계산하고 이를 rating prediction 또는 top-K ranking에 활용하는 방법</p>
-<p>Similarity를 계산하기 위한 Metric으로 Jaccard, Cosine, Pearson 등을 활용한다.</p>
-<p><strong>장점</strong></p>
-<ul>
-<li>구현이 간단하고 이해하기 쉽다.</li>
-<li>Similarity를 활용하기 때문에 추천의 이유에 대한 직관적인 설명을 제공한다.</li>
-<li>최적화나 훈련 과정이 필요 없다.</li>
-</ul>
-<p><strong>단점</strong></p>
-<ol>
-<li>
-<p><strong>Sparsity(희소성) 문제</strong></p>
-<p>NBCF를 적용하려면 적어도 sparsity ratio가 99.5%를 넘지 않는 것이 좋다.</p>
-<p>데이터가 충분하지 않다면 유사도 계산이 부정확해진다. ⇒ 성능 저하</p>
-<p><strong>Cold Start</strong></p>
-<p>데이터가 부족하거나 혹은 아예 없는 유저, 아이템의 경우 추천이 불가능하다.</p>
-</li>
-<li>
-<p><strong>Scalability(확장성) 문제</strong></p>
-<ul>
-<li>
-<p>유저와 아이템이 늘어날수록 유사도 계산이 늘어난다.</p>
-<p>추론을 위한 많은 양의 Offline 계산이 요구된다.</p>
-</li>
-<li>
-<p>유저, 아이템이 많아야 정확한 예측을 하지만 반대로 시간이 오래 걸린다.</p>
-</li>
-</ul>
-</li>
-</ol>
-<hr>
-<ol>
-<li>
-<p>이웃 데이터를 학습한다.</p>
-<p>특정 주변 이웃에 의해 크게 영향을 받을 수 있다.</p>
-</li>
-<li>
-<p>공통의 유저 / 아이템을 많이 공유해야만 유사도 값이 정확해진다.</p>
-</li>
-<li>
-<p>유사도 값이 정확하지 않은 경우 이웃의 효과를 보기 어렵다.</p>
-</li>
-</ol>
-<h3 id="ubcf-user-based-cf유저-기반-협업-필터링">
-  UBCF: User-based CF(유저 기반 협업 필터링)
-  <a class="anchor" href="#ubcf-user-based-cf%ec%9c%a0%ec%a0%80-%ea%b8%b0%eb%b0%98-%ed%98%91%ec%97%85-%ed%95%84%ed%84%b0%eb%a7%81">#</a>
-</h3>
-<p>대상 유저와 유사도가 높은 유저들이 선호하는 아이템을 추천하는 방식</p>
-<ul>
-<li>
-<p>ex) 영화 평점</p>
-<p>
-  <img src="/imgs/NBCF1.png" alt="NBCF" /></p>
-<ul>
-<li>User A가 User B와 선호도가 비슷하므로, User B의 스타워즈 평점은 높을 것이라고 예상한다.</li>
-</ul>
-</li>
-</ul>
-<p><strong>평점 산출 방식</strong></p>
-<ul>
-<li>
-<p>Absolute Rating</p>
-<ul>
-<li>
-<p>Average — 평균내기</p>
-<p>모든 유저의 평점을 평균내서 평점을 예측한다.</p>
-</li>
-<li>
-<p>Weighted Average — 유저의 유사도를 반영하여 평점 예측</p>
-<p>유저 간의 유사도를 반영하여 평점을 예측한다.</p>
-</li>
-</ul>
-<p>한계</p>
-<p>유저가 평점을 주는 기준이 제각기 다르다.</p>
-<p>따라서, 각 유저별 발생하는 편차를 제대로 반영하지 못하게 된다.</p>
-</li>
-<li>
-<p>Relative Rating</p>
-<p>유저의 평점을 그대로 사용하지 않고, 유저의 평균 평점에서의 편차를 사용한다.</p>
-<p>$$
-\begin{gathered}\operatorname{dev}(u, i)=r(u, i)-\overline{r_u} \quad \text { for known rating } \\widehat{\operatorname{dev}}(u, i)=\frac{\sum_{u \Omega^{\prime} \in \Omega_i} \operatorname{dev}\left(u^{\prime}, i\right)}{\left|\Omega_i\right|}=\frac{\sum_{u^{\prime} \in \Omega_i} r\left(u^{\prime}, i\right)-\overline{r_{u^{\prime}}}}{\left|\Omega_i\right|} \\hat{r}(u, i)=\overline{r_u}+\frac{\sum_{u \prime \in \Omega_i} r\left(u^{\prime}, i\right)-\overline{r_{u^{\prime}}}}{\left|\Omega_i\right|}=\overline{r_u}+\widehat{\operatorname{dev}}(u, i)\end{gathered}
-$$</p>
-<ul>
-<li>
-<p>ex) 유저 B의 스타워즈에 대한 예측 평점</p>
-<p>
-  <img src="/imgs/NBCF2.png" alt="NBCF" /></p>
-<p>예측 Deviation = 0.23</p>
-<p>$$
-{1.6 \times 0.95 + (-1.6) \times (0.6) + 0 \times 0.85\over0.95 + 0.6 + 0.85} = 0.23
-$$</p>
-<p>유저 B의 평점 평균 = 3</p>
-<p><strong>유저 B의 예측 평점 = 3.23</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="ibcf-item-based-cf아이템-기반-협업-필터링">
-  IBCF: Item-based CF(아이템 기반 협업 필터링)
-  <a class="anchor" href="#ibcf-item-based-cf%ec%95%84%ec%9d%b4%ed%85%9c-%ea%b8%b0%eb%b0%98-%ed%98%91%ec%97%85-%ed%95%84%ed%84%b0%eb%a7%81">#</a>
-</h3>
-<p>타겟 아이템과 유사도가 높은 아이템 중 선호도가 큰 아이템을 추천하는 방식</p>
-<p><strong>장점</strong></p>
-<p>시간에 따라 유사도 변화가 적다.</p>
-<p>User based CF에 비해 계산량이 적다.</p>
-<ul>
-<li>
-<p>ex) 영화 평점</p>
-<p>
-  <img src="/imgs/NBCF3.png" alt="NBCF" /></p>
-<ul>
-<li>헐크와 스타워즈의 유저별 평점 분포가 비슷하므로, 유저 B의 스타워즈 평점이 높을 것이라 예측한다.</li>
-</ul>
-</li>
-</ul>
-<p>평점 산출 방식</p>
-<ul>
-<li>
-<p>Absolute Rating</p>
-<ul>
-<li>
-<p>Average — 평균내기</p>
-<p>모든 아이템의 평점을 평균내서 평점을 예측한다.</p>
-</li>
-<li>
-<p>Weighted Average — 아이템의 유사도를 반영하여 평점 예측</p>
-<p>아이템 간의 유사도를 반영하여 평점을 예측한다.</p>
-<p>이 때, 일부 아이템만 활용하여 평점을 예측하기도 한다.</p>
-</li>
-</ul>
-</li>
-<li>
-<p>Relative Rating</p>
-<p>아이템의 평점을 그대로 사용하지 않고, 아이템의 평균 평점에서의 편차를 이용한다.</p>
-<ul>
-<li>
-<p>ex) 유저 B의 스타워즈에 대한 예측 평점</p>
-<p>
-  <img src="/imgs/NBCF4.png" alt="NBCF" />
-코사인 유사도 사용. 2-NN 기준 아이언맨 0.9, 헐크 0.95, 스타워즈 평균 3.0</p>
-<p>예측 Deviation = 1.15</p>
-<p>$$
-{0.9 \times 0.25 + 0.95 \times2\over0.9 + 0.95} = 1.15
-$$</p>
-<p>아이템 B의 평점 평균 = 3</p>
-<p><strong>유저 B의 예측 평점 = 4.15</strong></p>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>Top-N Recommendation</strong></p>
-<p>대상 유저에 대한 아이템 예측 평점 계산이 완료되면, 평점순으로 정렬하여 상위 N개만 추천하기</p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#ubcf-user-based-cf유저-기반-협업-필터링">UBCF: User-based CF(유저 기반 협업 필터링)</a></li>
-            <li><a href="#ibcf-item-based-cf아이템-기반-협업-필터링">IBCF: Item-based CF(아이템 기반 협업 필터링)</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

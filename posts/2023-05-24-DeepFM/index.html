@@ -1,377 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="DeepFM: A Factorization-Machine based Neural Network for CTR Prediction
-Wide &amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문
-Background#추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.
-예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)
-10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)
-기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.
-Wide &amp; Deep 모델은 이 둘을 통합하여 문제 해결
-하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="DeepFM" />
-<meta property="og:description" content="DeepFM: A Factorization-Machine based Neural Network for CTR Prediction
-Wide &amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문
-Background#추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.
-예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)
-10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)
-기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.
-Wide &amp; Deep 모델은 이 둘을 통합하여 문제 해결
-하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-05-24-DeepFM/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>DeepFM | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>DeepFM</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Deep Model, Factorization Machine, Neural Network, CTR Prediction'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-05-24-DeepFM/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="DeepFM">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="DeepFM">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-05-24-DeepFM/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-05-24-DeepFM/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-05-24-DeepFM/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>DeepFM</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#background"><strong>Background</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#모델-구조">모델 구조</a>
-          <ul>
-            <li><a href="#fm-for-low-order-feature-interaction"><strong>FM for low-order feature interaction</strong></a></li>
-            <li><a href="#dnn-for-high-order-feature-interaction"><strong>DNN for high-order feature interaction</strong></a></li>
-            <li><a href="#전체-구조">전체 구조</a></li>
-          </ul>
-        </li>
-        <li><a href="#타-모델과의-비교">타 모델과의 비교</a>
-          <ul>
-            <li><a href="#fnn">FNN</a></li>
-            <li><a href="#pnn">PNN</a></li>
-            <li><a href="#성능">성능</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-05-24-DeepFM/">DeepFM</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Recommendation-System/">Recommendation System</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Deep-Model/">Deep Model</a>, 
-      <a href="/tags/Factorization-Machine/">Factorization Machine</a>, 
-      <a href="/tags/Neural-Network/">Neural Network</a>, 
-      <a href="/tags/CTR-Prediction/">CTR Prediction</a>
-  </div>
-  
-
-
-
-<p>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction</p>
-<p>Wide &amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문</p>
-<h3 id="background">
-  <strong>Background</strong>
-  <a class="anchor" href="#background">#</a>
-</h3>
-<p>추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.</p>
-<p>예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)</p>
-<p>10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)</p>
-<p>기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.</p>
-<p>Wide &amp; Deep 모델은 이 둘을 통합하여 문제 해결</p>
-<p>하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</p>
-<p>이러한 문제를 해결하고자 DeepFM에서는 FM을 wide component로 사용하여 <strong>입력값을 공유한다.</strong></p>
-<p><strong>DeepFM = Factorization Machine + Deep Neural Network</strong></p>
-<h2 id="모델-구조">
-  모델 구조
-  <a class="anchor" href="#%eb%aa%a8%eb%8d%b8-%ea%b5%ac%ec%a1%b0">#</a>
-</h2>
-<h3 id="fm-for-low-order-feature-interaction">
-  <strong>FM for low-order feature interaction</strong>
-  <a class="anchor" href="#fm-for-low-order-feature-interaction">#</a>
-</h3>
-<p>기존의 FM모델과 완전히 동일한 구조</p>
-<p>수식이 동일하다.</p>
-<p>FM 구조</p>
-<p>$$
-\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i{+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j} \</p>
-<p>w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k
-$$</p>
-<p>order-2 feature interaction을 효과적으로 잡는다.</p>
-<p>
-  <img src="/imgs/DeepFM-1.png" alt="DeepFM" /></p>
-<p>각 field가 하나의 feature를 의미한다.</p>
-<p>모두 Sparse한 feature로 구성한다.</p>
-<ul>
-<li>
-<p>Addition으로 연결된 선</p>
-<p>1차 Term을 의미</p>
-</li>
-<li>
-<p>각각의 Feature은 동일한 차원으로 임베딩된 후, 내적을 통해 feature간 interaction을 학습한다.</p>
-</li>
-</ul>
-<p>
-  <img src="/imgs/DeepFM-2.png" alt="DeepFM" /></p>
-<h3 id="dnn-for-high-order-feature-interaction">
-  <strong>DNN for high-order feature interaction</strong>
-  <a class="anchor" href="#dnn-for-high-order-feature-interaction">#</a>
-</h3>
-<p>모든 feature들은 동일한 차원(k)의 임베딩으로 치환된다.</p>
-<p>이 때, 임베딩에 사용되는 가중치는 FM Component의 가중치($v_{ij}$)와 동일하다.</p>
-<p>
-  <img src="/imgs/DeepFM-3.png" alt="DeepFM" /></p>
-<p>$$
-\begin{aligned}&amp; a^0=\left[e_1, e_2, \ldots, e_m\right] \&amp; a^{(l+1)}=\sigma\left(W^l a^l+b^l\right) \&amp; y_{D N N}=W^{|H|+1} a^{|H|}+b^{|H|+1}\end{aligned}
-$$</p>
-<p>각 Embedding은 모두 연결되어 가로로 붙게 된다.</p>
-<p>이렇게 탄생한 임베딩 벡터가 MLP Layer의 Input Layer가 된다.</p>
-<p>이후, L개의 Feed-Forward Network를 지나며 마지막에 클릭 여부를 Output으로 제출한다.</p>
-<h3 id="전체-구조">
-  전체 구조
-  <a class="anchor" href="#%ec%a0%84%ec%b2%b4-%ea%b5%ac%ec%a1%b0">#</a>
-</h3>
-<p>$$
-\tt \hat y = sigmoid(y_{FM} + y_{DNN})
-$$</p>
-<p>
-  <img src="/imgs/DeepFM-4.png" alt="DeepFM" />
-FM과 Deep의 장점을 모두 가진다.</p>
-<h2 id="타-모델과의-비교">
-  타 모델과의 비교
-  <a class="anchor" href="#%ed%83%80-%eb%aa%a8%eb%8d%b8%ea%b3%bc%ec%9d%98-%eb%b9%84%ea%b5%90">#</a>
-</h2>
-<p>
-  <img src="/imgs/DeepFM-5.png" alt="DeepFM" /></p>
-<h3 id="fnn">
-  FNN
-  <a class="anchor" href="#fnn">#</a>
-</h3>
-<p>FM 모델을 사용하지만, End-to-End 학습이 아니다.</p>
-<p>FM모델을 활용한 이후, 그 임베딩을 다시 가지고 와서 활용한다.</p>
-<p>즉, Pre-training이 필요하다.</p>
-<h3 id="pnn">
-  PNN
-  <a class="anchor" href="#pnn">#</a>
-</h3>
-<p>DeepFM과 흡사하지만, Low-order Interaction(Memorization부분)이 빠져있다.</p>
-<p>
-  <img src="/imgs/DeepFM-6.png" alt="DeepFM" /></p>
-<h3 id="성능">
-  성능
-  <a class="anchor" href="#%ec%84%b1%eb%8a%a5">#</a>
-</h3>
-<p>
-  <img src="/imgs/DeepFM-7.png" alt="DeepFM" /></p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#background"><strong>Background</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#모델-구조">모델 구조</a>
-          <ul>
-            <li><a href="#fm-for-low-order-feature-interaction"><strong>FM for low-order feature interaction</strong></a></li>
-            <li><a href="#dnn-for-high-order-feature-interaction"><strong>DNN for high-order feature interaction</strong></a></li>
-            <li><a href="#전체-구조">전체 구조</a></li>
-          </ul>
-        </li>
-        <li><a href="#타-모델과의-비교">타 모델과의 비교</a>
-          <ul>
-            <li><a href="#fnn">FNN</a></li>
-            <li><a href="#pnn">PNN</a></li>
-            <li><a href="#성능">성능</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

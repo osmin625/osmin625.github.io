@@ -1,389 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="독립적으로 특정 작업을 진행할 때 사용한다.
-팀으로 여러작업을 동시에 작업할 수 있다.
-여러 Branch를 합치는 방법 — Merge
-merge#branch의 모든 기록 보존, merge에 대한 기록 추가.
-이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge#여러 commit 기록 하나로 합치기, merge기록 남기지 않기.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Git Branch는 무엇이고, 무엇을 위해 사용하는가?" />
-<meta property="og:description" content="독립적으로 특정 작업을 진행할 때 사용한다.
-팀으로 여러작업을 동시에 작업할 수 있다.
-여러 Branch를 합치는 방법 — Merge
-merge#branch의 모든 기록 보존, merge에 대한 기록 추가.
-이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge#여러 commit 기록 하나로 합치기, merge기록 남기지 않기." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-02-Git-Branch/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-07T19:54:10+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>Git Branch는 무엇이고, 무엇을 위해 사용하는가? | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Git Branch는 무엇이고, 무엇을 위해 사용하는가?</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Git, Branch, Merge'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-06-02-Git-Branch/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Git Branch는 무엇이고, 무엇을 위해 사용하는가?">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Git Branch는 무엇이고, 무엇을 위해 사용하는가?">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-06-02-Git-Branch/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-06-02-Git-Branch/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-06-02-Git-Branch/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>Git Branch는 무엇이고, 무엇을 위해 사용하는가?</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#merge">merge</a></li>
-        <li><a href="#squash-and-merge">squash and merge</a></li>
-        <li><a href="#rebase-and-merge">rebase and merge</a>
-          <ul>
-            <li><a href="#conflict가-발생한다면">Conflict가 발생한다면?</a></li>
-          </ul>
-        </li>
-        <li><a href="#원격-브랜치-가져오기">원격 브랜치 가져오기</a></li>
-        <li><a href="#branch-합치기-병합하기">branch 합치기, 병합하기</a></li>
-        <li><a href="#branch-전략--flows">Branch 전략 — Flows</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-06-02-Git-Branch/">Git Branch는 무엇이고, 무엇을 위해 사용하는가?</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/Project-Management/">Project Management</a>, 
-      <a href="/categories/Git/">Git</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Git/">Git</a>, 
-      <a href="/tags/Branch/">Branch</a>, 
-      <a href="/tags/Merge/">Merge</a>
-  </div>
-  
-
-
-
-<p><strong>독립적으로 특정 작업을 진행할 때 사용</strong>한다.</p>
-<p>팀으로 여러작업을 동시에 작업할 수 있다.</p>
-<p>여러 Branch를 합치는 방법 — Merge</p>
-<h2 id="merge">
-  merge
-  <a class="anchor" href="#merge">#</a>
-</h2>
-<p><strong>branch의 모든 기록 보존, merge에 대한 기록 추가.</strong></p>
-<ul>
-<li>이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다.</li>
-<li>branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다.</li>
-</ul>
-<h2 id="squash-and-merge">
-  squash and merge
-  <a class="anchor" href="#squash-and-merge">#</a>
-</h2>
-<p><strong>여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</strong></p>
-<p>지저분한 커밋 이력들을 삭제하면서 master branch로 합칠 때 사용한다.</p>
-<ul>
-<li>merge할 때 여러 commit들을 하나로 합친다. <br>
-Squash를 하게 되면 모든 커밋 이력이 하나의 커밋으로 합쳐지며 <strong>사라진다.</strong></li>
-<li>merge에 대한 이력은 남기지 않는다.</li>
-</ul>
-<h2 id="rebase-and-merge">
-  rebase and merge
-  <a class="anchor" href="#rebase-and-merge">#</a>
-</h2>
-<p><strong>여러 commit 기록 남기기, merge 기록 남기지 않기.</strong></p>
-<p>기존의 커밋 이력을 유지하면서도, 깔끔하게 하나의 흐름으로 관리하고자 할 때 사용한다.</p>
-<ul>
-<li>
-<p><strong>일반적으로 가장 많이 사용된다.</strong></p>
-</li>
-<li>
-<p>merge에 대한 이력이 남지 않는다.</p>
-<p>즉, 언제 merge가 됐는지 알 수 없다.</p>
-<p>만약 merge 시점에 대한 기록이 필요하다면 커밋으로 직접 명시해주면 된다.</p>
-</li>
-<li>
-<p>모든 커밋이력들이 rebase 되어서 추가된다. 즉, fast-forward 된다.</p>
-<p>Rebase를 하면 커밋들의 Base가 변경되므로 Commit Hash 또한 변경 될 수 있다.</p>
-<p>이로 인해 Force Push가 필요한 경우가 발생한다.</p>
-</li>
-</ul>
-<hr>
-<details>
-<summary>
-내가 branch를 분기한 이후, 기존의 branch가 수정된 경우
-</summary>
-<ol>
-<li>내 branch에 기존 branch를 pull해서 conflict 해결하기.<br></li>
-</ol>
-<ul>
-<li>내가 작성한 커밋을 절대 변경하고 싶지 않은 경우<br></li>
-<li>내가 작성한 커밋 기록은 유지한채, Merge라는 기능을 통해 합쳐졌다라는 기록을 같이 남기게 된다.  <br></li>
-</ul>
-<ol start="2">
-<li>merge할 때 rebase and merge하기. ← 더 나은 방법.</li>
-</ol>
-</details>
-<h3 id="conflict가-발생한다면">
-  Conflict가 발생한다면?
-  <a class="anchor" href="#conflict%ea%b0%80-%eb%b0%9c%ec%83%9d%ed%95%9c%eb%8b%a4%eb%a9%b4">#</a>
-</h3>
-<p>마지막으로 push 하는 사람이 해결해야 한다.</p>
-<ol>
-<li>
-<p>마지막에 push하는 사람은 conflict 에러가 발생한다.</p>
-</li>
-<li>
-<p>git status로 충돌 위치 확인하기</p>
-</li>
-<li>
-<p>A와 B가 협의 후 수정하기</p>
-<p>CVN의 해결방법과 유사하다.</p>
-</li>
-</ol>
-<h2 id="원격-브랜치-가져오기">
-  원격 브랜치 가져오기
-  <a class="anchor" href="#%ec%9b%90%ea%b2%a9-%eb%b8%8c%eb%9e%9c%ec%b9%98-%ea%b0%80%ec%a0%b8%ec%98%a4%ea%b8%b0">#</a>
-</h2>
-<ul>
-<li>
-<p><strong><code>git remote update</code> 원격 저장소 갱신</strong></p>
-<p>가끔 갱신을 하지 않으면 push하고자 하는 원격 branch를 찾을 수 없다는 오류를 보게된다.</p>
-<p>해당 오류를 처음 만나면 <em>분명 branch있는데 왜 없어!</em> 하게 된다.</p>
-</li>
-<li>
-<p><strong><code>git branch -r</code> 원격 저장소 branch 리스트 확인</strong></p>
-</li>
-<li>
-<p><strong><code>git branch -d dev</code> 로컬 저장소 branch 제거하기</strong></p>
-</li>
-<li>
-<p><strong><code>git checkout -t origin/dev</code> 원격 저장소 branch 가져오기</strong></p>
-<p><code>-t</code>: 원격 저장소의 branch 이름과 동일한 로컬 branch를 생성</p>
-<p><code>-f</code>: 문제가 발생하더라도 강제로 진행한다.</p>
-</li>
-</ul>
-<h2 id="branch-합치기-병합하기">
-  branch 합치기, 병합하기
-  <a class="anchor" href="#branch-%ed%95%a9%ec%b9%98%ea%b8%b0-%eb%b3%91%ed%95%a9%ed%95%98%ea%b8%b0">#</a>
-</h2>
-<ol>
-<li>
-<p><strong><code>git checkout -b issue1</code> branch 생성하고 변경하기</strong></p>
-<ul>
-<li>위 명령어는 아래의 두 가지 명령어를 한 번에 수행한 것이다.
-<ol>
-<li><code>git branch issue1 main</code> main branch로부터 issue1 branch 생성하기</li>
-<li><code>git checkout issue1</code> main branch에서 issue1 branch로 변경하기</li>
-</ol>
-</li>
-</ul>
-<p><strong>— 코드 추가 작업 수행 —</strong></p>
-</li>
-<li>
-<p><strong><code>git checkout master</code> (작업이 완료되고 난 후) <code>master</code> 브랜치로 이동하기</strong></p>
-</li>
-<li>
-<p><strong><code>git merge issue1</code> issue1을 master에 merge (병합)하기</strong></p>
-</li>
-</ol>
-<h2 id="branch-전략--flows">
-  Branch 전략 — Flows
-  <a class="anchor" href="#branch-%ec%a0%84%eb%9e%b5--flows">#</a>
-</h2>
-<p>가장 최신 커밋이 어디에 존재하느냐에 따라 두 가지 방법으로 나뉜다.</p>
-<ul>
-<li><strong>Local 중심 — Git Flow</strong></li>
-<li><strong>Remote 중심 — Github Flow</strong></li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#merge">merge</a></li>
-        <li><a href="#squash-and-merge">squash and merge</a></li>
-        <li><a href="#rebase-and-merge">rebase and merge</a>
-          <ul>
-            <li><a href="#conflict가-발생한다면">Conflict가 발생한다면?</a></li>
-          </ul>
-        </li>
-        <li><a href="#원격-브랜치-가져오기">원격 브랜치 가져오기</a></li>
-        <li><a href="#branch-합치기-병합하기">branch 합치기, 병합하기</a></li>
-        <li><a href="#branch-전략--flows">Branch 전략 — Flows</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

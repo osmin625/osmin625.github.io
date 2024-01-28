@@ -12,7 +12,7 @@
       <link>https://osmin625.github.io/posts/2023-05-24-DeepFM/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-24-DeepFM/</guid>
-      <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background&#xD;#&#xD;추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
+      <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background 추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
     </item>
   </channel>
 </rss>

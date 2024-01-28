@@ -1,359 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="간단 요약
-autograd 연산을 지원하는 다차원 배열
-tensor에 대한 미분값을 가진다.
-reshape보다 view를 쓰는 것이 좋다. squeeze와 unsqueeze의 차이 mm, dot, matmul 차이
-{: .prompt-info } 신경망의 가중치(매개변수)를 텐서로 표현한다.
-다차원 Arrays를 표현하는 PyTorch 클래스
-numpy의 ndarray와 호환된다.
-TensorFlow의 Tensor와도 동일
-Tensor을 생성하는 함수도 거의 동일
-numpy — ndarray
-import numpy as np n_array = np.arange(10).reshape(2,5) print(n_array) print(&#34;n_dim :&#34;, n_array.ndim, &#34;shape :&#34;, n_array.shape) pytorch — tensor
-import torch t_array = torch.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Tensor에 대해 알아보자." />
-<meta property="og:description" content="간단 요약
-autograd 연산을 지원하는 다차원 배열
-tensor에 대한 미분값을 가진다.
-reshape보다 view를 쓰는 것이 좋다. squeeze와 unsqueeze의 차이 mm, dot, matmul 차이
-{: .prompt-info } 신경망의 가중치(매개변수)를 텐서로 표현한다.
-다차원 Arrays를 표현하는 PyTorch 클래스
-numpy의 ndarray와 호환된다.
-TensorFlow의 Tensor와도 동일
-Tensor을 생성하는 함수도 거의 동일
-numpy — ndarray
-import numpy as np n_array = np.arange(10).reshape(2,5) print(n_array) print(&#34;n_dim :&#34;, n_array.ndim, &#34;shape :&#34;, n_array.shape) pytorch — tensor
-import torch t_array = torch." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-19-Tensor/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>Tensor에 대해 알아보자. | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Tensor에 대해 알아보자.</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Tensor, mm, matmul, dot, squeeze, unsqueeze, view, reshape, PyTorch'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-09-19-Tensor/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tensor에 대해 알아보자.">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tensor에 대해 알아보자.">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-09-19-Tensor/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-09-19-Tensor/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-09-19-Tensor/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>Tensor에 대해 알아보자.</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#dot-mm-matmul-차이">dot, mm, matmul 차이</a></li>
-            <li><a href="#tensor의-구조">Tensor의 구조</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-09-19-Tensor/">Tensor에 대해 알아보자.</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Framework/">DL Framework</a>, 
-      <a href="/categories/PyTorch/">PyTorch</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Tensor/">Tensor</a>, 
-      <a href="/tags/mm/">mm</a>, 
-      <a href="/tags/matmul/">matmul</a>, 
-      <a href="/tags/dot/">dot</a>, 
-      <a href="/tags/squeeze/">squeeze</a>, 
-      <a href="/tags/unsqueeze/">unsqueeze</a>, 
-      <a href="/tags/view/">view</a>, 
-      <a href="/tags/reshape/">reshape</a>, 
-      <a href="/tags/PyTorch/">PyTorch</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p><strong>간단 요약</strong><br>
-<strong>autograd 연산을 지원하는 다차원 배열</strong><br>
-<strong>tensor에 대한 미분값을 가진다.</strong></p>
-<ul>
-<li>reshape보다 view를 쓰는 것이 좋다.</li>
-<li>squeeze와 unsqueeze의 차이</li>
-<li>mm, dot, matmul 차이<br>
-{: .prompt-info }</li>
-</ul>
-</blockquote>
-<p><strong>신경망의 가중치(매개변수)를 텐서로 표현한다.</strong></p>
-<p>다차원 Arrays를 표현하는 PyTorch 클래스</p>
-<p>numpy의 ndarray와 호환된다.</p>
-<p>TensorFlow의 Tensor와도 동일</p>
-<p>Tensor을 생성하는 함수도 거의 동일</p>
-<ul>
-<li>
-<p><strong>numpy — ndarray</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>n_array <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(<span style="color:#ae81ff">10</span>)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">5</span>)
-</span></span><span style="display:flex;"><span>print(n_array)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;n_dim :&#34;</span>, n_array<span style="color:#f92672">.</span>ndim, <span style="color:#e6db74">&#34;shape :&#34;</span>, n_array<span style="color:#f92672">.</span>shape)
-</span></span></code></pre></div></li>
-<li>
-<p><strong>pytorch — tensor</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
-</span></span><span style="display:flex;"><span>t_array <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(n_array)
-</span></span><span style="display:flex;"><span>print(t_array)
-</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;n_dim :&#34;</span>, t_array<span style="color:#f92672">.</span>ndim, <span style="color:#e6db74">&#34;shape :&#34;</span>, t_array<span style="color:#f92672">.</span>shape)
-</span></span></code></pre></div></li>
-</ul>
-<p>list나 ndarray를 Tensor로 변환할 수 있다.</p>
-<p>데이터 타입은 numpy와 동일하다.</p>
-<p>GPU에 올려 사용이 가능하다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x_data<span style="color:#f92672">.</span>device
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># device(type=&#39;cpu&#39;)</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> torch<span style="color:#f92672">.</span>cuda<span style="color:#f92672">.</span>is_available():
-</span></span><span style="display:flex;"><span>		x_data_cuda <span style="color:#f92672">=</span> x_data<span style="color:#f92672">.</span>to(<span style="color:#e6db74">&#39;cuda&#39;</span>)
-</span></span><span style="display:flex;"><span>x_data_cuda<span style="color:#f92672">.</span>device
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># device(type=&#39;cuda&#39;, index=0)</span>
-</span></span></code></pre></div><p>view, squeeze, unsqueeze 등으로 tensor 조정이 가능하다.</p>
-<p><strong>view</strong>: reshape와 동일하게 tensor의 shape를 변환한다.</p>
-<ul>
-<li>
-<p>view와 reshape의 차이: contiguity(접근) 보장 여부</p>
-<p>view의 경우 클래스로의 접근을 계속 보장해주지만, reshape는 접근을 보장해주지 않는다.</p>
-<p>만약 접근을 보장할 수 없는 경우 copy를 해버린다.</p>
-</li>
-</ul>
-<p><strong>squeeze</strong>: 차원의 개수가 1인 차원을 삭제한다. (압축)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">128</span>)
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>squeeze() <span style="color:#75715e"># [1, 1, 20, 128] -&gt; [20, 128]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>x2 <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">128</span>)
-</span></span><span style="display:flex;"><span>x2 <span style="color:#f92672">=</span> x2<span style="color:#f92672">.</span>squeeze(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e"># [1, 1, 20, 128] -&gt; [1, 20, 128]</span>
-</span></span></code></pre></div><p><strong>unsqueeze:</strong> 차원의 개수가 1인 차원을 추가한다.</p>
-<p>추가할 위치를 지정해주어야 한다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>rand(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">128</span>)
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>unsqueeze(dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e">#[3, 20, 128] -&gt; [3, 1, 20, 128]</span>
-</span></span></code></pre></div><p>
-  <img src="/imgs/tensor.png" alt="tensor" /></p>
-<p>다른 기본적인 연산은 Tensor와 Numpy가 거의 동일하다.</p>
-<h3 id="dot-mm-matmul-차이">
-  dot, mm, matmul 차이
-  <a class="anchor" href="#dot-mm-matmul-%ec%b0%a8%ec%9d%b4">#</a>
-</h3>
-<p><strong>dot</strong> : 내적 연산.</p>
-<p><strong>mm</strong> : 행렬 곱셈 (벡터 연산 지원 x).</p>
-<p>행렬곱셈 연산이 Tensor에서는 dot 대신 mm(matrix multiplication)으로 표기된다.</p>
-<p><strong>matmul</strong> : 알아서 broadcasting을 지원해준다.</p>
-<p>쉽게 연산해준다는 장점이 있지만, 오히려 결과를 헷갈리게 만드는 단점이 있다.</p>
-<hr>
-<h3 id="tensor의-구조">
-  Tensor의 구조
-  <a class="anchor" href="#tensor%ec%9d%98-%ea%b5%ac%ec%a1%b0">#</a>
-</h3>
-<p>
-  <img src="/imgs/tensor1.png" alt="tensor" /></p>
-<ul>
-<li>1차원: iris 샘플 하나</li>
-<li>2차원: iris 샘플 여러 개, 명암 영상 한 장</li>
-<li>3차원: 명암 영상 여러 장, 컬러 영상 한 장</li>
-<li>4차원: 컬러 영상 여러 장, 컬러 동영상 하나</li>
-<li>5차원: 컬러 동영상 여러 개</li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#dot-mm-matmul-차이">dot, mm, matmul 차이</a></li>
-            <li><a href="#tensor의-구조">Tensor의 구조</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

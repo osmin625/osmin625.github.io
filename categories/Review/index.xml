@@ -19,49 +19,49 @@
       <link>https://osmin625.github.io/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/</guid>
-      <description>1. 프로젝트 개요&#xD;#&#xD;개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
+      <description>1. 프로젝트 개요 개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
     </item>
     <item>
       <title>KPT20230623</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
+      <description>TIL (Today I Learn) TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
     </item>
     <item>
       <title>KPT20230624</title>
       <link>https://osmin625.github.io/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
+      <description>TIL (Today I Learn) 하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
     </item>
     <item>
       <title>KPT20230628</title>
       <link>https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
+      <description>TIL (Today I Learn) CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
     </item>
     <item>
       <title>KPT20230629</title>
       <link>https://osmin625.github.io/posts/2023-06-30-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-30-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
+      <description>TIL (Today I Learn) Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 1 — 강의, 대회</title>
       <link>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
-      <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나?&#xD;#&#xD;AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
+      <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나? AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
       <link>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
-      <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트&#xD;#&#xD;전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경&#xD;#&#xD;기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
+      <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트 전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경 기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
     </item>
   </channel>
 </rss>

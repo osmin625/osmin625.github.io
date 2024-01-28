@@ -1,308 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TIL (Today I Learn)#CF의 단점
-CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.
-CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.
-마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.
-이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.
-강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="KPT20230628" />
-<meta property="og:description" content="TIL (Today I Learn)#CF의 단점
-CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.
-CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.
-마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.
-이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.
-강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
+    
+    
+    
+    
+    
+    
 
-<title>KPT20230628 | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    <title>KPT20230628</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='KPT, TIL'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KPT20230628">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="KPT20230628">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>KPT20230628</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
-            <li><a href="#keep"><strong>Keep</strong></a></li>
-            <li><a href="#problem"><strong>Problem</strong></a></li>
-            <li><a href="#try"><strong>Try</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/">KPT20230628</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/Review/">Review</a>, 
-      <a href="/categories/TIL/">TIL</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/KPT/">KPT</a>, 
-      <a href="/tags/TIL/">TIL</a>
-  </div>
-  
-
-
-
-<h3 id="til-today-i-learn">
-  <strong>TIL (Today I Learn)</strong>
-  <a class="anchor" href="#til-today-i-learn">#</a>
-</h3>
-<ul>
-<li>
-<p>CF의 단점</p>
-<p>CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.</p>
-</li>
-<li>
-<p>CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.</p>
-</li>
-<li>
-<p>마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.</p>
-</li>
-<li>
-<p>이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.</p>
-<p>강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</p>
-<p>위의 개념들이 어디에 쓰일지를 고민해보아야 머릿속에 남길 수 있을 것 같다.</p>
-</li>
-</ul>
-<h3 id="keep">
-  <strong>Keep</strong>
-  <a class="anchor" href="#keep">#</a>
-</h3>
-<ul>
-<li>만족했고, 앞으로 지속하고 싶은 부분</li>
-<li>4시간, 5시간정도 몰입하여 공부한 것.
-<ul>
-<li>가끔씩 장소를 바꿔주면 집중이 잘 될 것 같다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="problem">
-  <strong>Problem</strong>
-  <a class="anchor" href="#problem">#</a>
-</h3>
-<ul>
-<li>
-<p>부정적인 요소로 작용했거나 아쉬웠던 점</p>
-</li>
-<li>
-<p>나름 노트 정리를 했지만, 머릿속에 남지 않았다.</p>
-<p>새롭게 들어온 개념들이 너무 많기도 했고, 사실 언제 어떻게 쓰이는지에 대한 감이 잡히지 않았다.</p>
-</li>
-</ul>
-<h3 id="try">
-  <strong>Try</strong>
-  <a class="anchor" href="#try">#</a>
-</h3>
-<ul>
-<li>Problem에 대한 해결 방식으로 다음에 시도해볼 점</li>
-<li>CDL, SDAE, FPMC, PRME, FME가 어디 쓰이는지 알아보기.</li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li>
-          <ul>
-            <li><a href="#til-today-i-learn"><strong>TIL (Today I Learn)</strong></a></li>
-            <li><a href="#keep"><strong>Keep</strong></a></li>
-            <li><a href="#problem"><strong>Problem</strong></a></li>
-            <li><a href="#try"><strong>Try</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

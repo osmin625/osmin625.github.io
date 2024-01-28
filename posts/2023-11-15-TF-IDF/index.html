@@ -1,876 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BackgroundBackground#이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.
-Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.
-또한 많은 정보를 탐색하는 전문가들에게 유용하다.
-하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.
-대부분의 유저들은 boolean 쿼리를 작성하지 못한다.
-사용자들은 그렇게 많은 결과물이 필요하지 않다.
-대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.
-Query 1: “standard user dlink 650” → 200,000 hits
-Query 2: “standard user dlink 650 no card found”: 0 hits">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="문서의 순위를 매기는 방법, TF-IDF" />
-<meta property="og:description" content="BackgroundBackground#이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.
-Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.
-또한 많은 정보를 탐색하는 전문가들에게 유용하다.
-하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.
-대부분의 유저들은 boolean 쿼리를 작성하지 못한다.
-사용자들은 그렇게 많은 결과물이 필요하지 않다.
-대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.
-Query 1: “standard user dlink 650” → 200,000 hits
-Query 2: “standard user dlink 650 no card found”: 0 hits" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-11-15-TF-IDF/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>문서의 순위를 매기는 방법, TF-IDF | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>문서의 순위를 매기는 방법, TF-IDF</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='TF-IDF, Term Frequency, Inverse Document Frequency, Ranked Retrieval'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-11-15-TF-IDF/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="문서의 순위를 매기는 방법, TF-IDF">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="문서의 순위를 매기는 방법, TF-IDF">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-11-15-TF-IDF/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-11-15-TF-IDF/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-11-15-TF-IDF/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>문서의 순위를 매기는 방법, TF-IDF</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#background">Background</a>
-          <ul>
-            <li><a href="#ranked-retreival-models">Ranked Retreival Models</a></li>
-            <li><a href="#랭킹을-매기는-문서의-양을-줄이는-것은-품질면에서는-큰-이슈가-아니다"><strong>랭킹을 매기는 문서의 양을 줄이는 것은 품질면에서는 큰 이슈가 아니다.</strong></a></li>
-            <li><a href="#ranked-retreival의-기준-점수-매기기">Ranked Retreival의 기준 점수 매기기</a></li>
-            <li><a href="#query-document-matching-scores"><strong>Query-document matching scores</strong></a></li>
-            <li><a href="#jaccard-coefficient"><strong>Jaccard coefficient</strong></a></li>
-            <li><a href="#jaccard-coefficient의-문제점">Jaccard coefficient의 문제점</a></li>
-            <li><a href="#recall-binary-term-document-incidence-matrix"><strong>Recall: Binary term-document incidence matrix</strong></a></li>
-            <li><a href="#term-document-count-matrices"><strong>Term-document count matrices</strong></a></li>
-            <li><a href="#bag-of-words-model"><strong>Bag of words model</strong></a></li>
-            <li><a href="#tf-term-frequency">TF: <strong>Term frequency</strong></a></li>
-            <li><a href="#df-document-frequency">DF: <strong>Document Frequency</strong></a></li>
-            <li><a href="#idf-inverse-document-frequency">IDF: Inverse Document Frequency</a></li>
-          </ul>
-        </li>
-        <li><a href="#tf-idf">TF-IDF</a>
-          <ul>
-            <li><a href="#쿼리에-대한-문서의-score-계산">쿼리에 대한 문서의 Score 계산</a></li>
-            <li><a href="#문서를-나타내는-방법">문서를 나타내는 방법</a></li>
-            <li><a href="#tf-idf의-다양한-선택지">TF-IDF의 다양한 선택지</a></li>
-            <li><a href="#ex--lncltc"><strong>ex — lnc.ltc</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-11-15-TF-IDF/">문서의 순위를 매기는 방법, TF-IDF</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/Data/">Data</a>, 
-      <a href="/categories/Information-Retrieval/">Information Retrieval</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/TF-IDF/">TF-IDF</a>, 
-      <a href="/tags/Term-Frequency/">Term Frequency</a>, 
-      <a href="/tags/Inverse-Document-Frequency/">Inverse Document Frequency</a>, 
-      <a href="/tags/Ranked-Retrieval/">Ranked Retrieval</a>
-  </div>
-  
-
-
-
-<details markdown='block'>
-<summary>Background</summary>
-<h2 id="background">
-  Background
-  <a class="anchor" href="#background">#</a>
-</h2>
-<p>이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.</p>
-<p>Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.</p>
-<p>또한 많은 정보를 탐색하는 전문가들에게 유용하다.</p>
-<p>하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.</p>
-<p>대부분의 유저들은 boolean 쿼리를 작성하지 못한다.</p>
-<p>사용자들은 그렇게 많은 결과물이 필요하지 않다.</p>
-<p>대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.</p>
-<p>Query 1: “<em>standard user dlink 650</em>” → 200,000 hits</p>
-<p>Query 2: “<em>standard user dlink 650 no card found</em>”: 0 hits</p>
-<p>AND는 너무 적게 나오고, OR은 너무 많이 나온다.</p>
-<p>심지어 순서도 없이 뒤죽박죽 나온다.</p>
-<ul>
-<li>
-<p><strong>Quiz 1: Search results</strong></p>
-<ul>
-<li>X AND Y에대해 구글 검색할 때, 총 2000개의 결과가 리턴</li>
-<li>X AND Y AND Z에대해 구글 검색할 때, 총 3500개의 결과가 리턴</li>
-</ul>
-<p>왜 2번째 쿼리가 더 많은 결과를 리턴하는가?</p>
-</li>
-</ul>
-<h3 id="ranked-retreival-models">
-  Ranked Retreival Models
-  <a class="anchor" href="#ranked-retreival-models">#</a>
-</h3>
-<p>AND, OR 이렇게 검색하지 않고, 사람에게 말하듯이 검색하고자 한다.</p>
-<p>즉, 쿼리 표현식을 만족하는 문서의 집합이 아닌, 시스템이 쿼리에 대한 컬렉션에 대한 상위 랭킹의 문서를 리턴한다.</p>
-<ul>
-<li><strong>free text query</strong>: 쿼리 언어의 precise query(연산자나 표현) 보다는 사용자의 쿼리는 한단어 이상의 자연어가 입력된다.</li>
-<li>실전에서는 보통 ranked retreival이 free text 쿼리랑 조합된다.</li>
-</ul>
-<p>이 때, 랭킹 알고리즘 품질을 좋게 유지해야 한다.</p>
-<h3 id="랭킹을-매기는-문서의-양을-줄이는-것은-품질면에서는-큰-이슈가-아니다">
-  <strong>랭킹을 매기는 문서의 양을 줄이는 것은 품질면에서는 큰 이슈가 아니다.</strong>
-  <a class="anchor" href="#%eb%9e%ad%ed%82%b9%ec%9d%84-%eb%a7%a4%ea%b8%b0%eb%8a%94-%eb%ac%b8%ec%84%9c%ec%9d%98-%ec%96%91%ec%9d%84-%ec%a4%84%ec%9d%b4%eb%8a%94-%ea%b2%83%ec%9d%80-%ed%92%88%ec%a7%88%eb%a9%b4%ec%97%90%ec%84%9c%eb%8a%94-%ed%81%b0-%ec%9d%b4%ec%8a%88%ea%b0%80-%ec%95%84%eb%8b%88%eb%8b%a4">#</a>
-</h3>
-<p>구글 검색의 클릭률을 보면 대부분 1페이지의 10개의 검색결과의 클릭률이 94%이다.</p>
-<p>유저는 2페이지로 이동할 가능성 조차 낮다.</p>
-<h3 id="ranked-retreival의-기준-점수-매기기">
-  Ranked Retreival의 기준 점수 매기기
-  <a class="anchor" href="#ranked-retreival%ec%9d%98-%ea%b8%b0%ec%a4%80-%ec%a0%90%ec%88%98-%eb%a7%a4%ea%b8%b0%ea%b8%b0">#</a>
-</h3>
-<p>가장 그럴듯한 문서 순서대로 리턴해주고 싶은데, 쿼리마다 문서의 랭킹을 어떻게 정할 수 있을까?</p>
-<p>각 문서가 쿼리에 매칭되는 정도를 0과 1 사이의 값으로 점수를 매긴다.</p>
-<p>해당 점수는 <strong>query time에 계산된다.</strong></p>
-<p>계산이 오래 걸려선 안된다.</p>
-<h3 id="query-document-matching-scores">
-  <strong>Query-document matching scores</strong>
-  <a class="anchor" href="#query-document-matching-scores">#</a>
-</h3>
-<p>쿼리-문서 쌍에 대해 점수를 할당하는 방법</p>
-<p>복잡한 것을 배우기 전에 term 한개짜리 쿼리부터 시작해보자.</p>
-<ul>
-<li>만약 query term이 문서에 없다면 0점</li>
-<li>query term의 출현 빈도가 클수록 높은 점수를 할당</li>
-<li>앞으로 이 방식에 대한 몇가지 대안을 살펴볼 예정</li>
-</ul>
-<h3 id="jaccard-coefficient">
-  <strong>Jaccard coefficient</strong>
-  <a class="anchor" href="#jaccard-coefficient">#</a>
-</h3>
-<p>앞에서 단어간 유사도를 확인할 때 사용했었다.</p>
-<ul>
-<li>일반적으로 쓰여지는 A와 B집합의 관계는 아래와 같이 나타낸다.
-<ul>
-<li>jaccard(A,B)=$|A∩B||A∪B|$</li>
-<li>jaccard(A,A)=1</li>
-<li>jaccard(A,B)=0 if $A∩B=0$</li>
-</ul>
-</li>
-<li>A와 B가 같은 크기일 필요는 없다. 문서의 term 개수보다 query term이 적은 것이 당연하다.</li>
-<li>항상 0~1 값을 가진다.</li>
-</ul>
-<p>쿼리-문서 match 점수에서 Jaccard coefficient는 어떻게 계산할까?</p>
-<p>Query: <strong>ides of march</strong> 일 때</p>
-<ul>
-<li>Document 1: caesar died in march ⇒ 1 / 3 + 4 - 1</li>
-<li>Document 2: the long march ⇒ 1 / 3 + 3 - 1</li>
-</ul>
-<p>doc1 : $1\over6$ doc2 : $1\over5$ 즉 doc2가 점수가 조금 더 높다.</p>
-<h3 id="jaccard-coefficient의-문제점">
-  Jaccard coefficient의 문제점
-  <a class="anchor" href="#jaccard-coefficient%ec%9d%98-%eb%ac%b8%ec%a0%9c%ec%a0%90">#</a>
-</h3>
-<ul>
-<li>
-<p><strong>term frequency</strong>를 고려하지 않는다.</p>
-<p>문서 안에서 동일한 term이 몇 번 발생했는지는 관심이 없다.</p>
-<p>하지만 이 값은 중요하다.</p>
-  <aside>
-  ▪️ frequency
-<ul>
-<li>
-<p><strong>term frequency($tf_{term}$)</strong></p>
-<p>어떤 document 안에서 해당 term이 나타난 횟수</p>
-</li>
-<li>
-<p><strong>document frequency($df_{term}$)</strong></p>
-<p>어떤 term이 나타나는 document의 개수</p>
-</li>
-<li>
-<p><strong>collection frequency($cf_{term}$)</strong></p>
-<p>collection 전체에서 어떤 term이 나타난 횟수</p>
-</li>
-</ul>
-  </aside>
-</li>
-<li>
-<p>Scoring의 목적이 query와 document 사이의 관계이다.</p>
-<p>collection에서 드물게 나타나는 term은 흔한 term보다 문서를 특정하기에 훨씬 더 유용하다.</p>
-<p>하지만 Jaccard는 frequency를 고려하지 않기 때문에  이 정보를 고려하지 않는다.</p>
-</li>
-<li>
-<p>길이를 normalize 할 더 세련된 방법이 필요하다.</p>
-<p>문서의 길이가 긴 경우 동일한 단어가 더 많이 출몰할 것이다.</p>
-<p>이를 문서의 길이가 짧은 경우의 단어 출몰 횟수랑 비교하기 위해 정규화할 필요가 있다.</p>
-</li>
-<li>
-<p>나중에 이 수식을 사용한다.</p>
-<p>$|A∩B||A∪B|$</p>
-</li>
-</ul>
-<h3 id="recall-binary-term-document-incidence-matrix">
-  <strong>Recall: Binary term-document incidence matrix</strong>
-  <a class="anchor" href="#recall-binary-term-document-incidence-matrix">#</a>
-</h3>
-<p>
-  <img src="tf_idf.png" alt="tf_idf" /></p>
-<p>예를 들어 antony and brutus and not(calpurnia)라면</p>
-<ul>
-<li>$110001$</li>
-<li>$110100$</li>
-<li>$101111 -&gt; 100000$</li>
-</ul>
-<p>위 비트와이즈 연산을 통해 “Antony and Cleopatra”가 만족하는 소설책임을 찾을 수 있다.</p>
-<ul>
-<li>
-<p>각 문서를 바이너리 벡터로 표시한다.</p>
-<p>$vector ∈ {0,1}^{V}$</p>
-</li>
-</ul>
-<h3 id="term-document-count-matrices">
-  <strong>Term-document count matrices</strong>
-  <a class="anchor" href="#term-document-count-matrices">#</a>
-</h3>
-<ul>
-<li>
-<p>frequency를 고려하기 위해 0/1 벡터 대신에 횟수를 벡터화한다.</p>
-</li>
-<li>
-<p>문서에 term이 등장한 횟수를 고려함</p>
-<p>각 문서는 자연수를 담은 <strong>count vector</strong>로 표시</p>
-<p>
-  <img src="tf_idf1.png" alt="tf_idf" /></p>
-<p>문서에서 단어의 등장횟수가 많은 것들이 중요하다.</p>
-</li>
-</ul>
-<h3 id="bag-of-words-model">
-  <strong>Bag of words model</strong>
-  <a class="anchor" href="#bag-of-words-model">#</a>
-</h3>
-<ul>
-<li>
-<p>벡터 표현은 문서안의 단어의 순서를 고려하지 않는다.</p>
-<ul>
-<li>John is quicker than Mary</li>
-<li>Mary is quicker than John</li>
-</ul>
-<p>위의 두 문장은 다른 뜻이지만 같은 벡터를 가지게 된다.</p>
-</li>
-<li>
-<p>이를 <strong>BOW(bag of words)</strong> 모델이라고 부른다.</p>
-</li>
-<li>
-<p>위의 두 문장의 차이를 구별할 수 있는 positional index에 비해 BOW는 후퇴한 것처럼 보인다.</p>
-<p>하지만 positional index는 presentation을 판별하기 위해 사용됐던 것이다.</p>
-<p>나중에 positional index가 다시 언급된다.</p>
-</li>
-</ul>
-</details>
-<h3 id="tf-term-frequency">
-  TF: <strong>Term frequency</strong>
-  <a class="anchor" href="#tf-term-frequency">#</a>
-</h3>
-<p>term frequency($tf_{t,d}$): 문서 d에서 term t가 발생한 빈도</p>
-<p>tf를 query-document가 얼마나 일치하는지 계산하기 위해 쓰고 싶다.</p>
-<p>raw tf 값은 활용하기 불편하다.</p>
-<p>tf 10인 문서가 tf 1인 문서보다 더 연관도가 높다.</p>
-<p>하지만 숫자의 크기가 해당 문서가 10배 더 유의미하다는 의미는 아니다.</p>
-<p><strong>문서의 연관성은 tf의 수에 따라 비례적으로 증가하지는 않는다.</strong></p>
-<p>게다가, 단어의 빈도가 0개인 문서와 1개인 문서의 차이는 매우 크지만,</p>
-<p>100개인 문서와 101개인 문서의 차이는 아주 작다.</p>
-<p>따라서 단어의 개수에 따라 달라지는 영향력을 표현하기 위해, 단어의 빈도에 log를 취한다.</p>
-<p>
-  <img src="tf_idf4.png" alt="tf_idf4" /></p>
-<p>이 때, 단어가 하나 있는 것과 아예 없는 것의 차이는 훨씬 크기 때문에, 0과 1은 따로 구분한다.</p>
-<p>$$
-\tt score = ∑_{t∈q∩d}(1+log tf_{t,d})
-$$</p>
-<p>문서의 점수를 계산하기 위해선, query와 document에서 공통으로 나타나는 단어의 빈도를 log로 계산하면 된다.</p>
-<ul>
-<li>문서에서 query term이 하나도 발견되지 않으면 점수는 0이다.</li>
-<li>ex
-<table>
-<thead>
-<tr>
-<th>term frequency</th>
-<th>weight</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>1</td>
-<td>1</td>
-</tr>
-<tr>
-<td>2</td>
-<td>1.3</td>
-</tr>
-<tr>
-<td>10</td>
-<td>2</td>
-</tr>
-<tr>
-<td>1000</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ul>
-<h3 id="df-document-frequency">
-  DF: <strong>Document Frequency</strong>
-  <a class="anchor" href="#df-document-frequency">#</a>
-</h3>
-<ul>
-<li>
-<p>희귀한 term은 흔한 term 대비 더 유용하다.</p>
-<p>stop word와 같은 것들은 문서를 구별짓는데 도움이 되지 않는다.</p>
-<p>arachnocentric이 문서를 구별짓는데 훨씬 많은 도움이 된다.</p>
-</li>
-<li>
-<p>이렇게 희귀한 term을 포함한 문서는 쿼리 term에 매우 연관도가 높을 것이다.</p>
-<p>희귀한 arachnocentric같은 term에 가중치를 부여해야 한다.</p>
-</li>
-</ul>
-<p><strong>요약하면, Document frequency가 작은 단어일수록 유용하고, term frequency가 큰 단어일수록 문서를 특정짓는데 유용하다.</strong></p>
-<p>효과적인 검색을 위해 document frequency($df$)에 대한 정보도 활용해야 한다.</p>
-<hr>
-<ul>
-<li>
-<p>모든 document에서 나타나는 term들은 문서를 검색하는데 도움이 크게 되지 않는다.</p>
-</li>
-<li>
-<p>컬렉션 내에서 흔한 term을 생각해보자. (ex: high, increase, line)</p>
-<p>물론 이러한 term을 포함하는 문서가 그러지 않은 문서보다는 연관있을 가능성이 높다.</p>
-<p>하지만 확실한 연관도의 척도가 될 수는 없다.</p>
-</li>
-</ul>
-<p><strong>term frequency가 높은 단어들에게 높은 가중치를 부여해야 한다.</strong></p>
-<p><strong>document frecuency가 낮은 단어들에게 높은 가중치를 부여해야 한다.</strong></p>
-<h3 id="idf-inverse-document-frequency">
-  IDF: Inverse Document Frequency
-  <a class="anchor" href="#idf-inverse-document-frequency">#</a>
-</h3>
-<p>$$
-\tt idf_t=log_{10}(N/df_t)
-$$</p>
-<ul>
-<li>N = 전체 document 수</li>
-</ul>
-<p>df가 작은 term의 점수를 더 높게 주기 위해 df를 뒤집어서 분모로 사용한다.</p>
-<p>idf값을 완화시키기 위해 log를 취해준다.</p>
-<p>log의 base가 꼭 10일 필요는 없다.</p>
-<ul>
-<li>
-<p><strong>ex) N = 1 million</strong></p>
-<p>N(문서의 개수) = 1,000,000이고,</p>
-<p>$idf_t=log_{10}(N/df_t)$인 경우</p>
-<table>
-<thead>
-<tr>
-<th>term</th>
-<th>df_t</th>
-<th>idf_t</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>calpurnia</td>
-<td>1</td>
-<td>6</td>
-</tr>
-<tr>
-<td>animal</td>
-<td>100</td>
-<td>4</td>
-</tr>
-<tr>
-<td>sunday</td>
-<td>1,000</td>
-<td>3</td>
-</tr>
-<tr>
-<td>fly</td>
-<td>10,000</td>
-<td>2</td>
-</tr>
-<tr>
-<td>under</td>
-<td>100,000</td>
-<td>1</td>
-</tr>
-<tr>
-<td>the</td>
-<td>1,000,000</td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>the처럼 모든 document에서 나타나는 단어는 가중치가 0이 되어버린다.</li>
-<li>전체 collection에 존재하는 term마다 고유한 idf 값이 존재한다.</li>
-<li>쉽게 이해하자면 idf를 적용하면 calpurnia는 promoting하고 the는 demoting한다.</li>
-</ul>
-</li>
-<li>
-<p>idf는 one term 쿼리에 있어서는 랭킹에 변화가 없다.</p>
-<ul>
-<li>
-<p>어차피 가중치를 구할 때 모든 document에 항상 같은 값이 곱해지게 된다.</p>
-</li>
-<li>
-<p>idf는 적어도 2개의 term 이상에 대해 효과가 있다.</p>
-<p>“capricious person”라는 쿼리가 있으면 idf 가중치는 capricious 라는 희귀한 단어에 person 이라는 흔한 단어 보다 상대적으로 높은 가중치를 부여하게 된다.</p>
-<p>ex) query : iphone box</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>CF vs. DF</strong></p>
-<ul>
-<li>
-<p>t에 대한 Collection Frequency는 전체 컬렉션 내에서 t가 발생한 빈도수를 집계한다.</p>
-<p>여러번 등장한 것을 모두 센다.</p>
-</li>
-<li>
-<p>ex</p>
-</li>
-</ul>
-<p>두 단어의 collection frequency가 비슷하지만, insurance의 document frequency에 비해 try의 document frequency가 훨씬 크다.</p>
-<p>그러므로 insurance가 더 높은 가중치를 받아야 한다.</p>
-</li>
-</ul>
-<h2 id="tf-idf">
-  TF-IDF
-  <a class="anchor" href="#tf-idf">#</a>
-</h2>
-<p>문서에 등장한 단어들의 중요도를 나타내는 값</p>
-<p>단어마다 TF-IDF 값이 계산된다.</p>
-<p>IR에서 가장 핵심적인 가중치 공식</p>
-<p>$$
-\tt W_{t,d}=(1+log_{10}tf_{t,d}) \times log_{10}(N/df_t)
-$$</p>
-<p>term의 tf-idf 가중치는 tf 가중치와 idf 가중치의 곱이다.</p>
-<p><strong>tf.idf</strong>나 <strong>tf x idf</strong>라고 부르기도 한다.</p>
-<p>가중치는 collection에서 term의 발생빈도에 따라 증가한다.</p>
-<p>가중치는 컬렉션 내에 term이 희귀할수록 증가한다.</p>
-<h3 id="쿼리에-대한-문서의-score-계산">
-  쿼리에 대한 문서의 Score 계산
-  <a class="anchor" href="#%ec%bf%bc%eb%a6%ac%ec%97%90-%eb%8c%80%ed%95%9c-%eb%ac%b8%ec%84%9c%ec%9d%98-score-%ea%b3%84%ec%82%b0">#</a>
-</h3>
-<p>$$
-\tt Score(q,d)=∑_{t∈q∩d}tf.idf_{t,d}
-$$</p>
-<p>위 수식은 q(query)와 d(document)에서 공통되는 term을 가진 document의 score만 계산한다는 의미이다.</p>
-<p>문서들의 Score을 계산할 때 다양한 옵션이 존재한다.</p>
-<ol>
-<li>
-<p>tf를 계산하는 방법</p>
-<ul>
-<li>log 적용 여부</li>
-<li>log의 base 크기</li>
-</ul>
-</li>
-<li>
-<p>쿼리를 구성하는 term에 가중치 부여 여부</p>
-<p>가중치 부여 없이, query도 하나의 document처럼 처리하는 방법도 있다.</p>
-<p>query는 document의 한 종류다.</p>
-</li>
-</ol>
-<h3 id="문서를-나타내는-방법">
-  문서를 나타내는 방법
-  <a class="anchor" href="#%eb%ac%b8%ec%84%9c%eb%a5%bc-%eb%82%98%ed%83%80%eb%82%b4%eb%8a%94-%eb%b0%a9%eb%b2%95">#</a>
-</h3>
-<p>문서들을 tf-idf 가중치 행렬로 나타낸다.</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-<th>Antony and Cleopatra</th>
-<th>Julius Caesar</th>
-<th>The Tempest</th>
-<th>Hamlet</th>
-<th>Othello</th>
-<th>Macbeth</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td></td>
-<td></td>
-<td>d1</td>
-<td>d2</td>
-<td>d3</td>
-<td>d4</td>
-<td>d5</td>
-<td>d6</td>
-</tr>
-<tr>
-<td>Antony</td>
-<td>t1</td>
-<td>5.25</td>
-<td>3.18</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0.35</td>
-</tr>
-<tr>
-<td>Brutus</td>
-<td>t2</td>
-<td>1.21</td>
-<td>6.1</td>
-<td>0</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Caesar</td>
-<td>t3</td>
-<td>8.59</td>
-<td>2.54</td>
-<td>0</td>
-<td>1.51</td>
-<td>0.25</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Calpurnia</td>
-<td>t4</td>
-<td>0</td>
-<td>1.54</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Cleopatra</td>
-<td>t5</td>
-<td>2.85</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-</tr>
-<tr>
-<td>Mercy</td>
-<td>t6</td>
-<td>1.51</td>
-<td>0</td>
-<td>1.9</td>
-<td>0.12</td>
-<td>5.25</td>
-<td>0.88</td>
-</tr>
-<tr>
-<td>worser</td>
-<td>t7</td>
-<td>1.37</td>
-<td>0</td>
-<td>0.11</td>
-<td>4.15</td>
-<td>0.25</td>
-<td>1.95</td>
-</tr>
-</tbody>
-</table>
-<p>각 문서는 tf-idf 가중치의 실수값 벡터로 표현된다.</p>
-<p>즉, 각 문서를 구성하는 Term들을 tf-idf 값으로 전환하여 문서를 벡터화한다.</p>
-<p>tf-idf 가중치 행렬 $∈R^{|V|}$</p>
-<p>$V$는 문서에 포함된 단어의 개수를 의미한다.</p>
-<p>결국 $|V|$ 차원의 벡터 공간을 가지게 된다.</p>
-<p><strong>term은 공간의 차원이 된다.</strong></p>
-<p>문서는 공간에서의 벡터(점)이라고 이해할 수 있다.</p>
-<p>쿼리도 문서와 같은 크기로 들어가야 한다.</p>
-<p>쿼리도 문서로 취급하여 벡터로 표현한다.</p>
-<p>하지만 만약 이 개념을 웹 검색엔진에 적용한다면 차원이 수억개가 된다.</p>
-<p>이는 매우 <strong>sparse</strong>한 벡터이고 대부분의 값은 0일 것이기에, 다른 방법이 필요하다.</p>
-<ul>
-<li>
-<p>공간에서 쿼리 벡터(문서)의 유사도(proximity)에 대해 랭킹을 매긴다.</p>
-<p>score(q,d1), score(q,d2)&hellip;는 벡터공간 상에서 문서벡터가 쿼리벡터와 얼마나 흡사한지를 판별한다.</p>
-<p><strong>proximity ≈ inverse of distance</strong></p>
-<p>즉, 거리가 가까울수록 문서와 쿼리가 비슷하다</p>
-<p><strong>boolean 모델에서 벗어나기 위해 이 작업을 수행한다.</strong></p>
-</li>
-<li>
-<p>대신에 더 연관있는 문서에 더 높은 랭크를 부여한다.</p>
-</li>
-</ul>
-<h3 id="tf-idf의-다양한-선택지">
-  TF-IDF의 다양한 선택지
-  <a class="anchor" href="#tf-idf%ec%9d%98-%eb%8b%a4%ec%96%91%ed%95%9c-%ec%84%a0%ed%83%9d%ec%a7%80">#</a>
-</h3>
-<p>tf-idf의 가중치 알고리즘은 선택의 폭이 다양하다.</p>
-<p>가장 많이 쓰이는 것은 붉은 색 표시가 되어있다.</p>
-<p>
-  <img src="tf_idf2.png" alt="tf_idf" /></p>
-<ul>
-<li>
-<p>많은 검색 엔진들이 쿼리나 문서에 대해 다양한 가중치 부여방식을 허용한다.</p>
-</li>
-<li>
-<p>표기법</p>
-<p><strong>ddd.qqq</strong></p>
-<p>앞의 3글자: 문서에 대한 알고리즘</p>
-<p>뒤의 3글자: 쿼리에 대한 알고리즘</p>
-<p>ex) lnc.ltc</p>
-<p>document → lnc</p>
-<ul>
-<li><strong>l</strong>ogarithmic tf</li>
-<li><strong>n</strong>o idf</li>
-<li><strong>c</strong>osine normalization</li>
-</ul>
-<p>query → <strong>ltc</strong></p>
-<ul>
-<li><strong>l</strong>ogarithmic tf</li>
-<li>(t) ⇒ idf</li>
-<li><strong>c</strong>osine normalization</li>
-</ul>
-</li>
-<li>
-<p>매우 표준적인 가중치 부여 방식으로 lnc.ltc가 있다.</p>
-<p>quiz: document에 no idf를 적용하는것이 나쁜 아이디어인가?</p>
-<p>ltc.lnc가 더 일반적으로 보인다.</p>
-</li>
-</ul>
-<h3 id="ex--lncltc">
-  <strong>ex — lnc.ltc</strong>
-  <a class="anchor" href="#ex--lncltc">#</a>
-</h3>
-<ul>
-<li>문서: car insurance auto insurance</li>
-<li>쿼리: best car insurance</li>
-</ul>
-<p>
-  <img src="tf_idf3.png" alt="tf_idf" /></p>
-<p>tf-raw: term의 발생횟수</p>
-<p>tf-wt:  $1+log(tf_{t,d})$. 즉, term의 발생빈도를 가중치로 바꾼 것.</p>
-<p>idf: $log{N\over df_t}$</p>
-<p>wt: tf-wt * idf : $(1+log(tf_{t,d}))\times log{N\over df_t}$</p>
-<p>n&rsquo;lize: 문서 길이(wt 제곱 총합의 루트) 로 wt를 나눈 것</p>
-<p>문서의 길이: $\sqrt {1^2+0^2+1^2+1.3^2} \simeq 1.92$</p>
-<p><strong>실제 코사인 유사도는 내적값의 합으로 auto에 대한 내적값 0, best에 대한 내적값 0, car에 대한 내적값 0.27(0.52 * 0.52)과 insurance에 대한 내적값 0.53(0.78 * 0.68)을 더한 0.8이다.</strong></p>
-<ul>
-<li>quiz: 문서의 수, N은 몇일까?</li>
-</ul>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#background">Background</a>
-          <ul>
-            <li><a href="#ranked-retreival-models">Ranked Retreival Models</a></li>
-            <li><a href="#랭킹을-매기는-문서의-양을-줄이는-것은-품질면에서는-큰-이슈가-아니다"><strong>랭킹을 매기는 문서의 양을 줄이는 것은 품질면에서는 큰 이슈가 아니다.</strong></a></li>
-            <li><a href="#ranked-retreival의-기준-점수-매기기">Ranked Retreival의 기준 점수 매기기</a></li>
-            <li><a href="#query-document-matching-scores"><strong>Query-document matching scores</strong></a></li>
-            <li><a href="#jaccard-coefficient"><strong>Jaccard coefficient</strong></a></li>
-            <li><a href="#jaccard-coefficient의-문제점">Jaccard coefficient의 문제점</a></li>
-            <li><a href="#recall-binary-term-document-incidence-matrix"><strong>Recall: Binary term-document incidence matrix</strong></a></li>
-            <li><a href="#term-document-count-matrices"><strong>Term-document count matrices</strong></a></li>
-            <li><a href="#bag-of-words-model"><strong>Bag of words model</strong></a></li>
-            <li><a href="#tf-term-frequency">TF: <strong>Term frequency</strong></a></li>
-            <li><a href="#df-document-frequency">DF: <strong>Document Frequency</strong></a></li>
-            <li><a href="#idf-inverse-document-frequency">IDF: Inverse Document Frequency</a></li>
-          </ul>
-        </li>
-        <li><a href="#tf-idf">TF-IDF</a>
-          <ul>
-            <li><a href="#쿼리에-대한-문서의-score-계산">쿼리에 대한 문서의 Score 계산</a></li>
-            <li><a href="#문서를-나타내는-방법">문서를 나타내는 방법</a></li>
-            <li><a href="#tf-idf의-다양한-선택지">TF-IDF의 다양한 선택지</a></li>
-            <li><a href="#ex--lncltc"><strong>ex — lnc.ltc</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

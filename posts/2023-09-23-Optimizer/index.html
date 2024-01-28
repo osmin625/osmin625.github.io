@@ -1,385 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="간단 요약
-Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법
-반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?
-{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue#1. Local minima, Saddle point#{: w=&ldquo;700&rdquo; h=&ldquo;400&rdquo; }
-실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.
-local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.
-{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="Optimizer란?" />
-<meta property="og:description" content="간단 요약
-Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법
-반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?
-{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue#1. Local minima, Saddle point#{: w=&ldquo;700&rdquo; h=&ldquo;400&rdquo; }
-실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.
-local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.
-{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-Optimizer/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>Optimizer란? | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Optimizer란?</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='Optimizer, Adam, Local minima, Saddle point, Gradient Descent'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-09-23-Optimizer/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Optimizer란?">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Optimizer란?">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-09-23-Optimizer/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-09-23-Optimizer/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-09-23-Optimizer/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>Optimizer란?</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#background-gradient-descentgd에서의-issue">Background: <strong>Gradient Descent(GD)에서의 Issue</strong></a>
-          <ul>
-            <li><a href="#1-local-minima-saddle-point">1. Local minima, Saddle point</a></li>
-            <li><a href="#2-길-헤매기">2. 길 헤매기</a></li>
-            <li><a href="#1-방향">1. <strong>방향</strong></a></li>
-            <li><a href="#momentum"><strong>Momentum</strong></a></li>
-            <li><a href="#nag--nesterov-accelerated-gradient">NAG : Nesterov Accelerated Gradient</a></li>
-            <li><a href="#2-거리학습률">2. <strong>거리(학습률)</strong></a></li>
-            <li><a href="#adagard">Adagard</a></li>
-            <li><a href="#adadelta">Adadelta</a></li>
-            <li><a href="#rmsprop">RMSProp</a></li>
-            <li><a href="#adam">Adam</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-09-23-Optimizer/">Optimizer란?</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/AI-Knowledge/">AI Knowledge</a>, 
-      <a href="/categories/Optimizer/">Optimizer</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/Optimizer/">Optimizer</a>, 
-      <a href="/tags/Adam/">Adam</a>, 
-      <a href="/tags/Local-minima/">Local minima</a>, 
-      <a href="/tags/Saddle-point/">Saddle point</a>, 
-      <a href="/tags/Gradient-Descent/">Gradient Descent</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p><strong>간단 요약</strong><br>
-Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법</p>
-<ul>
-<li>반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가?</li>
-<li>Learning rate : 한 번에 얼마나 반영할 것인가?<br>
-{: .prompt-info }</li>
-</ul>
-</blockquote>
-<h2 id="background-gradient-descentgd에서의-issue">
-  Background: <strong>Gradient Descent(GD)에서의 Issue</strong>
-  <a class="anchor" href="#background-gradient-descentgd%ec%97%90%ec%84%9c%ec%9d%98-issue">#</a>
-</h2>
-<h3 id="1-local-minima-saddle-point">
-  1. Local minima, Saddle point
-  <a class="anchor" href="#1-local-minima-saddle-point">#</a>
-</h3>
-<p>
-  <img src="optimizer.png" alt="Optimizer" />{: w=&ldquo;700&rdquo; h=&ldquo;400&rdquo; }</p>
-<p>실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.</p>
-<p>local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.</p>
-<p>
-  <img src="optimizer1.png" alt="Optimizer" />{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
-<p>
-  <img src="optimizer2.png" alt="Optimizer" />{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
-<p>대신 위의 상황에서 gradient descent 알고리즘이 평평한 곳에 머물러버리는 문제가 발생할 수 있다.</p>
-<p>꼭 머무르지 않더라도 주변이 평평하기 때문에 매우 더디게 학습이 진행되는 문제점도 있다.</p>
-<h3 id="2-길-헤매기">
-  2. 길 헤매기
-  <a class="anchor" href="#2-%ea%b8%b8-%ed%97%a4%eb%a7%a4%ea%b8%b0">#</a>
-</h3>
-<p>
-  <img src="optimizer3.png" alt="Optimizer" />
-SGD, Mini-batch GD가 굉장히 헤매면서 길을 찾는다.</p>
-<p>헤매는 정도를 줄일 필요가 있다.</p>
-<p>이를 위해 Optimizer가 등장했다.</p>
-<hr>
-<p>Optimizer에서는 SGD에서 크게 두 가지를 개선한다.</p>
-<h3 id="1-방향">
-  1. <strong>방향</strong>
-  <a class="anchor" href="#1-%eb%b0%a9%ed%96%a5">#</a>
-</h3>
-<p>SGD에서 Optimum을 향해 나아갈 때, 위의 예시처럼 방향을 끊임없이 바꾸며 나아간다.</p>
-<p>이보단, 올바른 방향으로 더 많이 가는 것을 원한다.</p>
-<p>이를 위해 **관성(Momentum)**을 적용한다.</p>
-<h3 id="momentum">
-  <strong>Momentum</strong>
-  <a class="anchor" href="#momentum">#</a>
-</h3>
-<p>
-  <img src="optimizer4.png" alt="Optimizer" /></p>
-<p>가중치를 갱신할 때, 이전에 나아갔던 방향도 반영을 해준다.</p>
-<p>
-  <img src="optimizer5.png" alt="Optimizer" /></p>
-<p><strong>단점</strong></p>
-<p>학습률에 따라 minimum point에 수렴하지 못하는 경우가 발생한다.</p>
-<p>
-  <img src="optimizer6.png" alt="Optimizer" /></p>
-<h3 id="nag--nesterov-accelerated-gradient">
-  NAG : Nesterov Accelerated Gradient
-  <a class="anchor" href="#nag--nesterov-accelerated-gradient">#</a>
-</h3>
-<p>Momentum의 단점을 개선한 방법.</p>
-<p>관성 방향으로 먼저 이동한 후, gradient를 계산한다.</p>
-<p>Momentum보다 수렴이 더 빠르다.</p>
-<p>
-  <img src="optimizer7.png" alt="Optimizer" /></p>
-<p>
-  <img src="optimizer8.png" alt="Optimizer" /></p>
-<h3 id="2-거리학습률">
-  2. <strong>거리(학습률)</strong>
-  <a class="anchor" href="#2-%ea%b1%b0%eb%a6%ac%ed%95%99%ec%8a%b5%eb%a5%a0">#</a>
-</h3>
-<h3 id="adagard">
-  Adagard
-  <a class="anchor" href="#adagard">#</a>
-</h3>
-<p>
-  <img src="optimizer9.png" alt="Optimizer" /></p>
-<p>현재까지 값이 많이 변한 파라미터에 대해서는 적게 변화시키고, 적게 변한 파라미터는 많이 변화시킨다.</p>
-<p><strong>단점</strong></p>
-<p>$G_t$의 값은 계속 커지는데, 이 값이 무한대에 가깝게 커지게 되면 값이 0이 되어버린다.</p>
-<p>즉, 이동을 멈춰버리게 된다.</p>
-<h3 id="adadelta">
-  Adadelta
-  <a class="anchor" href="#adadelta">#</a>
-</h3>
-<p>Adagrad의 단점을 개선한 방법.</p>
-<p>$G_t$가 너무 커지는 것을 방지한다.</p>
-<p>Learning rate가 없어 변형이 불가능하기 때문에, 잘 쓰지 않는다.</p>
-<p>
-  <img src="optimizer10.png" alt="Optimizer" /></p>
-<h3 id="rmsprop">
-  RMSProp
-  <a class="anchor" href="#rmsprop">#</a>
-</h3>
-<p>Adadelta + stepsize.</p>
-<p>
-  <img src="optimizer11.png" alt="Optimizer" /></p>
-<h3 id="adam">
-  Adam
-  <a class="anchor" href="#adam">#</a>
-</h3>
-<p>Momentum + RMSProp</p>
-<p>
-  <img src="optimizer12.png" alt="Optimizer" /></p>
-<p>가장 많이 쓰인다.</p>
-<hr>
-<p>
-  <img src="optimizer13.png" alt="Optimizer" /></p>
-<p>
-  <a href="https://hyunw.kim/blog/2017/11/01/Optimization.html">그림으로 보는 다양한 Optimization 기법들</a></p>
-<p>
-  <a href="https://seamless.tistory.com/38">딥러닝(Deep learning) 살펴보기 2탄</a></p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#background-gradient-descentgd에서의-issue">Background: <strong>Gradient Descent(GD)에서의 Issue</strong></a>
-          <ul>
-            <li><a href="#1-local-minima-saddle-point">1. Local minima, Saddle point</a></li>
-            <li><a href="#2-길-헤매기">2. 길 헤매기</a></li>
-            <li><a href="#1-방향">1. <strong>방향</strong></a></li>
-            <li><a href="#momentum"><strong>Momentum</strong></a></li>
-            <li><a href="#nag--nesterov-accelerated-gradient">NAG : Nesterov Accelerated Gradient</a></li>
-            <li><a href="#2-거리학습률">2. <strong>거리(학습률)</strong></a></li>
-            <li><a href="#adagard">Adagard</a></li>
-            <li><a href="#adadelta">Adadelta</a></li>
-            <li><a href="#rmsprop">RMSProp</a></li>
-            <li><a href="#adam">Adam</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

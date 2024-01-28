@@ -33,7 +33,7 @@
       <link>https://osmin625.github.io/posts/2023-06-19-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-19-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</guid>
-      <description>프로젝트를 어떻게 시작하느냐에 대한 관점&#xA;프로젝트를 시작하기 전, 어떻게 평가할 지, 그리고 어떻게 계획을 세울지를 설명한다.&#xA;프로젝트 식별&#xD;#&#xD;1. System Request 작성&#xD;#&#xD;Project Sponsor&#xA;프로젝트의 아이디어 제공자&#xA;프로젝트의 금전적 지원자 아님.&#xA;Business Need&#xA;Business requirements&#xA;Business Value : CEO의 입장에서 가장 먼저 보게된다.&#xA;프로젝트의 Business Value가 명확해야 한다. Economic feasibility부분을 미리 고민해봐야 한다. Special issues or constraints&#xA;프로젝트 마감 기간 등&#xA;ex) 크리스마스 시즌 전에 완성해야 한다.&#xA;2. Feasibility Analysis(타당성 분석)&#xD;#&#xD;프로젝트를 진행하기 전에 분석해야 한다.</description>
+      <description>프로젝트를 어떻게 시작하느냐에 대한 관점&#xA;프로젝트를 시작하기 전, 어떻게 평가할 지, 그리고 어떻게 계획을 세울지를 설명한다.&#xA;프로젝트 식별 1. System Request 작성 Project Sponsor&#xA;프로젝트의 아이디어 제공자&#xA;프로젝트의 금전적 지원자 아님.&#xA;Business Need&#xA;Business requirements&#xA;Business Value : CEO의 입장에서 가장 먼저 보게된다.&#xA;프로젝트의 Business Value가 명확해야 한다. Economic feasibility부분을 미리 고민해봐야 한다. Special issues or constraints&#xA;프로젝트 마감 기간 등&#xA;ex) 크리스마스 시즌 전에 완성해야 한다.&#xA;2. Feasibility Analysis(타당성 분석) 프로젝트를 진행하기 전에 분석해야 한다.</description>
     </item>
     <item>
       <title>5F 8월 1주차 주간회고록</title>
@@ -47,133 +47,133 @@
       <link>https://osmin625.github.io/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-20-Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</guid>
-      <description>Conv Layer&#xD;#&#xD;Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k&#xA;입력 : 224 * 224 * 3&#xA;filter : 11 * 11 * (3)&#xA;3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.&#xA;모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.&#xA;gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.&#xA;Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k</description>
+      <description>Conv Layer Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k&#xA;입력 : 224 * 224 * 3&#xA;filter : 11 * 11 * (3)&#xA;3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.&#xA;모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.&#xA;gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.&#xA;Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k</description>
     </item>
     <item>
       <title>Autoregression</title>
       <link>https://osmin625.github.io/posts/2023-06-29-Autoregression/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-29-Autoregression/</guid>
-      <description>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것&#xA;즉, Regression을 자기 자신에게 적용하는 것&#xA;$$ y_1, \ldots, y_n \rightarrow y_{n+1} $$&#xA;$$ \mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2 $$&#xA;종류&#xD;#&#xD;Moving Average(이동평균)&#xD;#&#xD;가장 간단한 방법&#xA;최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</description>
+      <description>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것&#xA;즉, Regression을 자기 자신에게 적용하는 것&#xA;$$ y_1, \ldots, y_n \rightarrow y_{n+1} $$&#xA;$$ \mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2 $$&#xA;종류 Moving Average(이동평균) 가장 간단한 방법&#xA;최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</description>
     </item>
     <item>
       <title>Back Propagation(오차 역전파 알고리즘)</title>
       <link>https://osmin625.github.io/posts/2023-09-25-backpropagation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-25-backpropagation/</guid>
-      <description>이 알고리즘으로 인해 ML Network에서의 학습이 가능하다는 것이 알려져, 암흑기에 있던 신경망 학계가 다시 관심을 받게 되었다.&#xA;출력층에서 시작하여 역방향으로 오류를 전파한다는 뜻에서 오류 역전파라 부른다.&#xA;내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다. 오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다. 직관적인 이해는 끝났다. 이제 제대로 이해해보자.&#xA;오차 역전파가 중요한 이유를 알고 싶다면, 여기를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.&#xA;오차 역전파&#xD;#&#xD;신경망을 학습하는 방법.</description>
+      <description>이 알고리즘으로 인해 ML Network에서의 학습이 가능하다는 것이 알려져, 암흑기에 있던 신경망 학계가 다시 관심을 받게 되었다.&#xA;출력층에서 시작하여 역방향으로 오류를 전파한다는 뜻에서 오류 역전파라 부른다.&#xA;내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다. 오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다. 직관적인 이해는 끝났다. 이제 제대로 이해해보자.&#xA;오차 역전파가 중요한 이유를 알고 싶다면, 여기를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.&#xA;오차 역전파 신경망을 학습하는 방법.</description>
     </item>
     <item>
       <title>Book Rating Prediction Wrap-up Report</title>
       <link>https://osmin625.github.io/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-08-16-Book-Rating-Prediction-Wrap-up-Report/</guid>
-      <description>1. 프로젝트 개요&#xD;#&#xD;개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
+      <description>1. 프로젝트 개요 개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
     </item>
     <item>
       <title>CBOW: Continous Bag of Word</title>
       <link>https://osmin625.github.io/posts/2023-05-22-CBOW/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-22-CBOW/</guid>
-      <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터&#xD;#&#xD;$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&amp;rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
+      <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&amp;rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
     </item>
     <item>
       <title>DeepFM</title>
       <link>https://osmin625.github.io/posts/2023-05-24-DeepFM/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-24-DeepFM/</guid>
-      <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background&#xD;#&#xD;추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
+      <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background 추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
     </item>
     <item>
       <title>FFM: Field-aware Factorization Machine</title>
       <link>https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-25-FFM-Field-aware-Factorization-Machine/</guid>
-      <description>개요&#xD;#&#xD;Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM)&#xD;#&#xD;FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization&#xD;#&#xD;MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
+      <description>개요 Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM) FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
     </item>
     <item>
       <title>FM: Factorization Machine</title>
       <link>https://osmin625.github.io/posts/2023-05-21-FM-Factorization-Machine/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-21-FM-Factorization-Machine/</guid>
-      <description>General Predictor에 Latent Factor Model을 추가한 모델.&#xA;Background&#xD;#&#xD;Factorization Machines&#xA;SVM과 Factorization Model의 장점을 결합한 FM을 처음 소개한 논문&#xA;등장 배경&#xA;딥러닝이 등장하기 이전 SVM이 가장 많이 사용됐다.&#xA;매우 희소한 데이터가 많은 CF 환경에서는 SVM보다 MF 계열의 모델이 더 높은 성능을 내왔다.&#xA;SVM과 MF의 장점을 결합할 수 없을까? ⇒ FM 탄생.&#xA;MF 기반 모델의 한계 ⇒ User-Item 행렬 기반&#xA;즉, 특정 데이터 포맷에 특화되어 있다.&#xA;$X:$ (유저, 아이템) → $Y:$ (rating)으로 이루어진 데이터에 대해서만 적용이 가능하다.</description>
+      <description>General Predictor에 Latent Factor Model을 추가한 모델.&#xA;Background Factorization Machines&#xA;SVM과 Factorization Model의 장점을 결합한 FM을 처음 소개한 논문&#xA;등장 배경&#xA;딥러닝이 등장하기 이전 SVM이 가장 많이 사용됐다.&#xA;매우 희소한 데이터가 많은 CF 환경에서는 SVM보다 MF 계열의 모델이 더 높은 성능을 내왔다.&#xA;SVM과 MF의 장점을 결합할 수 없을까? ⇒ FM 탄생.&#xA;MF 기반 모델의 한계 ⇒ User-Item 행렬 기반&#xA;즉, 특정 데이터 포맷에 특화되어 있다.&#xA;$X:$ (유저, 아이템) → $Y:$ (rating)으로 이루어진 데이터에 대해서만 적용이 가능하다.</description>
     </item>
     <item>
       <title>Git Branch는 무엇이고, 무엇을 위해 사용하는가?</title>
       <link>https://osmin625.github.io/posts/2023-06-02-Git-Branch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-02-Git-Branch/</guid>
-      <description>독립적으로 특정 작업을 진행할 때 사용한다.&#xA;팀으로 여러작업을 동시에 작업할 수 있다.&#xA;여러 Branch를 합치는 방법 — Merge&#xA;merge&#xD;#&#xD;branch의 모든 기록 보존, merge에 대한 기록 추가.&#xA;이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge&#xD;#&#xD;여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</description>
+      <description>독립적으로 특정 작업을 진행할 때 사용한다.&#xA;팀으로 여러작업을 동시에 작업할 수 있다.&#xA;여러 Branch를 합치는 방법 — Merge&#xA;merge branch의 모든 기록 보존, merge에 대한 기록 추가.&#xA;이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</description>
     </item>
     <item>
       <title>KPT20230326</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</guid>
-      <description>부스트캠퍼들의 학습정리 기록들을 읽었다.&#xA;덕분에 많은 동기부여가 되어, 나도 회고를 하고자 마음먹었다.&#xA;늦었지만, 지금 당장 시작해야지.&#xA;TIL (Today I Learn)&#xD;#&#xD;노션에 특정 시간에 자동으로 페이지 생성 기능이 있다는 것을 깨달았다. Keep&#xD;#&#xD;회고록을 쓰기 시작한 것! 엉망진창이던 여러 폴더 자료 정리를 한 것. 부스트캠프 시작하고 처음으로…계획을 세운 것!(이런 내가…MBTI J..?) 야식을 참은 것. 배가 고프지만 살이 잘 빠지고 있다. Problem&#xD;#&#xD;내일은…반드시 일찍 자도록 하자. Try&#xD;#&#xD;미리미리 하루를 부지런하게 살고, 하루의 목표치는 적당한 양으로 잡자.</description>
+      <description>부스트캠퍼들의 학습정리 기록들을 읽었다.&#xA;덕분에 많은 동기부여가 되어, 나도 회고를 하고자 마음먹었다.&#xA;늦었지만, 지금 당장 시작해야지.&#xA;TIL (Today I Learn) 노션에 특정 시간에 자동으로 페이지 생성 기능이 있다는 것을 깨달았다. Keep 회고록을 쓰기 시작한 것! 엉망진창이던 여러 폴더 자료 정리를 한 것. 부스트캠프 시작하고 처음으로…계획을 세운 것!(이런 내가…MBTI J..?) 야식을 참은 것. 배가 고프지만 살이 잘 빠지고 있다. Problem 내일은…반드시 일찍 자도록 하자. Try 미리미리 하루를 부지런하게 살고, 하루의 목표치는 적당한 양으로 잡자.</description>
     </item>
     <item>
       <title>KPT20230327</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep&#xD;#&#xD;강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.</description>
+      <description>TIL (Today I Learn) Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep 강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.</description>
     </item>
     <item>
       <title>KPT20230328</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;git-flow 설명하기 TF-IDF UMAP 활용 HDBSCAN 활용 Data Clustering 시각화 Pandas 활용 value_count 활용 Dataframe filter 활용 groupby, get_group 활용 Keep&#xD;#&#xD;연구실 과제를 진행하며 차원 축소 알고리즘 UMAP과, 클러스터링 기법인 HDBSCAN을 활용해보았다. 직접 써보니 확실히 기억에 오래 남을 것 같다. Visualization도 직접 활용해보고, Problem&#xD;#&#xD;git 강의는 듣지 않았다.&#xA;솔직히 강의 진행이 많이 느리다고 느낀다.&#xA;이미 알고 있는 내용이라, 강의를 안듣고 싶지만… 마음 편히 무시하지는 못해서, 시간이나 집중력이 허비되는 느낌이다.</description>
+      <description>TIL (Today I Learn) git-flow 설명하기 TF-IDF UMAP 활용 HDBSCAN 활용 Data Clustering 시각화 Pandas 활용 value_count 활용 Dataframe filter 활용 groupby, get_group 활용 Keep 연구실 과제를 진행하며 차원 축소 알고리즘 UMAP과, 클러스터링 기법인 HDBSCAN을 활용해보았다. 직접 써보니 확실히 기억에 오래 남을 것 같다. Visualization도 직접 활용해보고, Problem git 강의는 듣지 않았다.&#xA;솔직히 강의 진행이 많이 느리다고 느낀다.&#xA;이미 알고 있는 내용이라, 강의를 안듣고 싶지만… 마음 편히 무시하지는 못해서, 시간이나 집중력이 허비되는 느낌이다.</description>
     </item>
     <item>
       <title>KPT20230401</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</guid>
-      <description>주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.&#xA;TIL (Today I Learn)&#xD;#&#xD;MF, SVD를 완벽하게 이해했다.&#xA;Word2Vec 생성 방법을 완전히 이해했다.&#xA;CBOW — 중간 단어 예측&#xA;SG — CBOW 뒤집은 버전&#xA;SGNS — SG를 이진 분류로 바꾼 것.&#xA;MBCF&#xA;NCF&#xA;AE&#xA;DAE&#xA;Keep&#xD;#&#xD;집중을 잘 한 것&#xA;4시 전까지는 만족스럽게 집중하는 시간을 가졌다.&#xA;그 이후는 체력 때문에 집중도가 떨어졌다.&#xA;4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.</description>
+      <description>주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.&#xA;TIL (Today I Learn) MF, SVD를 완벽하게 이해했다.&#xA;Word2Vec 생성 방법을 완전히 이해했다.&#xA;CBOW — 중간 단어 예측&#xA;SG — CBOW 뒤집은 버전&#xA;SGNS — SG를 이진 분류로 바꾼 것.&#xA;MBCF&#xA;NCF&#xA;AE&#xA;DAE&#xA;Keep 집중을 잘 한 것&#xA;4시 전까지는 만족스럽게 집중하는 시간을 가졌다.&#xA;그 이후는 체력 때문에 집중도가 떨어졌다.&#xA;4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.&#xA;Problem 늘 그랬듯이, 잠을 늦게 자는 것.</description>
     </item>
     <item>
       <title>KPT20230623</title>
       <link>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-24-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
+      <description>TIL (Today I Learn) TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
     </item>
     <item>
       <title>KPT20230624</title>
       <link>https://osmin625.github.io/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-25-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
+      <description>TIL (Today I Learn) 하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
     </item>
     <item>
       <title>KPT20230628</title>
       <link>https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-28-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
+      <description>TIL (Today I Learn) CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
     </item>
     <item>
       <title>KPT20230629</title>
       <link>https://osmin625.github.io/posts/2023-06-30-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-30-KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
-      <description>TIL (Today I Learn)&#xD;#&#xD;Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
+      <description>TIL (Today I Learn) Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
     </item>
     <item>
       <title>LSTM: Long Short Term Memory</title>
       <link>https://osmin625.github.io/posts/2023-11-28-LSTM/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-11-28-LSTM/</guid>
-      <description>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델&#xA;선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.&#xA;그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.&#xA;게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.&#xA;가중치&#xA;순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$&#xA;$i$ : 입력 게이트&#xA;$o$ : 출력 게이트&#xA;다양한 구조 설계가 가능하다.&#xA;Model Concept&#xD;#&#xD;Cell State&#xD;#&#xD;LSTM의 핵심</description>
+      <description>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델&#xA;선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.&#xA;그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.&#xA;게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.&#xA;가중치&#xA;순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$&#xA;$i$ : 입력 게이트&#xA;$o$ : 출력 게이트&#xA;다양한 구조 설계가 가능하다.&#xA;Model Concept Cell State LSTM의 핵심</description>
     </item>
     <item>
       <title>MICE : Multiple Imputation Chained Equation</title>
       <link>https://osmin625.github.io/posts/2023-06-21-MICE/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-21-MICE/</guid>
-      <description>Multiple Imputation Chained Equation(다중 산입 연립 방정식)&#xA;MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.&#xA;값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.&#xA;Process&#xD;#&#xD;누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.&#xA;가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.&#xA;이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</description>
+      <description>Multiple Imputation Chained Equation(다중 산입 연립 방정식)&#xA;MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.&#xA;값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.&#xA;Process 누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.&#xA;가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.&#xA;이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</description>
     </item>
     <item>
       <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
@@ -187,42 +187,42 @@
       <link>https://osmin625.github.io/posts/2023-09-23-Optimizer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-23-Optimizer/</guid>
-      <description>간단 요약&#xA;Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법&#xA;반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?&#xA;{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue&#xD;#&#xD;1. Local minima, Saddle point&#xD;#&#xD;{: w=&amp;ldquo;700&amp;rdquo; h=&amp;ldquo;400&amp;rdquo; }&#xA;실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.&#xA;local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.&#xA;{: w=&amp;ldquo;400&amp;rdquo; h=&amp;ldquo;250&amp;rdquo; }</description>
+      <description>간단 요약&#xA;Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법&#xA;반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?&#xA;{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue 1. Local minima, Saddle point {: w=&amp;ldquo;700&amp;rdquo; h=&amp;ldquo;400&amp;rdquo; }&#xA;실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.&#xA;local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.&#xA;{: w=&amp;ldquo;400&amp;rdquo; h=&amp;ldquo;250&amp;rdquo; }</description>
     </item>
     <item>
       <title>Polynomial Interpolation(보간 다항식)</title>
       <link>https://osmin625.github.io/posts/2023-09-12-Polynomial-Interpolation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-12-Polynomial-Interpolation/</guid>
-      <description>Linear Interpolation&#xD;#&#xD;가장 간단한 보간법&#xA;두 점을 이은 직선의 방정식을 근사 함수로 사용한다.&#xA;데이터 점들 사이의 간격이 작을수록 더 좋은 근삿값을 얻는다.&#xA;$$ \mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right) $$&#xA;Polynomial interpolation&#xD;#&#xD;(n+1)개의 점이 주어진 경우 n차 이하의 유일한 다항식을 구할 수 있다.&#xA;Q. n+1개의 점으로 찾을 수 있는 n차 다항식은 왜 유일한가?&#xA;방데르몽드 행렬&#xA;각 행의 초항이 1인 등비수열로 이루어진 행렬&#xA;$$ V=\left(\begin{array}{ccccc}1 &amp;amp; \alpha_1 &amp;amp; \alpha_1^2 &amp;amp; \cdots &amp;amp; \alpha_1^{n-1} \1 &amp;amp; \alpha_2 &amp;amp; \alpha_2^2 &amp;amp; \cdots &amp;amp; \alpha_2^{n-1} \1 &amp;amp; \alpha_3 &amp;amp; \alpha_3^2 &amp;amp; \cdots &amp;amp; \alpha_3^{n-1} \\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \1 &amp;amp; \alpha_m &amp;amp; \alpha_m^2 &amp;amp; \cdots &amp;amp; \alpha_m^{n-1}\end{array}\right) $$</description>
+      <description>Linear Interpolation 가장 간단한 보간법&#xA;두 점을 이은 직선의 방정식을 근사 함수로 사용한다.&#xA;데이터 점들 사이의 간격이 작을수록 더 좋은 근삿값을 얻는다.&#xA;$$ \mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right) $$&#xA;Polynomial interpolation (n+1)개의 점이 주어진 경우 n차 이하의 유일한 다항식을 구할 수 있다.&#xA;Q. n+1개의 점으로 찾을 수 있는 n차 다항식은 왜 유일한가?&#xA;방데르몽드 행렬&#xA;각 행의 초항이 1인 등비수열로 이루어진 행렬&#xA;$$ V=\left(\begin{array}{ccccc}1 &amp;amp; \alpha_1 &amp;amp; \alpha_1^2 &amp;amp; \cdots &amp;amp; \alpha_1^{n-1} \1 &amp;amp; \alpha_2 &amp;amp; \alpha_2^2 &amp;amp; \cdots &amp;amp; \alpha_2^{n-1} \1 &amp;amp; \alpha_3 &amp;amp; \alpha_3^2 &amp;amp; \cdots &amp;amp; \alpha_3^{n-1} \\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \1 &amp;amp; \alpha_m &amp;amp; \alpha_m^2 &amp;amp; \cdots &amp;amp; \alpha_m^{n-1}\end{array}\right) $$</description>
     </item>
     <item>
       <title>PyTorch 개요</title>
       <link>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/</guid>
-      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;{: .prompt-info }&#xA;구현 개요(PyTorch)&#xD;#&#xD;1. 데이터 준비&#xD;#&#xD;Tensor PyTorch Datasets &amp;amp; DataLoaders 2. 모델 정의 (&#xD;torch.nn.Module)&#xD;#&#xD;PyTorch 모델 불러오기&#xA;Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning&#xD;#&#xD;4. 모델 평가 기준 및 Optimizer 설정&#xD;#&#xD;모델 평가 기준 : loss를 어떻게 계산할 것인가?</description>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;{: .prompt-info }&#xA;구현 개요(PyTorch) 1. 데이터 준비 Tensor PyTorch Datasets &amp;amp; DataLoaders 2. 모델 정의 (torch.nn.Module) PyTorch 모델 불러오기&#xA;Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning 4. 모델 평가 기준 및 Optimizer 설정 모델 평가 기준 : loss를 어떻게 계산할 것인가? 손실 함수(Loss Function) Optimizer 설정 5.</description>
     </item>
     <item>
       <title>PyTorch 모델 저장하고 불러오기</title>
       <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
-      <description>model.save()&#xD;#&#xD;학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
+      <description>model.save() 학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
     </item>
     <item>
       <title>PyTorch 모델 정의하기 - nn.Module</title>
       <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</guid>
-      <description>간단 요약&#xA;반복되는 Layer을 만들기 위한 Torch의 가장 기본적인 신경망 모듈&#xA;매개변수를 캡슐화하는 간편한 방법&#xA;GPU로 이동, 내보내기(exporting), 불러오기(loading) 등의 작업을 위한 헬퍼(helper)를 제공한다.&#xA;{: .prompt-info }&#xA;DL 모델은 모두 Layer의 반복이며, 블록 반복의 연속이다.&#xA;Module에서 정의하는 것&#xA;Input&#xA;Output&#xA;Forward&#xA;(Backward)&#xA;이 때, Backward는 자동 미분이 되기 때문에, 해당되는 weight의 값들을 내보내준다.&#xA;즉, weight가 학습의 대상이 되고, 이를 parameter(tensor)로 정의한다.&#xA;일반적으로는 직접 지정해줄 필요가 없다.&#xA;example&#xD;#&#xD;import torch from torch.</description>
+      <description>간단 요약&#xA;반복되는 Layer을 만들기 위한 Torch의 가장 기본적인 신경망 모듈&#xA;매개변수를 캡슐화하는 간편한 방법&#xA;GPU로 이동, 내보내기(exporting), 불러오기(loading) 등의 작업을 위한 헬퍼(helper)를 제공한다.&#xA;{: .prompt-info }&#xA;DL 모델은 모두 Layer의 반복이며, 블록 반복의 연속이다.&#xA;Module에서 정의하는 것&#xA;Input&#xA;Output&#xA;Forward&#xA;(Backward)&#xA;이 때, Backward는 자동 미분이 되기 때문에, 해당되는 weight의 값들을 내보내준다.&#xA;즉, weight가 학습의 대상이 되고, 이를 parameter(tensor)로 정의한다.&#xA;일반적으로는 직접 지정해줄 필요가 없다.&#xA;example import torch from torch.</description>
     </item>
     <item>
       <title>PyTorch에서 weight를 저장하는 객체 - nn.Parameter</title>
       <link>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-21-PyTorch-nn-Parameter/</guid>
-      <description>간단 요약&#xA;학습의 대상이 되는 Weight를 정의한다.&#xA;Tensor 객체의 상속 객체 {: .prompt-info }&#xA;Tensor 객체와 매우 비슷하다.&#xA;nn.Module의 attribute가 될 때는 required_grad = True로 자동으로 지정되어 AutoGrad의 대상이 된다.&#xA;대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.&#xA;nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.&#xA;$\tt xw +b$&#xD;#&#xD;class MyLinear(nn.Module): def __init__ (self, in_features, out_features, bias=True): super(). init () **self.</description>
+      <description>간단 요약&#xA;학습의 대상이 되는 Weight를 정의한다.&#xA;Tensor 객체의 상속 객체 {: .prompt-info }&#xA;Tensor 객체와 매우 비슷하다.&#xA;nn.Module의 attribute가 될 때는 required_grad = True로 자동으로 지정되어 AutoGrad의 대상이 된다.&#xA;대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.&#xA;nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.&#xA;$\tt xw +b$ class MyLinear(nn.Module): def __init__ (self, in_features, out_features, bias=True): super(). init () **self.in_features = in_features self.</description>
     </item>
     <item>
       <title>PyTorch의 Backward에 대해 알아보자.</title>
@@ -250,21 +250,21 @@
       <link>https://osmin625.github.io/posts/2023-05-22-SGNS/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-22-SGNS/</guid>
-      <description>SG를 이진 분류 문제로 바꾼 모델&#xA;Negative Sampling&#xD;#&#xD;주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것&#xA;Negative Sampling의 개수는 하이퍼파라미터에 해당한다.&#xA;학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다. positive sample 하나당 k개 샘플링 중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.&#xA;SGNS에서 embedding을 두 개로 나누어 사용하는 이유 만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,&#xA;특정 단어, 가령 &amp;ldquo;dog&amp;quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &amp;ldquo;dog dog&amp;quot;를 연속으로 쓸 일은 없으니.</description>
+      <description>SG를 이진 분류 문제로 바꾼 모델&#xA;Negative Sampling 주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것&#xA;Negative Sampling의 개수는 하이퍼파라미터에 해당한다.&#xA;학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다. positive sample 하나당 k개 샘플링 중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.&#xA;SGNS에서 embedding을 두 개로 나누어 사용하는 이유 만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,&#xA;특정 단어, 가령 &amp;ldquo;dog&amp;quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &amp;ldquo;dog dog&amp;quot;를 연속으로 쓸 일은 없으니.</description>
     </item>
     <item>
       <title>SVD: Singular Value Decomposition(특이값 분해)</title>
       <link>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-28-SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
-      <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD&#xD;#&#xD;기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
+      <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD 기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
     </item>
     <item>
       <title>Taylor polynomials</title>
       <link>https://osmin625.github.io/posts/2023-11-01-Taylor-Polynomials/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-11-01-Taylor-Polynomials/</guid>
-      <description>테일러 근사&#xD;#&#xD;복잡한 형태의 미분 가능한 함수 $f(x)$를 다항식의 합으로 근사하는 것&#xA;$a$를 포함하는 구간에서 함수 $f$가 무한 미분이 가능 할 때&#xA;$$ \begin{aligned}f(x) &amp;amp; =\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^n \&amp;amp; =f(a)+\frac{f^{\prime}(a)}{1 !}(x-a)+\frac{f^{\prime \prime}(a)}{2 !}(x-a)^2+\frac{f^{\prime \prime \prime}(a)}{3 !}(x-a)^3+\ldots\end{aligned} $$&#xA;를 테일러 급수라고 한다.&#xA;$f(x)$를 임의의 수 $a$에 대해 정리하는 과정이라 이해하면 편하다.&#xA;수식이 이렇게 생긴 이유&#xA;$f(x)$를 $a$에 대해 정리하고 싶어 식을 $f(x) = t_n(x-a)^n + t_{n-1}(x-a)^{n-1 }+\dots + t_1(x-a)^1$와 같이 정의했을 때,</description>
+      <description>테일러 근사 복잡한 형태의 미분 가능한 함수 $f(x)$를 다항식의 합으로 근사하는 것&#xA;$a$를 포함하는 구간에서 함수 $f$가 무한 미분이 가능 할 때&#xA;$$ \begin{aligned}f(x) &amp;amp; =\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^n \&amp;amp; =f(a)+\frac{f^{\prime}(a)}{1 !}(x-a)+\frac{f^{\prime \prime}(a)}{2 !}(x-a)^2+\frac{f^{\prime \prime \prime}(a)}{3 !}(x-a)^3+\ldots\end{aligned} $$&#xA;를 테일러 급수라고 한다.&#xA;$f(x)$를 임의의 수 $a$에 대해 정리하는 과정이라 이해하면 편하다.&#xA;수식이 이렇게 생긴 이유&#xA;$f(x)$를 $a$에 대해 정리하고 싶어 식을 $f(x) = t_n(x-a)^n + t_{n-1}(x-a)^{n-1 }+\dots + t_1(x-a)^1$와 같이 정의했을 때,</description>
     </item>
     <item>
       <title>Tensor에 대해 알아보자.</title>
@@ -278,91 +278,91 @@
       <link>https://osmin625.github.io/posts/2023-05-26-WDN-Wide-Deep-Network/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-05-26-WDN-Wide-Deep-Network/</guid>
-      <description>Wide &amp;amp; Deep Learning for Recommender Systems&#xA;선형적인 모델(Wide)과 비선형적인 모델(Deep)을 결합하여 기존 모델들의 장점을 모두 취하고자 한 논문&#xA;등장 배경&#xD;#&#xD;추천시스템에서 해결해야 할 두 가지 과제&#xA;Memorization — 학습데이터에 자주 등장하는 패턴은 모델이 암기해야 한다.&#xA;함께 빈번히 등장하는 아이템 혹은 특성(feature) 관계를 과거 데이터로부터 학습하는 것&#xA;Logistic Regression과 같은 선형 모델&#xA;대규모 추천 시스템 및 검색 엔진에서 사용해왔다. 확장 및 해석이 용이하다. 학습 데이터에 없는 feature 조합에 취약하다. Generalization — 학습데이터에 발생하지 않는 패턴을 적절하게 표현해야 한다.</description>
+      <description>Wide &amp;amp; Deep Learning for Recommender Systems&#xA;선형적인 모델(Wide)과 비선형적인 모델(Deep)을 결합하여 기존 모델들의 장점을 모두 취하고자 한 논문&#xA;등장 배경 추천시스템에서 해결해야 할 두 가지 과제&#xA;Memorization — 학습데이터에 자주 등장하는 패턴은 모델이 암기해야 한다.&#xA;함께 빈번히 등장하는 아이템 혹은 특성(feature) 관계를 과거 데이터로부터 학습하는 것&#xA;Logistic Regression과 같은 선형 모델&#xA;대규모 추천 시스템 및 검색 엔진에서 사용해왔다. 확장 및 해석이 용이하다. 학습 데이터에 없는 feature 조합에 취약하다. Generalization — 학습데이터에 발생하지 않는 패턴을 적절하게 표현해야 한다.</description>
     </item>
     <item>
       <title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</title>
       <link>https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-23-%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</guid>
-      <description>손실 함수, Gradient Descent, Back Propagation&#xA;수치 미분&#xD;#&#xD;한 점에서의 기울기. 변화량을 의미한다.&#xA;경사 하강법을 사용하기 위해서는 미분값이 필요하다.&#xA;$$ {df(x)\over dx} = \lim_{h \to 0} {f(x+h) - f(x)\over h} $$&#xA;수치 미분이 경사 하강법에 사용되는 방법&#xD;#&#xD;경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.&#xA;손실 함수는 대상 값과 예측 값의 오차를 의미하므로,&#xA;손실 함수에 대한 미분 값을 구한 후, 오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.</description>
+      <description>손실 함수, Gradient Descent, Back Propagation&#xA;수치 미분 한 점에서의 기울기. 변화량을 의미한다.&#xA;경사 하강법을 사용하기 위해서는 미분값이 필요하다.&#xA;$$ {df(x)\over dx} = \lim_{h \to 0} {f(x+h) - f(x)\over h} $$&#xA;수치 미분이 경사 하강법에 사용되는 방법 경사 하강법에서는 $f(x)$가 손실 함수이고, x가 현재의 가중치나 편향이 된다.&#xA;손실 함수는 대상 값과 예측 값의 오차를 의미하므로,&#xA;손실 함수에 대한 미분 값을 구한 후, 오차를 줄이는 방향으로 가중치와 편향을 수정할 수 있다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 1 — 강의, 대회</title>
       <link>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-08-15-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
-      <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나?&#xD;#&#xD;AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
+      <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나? AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
       <link>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
-      <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트&#xD;#&#xD;전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경&#xD;#&#xD;기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
+      <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트 전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경 기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
     </item>
     <item>
       <title>모델 학습 시 1 epoch에 어떤 일이 발생하나요?</title>
       <link>https://osmin625.github.io/posts/2023-09-24-1-epoch/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-24-1-epoch/</guid>
-      <description>criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화&#xD;#&#xD;optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.&#xA;해당 코드는 왜 필요할까?&#xA;zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.&#xA;왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?&#xA;RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.</description>
+      <description>criterion = torch.nn.MSELoss() optimizer = torch.optim.SGD(model.parameters(), lr=learningRate) ... for epoch in range(epochs): optimizer.zero_grad() outputs = model(inputs) loss = criterion(outputs, labels) loss.backward() optimizer.step() 1. optimizer.zero_grad() : 이전 epoch의 미분값 초기화 optimizer에서 업데이트하는 파라미터에 저장된 그래디언트를 모두 0으로 만들어준다.&#xA;해당 코드는 왜 필요할까?&#xA;zero_grad()를 실행해주지 않으면 이후의 backward에서 해당 step의 gradient 값이 계속 누적으로 더해져 모델이 이상하게 학습할 수 있기 때문이다.&#xA;왜 굳이 default를 이전의 gradient가 넘어오도록 설정했을까?&#xA;RNN 계열의 모델이나, 가중치 공유가 필요한 모델의 경우 이전 gradient를 그대로 가져오는 것이 필요하기 때문이다.</description>
     </item>
     <item>
       <title>모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)</title>
       <link>https://osmin625.github.io/posts/2023-09-19-PyTorch-Datasets-DataLoaders/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-19-PyTorch-Datasets-DataLoaders/</guid>
-      <description>모델에 데이터를 먹이는 방법&#xA;1. Dataset&#xD;#&#xD;모아놓은 데이터에 대해 Dataset이라는 클래스를 통해 시작, 길이, mapstyle 등을 선언해준다.&#xA;__getitems__() : 하나의 데이터를 불러올 때 어떤 식으로 데이터를 반환할 지를 선언해준다.&#xA;데이터 입력 형태를 정의하는 클래스&#xA;데이터를 입력하는 방식의 표준화&#xA;Image, Text, Audio 등에 따라 다르게 입력이 정의된다.&#xA;데이터의 형태에 따라 각 함수를 다르게 정의한다.&#xA;모든 것을 데이터 생성 시점에 처리할 필요는 없다.&#xA;image의 Tensor 변화는 학습에 필요한 시점에 변환해주면 된다.</description>
+      <description>모델에 데이터를 먹이는 방법&#xA;1. Dataset 모아놓은 데이터에 대해 Dataset이라는 클래스를 통해 시작, 길이, mapstyle 등을 선언해준다.&#xA;__getitems__() : 하나의 데이터를 불러올 때 어떤 식으로 데이터를 반환할 지를 선언해준다.&#xA;데이터 입력 형태를 정의하는 클래스&#xA;데이터를 입력하는 방식의 표준화&#xA;Image, Text, Audio 등에 따라 다르게 입력이 정의된다.&#xA;데이터의 형태에 따라 각 함수를 다르게 정의한다.&#xA;모든 것을 데이터 생성 시점에 처리할 필요는 없다.&#xA;image의 Tensor 변화는 학습에 필요한 시점에 변환해주면 된다.&#xA;데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.</description>
     </item>
     <item>
       <title>모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)</title>
       <link>https://osmin625.github.io/posts/2023-09-21-Hyperparameter_tuning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-21-Hyperparameter_tuning/</guid>
-      <description>하이퍼 파라미터&#xA;모델 스스로 학습하지 않는 값.&#xA;사람이 직접 지정해주어야 한다.&#xA;결과를 개선하고 싶을 때&#xD;#&#xD;모델을 바꾸기&#xA;중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.&#xA;데이터를 바꾸기 → 성능 개선을 위해 가장 중요하다.&#xA;하이퍼 파라미터 Tuning&#xA;약간의 성능 개선이 간절한 경우 수행한다.&#xA;마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.&#xA;generalization 등 적용&#xA;Hyperparameter Tuning&#xD;#&#xD;가장 기본적인 방법 - grid vs random&#xA;grid&#xA;적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</description>
+      <description>하이퍼 파라미터&#xA;모델 스스로 학습하지 않는 값.&#xA;사람이 직접 지정해주어야 한다.&#xA;결과를 개선하고 싶을 때 모델을 바꾸기&#xA;중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.&#xA;데이터를 바꾸기 → 성능 개선을 위해 가장 중요하다.&#xA;하이퍼 파라미터 Tuning&#xA;약간의 성능 개선이 간절한 경우 수행한다.&#xA;마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.&#xA;generalization 등 적용&#xA;Hyperparameter Tuning 가장 기본적인 방법 - grid vs random&#xA;grid&#xA;적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</description>
     </item>
     <item>
       <title>문서의 순위를 매기는 방법, TF-IDF</title>
       <link>https://osmin625.github.io/posts/2023-11-15-TF-IDF/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-11-15-TF-IDF/</guid>
-      <description>Background&#xD;Background&#xD;#&#xD;이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.&#xA;Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.&#xA;또한 많은 정보를 탐색하는 전문가들에게 유용하다.&#xA;하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.&#xA;대부분의 유저들은 boolean 쿼리를 작성하지 못한다.&#xA;사용자들은 그렇게 많은 결과물이 필요하지 않다.&#xA;대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.&#xA;Query 1: “standard user dlink 650” → 200,000 hits&#xA;Query 2: “standard user dlink 650 no card found”: 0 hits</description>
+      <description>Background&#xD;Background 이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.&#xA;Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.&#xA;또한 많은 정보를 탐색하는 전문가들에게 유용하다.&#xA;하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.&#xA;대부분의 유저들은 boolean 쿼리를 작성하지 못한다.&#xA;사용자들은 그렇게 많은 결과물이 필요하지 않다.&#xA;대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.&#xA;Query 1: “standard user dlink 650” → 200,000 hits&#xA;Query 2: “standard user dlink 650 no card found”: 0 hits</description>
     </item>
     <item>
       <title>손실 함수(Loss Function)에 대해 알아보자.</title>
       <link>https://osmin625.github.io/posts/2023-09-23-Loss-function/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-23-Loss-function/</guid>
-      <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function&#xD;#&#xD;신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
+      <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function 신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
     </item>
     <item>
       <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
       <link>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-24-Gradient_Descent/</guid>
-      <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법)&#xD;#&#xD;자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
+      <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법) 자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
     </item>
     <item>
       <title>연관 분석(Association Analysis) 정리</title>
       <link>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-11-13-%EC%97%B0%EA%B4%80-%EB%B6%84%EC%84%9D/</guid>
-      <description>연관 규칙 분석(Association Rule Analysis)&#xD;#&#xD;추천 시스템의 가장 고전적인 방법론&#xA;장바구니 분석, 서열 분석이라고도 불린다.&#xA;상품의 구매, 조회 등 하나의 연속된 거래들 사이의 규칙을 발견하기 위해 적용하는 방법&#xA;즉, 사용자의 장바구니 내에 포함된 상품들의 규칙을 발견하기 위해 적용하는 방법&#xA;유저 정보(유저 행동 정보)를 활용하는 분석 방법&#xA;규칙&#xA;IF {condition} THEN {result}&#xA;{condition} → {result}&#xA;연관 규칙&#xA;규칙 가운데 일부 기준(빈번함의 기준)을 만족하는 것&#xA;IF {antecedent} THEN {consequent}&#xA;빈번하게 발생하는 규칙을 의미한다.</description>
+      <description>연관 규칙 분석(Association Rule Analysis) 추천 시스템의 가장 고전적인 방법론&#xA;장바구니 분석, 서열 분석이라고도 불린다.&#xA;상품의 구매, 조회 등 하나의 연속된 거래들 사이의 규칙을 발견하기 위해 적용하는 방법&#xA;즉, 사용자의 장바구니 내에 포함된 상품들의 규칙을 발견하기 위해 적용하는 방법&#xA;유저 정보(유저 행동 정보)를 활용하는 분석 방법&#xA;규칙&#xA;IF {condition} THEN {result}&#xA;{condition} → {result}&#xA;연관 규칙&#xA;규칙 가운데 일부 기준(빈번함의 기준)을 만족하는 것&#xA;IF {antecedent} THEN {consequent}&#xA;빈번하게 발생하는 규칙을 의미한다.</description>
     </item>
     <item>
       <title>인기도 기반 추천이란?</title>
       <link>https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-06-14-%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</guid>
-      <description>간단 요약&#xA;가장 인기있는 아이템을 규칙을 기반으로 추천한다.&#xA;인기도의 척도&#xA;- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수&#xA;예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법&#xD;#&#xD;Most Popular: 조회수가 가장 많은 아이템&#xD;#&#xD;최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.&#xA;Score Formula&#xA;가장 많이 조회된 뉴스를 추천하기&#xA;좋아요가 가장 많은 게시글을 추천하기&#xA;Hacker News Formula&#xA;뉴스 추천 서비스</description>
+      <description>간단 요약&#xA;가장 인기있는 아이템을 규칙을 기반으로 추천한다.&#xA;인기도의 척도&#xA;- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수&#xA;예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법 Most Popular: 조회수가 가장 많은 아이템 최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.&#xA;Score Formula&#xA;가장 많이 조회된 뉴스를 추천하기&#xA;좋아요가 가장 많은 게시글을 추천하기&#xA;Hacker News Formula&#xA;뉴스 추천 서비스&#xA;$$ score = \frac{pageviews -1}{(age + 2)^{gravity}} $$</description>
     </item>
     <item>
       <title>추천 시스템 개요</title>
       <link>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-09-27-Recsys-Overview/</guid>
-      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템&#xD;#&#xD;추천 시스템 평가 패러다임&#xD;#&#xD;Rule Base&#xD;#&#xD;인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering&#xD;#&#xD;1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가&#xD;#&#xD;TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가&#xD;#&#xD;Similarity</description>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) Supervised Learning Model&#xD;ML based CF</description>
     </item>
     <item>
       <title>추천 시스템 평가 패러다임</title>
@@ -376,7 +376,7 @@
       <link>https://osmin625.github.io/posts/2023-10-05-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://osmin625.github.io/posts/2023-10-05-%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/</guid>
-      <description>정보 필터링(IF) 기술의 일종. 특정 사용자가 관심 가질 만한 정보를 추천하는 것. Background&#xD;#&#xD;기존&#xA;유저가 원하는 것을 검색하여 이에 맞는 아이템 결과를 보여주는 Pull 방식&#xA;추천 시스템&#xA;유저가 원하는 것을 유추하여 제시하는 Push 방식&#xA;유저가 자신의 니즈를 쿼리로 표현하지 않아도 된다.&#xA;다양한 종류의 아이템들을 유저에게 노출시킬 수 있다.&#xA;추천 시스템의 필요성&#xA;과거에는 유저가 접할 수 있는 상품, 컨텐츠가 제한적&#xA;TV 채널, 영화관, 백화점, 신문 등&#xA;웹/모바일 환경에 의해 다양한 상품, 컨텐츠 등장 → 정보 과다.</description>
+      <description>정보 필터링(IF) 기술의 일종. 특정 사용자가 관심 가질 만한 정보를 추천하는 것. Background 기존&#xA;유저가 원하는 것을 검색하여 이에 맞는 아이템 결과를 보여주는 Pull 방식&#xA;추천 시스템&#xA;유저가 원하는 것을 유추하여 제시하는 Push 방식&#xA;유저가 자신의 니즈를 쿼리로 표현하지 않아도 된다.&#xA;다양한 종류의 아이템들을 유저에게 노출시킬 수 있다.&#xA;추천 시스템의 필요성&#xA;과거에는 유저가 접할 수 있는 상품, 컨텐츠가 제한적&#xA;TV 채널, 영화관, 백화점, 신문 등&#xA;웹/모바일 환경에 의해 다양한 상품, 컨텐츠 등장 → 정보 과다.</description>
     </item>
   </channel>
 </rss>

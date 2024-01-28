@@ -1,1030 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="✔️ 간단 요약
-Sparsity와 Non-Informative를 효과적으로 해결한다.
-분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.
-Hierarchical RL architecture (MANAGER, WORKER)
-MANAGER (LSTM)
-중재자 역할 D로부터 고수준 feature representation을 받음 → Leakage WORKER (LSTM)
-$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적) D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다. {: .prompt-info } logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information" />
-<meta property="og:description" content="✔️ 간단 요약
-Sparsity와 Non-Informative를 효과적으로 해결한다.
-분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.
-Hierarchical RL architecture (MANAGER, WORKER)
-MANAGER (LSTM)
-중재자 역할 D로부터 고수준 feature representation을 받음 → Leakage WORKER (LSTM)
-$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적) D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다. {: .prompt-info } logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-10-12-LeakGAN/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-10T01:07:46+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='LeakGAN, GAN, Reinforcement Learning, Temperature Parameter, Highway Network, Paper Review'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-10-12-LeakGAN/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-10-12-LeakGAN/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-10-12-LeakGAN/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-10-12-LeakGAN/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#배경">배경</a>
-          <ul>
-            <li><a href="#1-rnn--문장-생성을-위한-가장-기본적인-방법">1. <strong>RNN – 문장 생성을 위한 가장 기본적인 방법</strong></a></li>
-            <li><a href="#2-gan--목적은-생성망-g의-성능을-개선하는-것">2. <strong>GAN – 목적은 생성망 G의 성능을 개선하는 것</strong></a></li>
-            <li><a href="#3-gan의-한계-및-해결책"><strong>3. GAN의 한계 및 해결책</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#아이디어">아이디어</a>
-          <ul>
-            <li><a href="#manager-lstm"><strong>MANAGER (LSTM)</strong></a></li>
-            <li><a href="#worker-lstm"><strong>WORKER (LSTM)</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#구체적-방법론">구체적 방법론</a>
-      <ul>
-        <li><a href="#생성망-g_theta">생성망 $G_\theta$</a>
-          <ul>
-            <li><a href="#생성망의-계층-구조">생성망의 계층 구조</a></li>
-            <li><a href="#생성망-g-학습">생성망 G 학습</a></li>
-          </ul>
-        </li>
-        <li><a href="#분별망-d_phi">분별망 $D_\phi$</a>
-          <ul>
-            <li><a href="#1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong></a></li>
-            <li><a href="#guiding-signalleaked-features">Guiding Signal(Leaked Features)</a></li>
-            <li><a href="#2-f_t--s_t에서의-features">2. <strong>$f_t = s_t$에서의 features</strong></a></li>
-            <li><a href="#3-learned-reward-function을-설정한다">3. <strong>Learned Reward Function을 설정한다.</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#학습-기술">학습 기술</a>
-          <ul>
-            <li><a href="#bootstrapped-rescaled-activation"><strong>Bootstrapped Rescaled Activation</strong></a></li>
-            <li><a href="#interleaved-training">Interleaved Training</a></li>
-            <li><a href="#temperature-control">Temperature Control</a></li>
-          </ul>
-        </li>
-        <li><a href="#pseudo-code">Pseudo Code</a>
-          <ul>
-            <li><a href="#필요한-요소"><strong>필요한 요소</strong></a></li>
-            <li><a href="#알고리즘-단계"><strong>알고리즘 단계</strong></a></li>
-            <li><a href="#참고">참고</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-10-12-LeakGAN/">[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Algorithm/">DL Algorithm</a>, 
-      <a href="/categories/Natural-Language-Processing/">Natural Language Processing</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/LeakGAN/">LeakGAN</a>, 
-      <a href="/tags/GAN/">GAN</a>, 
-      <a href="/tags/Reinforcement-Learning/">Reinforcement Learning</a>, 
-      <a href="/tags/Temperature-Parameter/">Temperature Parameter</a>, 
-      <a href="/tags/Highway-Network/">Highway Network</a>, 
-      <a href="/tags/Paper-Review/">Paper Review</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>✔️ <strong>간단 요약</strong><br>
-Sparsity와 Non-Informative를 효과적으로 해결한다.</p>
-<p>분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.</p>
-<p>Hierarchical RL architecture (MANAGER, WORKER)</p>
-<ul>
-<li>
-<p>MANAGER (LSTM)</p>
-<ul>
-<li>중재자 역할</li>
-<li>D로부터 고수준 feature representation을 받음 → <em>Leakage</em></li>
-</ul>
-</li>
-<li>
-<p>WORKER (LSTM)</p>
-<ul>
-<li>$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적)</li>
-</ul>
-<p>D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다.
-{: .prompt-info }
-logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization</p>
-</li>
-</ul>
-</blockquote>
-<h2 id="배경">
-  배경
-  <a class="anchor" href="#%eb%b0%b0%ea%b2%bd">#</a>
-</h2>
-<h3 id="1-rnn--문장-생성을-위한-가장-기본적인-방법">
-  1. <strong>RNN – 문장 생성을 위한 가장 기본적인 방법</strong>
-  <a class="anchor" href="#1-rnn--%eb%ac%b8%ec%9e%a5-%ec%83%9d%ec%84%b1%ec%9d%84-%ec%9c%84%ed%95%9c-%ea%b0%80%ec%9e%a5-%ea%b8%b0%eb%b3%b8%ec%a0%81%ec%9d%b8-%eb%b0%a9%eb%b2%95">#</a>
-</h3>
-<ul>
-<li>
-<p>이전에 생성된 단어를 활용하여 다음 단어를 생성해내는 방식</p>
-</li>
-<li>
-<p><del>ground-truth 단어들의 log-likelihood를 최대화한다.</del></p>
-</li>
-<li>
-<p>Supervising(Ground-Truth에 대한 설정) 필요</p>
-</li>
-<li>
-<p>학습과 추론 단계의 불일치에 의해 편차가 발생</p>
-<p>해결책으로 Scheduled sampling approach 제안 → 실패</p>
-</li>
-</ul>
-<h3 id="2-gan--목적은-생성망-g의-성능을-개선하는-것">
-  2. <strong>GAN – 목적은 생성망 G의 성능을 개선하는 것</strong>
-  <a class="anchor" href="#2-gan--%eb%aa%a9%ec%a0%81%ec%9d%80-%ec%83%9d%ec%84%b1%eb%a7%9d-g%ec%9d%98-%ec%84%b1%eb%8a%a5%ec%9d%84-%ea%b0%9c%ec%84%a0%ed%95%98%eb%8a%94-%ea%b2%83">#</a>
-</h3>
-<ul>
-<li>이를 위해 생성물의 진위 여부를 평가하는 분별망 D와 대립</li>
-<li>Jenson-Shannon 거리 활용</li>
-<li>생성망의 성능이 충분히 좋아지면 분별망 갖다버림</li>
-</ul>
-<h3 id="3-gan의-한계-및-해결책">
-  <strong>3. GAN의 한계 및 해결책</strong>
-  <a class="anchor" href="#3-gan%ec%9d%98-%ed%95%9c%ea%b3%84-%eb%b0%8f-%ed%95%b4%ea%b2%b0%ec%b1%85">#</a>
-</h3>
-<ul>
-<li>
-<p>제한적인 생성 가능한 문장의 길이(최대 20단어)</p>
-</li>
-<li>
-<p><strong>Non-informative guiding signal</strong></p>
-<p>문장 → 스칼라 값(guiding signal)</p>
-<p>변환 과정에서 G가 학습하는 문장의 구조 및 의미를 보장하지 않음.</p>
-<p>⇒ D가 G에게 점수와 함께 임베딩(feature representation)을 제공하여 해결</p>
-<p>G는 D의 feature representation에 일치하도록 임베딩 학습</p>
-</li>
-<li>
-<p><strong>Sparsity</strong></p>
-<p>긴 문장 생성 시 binary guiding signal을 활용 → 전체 문장이 생성되었을 때만 가능</p>
-<p>⇒ 문장 생성을 여러 단계(계층)으로 구분하여 signal을 더 많이 제공</p>
-<p>Sparsity가 일부 해결될 뿐만 아니라, Task가 작아져 모델 학습 용이</p>
-<p><strong>but, 문장 생성 단계에 대한 사전 정의가 필요</strong></p>
-<p><strong>⇒ 랜덤 문장 생성에는 적용 불가능</strong></p>
-</li>
-</ul>
-<h2 id="아이디어">
-  아이디어
-  <a class="anchor" href="#%ec%95%84%ec%9d%b4%eb%94%94%ec%96%b4">#</a>
-</h2>
-<p>Sparsity와 Non-Informative를 효과적으로 해결하기 위해 <strong>LeakGAN</strong> 제안한다.</p>
-<p>분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.</p>
-<h3 id="manager-lstm">
-  <strong>MANAGER (LSTM)</strong>
-  <a class="anchor" href="#manager-lstm">#</a>
-</h3>
-<ul>
-<li>중재자 역할</li>
-<li>D로부터 고수준 feature representation을 받는다. → <em>Leakage</em>
-<ul>
-<li>따라서 해당 정보는 전역적으로 관리된다.</li>
-<li>물론 게임 진행 중에는 G에게 해당 정보를 제공하지 않는다.</li>
-<li>해당 정보를 바탕으로 Goal 임베딩 생성 후 WORKER에게 넘긴다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="worker-lstm">
-  <strong>WORKER (LSTM)</strong>
-  <a class="anchor" href="#worker-lstm">#</a>
-</h3>
-<ul>
-<li>현재까지 생성된 문장을 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적)</li>
-</ul>
-<p>D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다.</p>
-<h1 id="구체적-방법론">
-  구체적 방법론
-  <a class="anchor" href="#%ea%b5%ac%ec%b2%b4%ec%a0%81-%eb%b0%a9%eb%b2%95%eb%a1%a0">#</a>
-</h1>
-<p>
-  <img src="leakgan.png" alt="leakgan" /></p>
-<p>텍스트 생성 문제 → Sequential Decision Making Process</p>
-<ul>
-<li>$s_t : t$ 시점까지 생성된 단어들. $(x_1,\dots,  x_i, \dots, x_t)$
-<ul>
-<li>$x_i:$ 단어(token)</li>
-</ul>
-</li>
-</ul>
-<h2 id="생성망-g_theta">
-  생성망 $G_\theta$
-  <a class="anchor" href="#%ec%83%9d%ec%84%b1%eb%a7%9d-g_theta">#</a>
-</h2>
-<p>$G_\theta:$ 파라미터가 $\theta$인 생성망</p>
-<ol>
-<li>
-<p><strong>$s_t$를 전체 어휘 분포와 매핑시킨다.</strong></p>
-<p>ex) $x_{t+1}$에서 &amp;G_\theta(\sdot | s_t)&amp; 학습</p>
-</li>
-<li>
-<p><strong>분별망이 유출해준 정보를 계층 구조를 통해 효과적으로 포함하여 문장을 생성한다.</strong></p>
-</li>
-</ol>
-<h3 id="생성망의-계층-구조">
-  생성망의 계층 구조
-  <a class="anchor" href="#%ec%83%9d%ec%84%b1%eb%a7%9d%ec%9d%98-%ea%b3%84%ec%b8%b5-%ea%b5%ac%ec%a1%b0">#</a>
-</h3>
-<p>D의 유출된 정보를 이용하기 위한 MANAGER-WORKER 계층 구조</p>
-<ul>
-<li>
-<p><strong>MANAGER</strong>: $t$시점마다 추출된 $f_t$를 활용해 $g_t$ 생성</p>
-<p>$f_t$를 LSTM에 입력한 후 goal vector $g_t$를 생성한다.</p>
-<p>$$
-\begin{aligned}\hat{g}<em>t, h_t^M &amp; =\mathcal{M}\left(f_t, h</em>{t-1}^M ; \theta_m\right) \g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right|\end{aligned}
-$$</p>
-<ul>
-<li>
-<p>$M:$ LSTM 모델</p>
-</li>
-<li>
-<p>$\mathcal{M}:$ MANAGER 모듈</p>
-</li>
-<li>
-<p>$\theta_m :$  $\mathcal M$의 파라미터</p>
-</li>
-<li>
-<p>$h_t:$ t시점의 hidden state</p>
-</li>
-<li>
-<details markdown="block">
-  <summary>class Manager(nn.Module):</summary>
-<ul>
-<li>
-<p><code>init, init_params</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self, batch_size, hidden_dim, goal_out_size):
-</span></span><span style="display:flex;"><span>        super(Manager, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>batch_size <span style="color:#f92672">=</span> batch_size
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>hidden_dim <span style="color:#f92672">=</span> hidden_dim
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>goal_out_size <span style="color:#f92672">=</span> goal_out_size
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>recurrent_unit <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>LSTMCell(
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>goal_out_size, <span style="color:#75715e">#input size</span>
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>hidden_dim <span style="color:#75715e">#hidden size</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>hidden_dim, <span style="color:#75715e">#in_features</span>
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>goal_out_size <span style="color:#75715e">#out_features</span>
-</span></span><span style="display:flex;"><span>        )
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>goal_init <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>zeros(self<span style="color:#f92672">.</span>batch_size, self<span style="color:#f92672">.</span>goal_out_size))
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_init_params()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_init_params</span>(self):
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> param <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parameters():
-</span></span><span style="display:flex;"><span>            nn<span style="color:#f92672">.</span>init<span style="color:#f92672">.</span>normal_(param, std<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>goal_init<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> truncated_normal(
-</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>goal_init<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>shape
-</span></span><span style="display:flex;"><span>        )
-</span></span></code></pre></div></li>
-<li>
-<p><strong><code>forward</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, f_t, h_m_t, c_m_t):
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  f_t = feature of CNN from discriminator leaked at time t, 
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                                     it is input into LSTM
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  h_m_t = ouput of previous LSTMCell
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  c_m_t = previous cell state
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">  &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>  h_m_tp1, c_m_tp1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>recurrent_unit(f_t, (h_m_t, c_m_t))
-</span></span><span style="display:flex;"><span>  sub_goal <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(h_m_tp1)
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 하위 텐서의 p-norm이 값 maxnorm보다 낮도록 </span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 차원에 따라 입력의 각 하위 텐서가 정규화되는 텐서를 반환한다.</span>
-</span></span><span style="display:flex;"><span>  sub_goal <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>renorm(sub_goal, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1.0</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> sub_goal, h_m_tp1, c_m_tp1
-</span></span></code></pre></div></li>
-</ul>
-  </details>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>WORKER</strong>: MANAGER의 $g_t$를 토대로 보상을 높이는 다음 단어 생성</p>
-<p>MANAGER의 $g_t$를 포함하기 위해 가중치 행렬 $W_\psi$로 최근 c개의 목표들에 대한 선형 변환을 수행한다.</p>
-<p>이를 통해 k차원의 goal embedding vector $w_t$를 얻는다.</p>
-<p>$$
-w_t=\psi\left(\sum_{i=1}^c g_{t-i}\right)=W_\psi\left(\sum_{i=1}^c g_{t-i}\right)
-$$</p>
-<ul>
-<li>$\psi:$ 선형 변환(행렬 곱셈)</li>
-</ul>
-<p>$$
-\begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right)
-\G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right)
-\end{aligned}
-$$</p>
-<ul>
-<li>
-<p>$\mathcal W:$ WORKER 모듈</p>
-</li>
-<li>
-<p>$x_t:$ input. (t 시점의 단어)</p>
-</li>
-<li>
-<p>$\theta_w :$  $\mathcal W$의 파라미터</p>
-</li>
-<li>
-<p>$O_t :$ 행렬 내적으로 $w_t$와 추가로 결합된 행렬. $|V| \times k$</p>
-<p>모든 단어에 대한 벡터 집합을 의미한다.</p>
-<p>따라서, $O_t \cdot w_t$ 는 모든 단어에 대해 logit을 계산한다.</p>
-</li>
-<li>
-<p>$\alpha :$  generation entropy를 조절하기 위한 temperature parameter</p>
-<p>즉, 생성되는 문장의 참신함을 조절한다.</p>
-</li>
-</ul>
-<p>softmax를 통해 현재까지 생성된 단어 집합 $s_t$에서 최종 action space 분포를 결정한다.</p>
-<ul>
-<li>
-<details markdown='block'> 
-  <summary>class Worker(nn.Module):</summary>
-<ul>
-<li>
-<p><code>init, init_params</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self, batch_size, vocab_size, embed_dim, hidden_dim, 
-</span></span><span style="display:flex;"><span>                goal_out_size, goal_size):
-</span></span><span style="display:flex;"><span>    super(Worker, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>batch_size <span style="color:#f92672">=</span> batch_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>vocab_size <span style="color:#f92672">=</span> vocab_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>embed_dim <span style="color:#f92672">=</span> embed_dim
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>hidden_dim <span style="color:#f92672">=</span> hidden_dim
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>goal_out_size <span style="color:#f92672">=</span> goal_out_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>goal_size <span style="color:#f92672">=</span> goal_size
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>emb <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Embedding(self<span style="color:#f92672">.</span>vocab_size, self<span style="color:#f92672">.</span>embed_dim)<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>recurrent_unit <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>LSTMCell(self<span style="color:#f92672">.</span>embed_dim, self<span style="color:#f92672">.</span>hidden_dim)<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>fc <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(self<span style="color:#f92672">.</span>hidden_dim, self<span style="color:#f92672">.</span>goal_size<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>vocab_size)<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>goal_change <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>zeros(self<span style="color:#f92672">.</span>goal_out_size, self<span style="color:#f92672">.</span>goal_size))<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>_init_params()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_init_params</span>(self):
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> param <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>parameters():
-</span></span><span style="display:flex;"><span>        nn<span style="color:#f92672">.</span>init<span style="color:#f92672">.</span>normal_(param, std<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>)
-</span></span></code></pre></div></li>
-<li>
-<p><strong><code>forward</code></strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x_t, h_w_t, c_w_t):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        x_t = last word
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        h_w_t = last output of LSTM in Worker
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        c_w_t = last cell state of LSTM in Worker
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    x_t_emb <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>emb(x_t)
-</span></span><span style="display:flex;"><span>    h_w_tp1, c_w_tp1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>recurrent_unit(x_t_emb, (h_w_t, c_w_t))
-</span></span><span style="display:flex;"><span>    output_tp1 <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(h_w_tp1)
-</span></span><span style="display:flex;"><span>    output_tp1 <span style="color:#f92672">=</span> output_tp1<span style="color:#f92672">.</span>view(self<span style="color:#f92672">.</span>batch_size, 
-</span></span><span style="display:flex;"><span>																 self<span style="color:#f92672">.</span>vocab_size, 
-</span></span><span style="display:flex;"><span>																 self<span style="color:#f92672">.</span>goal_size)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output_tp1, h_w_tp1, c_w_tp1
-</span></span></code></pre></div></li>
-</ul>
-  </details>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="생성망-g-학습">
-  생성망 G 학습
-  <a class="anchor" href="#%ec%83%9d%ec%84%b1%eb%a7%9d-g-%ed%95%99%ec%8a%b5">#</a>
-</h3>
-<p>앞에서 설명한 G의 모든 과정은 미분 가능한 구조로 되어있다.</p>
-<p>따라서, REINFORCE와 같은 policy gradient algorithm을 적용하여 모델을 학습할 수 있다.</p>
-<p>LeakGAN 모델이 유의미한 의미 패턴을 찾을 수 있도록 MANAGER와 WORKER는 개별적으로 훈련한다.</p>
-<ul>
-<li>
-<p><strong>MANAGER — 식별 가능한 feature space에서의 이동 방향을 예측하도록 훈련된다.</strong></p>
-<p>MANAGER의 gradient</p>
-<p>$$
-\nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q_{\mathcal{F}}\left(s_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(f_{t+c}-f_t, g_t\left(\theta_m\right)\right)
-$$</p>
-<ul>
-<li>
-<p>$Q_{\mathcal{F}}\left(s_t, g_t\right)=Q\left(\mathcal{F}\left(s_t\right), g_t\right)=Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$</p>
-<p>몬테 카를로 탐색으로 추정한 현재 정책에 대한 보상 기댓값</p>
-</li>
-<li>
-<p>$d_{\cos }:$ cosine similarity(similarity인지 distance인지 확인해보기)</p>
-<p>$c$번의 전환 후 feature representation의 변화$(f_{t+c} - f_t)$와 목적 벡터 $g_t$의 차이</p>
-</li>
-</ul>
-<p>손실 함수에서는 높은 보상을 달성하기 위해 $g_t$가 특징 공간의 전환과 일치하도록 강제한다.</p>
-<p>$$
-\begin{aligned}&amp; \nabla_{\theta_w} \mathbb{E}<em>{s</em>{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\
-= &amp; \mathbb{E}<em>{s</em>{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\end{aligned}
-$$</p>
-</li>
-<li>
-<p><strong>WORKER — MANAGER의 지시를 따르도록 보상이 주어진다.</strong></p>
-<p>REINFORCE 알고리즘을 활용하여 보상을 최대화한다.</p>
-<p>이는 $s_{t-1}$ 상태와 함께 WORKER가 취한 $x_t$ 작업을 샘플링하여 근사할 수 있다.</p>
-<p>WORKER에 제공되는 보상은 다음과 같이 정의된다.</p>
-<p>$$
-r_t^I=\frac{1}{c} \sum_{i=1}^c d_{\cos }\left(f_t-f_{t-i}, g_{t-i}\right)
-$$</p>
-</li>
-<li>
-<p><strong>실제로는 $G_\theta$는 적대적 학습 전에 사전 학습이 필요하다.</strong></p>
-<p>사전 학습 시 일관성을 유지하기 위해 MANAGER의 기울기를 통한 별도의 훈련 체계를 사용한다.</p>
-<p>$$
-\nabla_{\theta_m}^{\mathrm{pre}} g_t=-\nabla_{\theta_m} d_{\cos }\left(\hat{f}_{t+c}-\hat{f}_t, g_t\left(\theta_m\right)\right)
-$$</p>
-<ul>
-<li>$\hat{f}_t=\mathcal{F}\left(\hat{s}<em>t\right), \hat s_t, \hat s</em>{t + c}:$ 실제 텍스트의 상태</li>
-</ul>
-<p>해당 수식은 앞에서 정의한 MANAGER 미분식에서 $Q_{\mathcal{F}}\left(s_t, g_t\right)$가 $1$인 상태이다.</p>
-<p>사전 학습에 사용된 데이터는 모두 실제 문장이기 때문이다.</p>
-<p>feature space에서 실제 문장 샘플의 전환을 모방하도록 학습된다.</p>
-<p>MLE(Maximum Likelihood Estimation)를 통해 훈련된다.</p>
-</li>
-</ul>
-<p>학습 과정에서 $G_\theta$와 $D_\phi$는 번갈아가며 훈련된다.</p>
-<p>생성망에서도 MANAGER와 WORKER는 번갈아가며 서로를 고정한 채 훈련된다.</p>
-<h2 id="분별망-d_phi">
-  분별망 $D_\phi$
-  <a class="anchor" href="#%eb%b6%84%eb%b3%84%eb%a7%9d-d_phi">#</a>
-</h2>
-<p>$D_\phi:$ 파라미터가 $\phi$인 분별망</p>
-<h3 id="1-scalar-guiding-signal-d_phis-제공">
-  1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong>
-  <a class="anchor" href="#1-scalar-guiding-signal-d_phis-%ec%a0%9c%ea%b3%b5">#</a>
-</h3>
-<p>전체 문장 $s_T$가 생성된 후 생성망이 파라미터를 조정할 때 가이드 역할을 한다.</p>
-<p>이 때, $D_\phi(s)$는 문장이 길어질수록 정보량이 적어지므로, 이를 해결하기 위해 추가적인 정보 $f_t$를 제공한다.</p>
-<h3 id="guiding-signalleaked-features">
-  Guiding Signal(Leaked Features)
-  <a class="anchor" href="#guiding-signalleaked-features">#</a>
-</h3>
-<p>$$
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right)
-$$</p>
-<ul>
-<li>$s:$ input. 생성된 문장.</li>
-<li>$\mathcal F:$ CNN (특징맵 추출기)</li>
-<li>$f : D_\phi(s)$ 의 마지막 Layer에서의 feature vector(유출된 정보)</li>
-<li>$\phi_l^{\top}:$ 가중치 벡터</li>
-</ul>
-<p>즉, $f$에 의해 Reward Value가 결정되기 때문에, 보상을 높이도록 feature(특징맵)을 뽑아야 한다.</p>
-<p>LeakGAN에서는 Feature Extractor로 CNN을 활용하지만, LSTM이나 다른 신경망을 활용하여 구현할 수도 있다.</p>
-<h3 id="2-f_t--s_t에서의-features">
-  2. <strong>$f_t = s_t$에서의 features</strong>
-  <a class="anchor" href="#2-f_t--s_t%ec%97%90%ec%84%9c%ec%9d%98-features">#</a>
-</h3>
-<p>$f_t$는 분별망이 분별을 위해서 쓰이는 정보이기도 하다.</p>
-<p>따라서, 전역적으로 관리된다.</p>
-<h3 id="3-learned-reward-function을-설정한다">
-  3. <strong>Learned Reward Function을 설정한다.</strong>
-  <a class="anchor" href="#3-learned-reward-function%ec%9d%84-%ec%84%a4%ec%a0%95%ed%95%9c%eb%8b%a4">#</a>
-</h3>
-<p>Black Box인 기존 RL 모델들과 대비된다.</p>
-<ul>
-<li>
-<details markdown=1>
-  <summary>class Discriminator(nn.Module):</summary>
-<p>text 분류를 위한 CNN 모델</p>
-<p>num_filters (int): This is the output dim for each convolutional layer, which is the number of &ldquo;filters&rdquo; learned by that layer.</p>
-<ul>
-<li>
-<p><code>__init__</code></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> __init__(self, seq_len, num_classes, vocab_size, dis_emb_dim, 
-</span></span><span style="display:flex;"><span>             filter_sizes, num_filters, start_token, goal_out_size, 
-</span></span><span style="display:flex;"><span>						 step_size, dropout_prob, l2_reg_lambda):
-</span></span><span style="display:flex;"><span>    super(Discriminator, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>seq_len <span style="color:#f92672">=</span> seq_len
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>num_classes <span style="color:#f92672">=</span> num_classes
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>vocab_size <span style="color:#f92672">=</span> vocab_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>dis_emb_dim <span style="color:#f92672">=</span> dis_emb_dim
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>filter_sizes <span style="color:#f92672">=</span> filter_sizes
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>num_filters <span style="color:#f92672">=</span> num_filters
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>start_token <span style="color:#f92672">=</span> start_token
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>goal_out_size <span style="color:#f92672">=</span> goal_out_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>step_size <span style="color:#f92672">=</span> step_size
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>dropout_prob <span style="color:#f92672">=</span> dropout_prob
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>l2_reg_lambda <span style="color:#f92672">=</span> l2_reg_lambda
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>num_filters_total <span style="color:#f92672">=</span> sum(self<span style="color:#f92672">.</span>num_filters)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#Building up layers</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>emb <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Embedding(self<span style="color:#f92672">.</span>vocab_size <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>dis_emb_dim)<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>convs <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>ModuleList([
-</span></span><span style="display:flex;"><span>        nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">1</span>, num_f, 
-</span></span><span style="display:flex;"><span>									(f_size, self<span style="color:#f92672">.</span>dis_emb_dim))
-</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> f_size, num_f <span style="color:#f92672">in</span> zip(self<span style="color:#f92672">.</span>filter_sizes, self<span style="color:#f92672">.</span>num_filters)
-</span></span><span style="display:flex;"><span>    ])<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>highway <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(self<span style="color:#f92672">.</span>num_filters_total, 
-</span></span><span style="display:flex;"><span>															self<span style="color:#f92672">.</span>num_filters_total)<span style="color:#f92672">**</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#in_features = out_features = sum of num_festures</span>
-</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>dropout <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Dropout(p <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>dropout_prob)
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#Randomly zeroes some of the elements of the input tensor </span>
-</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># with probability p using Bernouli distribution</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#Each channel will be zeroed independently onn every forward call</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>fc <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(self<span style="color:#f92672">.</span>num_filters_total, self<span style="color:#f92672">.</span>num_classes)<span style="color:#f92672">**</span>
-</span></span></code></pre></div></li>
-<li>
-<p>highway</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Highway</span>(nn<span style="color:#f92672">.</span>Module):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#Highway Networks = Gating Function To Highway = y = xA^T + b</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, in_size, out_size):
-</span></span><span style="display:flex;"><span>        super(Highway, self)<span style="color:#f92672">.</span>__init__()
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(in_size, out_size)
-</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(in_size, out_size)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">#highway = F.sigmoid(highway)*F.relu(highway) + (1. - transform)*pred # sets C = 1 - T</span>
-</span></span><span style="display:flex;"><span>        g <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1)
-</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sigmoid(self<span style="color:#f92672">.</span>fc2)
-</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> g<span style="color:#f92672">*</span>t <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1.</span> <span style="color:#f92672">-</span> t)<span style="color:#f92672">*</span>x
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> out
-</span></span></code></pre></div><p>t가 1이면 out = g</p>
-<p>t가 0이면 out = x</p>
-<p>t는 torch.sigmoid(self.fc2)에 의해 결정됨.</p>
-</li>
-<li>
-<p>truncated_norm : 난수(절단된 정규분포)로 가중치 초기화에 사용</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.stats <span style="color:#f92672">import</span> truncnorm
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn.functional <span style="color:#66d9ef">as</span> F
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">truncated_normal</span>(shape, lower<span style="color:#f92672">=-</span><span style="color:#ae81ff">0.2</span>, upper<span style="color:#f92672">=</span><span style="color:#ae81ff">0.2</span>):
-</span></span><span style="display:flex;"><span>    size <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> dim <span style="color:#f92672">in</span> shape:
-</span></span><span style="display:flex;"><span>        size <span style="color:#f92672">*=</span> dim
-</span></span><span style="display:flex;"><span>    w_truncated <span style="color:#f92672">=</span> truncnorm<span style="color:#f92672">.</span>rvs(lower, upper, size<span style="color:#f92672">=</span>size)
-</span></span><span style="display:flex;"><span>    w_truncated <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>from_numpy(w_truncated)<span style="color:#f92672">.</span>float()
-</span></span><span style="display:flex;"><span>    w_truncated <span style="color:#f92672">=</span> w_truncated<span style="color:#f92672">.</span>view(shape)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> w_truncated
-</span></span></code></pre></div></li>
-<li>
-<p><strong>forward</strong></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
-</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Argument:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        x: shape(batch_size * self.seq_len)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">           type(Variable containing torch.LongTensor)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Return:
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pred: shape(batch_size * 2)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              For each sequence in the mini batch, output the probability
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">              of it belonging to positive sample and negative sample.
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        feature: shape(batch_size * self.num_filters_total)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                 Corresponding to f_t in original paper
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        score: shape(batch_size, self.num_classes)
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#1. Embedding Layer</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#2. Convolution + maxpool layer for each filter size</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#3. Combine all the pooled features into a prediction</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#4. Add highway</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#5. Add dropout. This is when feature should be extracted</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">#6. Final unnormalized scores and predictions</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    emb <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>emb(x)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    convs <span style="color:#f92672">=</span> [F<span style="color:#f92672">.</span>relu(conv(emb))<span style="color:#f92672">.</span>squeeze(<span style="color:#ae81ff">3</span>) <span style="color:#66d9ef">for</span> conv <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>convs] <span style="color:#75715e"># [batch_size * num_filter * seq_len]</span>
-</span></span><span style="display:flex;"><span>    pooled_out <span style="color:#f92672">=</span> [F<span style="color:#f92672">.</span>max_pool1d(conv, conv<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">2</span>))<span style="color:#f92672">.</span>squeeze(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">for</span> conv <span style="color:#f92672">in</span> convs] <span style="color:#75715e"># [batch_size * num_filter]</span>
-</span></span><span style="display:flex;"><span>    pred <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat(pooled_out, <span style="color:#ae81ff">1</span>) <span style="color:#75715e"># batch_size * sum(num_filters)</span>
-</span></span><span style="display:flex;"><span>    highway <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>highway(pred)
-</span></span><span style="display:flex;"><span>    highway <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sigmoid(highway)<span style="color:#f92672">*</span> F<span style="color:#f92672">.</span>relu(highway) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> torch<span style="color:#f92672">.</span>sigmoid(highway))<span style="color:#f92672">*</span>pred
-</span></span><span style="display:flex;"><span>    features <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>dropout(highway)
-</span></span><span style="display:flex;"><span>    score <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc(features)
-</span></span><span style="display:flex;"><span>    pred <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>log_softmax(score, dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>) <span style="color:#75715e">#batch * num_classes</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#34;pred&#34;</span>:pred, <span style="color:#e6db74">&#34;feature&#34;</span>:features, <span style="color:#e6db74">&#34;score&#34;</span>: score}
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">l2_loss</span>(self):
-</span></span><span style="display:flex;"><span>    W <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc<span style="color:#f92672">.</span>weight
-</span></span><span style="display:flex;"><span>    b <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc<span style="color:#f92672">.</span>bias
-</span></span><span style="display:flex;"><span>    l2_loss <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sum(W<span style="color:#f92672">*</span>W) <span style="color:#f92672">+</span> torch<span style="color:#f92672">.</span>sum(b<span style="color:#f92672">*</span>b)
-</span></span><span style="display:flex;"><span>    l2_loss <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>l2_reg_lambda <span style="color:#f92672">*</span> l2_loss
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> l2_loss
-</span></span></code></pre></div></li>
-</ul>
-  </details>
-</li>
-</ul>
-<h2 id="학습-기술">
-  학습 기술
-  <a class="anchor" href="#%ed%95%99%ec%8a%b5-%ea%b8%b0%ec%88%a0">#</a>
-</h2>
-<h3 id="bootstrapped-rescaled-activation">
-  <strong>Bootstrapped Rescaled Activation</strong>
-  <a class="anchor" href="#bootstrapped-rescaled-activation">#</a>
-</h3>
-<ul>
-<li>
-<p>배경</p>
-<p>SeqGAN의 적대적 훈련 과정에서, $D$가 $G$보다 너무 강한 경우 심각한 gradient 소멸 문제가 발생한다.</p>
-<p>즉, 파라미터를 갱신하기에 보상이 너무 작기 때문에 $G$에게 값을 넘기기 전에 스케일 조정이 필요하다.</p>
-</li>
-</ul>
-<p>RankGAN로부터 영감을 받은 rank 기반 방법</p>
-<p>보상 행렬 : $R_{B\times T}$</p>
-<ul>
-<li>
-<p>다음 수식으로 $t$번째 열 벡터 $R^t$의 스케일을 재조정한다.</p>
-<p>$$
-R_i^t=\sigma\left(\delta \cdot\left(0.5-\frac{\operatorname{rank}(i)}{B}\right)\right)
-$$</p>
-</li>
-<li>
-<p>$\text {rank}(i):$ 열 벡터에서 i번째 원소의 ranking</p>
-</li>
-<li>
-<p>$\delta :$ rescale 작업의 smoothness를 조정하는 하이퍼 파라미터</p>
-</li>
-<li>
-<p>$\sigma(\cdot) :$  활성 함수(논문에서는 sigmoid)</p>
-<p>등간격 점수를 rank 기반으로 보다 효과적인 분포로 재구성한다.</p>
-</li>
-</ul>
-<p><strong>장점</strong></p>
-<ol>
-<li>
-<p>각 미니 배치에서 보상의 기대와 분산이 일정하다.</p>
-<p>값을 안정시켜 수치형 분산에 민감한 알고리즘에 도움이 된다.</p>
-</li>
-<li>
-<p><em>모든 ranking 방법과 동일하게</em>, 모델 수렴을 가속화하는 gradient 소실 문제를 방지한다.</p>
-</li>
-</ol>
-<h3 id="interleaved-training">
-  Interleaved Training
-  <a class="anchor" href="#interleaved-training">#</a>
-</h3>
-<p>사전 훈련 후 전부 GAN으로 학습하는 대신 일부는 지도 학습(ex — MLE)으로, 일부는 적대적 학습(ex — GAN)을 적용한다.</p>
-<p>ex) 1 epoch 지도 학습 + 15 epoch 적대적 학습</p>
-<ul>
-<li>GAN이 local minima를 제거하는 데 도움을 준다.</li>
-<li>mode collapse를 예방한다.</li>
-</ul>
-<p>삽입된 지도 학습이 생성 모델에 대해 암시적 규제를 수행하여 MLE 결과로부터 너무 멀리 떨어지는 것을 방지한다.</p>
-<h3 id="temperature-control">
-  Temperature Control
-  <a class="anchor" href="#temperature-control">#</a>
-</h3>
-<p>볼츠만 temperature $\alpha$.</p>
-<p>탐험와 탐사의 균형을 맞추는 데 사용할 수 있는 요소</p>
-<ul>
-<li>모델 훈련 시 높은 temperature 설정</li>
-<li>샘플 생성을 위해 모델 적용 시 낮은 temperature 설정</li>
-</ul>
-<h2 id="pseudo-code">
-  Pseudo Code
-  <a class="anchor" href="#pseudo-code">#</a>
-</h2>
-<p>
-  <img src="leakgan1.png" alt="leakgan" /></p>
-<h3 id="필요한-요소">
-  <strong>필요한 요소</strong>
-  <a class="anchor" href="#%ed%95%84%ec%9a%94%ed%95%9c-%ec%9a%94%ec%86%8c">#</a>
-</h3>
-<ul>
-<li>
-<p><strong>계층 구조 생성망 $G(θ_m, θ_w)$</strong></p>
-<p>MANAGER와 WORKER로 구성</p>
-</li>
-<li>
-<p><strong>분별망 $D(φ)$</strong></p>
-<p>이진 분류기</p>
-</li>
-<li>
-<p><strong>훈련 데이터 셋</strong></p>
-<p>시퀀스 데이터 집합 $S = {X_1:T}$</p>
-</li>
-</ul>
-<h3 id="알고리즘-단계">
-  <strong>알고리즘 단계</strong>
-  <a class="anchor" href="#%ec%95%8c%ea%b3%a0%eb%a6%ac%ec%a6%98-%eb%8b%a8%ea%b3%84">#</a>
-</h3>
-<ol>
-<li>
-<p><strong>파라미터 초기화</strong></p>
-<p>$G(θ_m, θ_w), D(φ)$를 랜덤 가중치 $θ_m, θ_w, φ$로 초기화</p>
-</li>
-<li>
-<p><strong>사전 학습</strong></p>
-<ol>
-<li>
-<p>$<strong>D(φ)$ 사전 학습</strong></p>
-<p>$D(φ)$를 시퀀스 데이터 집합 $S$를 양성 샘플로,
-$G$에서 생성된 시퀀스를 음성 샘플로 사용하여 사전 학습한다.</p>
-<p>이때, $D(φ)$는 특징 추출기($\mathcal F$)와 출력 레이어(sigmoid)로 구성된다.</p>
-<p>$$
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right)
-$$</p>
-</li>
-<li>
-<p>$<strong>G(θ_m, θ_w)$ 사전 학습</strong></p>
-<p>$D(φ)$로부터 유출된 정보를 사용하여 학습한다.</p>
-</li>
-</ol>
-</li>
-<li>
-<p><strong>사전 학습을 수렴할 때까지 번갈아 수행한다.</strong></p>
-</li>
-<li>
-<p><strong>적대적 학습</strong></p>
-<ul>
-<li>
-<p><strong>생성망 단계 (g-steps)</strong></p>
-<ul>
-<li>
-<p>$G(θ)$를 사용하여 시퀀스 $Y_1:T$를 생성</p>
-</li>
-<li>
-<p>각 $t$에 대해 $D(φ)$로부터 유출된 정보 $f_t$를 저장</p>
-</li>
-<li>
-<p>$Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$을 통해 Monte Carlo Search를 사용하여 $Q(f_t, g_t)$를 얻어낸다.</p>
-</li>
-<li>
-<p>MANAGER로부터 계산된 방향 $g_t$를 얻는다.</p>
-</li>
-<li>
-<p>WORKER 매개변수 $θ_w, ψ$, softmax를 갱신한다.</p>
-<p>$$
-\begin{aligned}
-&amp; \nabla_{\theta_w} \mathbb{E}<em>{s</em>{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right] \
-= &amp; \mathbb{E}<em>{s</em>{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]
-\end{aligned}
-$$</p>
-</li>
-<li>
-<p>MANAGER 매개변수 $θ_m$을 갱신한다.</p>
-<p>$$
-\nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q\left(f_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(\mathcal{F}\left(s_{t+c}\right)-\mathcal{F}\left(s_t\right), g_t\left(\theta_m\right)\right)
-$$</p>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>분별망 단계 (d-steps)</strong></p>
-<ul>
-<li>
-<p>현재 $G(θ_m, θ_w)$를 사용하여 음성 예제를 생성하고 주어진 양성 예제 S와 결합한다.</p>
-</li>
-<li>
-<p>k-epoch 동안 $D(φ)$를 훈련한다.</p>
-<p>$$
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l \cdot \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l, f\right)
-$$</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>
-<p><strong>LeakGAN이 수렴할 때까지 반복한다.</strong></p>
-</li>
-</ol>
-<h3 id="참고">
-  참고
-  <a class="anchor" href="#%ec%b0%b8%ea%b3%a0">#</a>
-</h3>
-<p>
-  <a href="https://arxiv.org/abs/1709.08624">Long Text Generation via Adversarial Training with Leaked Information</a></p>
-<p>
-  <a href="https://paperswithcode.com/task/text-generation">Papers with Code - Text Generation</a></p>
-<p>
-  <a href="https://github.com/nurpeiis/LeakGAN-PyTorch">LeakGAN Implement code with PyTorch - github</a></p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#배경">배경</a>
-          <ul>
-            <li><a href="#1-rnn--문장-생성을-위한-가장-기본적인-방법">1. <strong>RNN – 문장 생성을 위한 가장 기본적인 방법</strong></a></li>
-            <li><a href="#2-gan--목적은-생성망-g의-성능을-개선하는-것">2. <strong>GAN – 목적은 생성망 G의 성능을 개선하는 것</strong></a></li>
-            <li><a href="#3-gan의-한계-및-해결책"><strong>3. GAN의 한계 및 해결책</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#아이디어">아이디어</a>
-          <ul>
-            <li><a href="#manager-lstm"><strong>MANAGER (LSTM)</strong></a></li>
-            <li><a href="#worker-lstm"><strong>WORKER (LSTM)</strong></a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li><a href="#구체적-방법론">구체적 방법론</a>
-      <ul>
-        <li><a href="#생성망-g_theta">생성망 $G_\theta$</a>
-          <ul>
-            <li><a href="#생성망의-계층-구조">생성망의 계층 구조</a></li>
-            <li><a href="#생성망-g-학습">생성망 G 학습</a></li>
-          </ul>
-        </li>
-        <li><a href="#분별망-d_phi">분별망 $D_\phi$</a>
-          <ul>
-            <li><a href="#1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong></a></li>
-            <li><a href="#guiding-signalleaked-features">Guiding Signal(Leaked Features)</a></li>
-            <li><a href="#2-f_t--s_t에서의-features">2. <strong>$f_t = s_t$에서의 features</strong></a></li>
-            <li><a href="#3-learned-reward-function을-설정한다">3. <strong>Learned Reward Function을 설정한다.</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#학습-기술">학습 기술</a>
-          <ul>
-            <li><a href="#bootstrapped-rescaled-activation"><strong>Bootstrapped Rescaled Activation</strong></a></li>
-            <li><a href="#interleaved-training">Interleaved Training</a></li>
-            <li><a href="#temperature-control">Temperature Control</a></li>
-          </ul>
-        </li>
-        <li><a href="#pseudo-code">Pseudo Code</a>
-          <ul>
-            <li><a href="#필요한-요소"><strong>필요한 요소</strong></a></li>
-            <li><a href="#알고리즘-단계"><strong>알고리즘 단계</strong></a></li>
-            <li><a href="#참고">참고</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,524 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.
-내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.
-다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.
-업스테이지 기업연계 프로젝트#전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.
-지원 배경#기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트" />
-<meta property="og:description" content="최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.
-내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.
-다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.
-업스테이지 기업연계 프로젝트#전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.
-지원 배경#기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
+    
+    
+    
+    
+    
+    
 
-<title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트 | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='BoostCampAITech'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#업스테이지-기업연계-프로젝트"><strong>업스테이지 기업연계 프로젝트</strong></a>
-          <ul>
-            <li><a href="#지원-배경"><strong>지원 배경</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#기업-연계-프로젝트의-장점"><strong>기업 연계 프로젝트의 장점</strong></a>
-          <ul>
-            <li><a href="#1-시니어-개발자에게-무한대의-질문-권한이-주어진다">1. <strong>시니어 개발자에게 무한대의 질문 권한이 주어진다.</strong></a></li>
-            <li><a href="#2-두-번의-미팅-기회가-제공된다">2. <strong>두 번의 미팅 기회가 제공된다.</strong></a></li>
-            <li><a href="#3-연계-기업에-얼굴-도장을-찍을-수-있다">3. <strong>연계 기업에 얼굴 도장을 찍을 수 있다.</strong></a></li>
-            <li><a href="#4-기업에서-필요한-프로젝트에-대한-경험">4. <strong>기업에서 필요한 프로젝트에 대한 경험</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#기업-연계-프로젝트의-단점"><strong>기업 연계 프로젝트의 단점</strong></a>
-          <ul>
-            <li><a href="#1-자유로운-듯-자유롭지-않은-프로젝트-방향성">1. <strong>자유로운 듯 자유롭지 않은 프로젝트 방향성</strong></a></li>
-            <li><a href="#2-지연되는-일정">2. <strong>지연되는 일정</strong></a></li>
-            <li><a href="#3-제공되는-데이터-없음">3. <strong>제공되는 데이터 없음</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#프로젝트-진행"><strong>프로젝트 진행</strong></a>
-          <ul>
-            <li><a href="#개요"><strong>개요</strong></a></li>
-            <li><a href="#대화형-추천-데이터"><strong>대화형 추천 데이터</strong></a></li>
-            <li><a href="#dash"><strong>Dash</strong></a></li>
-            <li><a href="#tailwind-grid"><strong>Tailwind, Grid</strong></a></li>
-            <li><a href="#cheat-sheet"><strong>Cheat Sheet</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#좋았던-점들"><strong>좋았던 점들</strong></a></li>
-        <li><a href="#아쉬웠던-점들"><strong>아쉬웠던 점들</strong></a></li>
-        <li><a href="#글을-마무리하며">글을 마무리하며</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-09-04-%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/">네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/Review/">Review</a>, 
-      <a href="/categories/BoostCamp-AI-Tech/">BoostCamp AI Tech</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/BoostCampAITech/">BoostCampAITech</a>
-  </div>
-  
-
-
-
-<p>
-  <img src="/imgs/boostcamp_logo.png" alt="bc" /></p>
-<p>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.</p>
-<p>내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.</p>
-<p>다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.</p>
-<h2 id="업스테이지-기업연계-프로젝트">
-  <strong>업스테이지 기업연계 프로젝트</strong>
-  <a class="anchor" href="#%ec%97%85%ec%8a%a4%ed%85%8c%ec%9d%b4%ec%a7%80-%ea%b8%b0%ec%97%85%ec%97%b0%ea%b3%84-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8">#</a>
-</h2>
-<p>
-  <img src="/imgs/upstage_logo.png" alt="bc" /></p>
-<p>전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.</p>
-<h3 id="지원-배경">
-  <strong>지원 배경</strong>
-  <a class="anchor" href="#%ec%a7%80%ec%9b%90-%eb%b0%b0%ea%b2%bd">#</a>
-</h3>
-<p>기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</p>
-<p>우리 팀은 <strong>대화형 추천 시스템의 모니터링을 위한 interactive admin 페이지 (web) 개발</strong> 이라는 주제에 모두 동의하여 기업 연계 프로젝트를 신청했다.</p>
-<p>애초에 대화형 데이터셋을 활용하는 서비스를 계획하기도 했고, 우리 팀은 DA나 DS에 관심 있는 팀원이 많았기 때문에 아주 매력적인 선택지였다.</p>
-<p>게다가 팀 전원이 Looker Studio를 활용하여 대시보드를 만드는 법을 알고 있었기 때문에, 지원 기간 동안 대시보드 프로토타입을 완성하여 기연프 신청서에 함께 첨부했다.</p>
-<p>덕분에 원하는 대로 기업 연계 프로젝트를 진행할 수 있었다.</p>
-<h2 id="기업-연계-프로젝트의-장점">
-  <strong>기업 연계 프로젝트의 장점</strong>
-  <a class="anchor" href="#%ea%b8%b0%ec%97%85-%ec%97%b0%ea%b3%84-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%9d%98-%ec%9e%a5%ec%a0%90">#</a>
-</h2>
-<h3 id="1-시니어-개발자에게-무한대의-질문-권한이-주어진다">
-  1. <strong>시니어 개발자에게 무한대의 질문 권한이 주어진다.</strong>
-  <a class="anchor" href="#1-%ec%8b%9c%eb%8b%88%ec%96%b4-%ea%b0%9c%eb%b0%9c%ec%9e%90%ec%97%90%ea%b2%8c-%eb%ac%b4%ed%95%9c%eb%8c%80%ec%9d%98-%ec%a7%88%eb%ac%b8-%ea%b6%8c%ed%95%9c%ec%9d%b4-%ec%a3%bc%ec%96%b4%ec%a7%84%eb%8b%a4">#</a>
-</h3>
-<p>사실 나는 이 점 하나만 놓고 보더라도, 기업 연계의 메리트는 충분하다고 생각한다.</p>
-<p>프로젝트를 진행하며 모르는 점이나, 기술적으로 어려운 부분이 발생했을 경우 노션 페이지를 통해 바로 질문할 수 있도록 공간이 마련된다.</p>
-<p>이 장점은 후에 부스트캠프에서 진행하는 프로젝트 공개 멘토링 시간에 체감했었는데, 다른 팀들은 멘토링 1시간동안 질문을 통해 얻어가는 내용들을 우리 팀은 미리 다 들어서 알고 있었다.</p>
-<h3 id="2-두-번의-미팅-기회가-제공된다">
-  2. <strong>두 번의 미팅 기회가 제공된다.</strong>
-  <a class="anchor" href="#2-%eb%91%90-%eb%b2%88%ec%9d%98-%eb%af%b8%ed%8c%85-%ea%b8%b0%ed%9a%8c%ea%b0%80-%ec%a0%9c%ea%b3%b5%eb%90%9c%eb%8b%a4">#</a>
-</h3>
-<p>한 번은 상견례이고 한 번은 멘토링이지만, 서로 얼굴 맞대고 원하는 질문을 공유할 수 있는 자리라는 점에서, 상견례 또한 많은 정보를 얻을 수 있다.</p>
-<p>단, 상견례를 진행하기 전에 구체적인 질문을 많이 준비해가야 더 많은 답변을 얻을 수 있다.</p>
-<p>상견례 미팅 때 기업에서 프로젝트에 대해 설명해주고, 어떤 업무를 수행해야 하는지 설명해줄 것이라 생각하면 안된다.</p>
-<p>우리 팀의 경우 질문을 5개 정도 준비했는데, 질문에 대한 답변이 완료된 후 15분 만에 끝나버렸었다. 최대 1시간의 시간이 주어진 것을 감안하면 더 많은 질문을 준비해가지 않은 것이 살짝 아쉬웠다.</p>
-<p>멘토링은 모의 면접 형식으로 진행되었고, 나의 성장에는 큰 도움이 되었지만 아쉽게도 프로젝트에는 도움이 되지 않았다.</p>
-<p>멘토링 전에 제출한 구성원 역할 페이지를 보며 어떤 어려움이 있었는지, 어떤 방식으로 문제를 해결했는지 등을 여쭤보시며 면접 형식으로 진행됐다.</p>
-<p>나는 면접 경험이 부족했기 때문에 해당 시간은 나에게 큰 의미가 있었다. (다만 사전 예고 없이 갑작스럽게 진행된 터라 면접 준비를 하지 않고 진행된 것은 아쉬웠다.)</p>
-<p>그래도 실제 면접에서는 피드백을 얻을 수 없기 때문에, 시니어 개발자의 피드백이 존재하는 모의 면접은 엄청난 기회였다고 생각한다.</p>
-<ul>
-<li>
-<p><strong>면접에서 받은 피드백</strong></p>
-<ol>
-<li>
-<p>질문에 대한 답변을 하기 전에 생각을 정리한 후 여유를 가지고 천천히 답변하자.</p>
-<p>잔잔하게, 느리게, 깔끔하게, 차분하게 말하기</p>
-</li>
-</ol>
-<ul>
-<li>프롬프트 엔지니어링에 대해 공부해보기. 프로토타입을 빠르게 만들어내는 능력이 대단히 중요하다.</li>
-</ul>
-</li>
-</ul>
-<h3 id="3-연계-기업에-얼굴-도장을-찍을-수-있다">
-  3. <strong>연계 기업에 얼굴 도장을 찍을 수 있다.</strong>
-  <a class="anchor" href="#3-%ec%97%b0%ea%b3%84-%ea%b8%b0%ec%97%85%ec%97%90-%ec%96%bc%ea%b5%b4-%eb%8f%84%ec%9e%a5%ec%9d%84-%ec%b0%8d%ec%9d%84-%ec%88%98-%ec%9e%88%eb%8b%a4">#</a>
-</h3>
-<p>사실 이 부분을 명확하게 언급하기가 애매해서 이렇게 적었다. 아무래도 프로젝트를 사전에 함께 진행하고, 심지어 잘 진행했다면 당연히 채용에서 이점이 있지 않을까?</p>
-<h3 id="4-기업에서-필요한-프로젝트에-대한-경험">
-  4. <strong>기업에서 필요한 프로젝트에 대한 경험</strong>
-  <a class="anchor" href="#4-%ea%b8%b0%ec%97%85%ec%97%90%ec%84%9c-%ed%95%84%ec%9a%94%ed%95%9c-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%97%90-%eb%8c%80%ed%95%9c-%ea%b2%bd%ed%97%98">#</a>
-</h3>
-<p>장점이자 단점일 수 있는데, 나는 프로젝트를 진행하며 부캠에서 배운 것과 기업에서 필요로 하는 것이 다르다는 느낌을 받았다.</p>
-<p>실제로 일을 하게 됐을 때도 동일하게 겪을 수 있는 문제 상황이라 생각하기 때문에, 좋은 경험을 쌓았다고 생각한다.</p>
-<h2 id="기업-연계-프로젝트의-단점">
-  <strong>기업 연계 프로젝트의 단점</strong>
-  <a class="anchor" href="#%ea%b8%b0%ec%97%85-%ec%97%b0%ea%b3%84-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8%ec%9d%98-%eb%8b%a8%ec%a0%90">#</a>
-</h2>
-<blockquote>
-<p>나는 해당 글을 나의 프로젝트 경험을 바탕으로 작성했기 때문에 나중에는 상황이 바뀌게 될 수도 있다.</p>
-<p>그저 부캠 AI Tech 5기 때의 기업 연계 프로젝트 경험은 이랬구나 하고 넘어가면 좋겠다.</p>
-</blockquote>
-<h3 id="1-자유로운-듯-자유롭지-않은-프로젝트-방향성">
-  1. <strong>자유로운 듯 자유롭지 않은 프로젝트 방향성</strong>
-  <a class="anchor" href="#1-%ec%9e%90%ec%9c%a0%eb%a1%9c%ec%9a%b4-%eb%93%af-%ec%9e%90%ec%9c%a0%eb%a1%ad%ec%a7%80-%ec%95%8a%ec%9d%80-%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8-%eb%b0%a9%ed%96%a5%ec%84%b1">#</a>
-</h3>
-<p>기업 연계 프로젝트라고 하여 수행해야 하는 업무가 명확할 것으로 기대하고 있었으나 그렇지 않았다. 기업에서는 원하는 아이디어가 있었으나 세부적인 방향에 대해서는 이야기를 들을 수 없었다.</p>
-<p>따라서 우리가 기업 연계를 준비하며 챙겨 간 구체적인 아이디어는 사용할 수 없었고, 기업에서 제안한 아이디어를 어떤 방향으로 구체화할 것인지 다시 논의해야만 했다.</p>
-<p>게다가 우리 팀의 경우 운이 나쁘게도 일정이 맞지 않아 상견례 때와 멘토링 때 참가하신 기업 멘토님이 달랐는데, 두 분의 의견이 서로 꽤 달라서 프로젝트 마감 직전에 아쉬움이 컸다.</p>
-<h3 id="2-지연되는-일정">
-  2. <strong>지연되는 일정</strong>
-  <a class="anchor" href="#2-%ec%a7%80%ec%97%b0%eb%90%98%eb%8a%94-%ec%9d%bc%ec%a0%95">#</a>
-</h3>
-<p>최종 프로젝트는 4주간 진행된다. 배운 내용을 실현하기에 이미 빠듯한 시간이라 생각되지만, 기업 연계 프로젝트에 참가하게 되면 이 일정은 추가로 조금씩 밀린다.</p>
-<p>프로젝트의 방향성을 논의하기 위해 상견례 자리가 필요하다고 생각했었으나, 상견례 일정을 기다리느라 프로젝트 구현에 주어진 시간이 3주밖에 남지 않게 되었었다.</p>
-<p>이 문제점은 1,3번 상황과 결합되어 상견례 직후 팀원 모두가 많이 걱정했다.</p>
-<h3 id="3-제공되는-데이터-없음">
-  3. <strong>제공되는 데이터 없음</strong>
-  <a class="anchor" href="#3-%ec%a0%9c%ea%b3%b5%eb%90%98%eb%8a%94-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ec%97%86%ec%9d%8c">#</a>
-</h3>
-<p>프로젝트의 주제가 데이터에 대한 모니터링 툴 개발이 목적이었기 때문에 당연히 분석 목적이 되는 데이터를 제공해줄 것이라 생각했다.</p>
-<p>하지만 제공된 데이터 없이 모니터링 툴 개발을 요청 받았기 때문에, 대시보드를 범용적으로 사용 가능하도록 구성해야 하는지 특정 데이터를 기준으로 만들어야 할 지 확정 짓기가 어려웠다.</p>
-<p>데이터 프라이버시 측면에서 어려움이 있었겠지만, 보안 유지 서약서에 동의를 하고 데이터를 제공 받지 못한 것이 좀 아쉬웠다. (받은 데이터가 없어 유지할 보안이 없었다.)</p>
-<h2 id="프로젝트-진행">
-  <strong>프로젝트 진행</strong>
-  <a class="anchor" href="#%ed%94%84%eb%a1%9c%ec%a0%9d%ed%8a%b8-%ec%a7%84%ed%96%89">#</a>
-</h2>
-<p>이번 프로젝트에서 나는 웹으로 대시보드를 구현하는 업무를 담당했다.</p>
-<p>처음 프로토타입을 만들 땐 Looker Studio를 활용했으나, 우리 팀에서 활용했던 대화형 데이터는 반정형 데이터이기 때문에 자유도가 더 높은 시각화 툴이 필요했다.</p>
-<p>알아보니 Python 문법을 지원하는 <strong>Dash</strong>라는 라이브러리가 있어 이를 활용하기로 했다. Dash는 Plotly와 Flask를 포함하기 때문에 Plotly로 그린 Figure을 Dash에서 바로 활용할 수 있었다.</p>
-<p>나는 PM 역할도 함께 수행했다. 프로젝트의 방향은 기업에서 원하는 대로 진행했기 때문에 나는 깃허브를 관리하고, 문제 상황을 정리하고 의견을 모으는 것에 힘썼다.</p>
-<p>브랜치는 Github flow 방식으로 관리했다. 팀원들이 아직 깃허브에 적응하는 단계였기 때문에 그나마 더 쉬운 방법을 적용하기도 했고, 로컬 중심인 git flow 방식으로 코드를 관리하게 되면 원격 레포지토리에 push하는 간격이 너무 길어질 것 같았기 때문이다.</p>
-<p>기간이 너무 짧았기 때문에 일정을 관리하기는 쉬웠다. 내가 PM 역할을 맡은 시점에 남은 기간이 2주였기 때문에, 한 주 만에 논의된 기능에 대한 구현을 끝내고 남은 한 주 동안 부가 기능을 추가했다.</p>
-<h3 id="개요">
-  <strong>개요</strong>
-  <a class="anchor" href="#%ea%b0%9c%ec%9a%94">#</a>
-</h3>
-<p>절대적인 시간이 너무나 부족했기 때문에 기능 단위로 논의를 하고, 논의가 끝나면 나는 바로 구현에 들어갔다. 따라서 기능을 추가해가면서 페이지의 컨셉을 계속 변경시켰다.</p>
-<ol>
-<li>
-<p><strong>플롯 구상</strong></p>
-<p>대시보드에 어떤 플롯을 추가할 것인가에 대한 논의는 프로젝트가 진행되는 3주 내내 있었다.</p>
-<p>기업 멘토님과 부스트캠프 멘토님께 각각 조언을 구하기도 하고, 논문도 찾아보며 추가할 기능을 선택했다.</p>
-</li>
-<li>
-<p><strong>구상한 플롯을 Plotly로 그리기</strong></p>
-<p>plotly 자체적으로 지원하는 callback이 아주 많았기 때문에 대시보드가 풍부해보였다.</p>
-<p>기본적으로 줌 인/아웃, 선택한 영역만 분포 확인하기 등의 기능을 지원한다.</p>
-</li>
-<li>
-<p><strong>서버에 함수 형태로 추가하여 Dash에서 fig 객체 그리기</strong></p>
-<p>Plotly로 fig 그리기를 완료했으면 서버에서 callback 함수를 통해 호출이 가능하도록 함수 형태로 변경해줬다.</p>
-</li>
-<li>
-<p><strong>컨트롤 패널 추가하고 fig 객체와 연결하기</strong></p>
-<p>플롯의 값을 변경할 수 있는 컨트롤 패널(e.g. 라디오 버튼, 슬라이더)을 추가한 후, callback 함수의 Input으로 넘겨줬다.</p>
-</li>
-<li>
-<p><strong>디자인과 사용성을 고려하여 플롯 배치하기</strong></p>
-<p>기능이 완성된 플롯의 크기를 조절하고 주제가 일치하도록 배치했다.</p>
-</li>
-</ol>
-<h3 id="대화형-추천-데이터">
-  <strong>대화형 추천 데이터</strong>
-  <a class="anchor" href="#%eb%8c%80%ed%99%94%ed%98%95-%ec%b6%94%ec%b2%9c-%eb%8d%b0%ec%9d%b4%ed%84%b0">#</a>
-</h3>
-<p>이번 프로젝트에서 가장 중요한 것은 <em><strong>대화형 추천 데이터로부터 어떤 정보를 뽑아내어 보여줄 수 있는가</strong></em>에 대한 고민이었다. 대화형 추천 데이터라는 포맷 자체가 익숙하지 않았기 때문에, 프로젝트를 진행하기 위해선 우선 대화형 추천 데이터에 대해서 잘 알아야 했다. 이를 위해 팀원 중 한 명이 
-  <a href="https://arxiv.org/pdf/1806.03277.pdf">관련 논문</a>을 리뷰했으며, 
-  <a href="https://velog.io/@tobigs-recsys/Survey-Conversational-Recommender-System">블로그 리뷰</a>도 참고했다.</p>
-<p>결론적으로 말하자면, 대시보드 사용자에게 도움이 되는 플롯을 구성하기 위해 대화형 데이터라는 점과 추천 데이터라는 점을 구분했다.</p>
-<p>대화의 품질을 알려주기 위해 어휘의 다양성(Distinct n-gram), 모델이 헷갈리는 정도(perplexity) 등의 평가 기준을 적용했으며, 추천의 효과 및 효율은 Precision과 함께 감정 분석을 통해 성공적인 추천인지 판별하여 통계치를 제공했다.</p>
-<p>또한, 대화 상황을 그래프로 표현하여 발화 간 거리와, 대화의 흐름을 직관적으로 확인할 수 있도록 구성했다.</p>
-<h3 id="dash">
-  <strong>Dash</strong>
-  <a class="anchor" href="#dash">#</a>
-</h3>
-<p>Dash를 처음 사용해본 것이기 때문에 필요한 기능이 있을 때마다 
-  <a href="https://dash.plotly.com/tutorial">공식 문서</a>를 참고했다.</p>
-<p>Dash에서 지원하는 Callback 함수를 통해 element의 값이 변동될 때 특정 함수를 호출하여 동적으로 웹페이지를 구성할 수 있다.</p>
-<p>또한, dcc(dash core component)에서 지원하는 store 객체를 활용하여 여러 페이지에서 값을 공유할 수 있다.</p>
-<p>Callback 함수의 사용이 처음에 살짝 헷갈릴 수 있는데 간략하게 정리하자면 기본적인 형태는 아래와 같다. Dash에서 지원하는 Output, Input, State 객체가 존재하고, 해당 객체를 활용하여 코드를 간결하게 구성할 수 있다.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@callback</span>(
-</span></span><span style="display:flex;"><span>    Output(<span style="color:#e6db74">&#34;element1&#34;</span>, <span style="color:#e6db74">&#34;className&#34;</span>),
-</span></span><span style="display:flex;"><span>    Output(<span style="color:#e6db74">&#34;element2&#34;</span>, <span style="color:#e6db74">&#34;value&#34;</span>),
-</span></span><span style="display:flex;"><span>    Input(<span style="color:#e6db74">&#34;element3&#34;</span>, <span style="color:#e6db74">&#34;className&#34;</span>),
-</span></span><span style="display:flex;"><span>    State(<span style="color:#e6db74">&#34;element4&#34;</span>, <span style="color:#e6db74">&#34;value&#34;</span>),
-</span></span><span style="display:flex;"><span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">function</span>(input1, input2):
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">...</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> output1, output2
-</span></span></code></pre></div><ul>
-<li>Output — 함수의 return값을 입력할 element id와 파라미터 선언</li>
-<li>Input, State — 함수의 파라미터로 넘길 element id와 파라미터 선언</li>
-</ul>
-<p>Input은 Trigger 역할을 수행하기 때문에, element의 값이 바뀌면 callback 함수가 호출된다.</p>
-<h3 id="tailwind-grid">
-  <strong>Tailwind, Grid</strong>
-  <a class="anchor" href="#tailwind-grid">#</a>
-</h3>
-<p>이번에 대시보드를 구현하기 위해 어쩔 수 없이 UI에 대한 고민도 많이 했다.</p>
-<p>UI를 고민하는 과정에서 얼렁뚱땅 Tailwind도 배우고 Display 방식으로 Grid도 많이 활용했다.</p>
-<p>이 두 가지는 각각 작업이 끝난 후에 알게 되어 새로 코드를 수정하는 과정을 겪었는데, 미리 알고 시작했더라면 시간을 많이 단축할 수 있었을 것 같아 아쉬움이 남는다.</p>
-<h3 id="cheat-sheet">
-  <strong>Cheat Sheet</strong>
-  <a class="anchor" href="#cheat-sheet">#</a>
-</h3>
-<p>Cheat Sheet에는 자주 활용되는 기능이 빼곡하게 나열되어 있어 아직 라이브러리가 익숙하지 않은 상황에서 구글링 시간이 많이 줄어든다.</p>
-<p>나는 Tailwind와 Dash(Plotly)의 Cheat Sheet를 이번에 발견하고 활용하여 작업 능률을 올릴 수 있었다. 유명한 라이브러리마다 Cheat Sheet가 존재하는 것 같으니 익숙지 않은 라이브러리를 많이 사용해야 하는 일이 생기면 Cheat Sheet를 검색해보자.</p>
-<p>
-  <a href="https://dashcheatsheet.pythonanywhere.com/">Cheatsheet</a></p>
-<h2 id="좋았던-점들">
-  <strong>좋았던 점들</strong>
-  <a class="anchor" href="#%ec%a2%8b%ec%95%98%eb%8d%98-%ec%a0%90%eb%93%a4">#</a>
-</h2>
-<ul>
-<li>이번 프로젝트를 통해 비로소 나는 깃허브를 제대로 활용하게 되었다고 생각한다.</li>
-<li>대화형 추천 데이터셋에 대해 보다 잘 이해하게 되었다.</li>
-<li>피드백을 통해 사용자를 좀 더 고려하는 대시보드를 만들 수 있게 되었다.</li>
-<li>Dash와 Plotly를 익힌 덕분에, Streamlit, Tableau, Looker Studio등보다 자유도가 높은 대시보드를 만들 수 있게 되었다.</li>
-<li>또한, 내가 모델을 구축하거나 예측 결과를 생성해냈을 때 이를 잘 표현해주고 사용하기 좋게 만들어주는 방법을 익힐 수 있었다.</li>
-</ul>
-<h2 id="아쉬웠던-점들">
-  <strong>아쉬웠던 점들</strong>
-  <a class="anchor" href="#%ec%95%84%ec%89%ac%ec%9b%a0%eb%8d%98-%ec%a0%90%eb%93%a4">#</a>
-</h2>
-<p>하고 싶은 일은 많았으나, 시간이 짧아 아쉬움이 큰 프로젝트였다.
-게다가 아쉬운 마음 때문에 마지막으로 갈수록 온 힘을 다하지 못했다.
-UI의 구성에 시간을 덜 쏟고, 다른 부분에 시간을 할애했다면 더 많은 것을 배울 수 있었을 것이라고 생각한다. 마음은 아프지만 다음 프로젝트의 발전을 위해 기록해둔다.</p>
-<ol>
-<li><strong>Dash의 활용</strong>
-<ul>
-<li>시간이 부족하여 대시보드에 비동기 처리를 도입하지 못한 것이 아쉬웠다.</li>
-</ul>
-</li>
-<li><strong>Backend &amp; Ops</strong>
-<ol>
-<li>Dash에서 자체적으로 Flask를 지원하기 때문에, API 서버를 따로 구성하지 않고 서비스를 완성할 수 있었다. 이를 위해 반정형 데이터인 대화형 추천 데이터셋을 정형 데이터로 변환하는 작업을 수행했다. 하지만 데이터 처리 속도 측면에서 이슈가 꽤 있었기에 Elastic Search로 데이터를 관리했더라면 더 나았을 것이라는 생각이 든다.</li>
-<li>프로젝트를 관리하며 Github Action이나 테스팅도 추가해보고 싶었으나 그러지 못했다.</li>
-<li>깃허브에 PR, Issue Template을 추가하고 Pre-commit을 도입해보았으나, 익숙하지 않은 팀원들이 제대로 활용하도록 이끌어주진 못했던 것 같다.</li>
-</ol>
-</li>
-</ol>
-<p>Log 관리, A/B Test, ETL, 세션 관리 등 다음 프로젝트에서 해보고 싶은 것들이 더 많아졌다.</p>
-<h2 id="글을-마무리하며">
-  글을 마무리하며
-  <a class="anchor" href="#%ea%b8%80%ec%9d%84-%eb%a7%88%eb%ac%b4%eb%a6%ac%ed%95%98%eb%a9%b0">#</a>
-</h2>
-<p>비록 프로젝트 결과물은 아쉬웠으나 훌륭한 사람들과의 협업으로 결과를 내고, 또 다른 팀들과 결과물을 공유하며 피드백을 받을 수 있어 좋았다.</p>
-<p>프로젝트를 하면서도 많이 배웠지만, 다른 팀들의 프로젝트를 보면서 또 많이 배울 수 있었다.</p>
-<p>다음 번에 수행할 프로젝트는 더 나아질 것이라 생각한다.</p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#업스테이지-기업연계-프로젝트"><strong>업스테이지 기업연계 프로젝트</strong></a>
-          <ul>
-            <li><a href="#지원-배경"><strong>지원 배경</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#기업-연계-프로젝트의-장점"><strong>기업 연계 프로젝트의 장점</strong></a>
-          <ul>
-            <li><a href="#1-시니어-개발자에게-무한대의-질문-권한이-주어진다">1. <strong>시니어 개발자에게 무한대의 질문 권한이 주어진다.</strong></a></li>
-            <li><a href="#2-두-번의-미팅-기회가-제공된다">2. <strong>두 번의 미팅 기회가 제공된다.</strong></a></li>
-            <li><a href="#3-연계-기업에-얼굴-도장을-찍을-수-있다">3. <strong>연계 기업에 얼굴 도장을 찍을 수 있다.</strong></a></li>
-            <li><a href="#4-기업에서-필요한-프로젝트에-대한-경험">4. <strong>기업에서 필요한 프로젝트에 대한 경험</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#기업-연계-프로젝트의-단점"><strong>기업 연계 프로젝트의 단점</strong></a>
-          <ul>
-            <li><a href="#1-자유로운-듯-자유롭지-않은-프로젝트-방향성">1. <strong>자유로운 듯 자유롭지 않은 프로젝트 방향성</strong></a></li>
-            <li><a href="#2-지연되는-일정">2. <strong>지연되는 일정</strong></a></li>
-            <li><a href="#3-제공되는-데이터-없음">3. <strong>제공되는 데이터 없음</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#프로젝트-진행"><strong>프로젝트 진행</strong></a>
-          <ul>
-            <li><a href="#개요"><strong>개요</strong></a></li>
-            <li><a href="#대화형-추천-데이터"><strong>대화형 추천 데이터</strong></a></li>
-            <li><a href="#dash"><strong>Dash</strong></a></li>
-            <li><a href="#tailwind-grid"><strong>Tailwind, Grid</strong></a></li>
-            <li><a href="#cheat-sheet"><strong>Cheat Sheet</strong></a></li>
-          </ul>
-        </li>
-        <li><a href="#좋았던-점들"><strong>좋았던 점들</strong></a></li>
-        <li><a href="#아쉬웠던-점들"><strong>아쉬웠던 점들</strong></a></li>
-        <li><a href="#글을-마무리하며">글을 마무리하며</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

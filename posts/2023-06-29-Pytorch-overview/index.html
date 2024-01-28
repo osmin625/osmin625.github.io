@@ -1,348 +1,112 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.
-해당 게시글은 지속적으로 업데이트할 예정입니다.
-{: .prompt-info }
-구현 개요(PyTorch)#1. 데이터 준비#Tensor PyTorch Datasets &amp; DataLoaders 2. 모델 정의 (torch.nn.Module)#PyTorch 모델 불러오기
-Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning#4. 모델 평가 기준 및 Optimizer 설정#모델 평가 기준 : loss를 어떻게 계산할 것인가?">
-<meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
-<meta name="theme-color" media="(prefers-color-scheme: dark)" content="#343a40">
-<meta name="color-scheme" content="light dark"><meta property="og:title" content="PyTorch 개요" />
-<meta property="og:description" content="Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.
-해당 게시글은 지속적으로 업데이트할 예정입니다.
-{: .prompt-info }
-구현 개요(PyTorch)#1. 데이터 준비#Tensor PyTorch Datasets &amp; DataLoaders 2. 모델 정의 (torch.nn.Module)#PyTorch 모델 불러오기
-Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning#4. 모델 평가 기준 및 Optimizer 설정#모델 평가 기준 : loss를 어떻게 계산할 것인가?" />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/" /><meta property="article:section" content="posts" />
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta property="article:modified_time" content="2024-01-07T19:54:10+09:00" />
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
 
-<title>PyTorch 개요 | OMIN</title>
-<link rel="manifest" href="/manifest.json">
-<link rel="icon" href="/favicon.png" >
-<link rel="stylesheet" href="/book.min.33a48f5432973b8ff9a82679d9e45d67f2c15d4399bd2829269455cfe390b5e8.css" integrity="sha256-M6SPVDKXO4/5qCZ52eRdZ/LBXUOZvSgpJpRVz&#43;OQteg=" crossorigin="anonymous"><!--
-Made with Book Theme
-https://github.com/alex-shpak/hugo-book
--->
-  
+    
+    
+    
+    
+    
+    
+
+    
+    <title>PyTorch 개요</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='PyTorch, Overview'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PyTorch 개요">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://osmin625.github.io/">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PyTorch 개요">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/">
+    <meta name="twitter:image" content="https://osmin625.github.io/">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/2023-06-29-Pytorch-overview/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.d751e63c00e1161a75e60eaf823256097427a013523377fb636f7605271f62a5.js" integrity="sha256-11HmPADhFhp15g6vgjJWCXQnoBNSM3f7Y292BScfYqU="></script>
+
+    
+    
 </head>
-<body dir="ltr">
-  <input type="checkbox" class="hidden toggle" id="menu-control" />
-  <input type="checkbox" class="hidden toggle" id="toc-control" />
-  <main class="container flex">
-    <aside class="book-menu">
-      <div class="book-menu-content">
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
         
-  <nav>
-<h2 class="book-brand">
-  <a class="flex align-center" href="/"><span>OMIN</span>
-  </a>
-</h2>
 
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io/">OMIN</a>
+        </div>
 
+        <div class="nav-links">
+            
 
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
 
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
 
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
 
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-<ul>
-  
-  <li>
-    <a href="/posts/"  >
-        Blog
-      </a>
-  </li>
-  
-  <li>
-    <a href="https://github.com/osmin625/"  target="_blank" rel="noopener">
-        Github
-      </a>
-  </li>
-  
-</ul>
-
-
-
-
-
-
-</nav>
-
-
-
-
-  <script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
-
-
- 
-      </div>
-    </aside>
-
-    <div class="book-page">
-      <header class="book-header">
-        
-  <div class="flex align-center justify-between">
-    <label for="menu-control">
-      
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    </label>
-  
-    <strong>PyTorch 개요</strong>
-  
-    <label for="toc-control">
-      
-      <img src="/svg/toc.svg" class="book-icon" alt="Table of Contents" />
-      
-    </label>
-  </div>
-  
-
-  
-  <aside class="hidden clearfix">
+        </div>
+    </nav>
+</header>
+<main id="content">
+        </main><footer class="footer">
     
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#구현-개요pytorch">구현 개요(PyTorch)</a>
-          <ul>
-            <li><a href="#1-데이터-준비">1. 데이터 준비</a></li>
-            <li><a href="#2-모델-정의-torchnnmodulehttpsosmin625githubiopostspytorch-ebaaa8eb8db8-eca095ec9d98ed9598eab8b0">2. 모델 정의 (<a href="https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/">torch.nn.Module</a>)</a></li>
-            <li><a href="#3-하이퍼-파라미터-지정-hyperparameter-tuninghttpsosmin625githubiopostshyperparameter_tuning">3. 하이퍼 파라미터 지정 <a href="https://osmin625.github.io/posts/Hyperparameter_tuning/"><strong>Hyperparameter Tuning</strong></a></a></li>
-            <li><a href="#4-모델-평가-기준-및-optimizer-설정">4. 모델 평가 기준 및 Optimizer 설정</a></li>
-            <li><a href="#5-모델-학습">5. 모델 학습</a></li>
-            <li><a href="#6-모델-성능-평가">6. 모델 성능 평가</a></li>
-            <li><a href="#7-추론">7. 추론</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
-
-  </aside>
-  
- 
-      </header>
-
-      
-      
-<article class="markdown book-post">
-  <h1>
-    <a href="/posts/2023-06-29-Pytorch-overview/">PyTorch 개요</a>
-  </h1>
-  
-
-
-  
-  <div>
     
-      <a href="/categories/DL-Framework/">DL Framework</a>, 
-      <a href="/categories/PyTorch/">PyTorch</a>
-  </div>
-  
-
-  
-  <div>
-    
-      <a href="/tags/PyTorch/">PyTorch</a>, 
-      <a href="/tags/Overview/">Overview</a>
-  </div>
-  
-
-
-
-<blockquote>
-<p>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.<br>
-해당 게시글은 지속적으로 업데이트할 예정입니다.<br>
-{: .prompt-info }</p>
-</blockquote>
-<h2 id="구현-개요pytorch">
-  구현 개요(PyTorch)
-  <a class="anchor" href="#%ea%b5%ac%ed%98%84-%ea%b0%9c%ec%9a%94pytorch">#</a>
-</h2>
-<h3 id="1-데이터-준비">
-  1. 데이터 준비
-  <a class="anchor" href="#1-%eb%8d%b0%ec%9d%b4%ed%84%b0-%ec%a4%80%eb%b9%84">#</a>
-</h3>
-<ul>
-<li>
-  <a href="https://osmin625.github.io/posts/Tensor/">Tensor</a></li>
-<li>
-  <a href="https://osmin625.github.io/posts/PyTorch-Datasets-&amp;-DataLoaders/">PyTorch Datasets &amp; DataLoaders</a></li>
-</ul>
-<h3 id="2-모델-정의-torchnnmodulehttpsosmin625githubiopostspytorch-ebaaa8eb8db8-eca095ec9d98ed9598eab8b0">
-  2. 모델 정의 (
-  <a href="https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/">torch.nn.Module</a>)
-  <a class="anchor" href="#2-%eb%aa%a8%eb%8d%b8-%ec%a0%95%ec%9d%98-torchnnmodulehttpsosmin625githubiopostspytorch-ebaaa8eb8db8-eca095ec9d98ed9598eab8b0">#</a>
-</h3>
-<p>
-  <a href="https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/">PyTorch <strong>모델 불러오기</strong></a></p>
-<ul>
-<li>Input size, Output size 정의 
-  <a href="https://osmin625.github.io/posts/PyTorch-nn-Parameter/">nn.Parameter</a></li>
-<li>Forward 연산 정의</li>
-<li>
-  <a href="https://osmin625.github.io/posts/Backward/">Backward</a> 연산 정의</li>
-</ul>
-<h3 id="3-하이퍼-파라미터-지정-hyperparameter-tuninghttpsosmin625githubiopostshyperparameter_tuning">
-  3. 하이퍼 파라미터 지정 
-  <a href="https://osmin625.github.io/posts/Hyperparameter_tuning/"><strong>Hyperparameter Tuning</strong></a>
-  <a class="anchor" href="#3-%ed%95%98%ec%9d%b4%ed%8d%bc-%ed%8c%8c%eb%9d%bc%eb%af%b8%ed%84%b0-%ec%a7%80%ec%a0%95-hyperparameter-tuninghttpsosmin625githubiopostshyperparameter_tuning">#</a>
-</h3>
-<h3 id="4-모델-평가-기준-및-optimizer-설정">
-  4. 모델 평가 기준 및 Optimizer 설정
-  <a class="anchor" href="#4-%eb%aa%a8%eb%8d%b8-%ed%8f%89%ea%b0%80-%ea%b8%b0%ec%a4%80-%eb%b0%8f-optimizer-%ec%84%a4%ec%a0%95">#</a>
-</h3>
-<ol>
-<li>모델 평가 기준 : loss를 어떻게 계산할 것인가? 
-  <a href="https://osmin625.github.io/posts/Loss-function/">손실 함수(Loss Function)</a></li>
-<li>
-  <a href="https://osmin625.github.io/posts/Optimizer/">Optimizer</a> 설정</li>
-</ol>
-<h3 id="5-모델-학습">
-  5. 모델 학습
-  <a class="anchor" href="#5-%eb%aa%a8%eb%8d%b8-%ed%95%99%ec%8a%b5">#</a>
-</h3>
-<ul>
-<li>
-  <a href="https://osmin625.github.io/posts/1-epoch/">1 epoch에 일어나는 일</a></li>
-<li>
-  <a href="https://www.notion.so/PyTorch-Multi-GPU-cddece8aedc84060ab5baceb59821da0?pvs=21">PyTorch <strong>Multi-GPU 학습</strong></a></li>
-</ul>
-<h3 id="6-모델-성능-평가">
-  6. 모델 성능 평가
-  <a class="anchor" href="#6-%eb%aa%a8%eb%8d%b8-%ec%84%b1%eb%8a%a5-%ed%8f%89%ea%b0%80">#</a>
-</h3>
-<p>
-  <a href="https://www.notion.so/Monitoring-tools-for-PyTorch-f9c8625b26ab4dd0aa4d122d4deaac44?pvs=21"><strong>Monitoring tools for PyTorch</strong></a></p>
-<h3 id="7-추론">
-  7. 추론
-  <a class="anchor" href="#7-%ec%b6%94%eb%a1%a0">#</a>
-</h3>
-<ul>
-<li>
-  <a href="https://pytorch.org/tutorials/beginner/blitz/autograd_tutorial.html">AutoGrad 튜토리얼</a></li>
-<li>
-  <a href="https://pytorch.org/tutorials/beginner/examples_autograd/two_layer_net_autograd.html">Tensor와 AutoGrad 튜토리얼</a></li>
-<li>
-  <a href="https://towardsdatascience.com/linear-regression-with-pytorch-eb6dedead817">Pytorch로 Linear Regression하기</a></li>
-<li>
-  <a href="https://medium.com/dair-ai/implementing-a-logistic-regression-model-from-scratch-with-pytorch-24ea062cd856">Pytorch로 Logistic Regression하기</a></li>
-<li>한 epoch에서 이뤄지는 모델 학습 과정을 정리해보고 성능을 올리기 위해서 어떤 부분을 먼저 고려하면 좋을지 논의해보기
-<ol>
-<li>데이터 개선</li>
-<li>모델 개선</li>
-<li>loss 개선</li>
-<li>optimizer 개선</li>
-</ol>
-</li>
-</ul>
-<p>
-  <a href="https://www.notion.so/DL-9c7cebfa869b40e0a88d48c071604065?pvs=21">DL 모델 구현 예제</a></p>
-<p>
-  <a href="https://www.notion.so/PyTorch-Troubleshooting-c45a703ff84e453b87c31bba2311a578?pvs=21"><strong>PyTorch Troubleshooting</strong></a></p>
-</article>
- 
-      
-
-      <footer class="book-footer">
-        
-  <div class="flex flex-wrap justify-between">
-
-
-
-
-
-</div>
-
-
-
-  <script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script>
-
-
- 
-        
-      </footer>
-
-      
-  
- 
-
-      <label for="menu-control" class="hidden book-menu-overlay"></label>
-    </div>
 
     
-    <aside class="book-toc">
-      <div class="book-toc-content">
-        
-  
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#구현-개요pytorch">구현 개요(PyTorch)</a>
-          <ul>
-            <li><a href="#1-데이터-준비">1. 데이터 준비</a></li>
-            <li><a href="#2-모델-정의-torchnnmodulehttpsosmin625githubiopostspytorch-ebaaa8eb8db8-eca095ec9d98ed9598eab8b0">2. 모델 정의 (<a href="https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/">torch.nn.Module</a>)</a></li>
-            <li><a href="#3-하이퍼-파라미터-지정-hyperparameter-tuninghttpsosmin625githubiopostshyperparameter_tuning">3. 하이퍼 파라미터 지정 <a href="https://osmin625.github.io/posts/Hyperparameter_tuning/"><strong>Hyperparameter Tuning</strong></a></a></li>
-            <li><a href="#4-모델-평가-기준-및-optimizer-설정">4. 모델 평가 기준 및 Optimizer 설정</a></li>
-            <li><a href="#5-모델-학습">5. 모델 학습</a></li>
-            <li><a href="#6-모델-성능-평가">6. 모델 성능 평가</a></li>
-            <li><a href="#7-추론">7. 추론</a></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-
-
- 
-      </div>
-    </aside>
-    
-  </main>
-
-  
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

@@ -52,26 +52,6 @@
 
     
     
-        <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
-        });
-      });
-    </script>
-  
-    
 </head>
 <body>
         <script type="text/javascript">
@@ -863,8 +843,66 @@ $$</p>
         }
     </script>
     
+    
 </div>
 
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#배경">배경</a>
+          <ul>
+            <li><a href="#1-rnn--문장-생성을-위한-가장-기본적인-방법">1. <strong>RNN – 문장 생성을 위한 가장 기본적인 방법</strong></a></li>
+            <li><a href="#2-gan--목적은-생성망-g의-성능을-개선하는-것">2. <strong>GAN – 목적은 생성망 G의 성능을 개선하는 것</strong></a></li>
+            <li><a href="#3-gan의-한계-및-해결책"><strong>3. GAN의 한계 및 해결책</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#아이디어">아이디어</a>
+          <ul>
+            <li><a href="#manager-lstm"><strong>MANAGER (LSTM)</strong></a></li>
+            <li><a href="#worker-lstm"><strong>WORKER (LSTM)</strong></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#구체적-방법론">구체적 방법론</a>
+      <ul>
+        <li><a href="#생성망-g_theta">생성망 $G_\theta$</a>
+          <ul>
+            <li><a href="#생성망의-계층-구조">생성망의 계층 구조</a></li>
+            <li><a href="#생성망-g-학습">생성망 G 학습</a></li>
+          </ul>
+        </li>
+        <li><a href="#분별망-d_phi">분별망 $D_\phi$</a>
+          <ul>
+            <li><a href="#1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong></a></li>
+            <li><a href="#guiding-signalleaked-features">Guiding Signal(Leaked Features)</a></li>
+            <li><a href="#2-f_t--s_t에서의-features">2. <strong>$f_t = s_t$에서의 features</strong></a></li>
+            <li><a href="#3-learned-reward-function을-설정한다">3. <strong>Learned Reward Function을 설정한다.</strong></a></li>
+          </ul>
+        </li>
+        <li><a href="#학습-기술">학습 기술</a>
+          <ul>
+            <li><a href="#bootstrapped-rescaled-activation"><strong>Bootstrapped Rescaled Activation</strong></a></li>
+            <li><a href="#interleaved-training">Interleaved Training</a></li>
+            <li><a href="#temperature-control">Temperature Control</a></li>
+          </ul>
+        </li>
+        <li><a href="#pseudo-code">Pseudo Code</a>
+          <ul>
+            <li><a href="#필요한-요소"><strong>필요한 요소</strong></a></li>
+            <li><a href="#알고리즘-단계"><strong>알고리즘 단계</strong></a></li>
+            <li><a href="#참고">참고</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

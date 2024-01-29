@@ -52,26 +52,6 @@
 
     
     
-        <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
-        });
-      });
-    </script>
-  
-    
 </head>
 <body>
         <script type="text/javascript">
@@ -486,8 +466,59 @@
         }
     </script>
     
+    
 </div>
 
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#추천-시스템httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C/">추천 시스템</a></a></li>
+            <li><a href="#추천-시스템-평가-패러다임httpsosmin625githubiopostsecb694ecb29c-ec8b9cec8aa4ed859c-ed8f89eab080-eca780ed919c"><a href="https://osmin625.github.io/posts/%EC%B6%94%EC%B2%9C-%EC%8B%9C%EC%8A%A4%ED%85%9C-%ED%8F%89%EA%B0%80-%EC%A7%80%ED%91%9C/">추천 시스템 평가 패러다임</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#rule-base">Rule Base</a></li>
+    <li><a href="#cbf-content-based-filteringhttpswwwnotionsocbf-content-based-filtering-ee188eb44e6a4fd38992c8182405128cpvs21"><a href="https://www.notion.so/CBF-Content-Based-Filtering-ee188eb44e6a4fd38992c8182405128c?pvs=21">CBF: Content Based Filtering</a></a>
+      <ul>
+        <li>
+          <ul>
+            <li>
+              <ul>
+                <li><a href="#1-vectorizer--아이템-특성을-벡터-형태로-어떻게-표현하는가">1. Vectorizer — <strong>아이템 특성을 벡터 형태로 어떻게 표현하는가</strong></a></li>
+                <li><a href="#2-similarity--특성화된-아이템이-서로-얼마나-비슷한가">2. Similarity — <strong>특성화된 아이템이 서로 얼마나 비슷한가</strong></a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#cf-collaborative-filtering협업-필터링httpswwwnotionsocf-collaborative-filtering-fd1b3079e33d4bf28c3d6e11a833842epvs21"><a href="https://www.notion.so/CF-Collaborative-Filtering-fd1b3079e33d4bf28c3d6e11a833842e?pvs=21">CF: Collaborative Filtering(협업 필터링)</a></a>
+      <ul>
+        <li><a href="#nbcf-neighborhood-based-cf이웃-기반-협업-필터링httpswwwnotionsonbcf-neighborhood-based-cf-4d0471ef262d4a7da8175e095c9f72a2pvs21"><a href="https://www.notion.so/NBCF-Neighborhood-based-CF-4d0471ef262d4a7da8175e095c9f72a2?pvs=21">NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</a></a></li>
+        <li><a href="#mbcf-model-based-collaborative-filtering모델-기반-협업-필터링httpswwwnotionsombcf-model-based-collaborative-filtering-75c21283fe794ad48670abf344ae04b1pvs21"><a href="https://www.notion.so/MBCF-Model-based-Collaborative-Filtering-75c21283fe794ad48670abf344ae04b1?pvs=21">MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링)</a></a></li>
+        <li><a href="#rl강화-학습">RL(강화 학습)</a>
+          <ul>
+            <li><a href="#mab-multi-armed-bandithttpswwwnotionsomab-multi-armed-bandit-b00d09a3729c4f64a8c360f2c922f7a7pvs21"><a href="https://www.notion.so/MAB-Multi-Armed-Bandit-b00d09a3729c4f64a8c360f2c922f7a7?pvs=21">MAB: Multi-Armed Bandit</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#hybrid-cfhttpswwwnotionsohybrid-cf-103266a4a91643e58bf6f565b7b627capvs21"><a href="https://www.notion.so/Hybrid-CF-103266a4a91643e58bf6f565b7b627ca?pvs=21"><strong>Hybrid CF</strong></a></a>
+      <ul>
+        <li><a href="#cars-context-aware-recommender-system맥락-기반-추천-시스템httpswwwnotionsocars-context-aware-recommender-system-28277faab5fc4fbf843f2e5108981179pvs21"><a href="https://www.notion.so/CARS-Context-aware-Recommender-System-28277faab5fc4fbf843f2e5108981179?pvs=21"><strong>CARS: Context-aware Recommender System(맥락 기반 추천 시스템)</strong></a></a></li>
+      </ul>
+    </li>
+    <li><a href="#추천-라이브러리">추천 라이브러리</a></li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

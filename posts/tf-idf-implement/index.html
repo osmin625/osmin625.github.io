@@ -52,26 +52,6 @@
 
     
     
-        <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
-        });
-      });
-    </script>
-  
-    
 </head>
 <body>
         <script type="text/javascript">
@@ -450,8 +430,33 @@ $$</p>
         }
     </script>
     
+    
 </div>
 
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#1-corpus-파일-읽기-open함수-활용">1. corpus 파일 읽기: open()함수 활용</a></li>
+            <li><a href="#2-corpus를-dictionary에-key-제목-value-문서내용-으로-저장하기">2. corpus를 dictionary에 {key: 제목, value: 문서내용 }으로 저장하기.</a></li>
+            <li><a href="#3-문서별-term-frequency-구하기">3. 문서별 term frequency 구하기</a></li>
+            <li><a href="#4-단어의-idf-구하기">4. 단어의 idf 구하기</a></li>
+            <li><a href="#5-문서의-tf-idf-weight-계산하기">5. 문서의 tf-idf Weight 계산하기.</a></li>
+            <li><a href="#6-query-입력-창-구현하기">6. <strong>query 입력 창 구현하기</strong></a></li>
+            <li><a href="#7-score-계산하기">7. <strong>Score 계산하기</strong></a></li>
+            <li><a href="#8-문서의-score가-높은-순서대로-보여주기">8. 문서의 Score가 높은 순서대로 보여주기</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

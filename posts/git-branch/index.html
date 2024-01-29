@@ -52,26 +52,6 @@
 
     
     
-        <!-- KaTeX -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC" crossorigin="anonymous">
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.js" integrity="sha384-X/XCfMm41VSsqRNQgDerQczD69XqmjOOOwYQvr/uuC+j4OPoNhVgjdGFwhvN02Ja" crossorigin="anonymous"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"></script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-          // customised options
-          // • auto-render specific keys, e.g.:
-          delimiters: [
-            {left: '$$', right: '$$', display: true},
-            {left: '$', right: '$', display: false},
-          ],
-          // • rendering keys, e.g.:
-          throwOnError : false
-        });
-      });
-    </script>
-  
-    
 </head>
 <body>
         <script type="text/javascript">
@@ -349,8 +329,31 @@ Squash를 하게 되면 모든 커밋 이력이 하나의 커밋으로 합쳐지
         }
     </script>
     
+    
 </div>
 
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#merge">merge</a></li>
+        <li><a href="#squash-and-merge">squash and merge</a></li>
+        <li><a href="#rebase-and-merge">rebase and merge</a>
+          <ul>
+            <li><a href="#conflict가-발생한다면">Conflict가 발생한다면?</a></li>
+          </ul>
+        </li>
+        <li><a href="#원격-브랜치-가져오기">원격 브랜치 가져오기</a></li>
+        <li><a href="#branch-합치기-병합하기">branch 합치기, 병합하기</a></li>
+        <li><a href="#branch-전략--flows">Branch 전략 — Flows</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
 
 
     

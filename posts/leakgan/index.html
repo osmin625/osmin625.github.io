@@ -282,7 +282,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <ol>
 <li>
 <p><strong>$s_t$를 전체 어휘 분포와 매핑시킨다.</strong></p>
-<p>ex) $x_{t+1}$에서 &amp;G_\theta(\sdot | s_t)&amp; 학습</p>
+<p>ex) <code>$x_{t+1}$</code>에서 <code>$G_\theta( \cdot | s_t)$</code> 학습</p>
 </li>
 <li>
 <p><strong>분별망이 유출해준 정보를 계층 구조를 통해 효과적으로 포함하여 문장을 생성한다.</strong></p>
@@ -294,10 +294,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <li>
 <p><strong>MANAGER</strong>: $t$시점마다 추출된 $f_t$를 활용해 $g_t$ 생성</p>
 <p>$f_t$를 LSTM에 입력한 후 goal vector $g_t$를 생성한다.</p>
-<p>$$
-\begin{aligned}\hat{g}<em>t, h_t^M &amp; =\mathcal{M}\left(f_t, h</em>{t-1}^M ; \theta_m\right) \\
-g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right|\end{aligned}
-$$</p>
+<p><code>$$ \begin{aligned} \hat{g}_t, h_t^M &amp; = \mathcal{M}\left(f_t, h_{t-1}^M; \theta_m \right)\\ g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right| \end{aligned} $$</code></p>
 <ul>
 <li>
 <p>$M:$ LSTM 모델</p>
@@ -370,12 +367,7 @@ $$</p>
 <ul>
 <li>$\psi:$ 선형 변환(행렬 곱셈)</li>
 </ul>
-<p>$$
-\begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right)
-\\
-G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right)
-\end{aligned}
-$$</p>
+<p><code>$$ \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right) \\ G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right) \end{aligned} $$</code></p>
 <ul>
 <li>
 <p>$\mathcal W:$ WORKER 모듈</p>
@@ -847,30 +839,29 @@ $$</p>
     
     
     <div id="tex">
-        
-
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$']],
-      displayMath: [['$$','$$']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
     }
-  };
-
-  window.addEventListener('load', (event) => {
-      document.querySelectorAll("mjx-container").forEach(function(x){
-        x.parentElement.classList += 'has-jax'})
-    });
-
-</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  });
+</script> 
     </div>
     
 </div>

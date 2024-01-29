@@ -212,18 +212,18 @@ $$</p>
 <p><strong>주어진 $n+1$개의 점을 $p(x)$에 대입하여 연립 방정식을 생성한다.</strong></p>
 <p>모두 다 대입하면 아래와 같이 방데르몽드 행렬식 형태를 얻을 수 있다.</p>
 <p>$$
-\begin{array}{cc}p\left(x_0\right)=f\left(x_0\right) &amp; a_0+a_1 x_0+a_2 x_0^2+\cdots+a_n x_0^n=f\left(x_0\right)\
-p\left(x_1\right)=f\left(x_1\right) &amp; a_0+a_1 x_1+a_2 x_1^2+\cdots+a_n x_1^n=f\left(x_1\right)\
-\vdots &amp; \vdots \
+\begin{array}{cc}p\left(x_0\right)=f\left(x_0\right) &amp; a_0+a_1 x_0+a_2 x_0^2+\cdots+a_n x_0^n=f\left(x_0\right)\\\
+p\left(x_1\right)=f\left(x_1\right) &amp; a_0+a_1 x_1+a_2 x_1^2+\cdots+a_n x_1^n=f\left(x_1\right)\\\
+\vdots &amp; \vdots \\\
 p\left(x_n\right)=f\left(x_n\right) &amp; a_0+a_1 x_n+a_2 x_n^2+\cdots+a_n x_n^n+\left(x_n\right)\end{array}
 $$</p>
 <p>$$
-\left[\begin{array}{ccccc}1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^n \
-1 &amp; x 1 &amp; x_1^2 &amp; \cdots &amp; x_1^n \
-&amp; &amp; &amp; \cdots &amp; \
-1 &amp; x_n &amp; x_n^2 &amp; \cdots &amp; x_n^n\end{array}\right]\left[\begin{array}{l}a 0 \a 1 \
-\cdots \a n\end{array}\right]=\left[\begin{array}{c}f\left(x_0\right) \f\left(x_1\right) \
-\cdots \
+\left[\begin{array}{ccccc}1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^n \\\
+1 &amp; x 1 &amp; x_1^2 &amp; \cdots &amp; x_1^n \\\
+&amp; &amp; &amp; \cdots &amp; \\\
+1 &amp; x_n &amp; x_n^2 &amp; \cdots &amp; x_n^n\end{array}\right]\left[\begin{array}{l}a 0 \a 1 \\\
+\cdots \a n\end{array}\right]=\left[\begin{array}{c}f\left(x_0\right) \f\left(x_1\right) \\\
+\cdots \\\
 f\left(x_n\right)\end{array}\right]
 $$</p>
 </li>
@@ -254,7 +254,7 @@ $$</p>
 <p><strong>2차 함수</strong></p>
 <p>세 점$(x_0, y_0), (x_1, y_1), (x_2, y_2)$이 주어진 경우</p>
 <p>$$
-y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)}\right) y_0+\left(\frac{\left(x-x_2\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_0\right)}\right) y_1\
+y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)}\right) y_0+\left(\frac{\left(x-x_2\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_0\right)}\right) y_1\\\
 +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)}\right) y_2
 $$</p>
 <p><img src="polynomial_interpolation1.png" alt="Alt text"></p>
@@ -262,9 +262,9 @@ $$</p>
 <p><strong>3차 함수</strong></p>
 <p>네 점이 주어진 경우</p>
 <p>$$
-y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)\left(x-x_3\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)\left(x_0-x_3\right)}\right) y_0\
-+\left(\frac{\left(x-x_2\right)\left(x-x_3\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_3\right)\left(x_1-x_0\right)}\right) y_1\
-+\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_3\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)\left(x_2-x_3\right)}\right) y_2\
+y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)\left(x-x_3\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)\left(x_0-x_3\right)}\right) y_0\\\
++\left(\frac{\left(x-x_2\right)\left(x-x_3\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_3\right)\left(x_1-x_0\right)}\right) y_1\\\
++\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_3\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)\left(x_2-x_3\right)}\right) y_2\\\
 +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_2\right)}{\left(x_3-x_0\right)\left(x_3-x_1\right)\left(x_3-x_2\right)}\right) y_3
 $$</p>
 <p><strong>일반화</strong></p>
@@ -273,7 +273,7 @@ L_i(x)=\prod_{\substack{j=0 \ j \neq i}}^n \frac{x-x_j}{x_i-x_j}
 $$</p>
 <p>위의 식은 곧 $x_i$를 넣었을 때 $y_i$가 나온다는 것을 의미한다.</p>
 <p>$$
-\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\
+\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\
 &amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right)
 \end{matrix}
 $$</p>
@@ -314,14 +314,14 @@ $$</p>
 <p>서로 다른 점 $x_0, &hellip;, x_n$에 대해 x값에 따라 상수 항들을 순서대로 구할 수 있는 형태</p>
 <p>$$
 \begin{matrix}P_n(x)=a_0+a_1\left(x-x_0\right)
-+a_2\left(x-x_0\right)\left(x-x_1\right)+\
++a_2\left(x-x_0\right)\left(x-x_1\right)+\\\
 \ldots+a_n\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_{n-1}\right)\end{matrix}
 $$</p>
 <p>식이 복잡하게 생겼다. $P_n(x) = f(x)$라 정의하고, 식을 상수 항 기준으로 정리해보자.</p>
 <h3 id="a_0-a_1-도출-과정">$a_0, a_1$ 도출 과정</h3>
 <p>$$
-a_0 = f\left(x_0\right)\
-f(x_1) = a_0 + a_1(x_1-x_0),\
+a_0 = f\left(x_0\right)\\\
+f(x_1) = a_0 + a_1(x_1-x_0),\\\
 \therefore a_1 =  {f\left(x_1\right) - f(x_0)\over x_1-x_0}
 $$</p>
 <p>해당 식의 형태를 $f[x_0,x_1]$로 치환하자.</p>
@@ -335,8 +335,8 @@ $$</p>
 <h3 id="a_2-도출-과정">$a_2$ 도출 과정</h3>
 <p>$$
 \begin{matrix}
-f(x_2) &amp;=&amp; a_0 + a_1(x_2 - x_0) + a_2(x_2-x_0)(x_2-x_1)\
-&amp;=&amp; f(x_0) + (x_2 - x_0)(a_1 + a_2(x_2 - x_1)),\
+f(x_2) &amp;=&amp; a_0 + a_1(x_2 - x_0) + a_2(x_2-x_0)(x_2-x_1)\\\
+&amp;=&amp; f(x_0) + (x_2 - x_0)(a_1 + a_2(x_2 - x_1)),\\\
 f(x_2) - f(x_0) &amp;=&amp; (x_2-x_0)(a_1 + a_2(x_2 - x_1))
 \end{matrix}
 $$</p>
@@ -347,8 +347,8 @@ $$</p>
 <p>이 된다.</p>
 <p>여기서, $a_1$과 $a_2$에서 반복되는 형태를 $f[x_a,x_b]$로 치환하자.</p>
 <p>$$
-f[x_0,x_2] = f[x_0,x_1] + a_2(x_2 - x_1)\
-\frac{f[x_0,x_2] - f[x_0,x_1]}{x_2 - x_1} = a_2\
+f[x_0,x_2] = f[x_0,x_1] + a_2(x_2 - x_1)\\\
+\frac{f[x_0,x_2] - f[x_0,x_1]}{x_2 - x_1} = a_2\\\
 $$</p>
 <p>위 식은 $f[x_0,x_1,x_2]$로 치환하며, <strong>Second order Divided Difference</strong>라고 부른다.</p>
 <h3 id="high-order-divided-difference"><strong>High order Divided Difference</strong></h3>
@@ -363,20 +363,20 @@ f\left[x_0, \ldots, x_n\right]=\frac{f\left[x_1, \ldots, x_n\right]-f\left[x_0, 
 $$</p>
 <p>이와 같은 형태로 나머지 $a_n$에 대해서도 정리할 수 있고, 최종적으로 기존의 뉴턴 형은 다음과 같은 형태가 된다.</p>
 <p>$$
-\begin{aligned}&amp; P_1(x)=f\left(x_0\right)+\left(x-x_0\right) f\left[x_0, x_1\right] \
-&amp; \begin{aligned}P_2(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right] \
+\begin{aligned}&amp; P_1(x)=f\left(x_0\right)+\left(x-x_0\right) f\left[x_0, x_1\right] \\\
+&amp; \begin{aligned}P_2(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right] \\\
 &amp; +\left(x-x_0\right)\left(x-x_1\right) f\left[x_0, x_1, x_2\right]\end{aligned}\
-&amp;\ \ \ \ \ \ \ \ \ \ \ \ \vdots\
-&amp;\begin{aligned}P_n(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right]+\cdots \
+&amp;\ \ \ \ \ \ \ \ \ \ \ \ \vdots\\\
+&amp;\begin{aligned}P_n(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right]+\cdots \\\
 &amp; +\left(x-x_0\right)\left(x-x_1\right) \cdots\left(x-x_{n-1}\right) f\left[x_0, x_1, \ldots, x_n\right]\end{aligned}\end{aligned}
 $$</p>
 <p>여기에서 중요한 점은, 기호화를 함으로써 값을 재활용할 수 있게 되었다는 것이다.</p>
 <p>또한, 기존의 값을 활용하여 다음 값을 구할 수 있게 되었다.</p>
 <p>최종적으로 뉴턴 공식을 일반화하여 정리하면 다음과 같은 형태가 된다.</p>
 <p>$$
-\begin{aligned}P_n(x) &amp; =f\left[x_0\right]+f\left[x_0, x_1\right]\left(x-x_0\right)+\cdots\
-&amp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ +f\left[x_0, \cdots, x_n\right]\left(x-x_0\right) \cdots\left(x-x_{n-1}\right) \
-&amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right]\left(x-x_0\right) \cdots\left(x-x_{k-1}\right) \
+\begin{aligned}P_n(x) &amp; =f\left[x_0\right]+f\left[x_0, x_1\right]\left(x-x_0\right)+\cdots\\\
+&amp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ +f\left[x_0, \cdots, x_n\right]\left(x-x_0\right) \cdots\left(x-x_{n-1}\right) \\\
+&amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right]\left(x-x_0\right) \cdots\left(x-x_{k-1}\right) \\\
 &amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right] \prod_{i=0}^{k-1}\left(x-x_i\right)\end{aligned}
 $$</p>
 <p>이를 점화식의 형태로 정리하면 다음과 같다.</p>
@@ -388,7 +388,7 @@ $$</p>
 <p>라그랑주 보간법의 오차를 계산해보자.</p>
 <p>앞에서 $P_n(x)$를 다음과 같이 정리했다.</p>
 <p>$$
-\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\
+\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\
 &amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right)
 \end{matrix}
 $$</p>
@@ -476,7 +476,7 @@ $$</p>
 <p>따라서 다음이 성립한다.</p>
 <p>$$
 \begin{aligned}
-&amp; p_{n+1}\left(x_i\right)=f\left(x_i\right), \quad i=0,1,2, \cdots, n \
+&amp; p_{n+1}\left(x_i\right)=f\left(x_i\right), \quad i=0,1,2, \cdots, n \\\
 &amp; p_{n+1}(\bar{x})=f(\bar{x})
 \end{aligned}
 $$</p>

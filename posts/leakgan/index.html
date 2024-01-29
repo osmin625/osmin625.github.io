@@ -268,7 +268,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 </ul>
 <p>D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다.</p>
 <h1 id="구체적-방법론">구체적 방법론</h1>
-<p><img src="leakgan.png" alt="leakgan"></p>
+<p><img src="/imgs/leakgan.png" alt="leakgan"></p>
 <p>텍스트 생성 문제 → Sequential Decision Making Process</p>
 <ul>
 <li>$s_t : t$ 시점까지 생성된 단어들. $(x_1,\dots,  x_i, \dots, x_t)$
@@ -295,7 +295,8 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p><strong>MANAGER</strong>: $t$시점마다 추출된 $f_t$를 활용해 $g_t$ 생성</p>
 <p>$f_t$를 LSTM에 입력한 후 goal vector $g_t$를 생성한다.</p>
 <p>$$
-\begin{aligned}\hat{g}<em>t, h_t^M &amp; =\mathcal{M}\left(f_t, h</em>{t-1}^M ; \theta_m\right) \g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right|\end{aligned}
+\begin{aligned}\hat{g}<em>t, h_t^M &amp; =\mathcal{M}\left(f_t, h</em>{t-1}^M ; \theta_m\right) \\
+g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right|\end{aligned}
 $$</p>
 <ul>
 <li>
@@ -371,7 +372,8 @@ $$</p>
 </ul>
 <p>$$
 \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right)
-\G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right)
+\\
+G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right)
 \end{aligned}
 $$</p>
 <ul>
@@ -694,7 +696,7 @@ $$</p>
 <li>샘플 생성을 위해 모델 적용 시 낮은 temperature 설정</li>
 </ul>
 <h2 id="pseudo-code">Pseudo Code</h2>
-<p><img src="leakgan1.png" alt="leakgan"></p>
+<p><img src="/imgs/leakgan1.png" alt="leakgan"></p>
 <h3 id="필요한-요소"><strong>필요한 요소</strong></h3>
 <ul>
 <li>

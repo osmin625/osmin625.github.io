@@ -228,9 +228,9 @@
 <ul>
 <li>일반적으로 쓰여지는 A와 B집합의 관계는 아래와 같이 나타낸다.
 <ul>
-<li>jaccard(A,B)=$|A∩B||A∪B|$</li>
+<li>jaccard(A,B)=<code>$|A∩B||A∪B|$</code></li>
 <li>jaccard(A,A)=1</li>
-<li>jaccard(A,B)=0 if $A∩B=0$</li>
+<li>jaccard(A,B)=0 if <code>$A∩B=0$</code></li>
 </ul>
 </li>
 <li>A와 B가 같은 크기일 필요는 없다. 문서의 term 개수보다 query term이 적은 것이 당연하다.</li>
@@ -242,7 +242,7 @@
 <li>Document 1: caesar died in march ⇒ 1 / 3 + 4 - 1</li>
 <li>Document 2: the long march ⇒ 1 / 3 + 3 - 1</li>
 </ul>
-<p>doc1 : $1\over6$ doc2 : $1\over5$ 즉 doc2가 점수가 조금 더 높다.</p>
+<p>doc1 : <code>$1\over6$</code> doc2 : <code>$1\over5$</code> 즉 doc2가 점수가 조금 더 높다.</p>
 <h3 id="jaccard-coefficient의-문제점">Jaccard coefficient의 문제점</h3>
 <ul>
 <li>
@@ -252,15 +252,15 @@
 <!-- raw HTML omitted -->
 <ul>
 <li>
-<p><strong>term frequency($tf_{term}$)</strong></p>
+<p><strong>term frequency(<code>$tf_{term}$</code>)</strong></p>
 <p>어떤 document 안에서 해당 term이 나타난 횟수</p>
 </li>
 <li>
-<p><strong>document frequency($df_{term}$)</strong></p>
+<p><strong>document frequency(<code>$df_{term}$</code>)</strong></p>
 <p>어떤 term이 나타나는 document의 개수</p>
 </li>
 <li>
-<p><strong>collection frequency($cf_{term}$)</strong></p>
+<p><strong>collection frequency(<code>$cf_{term}$</code>)</strong></p>
 <p>collection 전체에서 어떤 term이 나타난 횟수</p>
 </li>
 </ul>
@@ -278,22 +278,22 @@
 </li>
 <li>
 <p>나중에 이 수식을 사용한다.</p>
-<p>$|A∩B||A∪B|$</p>
+<p><code>$|A∩B||A∪B|$</code></p>
 </li>
 </ul>
 <h3 id="recall-binary-term-document-incidence-matrix"><strong>Recall: Binary term-document incidence matrix</strong></h3>
 <p><img src="tf_idf.png" alt="tf_idf"></p>
 <p>예를 들어 antony and brutus and not(calpurnia)라면</p>
 <ul>
-<li>$110001$</li>
-<li>$110100$</li>
-<li>$101111 -&gt; 100000$</li>
+<li><code>$110001$</code></li>
+<li><code>$110100$</code></li>
+<li><code>$101111 -&gt; 100000$</code></li>
 </ul>
 <p>위 비트와이즈 연산을 통해 “Antony and Cleopatra”가 만족하는 소설책임을 찾을 수 있다.</p>
 <ul>
 <li>
 <p>각 문서를 바이너리 벡터로 표시한다.</p>
-<p>$vector ∈ {0,1}^{V}$</p>
+<p><code>$vector ∈ \{0,1\}^{V}$</code></p>
 </li>
 </ul>
 <h3 id="term-document-count-matrices"><strong>Term-document count matrices</strong></h3>
@@ -329,7 +329,7 @@
 </ul>
 <!-- raw HTML omitted -->
 <h3 id="tf-term-frequency">TF: <strong>Term frequency</strong></h3>
-<p>term frequency($tf_{t,d}$): 문서 d에서 term t가 발생한 빈도</p>
+<p>term frequency(<code>$tf_{t,d}$</code>): 문서 d에서 term t가 발생한 빈도</p>
 <p>tf를 query-document가 얼마나 일치하는지 계산하기 위해 쓰고 싶다.</p>
 <p>raw tf 값은 활용하기 불편하다.</p>
 <p>tf 10인 문서가 tf 1인 문서보다 더 연관도가 높다.</p>
@@ -340,9 +340,7 @@
 <p>따라서 단어의 개수에 따라 달라지는 영향력을 표현하기 위해, 단어의 빈도에 log를 취한다.</p>
 <p><img src="tf_idf4.png" alt="tf_idf4"></p>
 <p>이 때, 단어가 하나 있는 것과 아예 없는 것의 차이는 훨씬 크기 때문에, 0과 1은 따로 구분한다.</p>
-<p>$$
-\tt score = ∑_{t∈q∩d}(1+log tf_{t,d})
-$$</p>
+<p><code>$$ \tt score = ∑_{t∈q∩d}(1+log tf_{t,d}) $$</code></p>
 <p>문서의 점수를 계산하기 위해선, query와 document에서 공통으로 나타나는 단어의 빈도를 log로 계산하면 된다.</p>
 <ul>
 <li>문서에서 query term이 하나도 발견되지 않으면 점수는 0이다.</li>
@@ -392,7 +390,7 @@ $$</p>
 </li>
 </ul>
 <p><strong>요약하면, Document frequency가 작은 단어일수록 유용하고, term frequency가 큰 단어일수록 문서를 특정짓는데 유용하다.</strong></p>
-<p>효과적인 검색을 위해 document frequency($df$)에 대한 정보도 활용해야 한다.</p>
+<p>효과적인 검색을 위해 document frequency(<code>$df$</code>)에 대한 정보도 활용해야 한다.</p>
 <hr>
 <ul>
 <li>
@@ -407,9 +405,7 @@ $$</p>
 <p><strong>term frequency가 높은 단어들에게 높은 가중치를 부여해야 한다.</strong></p>
 <p><strong>document frecuency가 낮은 단어들에게 높은 가중치를 부여해야 한다.</strong></p>
 <h3 id="idf-inverse-document-frequency">IDF: Inverse Document Frequency</h3>
-<p>$$
-\tt idf_t=log_{10}(N/df_t)
-$$</p>
+<p><code>$$ \tt idf_t=log_{10}(N/df_t) $$</code></p>
 <ul>
 <li>N = 전체 document 수</li>
 </ul>
@@ -420,7 +416,7 @@ $$</p>
 <li>
 <p><strong>ex) N = 1 million</strong></p>
 <p>N(문서의 개수) = 1,000,000이고,</p>
-<p>$idf_t=log_{10}(N/df_t)$인 경우</p>
+<p><code>$idf_t=log_{10}(N/df_t)$</code>인 경우</p>
 <table>
 <thead>
 <tr>
@@ -500,17 +496,13 @@ $$</p>
 <p>문서에 등장한 단어들의 중요도를 나타내는 값</p>
 <p>단어마다 TF-IDF 값이 계산된다.</p>
 <p>IR에서 가장 핵심적인 가중치 공식</p>
-<p>$$
-\tt W_{t,d}=(1+log_{10}tf_{t,d}) \times log_{10}(N/df_t)
-$$</p>
+<p><code>$$ \tt W_{t,d}=(1+log_{10}tf_{t,d}) \times log_{10}(N/df_t) $$</code></p>
 <p>term의 tf-idf 가중치는 tf 가중치와 idf 가중치의 곱이다.</p>
 <p><strong>tf.idf</strong>나 <strong>tf x idf</strong>라고 부르기도 한다.</p>
 <p>가중치는 collection에서 term의 발생빈도에 따라 증가한다.</p>
 <p>가중치는 컬렉션 내에 term이 희귀할수록 증가한다.</p>
 <h3 id="쿼리에-대한-문서의-score-계산">쿼리에 대한 문서의 Score 계산</h3>
-<p>$$
-\tt Score(q,d)=∑_{t∈q∩d}tf.idf_{t,d}
-$$</p>
+<p><code>$$ \tt Score(q,d)=∑_{t∈q∩d}tf.idf_{t,d} $$</code></p>
 <p>위 수식은 q(query)와 d(document)에서 공통되는 term을 가진 document의 score만 계산한다는 의미이다.</p>
 <p>문서들의 Score을 계산할 때 다양한 옵션이 존재한다.</p>
 <ol>
@@ -627,9 +619,9 @@ $$</p>
 </table>
 <p>각 문서는 tf-idf 가중치의 실수값 벡터로 표현된다.</p>
 <p>즉, 각 문서를 구성하는 Term들을 tf-idf 값으로 전환하여 문서를 벡터화한다.</p>
-<p>tf-idf 가중치 행렬 $∈R^{|V|}$</p>
-<p>$V$는 문서에 포함된 단어의 개수를 의미한다.</p>
-<p>결국 $|V|$ 차원의 벡터 공간을 가지게 된다.</p>
+<p>tf-idf 가중치 행렬 <code>$∈R^{\|V\|}$</code></p>
+<p><code>$V$</code>는 문서에 포함된 단어의 개수를 의미한다.</p>
+<p>결국 <code>$\|V\|$</code> 차원의 벡터 공간을 가지게 된다.</p>
 <p><strong>term은 공간의 차원이 된다.</strong></p>
 <p>문서는 공간에서의 벡터(점)이라고 이해할 수 있다.</p>
 <p>쿼리도 문서와 같은 크기로 들어가야 한다.</p>
@@ -688,11 +680,11 @@ $$</p>
 </ul>
 <p><img src="tf_idf3.png" alt="tf_idf"></p>
 <p>tf-raw: term의 발생횟수</p>
-<p>tf-wt:  $1+log(tf_{t,d})$. 즉, term의 발생빈도를 가중치로 바꾼 것.</p>
-<p>idf: $log{N\over df_t}$</p>
-<p>wt: tf-wt * idf : $(1+log(tf_{t,d}))\times log{N\over df_t}$</p>
+<p>tf-wt:  <code>$1+log(tf_{t,d})$</code>. 즉, term의 발생빈도를 가중치로 바꾼 것.</p>
+<p>idf: <code>$log{N\over df_t}$</code></p>
+<p>wt: tf-wt * idf : <code>$(1+log(tf_{t,d}))\times log{N\over df_t}$</code></p>
 <p>n&rsquo;lize: 문서 길이(wt 제곱 총합의 루트) 로 wt를 나눈 것</p>
-<p>문서의 길이: $\sqrt {1^2+0^2+1^2+1.3^2} \simeq 1.92$</p>
+<p>문서의 길이: <code>$\sqrt {1^2+0^2+1^2+1.3^2} \simeq 1.92$</code></p>
 <p><strong>실제 코사인 유사도는 내적값의 합으로 auto에 대한 내적값 0, best에 대한 내적값 0, car에 대한 내적값 0.27(0.52 * 0.52)과 insurance에 대한 내적값 0.53(0.78 * 0.68)을 더한 0.8이다.</strong></p>
 <ul>
 <li>quiz: 문서의 수, N은 몇일까?</li>

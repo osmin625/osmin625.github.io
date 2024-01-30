@@ -198,43 +198,43 @@
 <h3 id="학습-파라미터">학습 파라미터</h3>
 <ul>
 <li>
-<p>$W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬</p>
+<p><code>$W_{V\times M}$</code>: One-Hot Vector을 임베딩 벡터로 변환하는 행렬</p>
 <ul>
-<li>$V$: 단어의 총 개수(One-Hot Vector의 크기)</li>
-<li>$M$: 임베딩 벡터의 크기</li>
+<li><code>$V$</code>: 단어의 총 개수(One-Hot Vector의 크기)</li>
+<li><code>$M$</code>: 임베딩 벡터의 크기</li>
 </ul>
 <p><img src="/imgs/CBOW-2.png" alt="CBOW"></p>
 </li>
 <li>
-<p>$W&rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</p>
+<p><code>$W'_{M\times V}$</code>: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</p>
 </li>
 </ul>
 <h3 id="학습과정">학습과정</h3>
 <h4 id="input-layer">Input Layer</h4>
 <ol>
 <li>주변의 단어를 One-Hot Vector로 입력받는다.</li>
-<li>입력받은 One-Hot Vector를 임베딩 벡터로 변환한다.($W_{V\times M}$)</li>
+<li>입력받은 One-Hot Vector를 임베딩 벡터로 변환한다.(<code>$W_{V\times M}$</code>)</li>
 </ol>
 <h4 id="projection-layer">Projection Layer</h4>
 <ol start="3">
-<li>변환된 임베딩 벡터들을 평균내어 임베딩 벡터 $v$를 구한다. → Word2Vec</li>
+<li>변환된 임베딩 벡터들을 평균내어 임베딩 벡터 <code>$v$</code>를 구한다. → Word2Vec</li>
 </ol>
 <ul>
 <li>
-<p>임베딩 벡터 $v$를 One-Hot Vector와 동일한 크기로 변환한다.($W&rsquo;_{M\times V}$)</p>
+<p>임베딩 벡터 <code>$v$</code>를 One-Hot Vector와 동일한 크기로 변환한다.(<code>$W'_{M\times V}$</code>)</p>
 <p><img src="/imgs/CBOW-3.png" alt="CBOW"></p>
 </li>
 </ul>
 <ol>
-<li>변환된 벡터 $z$를 Output Layer로 보낸다.</li>
+<li>변환된 벡터 <code>$z$</code>를 Output Layer로 보낸다.</li>
 </ol>
 <h4 id="output-layer">Output Layer</h4>
 <ol>
 <li>
-<p>Softmax 함수를 통해 벡터 $z$를 확률 벡터로 변환한다.</p>
+<p>Softmax 함수를 통해 벡터 <code>$z$</code>를 확률 벡터로 변환한다.</p>
 </li>
 <li>
-<p><strong>출력($\hat y$)을 평가하기 위해 중앙 단어의 One-Hot Vector($y$)와 CE를 계산한다.</strong></p>
+<p><strong>출력(<code>$\hat y$</code>)을 평가하기 위해 중앙 단어의 One-Hot Vector(<code>$y$</code>)와 CE를 계산한다.</strong></p>
 <p><img src="/imgs/CBOW-4.png" alt="CBOW"></p>
 </li>
 </ol>

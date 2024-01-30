@@ -252,17 +252,17 @@
 <li>
 <p>Relative Rating</p>
 <p>유저의 평점을 그대로 사용하지 않고, 유저의 평균 평점에서의 편차를 사용한다.</p>
-<p>$$
+<p><code>$$</code>
 \begin{gathered}\operatorname{dev}(u, i)=r(u, i)-\overline{r_u} \quad \text { for known rating } \\widehat{\operatorname{dev}}(u, i)=\frac{\sum_{u \Omega^{\prime} \in \Omega_i} \operatorname{dev}\left(u^{\prime}, i\right)}{\left|\Omega_i\right|}=\frac{\sum_{u^{\prime} \in \Omega_i} r\left(u^{\prime}, i\right)-\overline{r_{u^{\prime}}}}{\left|\Omega_i\right|} \\hat{r}(u, i)=\overline{r_u}+\frac{\sum_{u \prime \in \Omega_i} r\left(u^{\prime}, i\right)-\overline{r_{u^{\prime}}}}{\left|\Omega_i\right|}=\overline{r_u}+\widehat{\operatorname{dev}}(u, i)\end{gathered}
-$$</p>
+<code>$$</code></p>
 <ul>
 <li>
 <p>ex) 유저 B의 스타워즈에 대한 예측 평점</p>
 <p><img src="/imgs/NBCF2.png" alt="NBCF"></p>
 <p>예측 Deviation = 0.23</p>
-<p>$$
+<p><code>$$</code>
 {1.6 \times 0.95 + (-1.6) \times (0.6) + 0 \times 0.85\over0.95 + 0.6 + 0.85} = 0.23
-$$</p>
+<code>$$</code></p>
 <p>유저 B의 평점 평균 = 3</p>
 <p><strong>유저 B의 예측 평점 = 3.23</strong></p>
 </li>
@@ -308,9 +308,9 @@ $$</p>
 <p><img src="/imgs/NBCF4.png" alt="NBCF">
 코사인 유사도 사용. 2-NN 기준 아이언맨 0.9, 헐크 0.95, 스타워즈 평균 3.0</p>
 <p>예측 Deviation = 1.15</p>
-<p>$$
+<p><code>$$</code>
 {0.9 \times 0.25 + 0.95 \times2\over0.9 + 0.95} = 1.15
-$$</p>
+<code>$$</code></p>
 <p>아이템 B의 평점 평균 = 3</p>
 <p><strong>유저 B의 예측 평점 = 4.15</strong></p>
 </li>

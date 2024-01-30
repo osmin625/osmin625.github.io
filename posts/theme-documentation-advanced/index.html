@@ -324,8 +324,8 @@ Therefore, we use feather as an additional source of icons. Here is an example o
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          // customised options
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          // • auto-render specific keys, e.g.:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          delimiters: [
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            {left: &#39;</span><span style="color:#960050;background-color:#1e0010">$$</span><span style="color:#e6db74">&#39;, right: &#39;</span><span style="color:#960050;background-color:#1e0010">$$</span><span style="color:#e6db74">&#39;, display: true},
-</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            {left: &#39;</span><span style="color:#960050;background-color:#1e0010">$</span><span style="color:#e6db74">&#39;, right: &#39;</span><span style="color:#960050;background-color:#1e0010">$</span><span style="color:#e6db74">&#39;, display: false},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            {left: &#39;</span><span style="color:#960050;background-color:#1e0010">`$$`</span><span style="color:#e6db74">&#39;, right: &#39;</span><span style="color:#960050;background-color:#1e0010">`$$`</span><span style="color:#e6db74">&#39;, display: true},
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            {left: &#39;</span><span style="color:#960050;background-color:#1e0010">`$</span><span style="color:#e6db74">&#39;, right: &#39;</span><span style="color:#960050;background-color:#1e0010">$`</span><span style="color:#e6db74">&#39;, display: false},
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          ],
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          // • rendering keys, e.g.:
 </span></span></span><span style="display:flex;"><span><span style="color:#e6db74">          throwOnError : false
@@ -336,9 +336,9 @@ Therefore, we use feather as an additional source of icons. Here is an example o
 </span></span></code></pre></div><blockquote>
 <p>Note: Make sure you use the latest version of katex and use the correct script tags as described in <a href="https://katex.org/docs/browser.html">their documentation</a></p>
 </blockquote>
-<p>Then the equation <code>$$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$$</code> wrapped by double <code>$$</code> would be displayed as:</p>
-<p>$$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$$</p>
-<p>The equation <code>$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$</code> wrapped by single <code>$</code> would be displayed inline as $y_t = \beta_0 + \beta_1 x_t + \epsilon_t$.</p>
+<p>Then the equation <code>$$`y_t = \beta_0 + \beta_1 x_t + \epsilon_t`$$</code> wrapped by double <code>$$</code> would be displayed as:</p>
+<p><code>$$</code>y_t = \beta_0 + \beta_1 x_t + \epsilon_t<code>$$</code></p>
+<p>The equation <code>$</code>y_t = \beta_0 + \beta_1 x_t + \epsilon_t<code>$</code> wrapped by single <code>$`` would be displayed inline as </code>$y_t = \beta_0 + \beta_1 x_t + \epsilon_t$`.</p>
 <h3 id="comments">Comments</h3>
 <p>Integration with any comments SDK is possible. All you have to do is add the relevant HTML/JavaScript in the <code>customFooterHTML</code> param.</p>
 <p>An example with commento:</p>

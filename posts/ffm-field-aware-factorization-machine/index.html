@@ -224,17 +224,15 @@
 </li>
 </ul>
 <h2 id="ffm-공식">FFM 공식</h2>
-<p>$$
+<p>`$$
 \begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}<em>{i, f_j}, \mathrm{v}</em>{j, f_i}\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_{i, f} \in \mathbb{R}^k\end{gathered}</p>
-<p>$$</p>
+<p>$$`</p>
 <p><img src="/imgs/FFM1.png" alt="FFM"></p>
 <!-- raw HTML omitted -->
-<p>$$
-\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k\end{gathered}
-$$</p>
-<p>FM은 k차원의 파라미터를 $v_i$와 $v_j$가 내적이 된 형태로 상호작용을 표현하는 반면,</p>
-<p>FFM은 $x_i$에 대응되는 파라미터가 $v_i$가 아니라, $v_{i,f_j}$가 된다.</p>
-<p>즉, field $(f_i)$별로 Factorization 파라미터가 정의된다.</p>
+<p><code>$$ \begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j \\w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k\end{gathered} $$</code></p>
+<p>FM은 k차원의 파라미터를 <code>$v_i$</code>와 <code>$v_j$</code>가 내적이 된 형태로 상호작용을 표현하는 반면,</p>
+<p>FFM은 <code>$x_i$</code>에 대응되는 파라미터가 <code>$v_i$</code>가 아니라, <code>$v_{i,f_j}$</code>가 된다.</p>
+<p>즉, field <code>$(f_i)$</code>별로 Factorization 파라미터가 정의된다.</p>
 <!-- raw HTML omitted -->
 <p>ex) 광고 클릭 데이터가 존재하고 사용할 수 있는 feature가 총 세 개(Publisher, Advertiser, Gender)일 때,</p>
 <table>
@@ -259,22 +257,22 @@ $$</p>
 <li>
 <p><strong>FM</strong></p>
 <p>필드가 존재하지 않는다.</p>
-<p>하나의 변수에 대해 factorization 차원$(k)$ 만큼의 파라미터를 학습한다.</p>
-<p>$$
+<p>하나의 변수에 대해 factorization 차원<code>$(k)$</code> 만큼의 파라미터를 학습한다.</p>
+<p><code>$$</code>
 \hat{y}(\mathrm{x})
 =w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\mathrm{Nike}}\
 +\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\text {Male }}+\mathrm{v}<em>{\mathrm{Nike}} \cdot \mathrm{v}</em>{\text {Male }}}
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
 <p><strong>FFM</strong></p>
 <p>각각의 feature를 필드 P,A,G로 정의</p>
-<p>하나의 변수에 대해 필드 개수$(f)$와 factorization 차원$(k)$의 곱 $(=fk)$만큼의 파라미터를 학습한다.</p>
-<p>$$
+<p>하나의 변수에 대해 필드 개수<code>$(f)$</code>와 factorization 차원<code>$(k)$</code>의 곱 <code>$(=fk)$</code>만큼의 파라미터를 학습한다.</p>
+<p><code>$$</code>
 \hat{y}(\mathrm{x})
 =w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{A}} \cdot \mathrm{v}</em>{\mathrm{Nike}, \mathrm{P}}\</p>
 <p>+\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{G}} \cdot \mathrm{v}</em>{\text {Male,P }}+\mathrm{v}<em>{\mathrm{Nike}, \mathrm{G}} \cdot \mathrm{v}</em>{\mathrm{Male}, \mathrm{A}}}
-$$</p>
+<code>$$</code></p>
 </li>
 </ul>
 <h2 id="ffm의-필드-구성">FFM의 필드 구성</h2>

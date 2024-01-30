@@ -189,67 +189,63 @@
 <p>수치 미분과 마찬가지로 손실 함수 위에서의 가중치의 기울기를 알게 해준다.</p>
 <p>즉, 해당 가중치가 얼마나 오차에 영향을 끼치는지 알게 해준다.</p>
 <p>(기울기에 대한 손실 함수의 미분)</p>
-<p>특정 가중치 w에 대해, 오차 L 위에서의 기울기는 $\partial L\over \partial w$이다.</p>
+<p>특정 가중치 w에 대해, 오차 L 위에서의 기울기는 <code>$\partial L\over \partial w$</code>이다.</p>
 <h3 id="연쇄-법칙chain-rule">연쇄 법칙(chain rule)</h3>
 <p><strong>합성 함수의 미분은 합성 함수를 구성하는 각 함수의 미분의 곱으로 나타낼 수 있다.</strong></p>
-<p>$$
-{\partial z\over \partial x} = {\partial z\over \partial t}{\partial t\over \partial x}
-$$</p>
+<p><code>$$ {\partial z\over \partial x} = {\partial z\over \partial t}{\partial t\over \partial x} $$</code></p>
 <p>합성 함수</p>
 <p>여러 함수로 구성된 함수</p>
 <ul>
-<li>ex) $z = (x + y)^2$
+<li>ex) <code>$z = (x + y)^2$</code>
 <ul>
-<li>$z = t^2$</li>
-<li>$t = x + y$</li>
+<li><code>$z = t^2$</code></li>
+<li><code>$t = x + y$</code></li>
 </ul>
 </li>
 </ul>
 <h3 id="순전파-역전파-국소적-계산">순전파, 역전파, 국소적 계산</h3>
-<p>ex) $f(x) = y$</p>
+<p>ex) <code>$f(x) = y$</code></p>
 <p><img src="bp1.png" alt="bp"></p>
 <p><strong>f에 x를 집어넣으면 y가 튀어나온다.</strong></p>
-<p>위의 그림처럼 어딘가에서 갑자기 등장한 $L$이라는 함수를 $y$로 미분한 값($\partial L\over \partial y$)이 제공된다면?</p>
-<p>우리는 $L$이라는 함수를 모르지만, $x$로 미분한 값을 알 수 있다.</p>
+<p>위의 그림처럼 어딘가에서 갑자기 등장한 <code>$L$</code>이라는 함수를 <code>$y$</code>로 미분한 값(<code>$\partial L\over \partial y$</code>)이 제공된다면?</p>
+<p>우리는 <code>$L$</code>이라는 함수를 모르지만, <code>$x$</code>로 미분한 값을 알 수 있다.</p>
 <p>연쇄법칙을 활용하면 된다.</p>
-<p>$$
-{\partial L\over \partial x} = {\partial L\over \partial y}{\partial y\over \partial x}
-$$</p>
-<p>우리는 $\partial L\over \partial y$를 알고 있으니, $\partial y\over \partial x$만 계산하면 된다.</p>
-<p>${\partial y\over \partial x} = f&rsquo;(x)$이므로, x에 대한 함수인 $f(x)$를 미분하면 된다.</p>
-<p>ex) $f(x) = x^2 ⇒ f&rsquo;(x) = 2x$</p>
+<p><code>$$ {\partial L\over \partial x} = {\partial L\over \partial y}{\partial y\over \partial x} $$</code></p>
+<p>우리는 <code>$\partial L\over \partial y$</code>를 알고 있으니, <code>$\partial y\over \partial x$</code>만 계산하면 된다.</p>
+<p><code>${\partial y\over \partial x} = f'(x)$</code>이므로, x에 대한 함수인 <code>$f(x)$</code>를 미분하면 된다.</p>
+<p>ex) <code>$f(x) = x^2 ⇒ f'(x) = 2x$</code></p>
 <p>이 때, 위의 예시에서 왼쪽에서 오른쪽으로 진행하는 단계를 <strong>순전파(forward propagation)</strong>,</p>
 <p>오른쪽에서 왼쪽으로 진행하는 단계를 **역전파(backward propagation)**이라고 한다.</p>
 <p>국소적 계산</p>
 <p>전체에서 어떤 일이 벌어지든 상관없이 자신과 관계된 정보만을 결과로 출력할 수 있다.</p>
-<p>위의 예시처럼, 각 단계에서는 그저 $f(x)$의 미분값만 곱해서 하류로 흘러보낸 것이 전부다.</p>
+<p>위의 예시처럼, 각 단계에서는 그저 <code>$f(x)$</code>의 미분값만 곱해서 하류로 흘러보낸 것이 전부다.</p>
 <p>단순한 국소적 계산이 연결되어 전체를 구성하는 복잡한 계산을 수행하게 된다.</p>
 <h3 id="덧셈-노드에서의-역전파">덧셈 노드에서의 역전파</h3>
-<p>ex) $z = x + y$</p>
+<p>ex) <code>$z = x + y$</code></p>
 <ul>
-<li>$\partial z\over \partial x$ = 1</li>
-<li>$\partial z\over \partial y$ = 1</li>
+<li><code>$\partial z\over \partial x$</code> = 1</li>
+<li><code>$\partial z\over \partial y$</code> = 1</li>
 </ul>
 <p><img src="bp2.png" alt="bp"></p>
-<p>상류에서 내려온 신호인 $\partial L\over \partial z$에 $\partial z\over \partial x$를 곱함으로써 $\partial L\over \partial x$을 구했다.</p>
+<p>상류에서 내려온 신호인 <code>$\partial L\over \partial z$</code>에 <code>$\partial z\over \partial x$</code>를 곱함으로써 <code>$\partial L\over \partial x$</code>을 구했다.</p>
 <p>단순한 덧셈 연산이기 때문에 미분값은 1이다.</p>
 <p>즉, 덧셈에서는 상류에서 내려온 값을 그대로 하류로 전달한다.</p>
 <h3 id="곱셈-노드에서의-역전파">곱셈 노드에서의 역전파</h3>
-<p>ex) $z = xy$</p>
+<p>ex) <code>$z = xy$</code></p>
 <ul>
-<li>${\partial z\over \partial x} = y$</li>
-<li>${\partial z\over \partial y} = x$</li>
+<li><code>${\partial z\over \partial x} = y$</code></li>
+<li><code>${\partial z\over \partial y} = x$</code></li>
 </ul>
 <p>이므로,</p>
 <p><img src="bp3.png" alt="bp">
 이 된다.</p>
 <p>즉, 단순한 곱셈 노드는 상류에서 내려온 신호를 교차시켜 곱한 후, 다시 하류로 보낸다.</p>
 <p>하지만 본질은 미분이다.</p>
-<p>$z = x^2$의 경우, 미분값은 $2x$가 되는 것을 명심하자.</p>
+<p><code>$z = x^2$</code>의 경우, 미분값은 <code>$2x$</code>가 되는 것을 명심하자.</p>
 <h3 id="연쇄-법칙과-계산-그래프">연쇄 법칙과 계산 그래프</h3>
 <p><img src="bp4.png" alt="bp"></p>
 <p><img src="bp5.png" alt="bp"></p>
-<p>처음에 예시로 들었던 함수 $z = (x+y)^2$를 그래프화 한 것이다.</p>
+<p>처음에 예시로 들었던 함수 <code>$z = (x+y)^2$</code>를 그래프화 한 것이다.</p>
 <h3 id="결론">결론</h3>
 <p>역전파는 오차(손실 함수)를 상류에서 하류로 내려보내면서 각 가중치가 손실 함수에서의 기울기를 알 수 있도록 해주는 기법이다.</p>
 <p>이 때 수많은 노드와 복잡한 활성화 함수 등이 각 노드에서 국소적 계산을 한다.</p>

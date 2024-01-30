@@ -183,8 +183,8 @@ Tensor 객체의 상속 객체
 <p>Tensor 객체와 매우 비슷하다.</p>
 <p><strong>nn.Module의 attribute가 될 때는 <code>required_grad = True</code>로 자동으로 지정되어 AutoGrad의 대상이 된다.</strong></p>
 <p>대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.</p>
-<p>nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.</p>
-<h3 id="tt-xw-b">$\tt xw +b$</h3>
+<p>nn.Module로 만든 <code>$\tt xw +b$</code>라는 선형 모델을 살펴본다.</p>
+<h3 id="tt-xw-b"><code>$\tt xw +b$</code></h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MyLinear</span>(nn<span style="color:#f92672">.</span>Module):
 </span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">def</span> __init__ (self, in_features, out_features, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>):
 </span></span><span style="display:flex;"><span>				super()<span style="color:#f92672">.</span> init ()
@@ -197,7 +197,7 @@ Tensor 객체의 상속 객체
 </span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> x <span style="color:#f92672">@</span> self<span style="color:#f92672">.</span>weights <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>bias
 </span></span><span style="display:flex;"><span>				<span style="color:#75715e"># xw + b의 형태로 output이 나온다.</span>
 </span></span></code></pre></div><p><strong>ex —  Feature가 7개 있고, 배치가 3인 경우</strong></p>
-<p>데이터는 $3 \times 7$의 형태가 된다.</p>
+<p>데이터는 <code>$3 \times 7$</code>의 형태가 된다.</p>
 <ol>
 <li>
 <p>7개의 feature를 넣어서</p>
@@ -208,7 +208,7 @@ Tensor 객체의 상속 객체
 <p><code>out_features = 5</code></p>
 </li>
 <li>
-<p>$7 \times 5$ 형태의 weight 값이 필요하다.</p>
+<p><code>$7 \times 5$</code> 형태의 weight 값이 필요하다.</p>
 <p><code>nn.Parameter(torch.randn(7, 5)</code></p>
 </li>
 <li>
@@ -216,9 +216,9 @@ Tensor 객체의 상속 객체
 <p><code>nn.Parameter(torch.randn(5))</code></p>
 </li>
 <li>
-<p>이후, <code>forward</code>에서 $\tt xw +b$을 return해준다.</p>
+<p>이후, <code>forward</code>에서 <code>$\tt xw +b$</code>을 return해준다.</p>
 <p><code>def forward(self, x : Tensor): return x @ self.weights + self.bias</code></p>
-<p>즉, 모델의 예측 값($\hat y$)을 뱉어낸다.</p>
+<p>즉, 모델의 예측 값(<code>$\hat y$</code>)을 뱉어낸다.</p>
 </li>
 </ol>
 <p>이후, <code>backward()</code>에서 실제 값과 예측 값의 차이(loss)에 대해 미분을 수행한다.</p>
@@ -306,7 +306,7 @@ Tensor 객체의 상속 객체
       <ul>
         <li>
           <ul>
-            <li><a href="#tt-xw-b">$\tt xw +b$</a></li>
+            <li><a href="#tt-xw-b"><code>$\tt xw +b$</code></a></li>
           </ul>
         </li>
       </ul>

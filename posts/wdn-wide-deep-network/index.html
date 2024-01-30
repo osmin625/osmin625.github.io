@@ -202,26 +202,22 @@
 <h3 id="widememorization-model"><strong>Wide(Memorization Model)</strong></h3>
 <p>선형 모델과 거의 비슷한 모델</p>
 <p>Generalized Linear Model</p>
-<p>$<strong>\tt y = w^Tx + b</strong>$</p>
+<p><code>$**\tt y = w^Tx + b**$</code></p>
 <ul>
-<li>${\tt w = [w_1,&hellip;,w_n]}$</li>
-<li>$\tt x = [x_1,&hellip;,x_n]$</li>
-<li>$b \in \R$</li>
+<li><code>${\tt w = [w_1,...,w_n]}$</code></li>
+<li><code>$\tt x = [x_1,...,x_n]$</code></li>
+<li><code>$b \in \R$</code></li>
 </ul>
 <p><img src="/imgs/WDN1.png" alt="WDN"></p>
 <p>이와 같은 구조만으로는 두 변수의 관계를 파악할 수 없다.</p>
 <p><strong>Cross-Product Transformation</strong></p>
 <p>서로다른 두 변수의 관계를 학습하기 위해 Cross-Product Term을 추가해준다.</p>
-<p>$$
-\tt \phi_k(x) = \Pi^d_{i=1}x_i^{c_{ki}}, \quad c_{ki} \in {0,1}
-$$</p>
+<p><code>$$ \tt \phi_k(x) = \Pi^d_{i=1}x_i^{c_{ki}}, \quad c_{ki} \in \{0,1\} $$</code></p>
 <p>이 때, 가능한 모든 변수들 간의 내적을 표현하면 학습해야 할 파라미터가 너무 많아지게 된다.</p>
 <p>따라서, 해당 모델에서는 주요 feature 2개에 대한 second-order Cross Product만 사용한다.</p>
 <p>위의 모델링은 Polynomial Logistic Regression과 거의 동일하다.</p>
-<p>$$
-\hat y(x)=\left(w_0+\sum_{i=1}^n w_i x_i{+\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}\right), \quad w_i, w_{i j} \in \mathbb{R}
-$$</p>
-<p>이 모델로는 $n^2$만큼 학습 파라미터가 늘어나게 된다.</p>
+<p><code>$$ \hat y(x)=\left(w_0+\sum_{i=1}^n w_i x_i{+\sum_{i=1}^n \sum_{j=i+1}^n w_{i j} x_i x_j}\right), \quad w_i, w_{i j} \in \mathbb{R} $$</code></p>
+<p>이 모델로는 <code>$n^2$</code>만큼 학습 파라미터가 늘어나게 된다.</p>
 <p>즉, Wide Component만으로는 표현할 수 있는 상호작용의 한계가 명확하다.</p>
 <h3 id="deepgeneralization-model"><strong>Deep(Generalization Model)</strong></h3>
 <p>단순한 구조.</p>
@@ -234,11 +230,9 @@ $$</p>
 </ul>
 <p><img src="/imgs/WDN2.png" alt="WDN"></p>
 <h3 id="전체-구조-및-손실-함수"><strong>전체 구조 및 손실 함수</strong></h3>
-<p>$$
-P(Y=1|x) = \tt\sigma(w^T_{wide}[x,\phi(x)] + w^T_{deep}a^{(lf)} + b)
-$$</p>
-<p>$\tt x:$ 주어진 n개의 변수</p>
-<p>$\tt \phi(x):$ n개 변수간의 상호작용(Cross-Product)</p>
+<p><code>$$ P(Y=1|x) = \tt\sigma(w^T_{wide}[x,\phi(x)] + w^T_{deep}a^{(lf)} + b) $$</code></p>
+<p><code>$\tt x:$</code> 주어진 n개의 변수</p>
+<p><code>$\tt \phi(x):$</code> n개 변수간의 상호작용(Cross-Product)</p>
 <p><img src="/imgs/WDN3.png" alt="WDN"></p>
 <p>위에서 언급한 것처럼, [사용자가 과거에 설치한 앱]과 [사용자가 현재 CTR을 예측할 앱]의 상호작용만 반영한다.</p>
 <h2 id="모델-성능"><strong>모델 성능</strong></h2>

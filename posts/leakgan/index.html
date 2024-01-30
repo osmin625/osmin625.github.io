@@ -196,7 +196,7 @@ Sparsity와 Non-Informative를 효과적으로 해결한다.</p>
 <li>
 <p>WORKER (LSTM)</p>
 <ul>
-<li>$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적)</li>
+<li><code>$s_t$</code>를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적)</li>
 </ul>
 <p>D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다.
 {: .prompt-info }
@@ -271,17 +271,17 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p><img src="/imgs/leakgan.png" alt="leakgan"></p>
 <p>텍스트 생성 문제 → Sequential Decision Making Process</p>
 <ul>
-<li>$s_t : t$ 시점까지 생성된 단어들. $(x_1,\dots,  x_i, \dots, x_t)$
+<li><code>$s_t : t$</code> 시점까지 생성된 단어들. <code>$(x_1,\dots,  x_i, \dots, x_t)$</code>
 <ul>
-<li>$x_i:$ 단어(token)</li>
+<li><code>$x_i:$</code> 단어(token)</li>
 </ul>
 </li>
 </ul>
-<h2 id="생성망-g_theta">생성망 $G_\theta$</h2>
-<p>$G_\theta:$ 파라미터가 $\theta$인 생성망</p>
+<h2 id="생성망-g_theta">생성망 <code>$G_\theta$</code></h2>
+<p><code>$G_\theta:$</code> 파라미터가 <code>$\theta$</code>인 생성망</p>
 <ol>
 <li>
-<p><strong>$s_t$를 전체 어휘 분포와 매핑시킨다.</strong></p>
+<p><strong><code>$s_t$</code>를 전체 어휘 분포와 매핑시킨다.</strong></p>
 <p>ex) <code>$x_{t+1}$</code>에서 <code>$G_\theta( \cdot | s_t)$</code> 학습</p>
 </li>
 <li>
@@ -292,21 +292,21 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p>D의 유출된 정보를 이용하기 위한 MANAGER-WORKER 계층 구조</p>
 <ul>
 <li>
-<p><strong>MANAGER</strong>: $t$시점마다 추출된 $f_t$를 활용해 $g_t$ 생성</p>
-<p>$f_t$를 LSTM에 입력한 후 goal vector $g_t$를 생성한다.</p>
-<p><code>$$ \begin{aligned} \hat{g}_t, h_t^M &amp; = \mathcal{M}\left(f_t, h_{t-1}^M; \theta_m \right)\\ g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right| \end{aligned} $$</code></p>
+<p><strong>MANAGER</strong>: <code>$t$</code>시점마다 추출된 <code>$f_t$</code>를 활용해 <code>$g_t$</code> 생성</p>
+<p><code>$f_t$</code>를 LSTM에 입력한 후 goal vector <code>$g_t$</code>를 생성한다.</p>
+<p><code>$$` \begin{aligned} \hat{g}_t, h_t^M &amp; = \mathcal{M}\left(f_t, h_{t-1}^M; \theta_m \right)\\ g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right| \end{aligned} `$$</code></p>
 <ul>
 <li>
-<p>$M:$ LSTM 모델</p>
+<p><code>$M:$</code> LSTM 모델</p>
 </li>
 <li>
-<p>$\mathcal{M}:$ MANAGER 모듈</p>
+<p><code>$\mathcal{M}:$</code> MANAGER 모듈</p>
 </li>
 <li>
-<p>$\theta_m :$  $\mathcal M$의 파라미터</p>
+<p><code>$\theta_m :$</code>  <code>$\mathcal M$</code>의 파라미터</p>
 </li>
 <li>
-<p>$h_t:$ t시점의 hidden state</p>
+<p><code>$h_t:$</code> t시점의 hidden state</p>
 </li>
 <li>
 <!-- raw HTML omitted -->
@@ -358,37 +358,35 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 </ul>
 </li>
 <li>
-<p><strong>WORKER</strong>: MANAGER의 $g_t$를 토대로 보상을 높이는 다음 단어 생성</p>
-<p>MANAGER의 $g_t$를 포함하기 위해 가중치 행렬 $W_\psi$로 최근 c개의 목표들에 대한 선형 변환을 수행한다.</p>
-<p>이를 통해 k차원의 goal embedding vector $w_t$를 얻는다.</p>
-<p>$$
-w_t=\psi\left(\sum_{i=1}^c g_{t-i}\right)=W_\psi\left(\sum_{i=1}^c g_{t-i}\right)
-$$</p>
+<p><strong>WORKER</strong>: MANAGER의 <code>$g_t$</code>를 토대로 보상을 높이는 다음 단어 생성</p>
+<p>MANAGER의 <code>$g_t$</code>를 포함하기 위해 가중치 행렬 <code>$W_\psi$</code>로 최근 c개의 목표들에 대한 선형 변환을 수행한다.</p>
+<p>이를 통해 k차원의 goal embedding vector <code>$w_t$</code>를 얻는다.</p>
+<p><code>$$` w_t=\psi\left(\sum_{i=1}^c g_{t-i}\right)=W_\psi\left(\sum_{i=1}^c g_{t-i}\right) `$$</code></p>
 <ul>
-<li>$\psi:$ 선형 변환(행렬 곱셈)</li>
+<li><code>$\psi:$</code> 선형 변환(행렬 곱셈)</li>
 </ul>
-<p><code>$$ \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right) \\ G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right) \end{aligned} $$</code></p>
+<p><code>$$` \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right) \\ G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right) \end{aligned} `$$</code></p>
 <ul>
 <li>
-<p>$\mathcal W:$ WORKER 모듈</p>
+<p><code>$\mathcal W:$</code> WORKER 모듈</p>
 </li>
 <li>
-<p>$x_t:$ input. (t 시점의 단어)</p>
+<p><code>$x_t:$</code> input. (t 시점의 단어)</p>
 </li>
 <li>
-<p>$\theta_w :$  $\mathcal W$의 파라미터</p>
+<p><code>$\theta_w :$</code>  <code>$\mathcal W$</code>의 파라미터</p>
 </li>
 <li>
-<p>$O_t :$ 행렬 내적으로 $w_t$와 추가로 결합된 행렬. $|V| \times k$</p>
+<p><code>$O_t :$</code> 행렬 내적으로 <code>$w_t$</code>와 추가로 결합된 행렬. <code>$\|V\| \times k$</code></p>
 <p>모든 단어에 대한 벡터 집합을 의미한다.</p>
-<p>따라서, $O_t \cdot w_t$ 는 모든 단어에 대해 logit을 계산한다.</p>
+<p>따라서, <code>$O_t \cdot w_t$</code> 는 모든 단어에 대해 logit을 계산한다.</p>
 </li>
 <li>
-<p>$\alpha :$  generation entropy를 조절하기 위한 temperature parameter</p>
+<p><code>$\alpha :$</code>  generation entropy를 조절하기 위한 temperature parameter</p>
 <p>즉, 생성되는 문장의 참신함을 조절한다.</p>
 </li>
 </ul>
-<p>softmax를 통해 현재까지 생성된 단어 집합 $s_t$에서 최종 action space 분포를 결정한다.</p>
+<p>softmax를 통해 현재까지 생성된 단어 집합 <code>$s_t$</code>에서 최종 action space 분포를 결정한다.</p>
 <ul>
 <li>
 <!-- raw HTML omitted -->
@@ -445,70 +443,59 @@ $$</p>
 <li>
 <p><strong>MANAGER — 식별 가능한 feature space에서의 이동 방향을 예측하도록 훈련된다.</strong></p>
 <p>MANAGER의 gradient</p>
-<p>$$
-\nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q_{\mathcal{F}}\left(s_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(f_{t+c}-f_t, g_t\left(\theta_m\right)\right)
-$$</p>
+<p><code>$$` \nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q_{\mathcal{F}}\left(s_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(f_{t+c}-f_t, g_t\left(\theta_m\right)\right) `$$</code></p>
 <ul>
 <li>
-<p>$Q_{\mathcal{F}}\left(s_t, g_t\right)=Q\left(\mathcal{F}\left(s_t\right), g_t\right)=Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$</p>
+<p><code>$Q_{\mathcal{F}}\left(s_t, g_t\right)=Q\left(\mathcal{F}\left(s_t\right), g_t\right)=Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$</code></p>
 <p>몬테 카를로 탐색으로 추정한 현재 정책에 대한 보상 기댓값</p>
 </li>
 <li>
-<p>$d_{\cos }:$ cosine similarity(similarity인지 distance인지 확인해보기)</p>
-<p>$c$번의 전환 후 feature representation의 변화$(f_{t+c} - f_t)$와 목적 벡터 $g_t$의 차이</p>
+<p><code>$d_{\cos }:$</code> cosine similarity(similarity인지 distance인지 확인해보기)</p>
+<p><code>$c$</code>번의 전환 후 feature representation의 변화<code>$(f_{t+c} - f_t)$</code>와 목적 벡터 <code>$g_t$</code>의 차이</p>
 </li>
 </ul>
-<p>손실 함수에서는 높은 보상을 달성하기 위해 $g_t$가 특징 공간의 전환과 일치하도록 강제한다.</p>
-<p>$$
-\begin{aligned}&amp; \nabla_{\theta_w} \mathbb{E}<em>{s</em>{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\
-= &amp; \mathbb{E}<em>{s</em>{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\end{aligned}
-$$</p>
+<p>손실 함수에서는 높은 보상을 달성하기 위해 <code>$g_t$</code>가 특징 공간의 전환과 일치하도록 강제한다.</p>
+<p><code>$$` \begin{aligned}&amp; \nabla_{\theta_w} \mathbb{E}_{s_{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\\ = &amp; \mathbb{E}_{s_{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\end{aligned} `$$</code></p>
 </li>
 <li>
 <p><strong>WORKER — MANAGER의 지시를 따르도록 보상이 주어진다.</strong></p>
 <p>REINFORCE 알고리즘을 활용하여 보상을 최대화한다.</p>
-<p>이는 $s_{t-1}$ 상태와 함께 WORKER가 취한 $x_t$ 작업을 샘플링하여 근사할 수 있다.</p>
+<p>이는 <code>$s_{t-1}$</code> 상태와 함께 WORKER가 취한 <code>$x_t$</code> 작업을 샘플링하여 근사할 수 있다.</p>
 <p>WORKER에 제공되는 보상은 다음과 같이 정의된다.</p>
-<p>$$
-r_t^I=\frac{1}{c} \sum_{i=1}^c d_{\cos }\left(f_t-f_{t-i}, g_{t-i}\right)
-$$</p>
+<p><code>$$` r_t^I=\frac{1}{c} \sum_{i=1}^c d_{\cos }\left(f_t-f_{t-i}, g_{t-i}\right) `$$</code></p>
 </li>
 <li>
-<p><strong>실제로는 $G_\theta$는 적대적 학습 전에 사전 학습이 필요하다.</strong></p>
+<p><strong>실제로는 <code>$G_\theta$</code>는 적대적 학습 전에 사전 학습이 필요하다.</strong></p>
 <p>사전 학습 시 일관성을 유지하기 위해 MANAGER의 기울기를 통한 별도의 훈련 체계를 사용한다.</p>
-<p>$$
-\nabla_{\theta_m}^{\mathrm{pre}} g_t=-\nabla_{\theta_m} d_{\cos }\left(\hat{f}_{t+c}-\hat{f}_t, g_t\left(\theta_m\right)\right)
-$$</p>
+<p><code>$$` \nabla_{\theta_m}^{\mathrm{pre}} g_t=-\nabla_{\theta_m} d_{\cos }\left(\hat{f}_{t+c}-\hat{f}_t, g_t\left(\theta_m\right)\right) `$$</code></p>
 <ul>
-<li>$\hat{f}_t=\mathcal{F}\left(\hat{s}<em>t\right), \hat s_t, \hat s</em>{t + c}:$ 실제 텍스트의 상태</li>
+<li><code>$\hat{f}_t=\mathcal{F}\left(\hat{s}_t\right), \hat s_t, \hat s_{t + c}:$</code> 실제 텍스트의 상태</li>
 </ul>
-<p>해당 수식은 앞에서 정의한 MANAGER 미분식에서 $Q_{\mathcal{F}}\left(s_t, g_t\right)$가 $1$인 상태이다.</p>
+<p>해당 수식은 앞에서 정의한 MANAGER 미분식에서 <code>$Q_{\mathcal{F}}\left(s_t, g_t\right)$</code>가 <code>$1$</code>인 상태이다.</p>
 <p>사전 학습에 사용된 데이터는 모두 실제 문장이기 때문이다.</p>
 <p>feature space에서 실제 문장 샘플의 전환을 모방하도록 학습된다.</p>
 <p>MLE(Maximum Likelihood Estimation)를 통해 훈련된다.</p>
 </li>
 </ul>
-<p>학습 과정에서 $G_\theta$와 $D_\phi$는 번갈아가며 훈련된다.</p>
+<p>학습 과정에서 <code>$G_\theta$</code>와 <code>$D_\phi$</code>는 번갈아가며 훈련된다.</p>
 <p>생성망에서도 MANAGER와 WORKER는 번갈아가며 서로를 고정한 채 훈련된다.</p>
-<h2 id="분별망-d_phi">분별망 $D_\phi$</h2>
-<p>$D_\phi:$ 파라미터가 $\phi$인 분별망</p>
-<h3 id="1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong></h3>
-<p>전체 문장 $s_T$가 생성된 후 생성망이 파라미터를 조정할 때 가이드 역할을 한다.</p>
-<p>이 때, $D_\phi(s)$는 문장이 길어질수록 정보량이 적어지므로, 이를 해결하기 위해 추가적인 정보 $f_t$를 제공한다.</p>
+<h2 id="분별망-d_phi">분별망 <code>$D_\phi$</code></h2>
+<p><code>$D_\phi:$</code> 파라미터가 <code>$\phi$</code>인 분별망</p>
+<h3 id="1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal <code>$D_\phi(s)$</code> 제공</strong></h3>
+<p>전체 문장 <code>$s_T$</code>가 생성된 후 생성망이 파라미터를 조정할 때 가이드 역할을 한다.</p>
+<p>이 때, <code>$D_\phi(s)$</code>는 문장이 길어질수록 정보량이 적어지므로, 이를 해결하기 위해 추가적인 정보 <code>$f_t$</code>를 제공한다.</p>
 <h3 id="guiding-signalleaked-features">Guiding Signal(Leaked Features)</h3>
-<p>$$
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right)
-$$</p>
+<p><code>$$` D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right) `$$</code></p>
 <ul>
-<li>$s:$ input. 생성된 문장.</li>
-<li>$\mathcal F:$ CNN (특징맵 추출기)</li>
-<li>$f : D_\phi(s)$ 의 마지막 Layer에서의 feature vector(유출된 정보)</li>
-<li>$\phi_l^{\top}:$ 가중치 벡터</li>
+<li><code>$s:$</code> input. 생성된 문장.</li>
+<li><code>$\mathcal F:$</code> CNN (특징맵 추출기)</li>
+<li><code>$f : D_\phi(s)$</code> 의 마지막 Layer에서의 feature vector(유출된 정보)</li>
+<li><code>$\phi_l^{\top}:$</code> 가중치 벡터</li>
 </ul>
-<p>즉, $f$에 의해 Reward Value가 결정되기 때문에, 보상을 높이도록 feature(특징맵)을 뽑아야 한다.</p>
+<p>즉, <code>$f$</code>에 의해 Reward Value가 결정되기 때문에, 보상을 높이도록 feature(특징맵)을 뽑아야 한다.</p>
 <p>LeakGAN에서는 Feature Extractor로 CNN을 활용하지만, LSTM이나 다른 신경망을 활용하여 구현할 수도 있다.</p>
-<h3 id="2-f_t--s_t에서의-features">2. <strong>$f_t = s_t$에서의 features</strong></h3>
-<p>$f_t$는 분별망이 분별을 위해서 쓰이는 정보이기도 하다.</p>
+<h3 id="2-f_t--s_t에서의-features">2. <strong><code>$f_t = s_t$</code>에서의 features</strong></h3>
+<p><code>$f_t$</code>는 분별망이 분별을 위해서 쓰이는 정보이기도 하다.</p>
 <p>따라서, 전역적으로 관리된다.</p>
 <h3 id="3-learned-reward-function을-설정한다">3. <strong>Learned Reward Function을 설정한다.</strong></h3>
 <p>Black Box인 기존 RL 모델들과 대비된다.</p>
@@ -638,27 +625,25 @@ $$</p>
 <ul>
 <li>
 <p>배경</p>
-<p>SeqGAN의 적대적 훈련 과정에서, $D$가 $G$보다 너무 강한 경우 심각한 gradient 소멸 문제가 발생한다.</p>
-<p>즉, 파라미터를 갱신하기에 보상이 너무 작기 때문에 $G$에게 값을 넘기기 전에 스케일 조정이 필요하다.</p>
+<p>SeqGAN의 적대적 훈련 과정에서, <code>$D$</code>가 <code>$G$</code>보다 너무 강한 경우 심각한 gradient 소멸 문제가 발생한다.</p>
+<p>즉, 파라미터를 갱신하기에 보상이 너무 작기 때문에 <code>$G$</code>에게 값을 넘기기 전에 스케일 조정이 필요하다.</p>
 </li>
 </ul>
 <p>RankGAN로부터 영감을 받은 rank 기반 방법</p>
-<p>보상 행렬 : $R_{B\times T}$</p>
+<p>보상 행렬 : <code>$R_{B\times T}$</code></p>
 <ul>
 <li>
-<p>다음 수식으로 $t$번째 열 벡터 $R^t$의 스케일을 재조정한다.</p>
-<p>$$
-R_i^t=\sigma\left(\delta \cdot\left(0.5-\frac{\operatorname{rank}(i)}{B}\right)\right)
-$$</p>
+<p>다음 수식으로 <code>$t$</code>번째 열 벡터 <code>$R^t$</code>의 스케일을 재조정한다.</p>
+<p><code>$$` R_i^t=\sigma\left(\delta \cdot\left(0.5-\frac{\operatorname{rank}(i)}{B}\right)\right) `$$</code></p>
 </li>
 <li>
-<p>$\text {rank}(i):$ 열 벡터에서 i번째 원소의 ranking</p>
+<p><code>$\text {rank}(i):$</code> 열 벡터에서 i번째 원소의 ranking</p>
 </li>
 <li>
-<p>$\delta :$ rescale 작업의 smoothness를 조정하는 하이퍼 파라미터</p>
+<p><code>$\delta :$</code> rescale 작업의 smoothness를 조정하는 하이퍼 파라미터</p>
 </li>
 <li>
-<p>$\sigma(\cdot) :$  활성 함수(논문에서는 sigmoid)</p>
+<p><code>$\sigma(\cdot) :$</code>  활성 함수(논문에서는 sigmoid)</p>
 <p>등간격 점수를 rank 기반으로 보다 효과적인 분포로 재구성한다.</p>
 </li>
 </ul>
@@ -681,7 +666,7 @@ $$</p>
 </ul>
 <p>삽입된 지도 학습이 생성 모델에 대해 암시적 규제를 수행하여 MLE 결과로부터 너무 멀리 떨어지는 것을 방지한다.</p>
 <h3 id="temperature-control">Temperature Control</h3>
-<p>볼츠만 temperature $\alpha$.</p>
+<p>볼츠만 temperature <code>$\alpha$</code>.</p>
 <p>탐험와 탐사의 균형을 맞추는 데 사용할 수 있는 요소</p>
 <ul>
 <li>모델 훈련 시 높은 temperature 설정</li>
@@ -692,39 +677,39 @@ $$</p>
 <h3 id="필요한-요소"><strong>필요한 요소</strong></h3>
 <ul>
 <li>
-<p><strong>계층 구조 생성망 $G(θ_m, θ_w)$</strong></p>
+<p><strong>계층 구조 생성망 <code>$G(θ_m, θ_w)$</code></strong></p>
 <p>MANAGER와 WORKER로 구성</p>
 </li>
 <li>
-<p><strong>분별망 $D(φ)$</strong></p>
+<p><strong>분별망 <code>$D(φ)$</code></strong></p>
 <p>이진 분류기</p>
 </li>
 <li>
 <p><strong>훈련 데이터 셋</strong></p>
-<p>시퀀스 데이터 집합 $S = {X_1:T}$</p>
+<p>시퀀스 데이터 집합 <code>$S = {X_1:T}$</code></p>
 </li>
 </ul>
 <h3 id="알고리즘-단계"><strong>알고리즘 단계</strong></h3>
 <ol>
 <li>
 <p><strong>파라미터 초기화</strong></p>
-<p>$G(θ_m, θ_w), D(φ)$를 랜덤 가중치 $θ_m, θ_w, φ$로 초기화</p>
+<p><code>$G(θ_m, θ_w), D(φ)$</code>를 랜덤 가중치 <code>$θ_m, θ_w, φ$</code>로 초기화</p>
 </li>
 <li>
 <p><strong>사전 학습</strong></p>
 <ol>
 <li>
-<p>$<strong>D(φ)$ 사전 학습</strong></p>
-<p>$D(φ)$를 시퀀스 데이터 집합 $S$를 양성 샘플로,
-$G$에서 생성된 시퀀스를 음성 샘플로 사용하여 사전 학습한다.</p>
-<p>이때, $D(φ)$는 특징 추출기($\mathcal F$)와 출력 레이어(sigmoid)로 구성된다.</p>
-<p>$$
+<p><code>$**D(φ)$</code> 사전 학습**</p>
+<p><code>$D(φ)$</code>를 시퀀스 데이터 집합 <code>$S$</code>를 양성 샘플로,
+<code>$G$</code>에서 생성된 시퀀스를 음성 샘플로 사용하여 사전 학습한다.</p>
+<p>이때, <code>$D(φ)$</code>는 특징 추출기(<code>$\mathcal F$</code>)와 출력 레이어(sigmoid)로 구성된다.</p>
+<p><code>$$</code>
 D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right)
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
-<p>$<strong>G(θ_m, θ_w)$ 사전 학습</strong></p>
-<p>$D(φ)$로부터 유출된 정보를 사용하여 학습한다.</p>
+<p><code>$**G(θ_m, θ_w)$</code> 사전 학습**</p>
+<p><code>$D(φ)$</code>로부터 유출된 정보를 사용하여 학습한다.</p>
 </li>
 </ol>
 </li>
@@ -738,31 +723,31 @@ $$</p>
 <p><strong>생성망 단계 (g-steps)</strong></p>
 <ul>
 <li>
-<p>$G(θ)$를 사용하여 시퀀스 $Y_1:T$를 생성</p>
+<p><code>$G(θ)$</code>를 사용하여 시퀀스 <code>$Y_1:T$</code>를 생성</p>
 </li>
 <li>
-<p>각 $t$에 대해 $D(φ)$로부터 유출된 정보 $f_t$를 저장</p>
+<p>각 <code>$t$</code>에 대해 <code>$D(φ)$</code>로부터 유출된 정보 <code>$f_t$</code>를 저장</p>
 </li>
 <li>
-<p>$Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$을 통해 Monte Carlo Search를 사용하여 $Q(f_t, g_t)$를 얻어낸다.</p>
+<p><code>$Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$</code>을 통해 Monte Carlo Search를 사용하여 <code>$Q(f_t, g_t)$</code>를 얻어낸다.</p>
 </li>
 <li>
-<p>MANAGER로부터 계산된 방향 $g_t$를 얻는다.</p>
+<p>MANAGER로부터 계산된 방향 <code>$g_t$</code>를 얻는다.</p>
 </li>
 <li>
-<p>WORKER 매개변수 $θ_w, ψ$, softmax를 갱신한다.</p>
-<p>$$
+<p>WORKER 매개변수 <code>$θ_w, ψ$</code>, softmax를 갱신한다.</p>
+<p><code>$$</code>
 \begin{aligned}
 &amp; \nabla_{\theta_w} \mathbb{E}<em>{s</em>{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right] \
 = &amp; \mathbb{E}<em>{s</em>{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]
 \end{aligned}
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
-<p>MANAGER 매개변수 $θ_m$을 갱신한다.</p>
-<p>$$
+<p>MANAGER 매개변수 <code>$θ_m$</code>을 갱신한다.</p>
+<p><code>$$</code>
 \nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q\left(f_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(\mathcal{F}\left(s_{t+c}\right)-\mathcal{F}\left(s_t\right), g_t\left(\theta_m\right)\right)
-$$</p>
+<code>$$</code></p>
 </li>
 </ul>
 </li>
@@ -770,13 +755,13 @@ $$</p>
 <p><strong>분별망 단계 (d-steps)</strong></p>
 <ul>
 <li>
-<p>현재 $G(θ_m, θ_w)$를 사용하여 음성 예제를 생성하고 주어진 양성 예제 S와 결합한다.</p>
+<p>현재 <code>$G(θ_m, θ_w)$</code>를 사용하여 음성 예제를 생성하고 주어진 양성 예제 S와 결합한다.</p>
 </li>
 <li>
-<p>k-epoch 동안 $D(φ)$를 훈련한다.</p>
-<p>$$
+<p>k-epoch 동안 <code>$D(φ)$</code>를 훈련한다.</p>
+<p><code>$$</code>
 D_\phi(s)=\operatorname{sigmoid}\left(\phi_l \cdot \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l, f\right)
-$$</p>
+<code>$$</code></p>
 </li>
 </ul>
 </li>
@@ -889,17 +874,17 @@ $$</p>
     </li>
     <li><a href="#구체적-방법론">구체적 방법론</a>
       <ul>
-        <li><a href="#생성망-g_theta">생성망 $G_\theta$</a>
+        <li><a href="#생성망-g_theta">생성망 <code>$G_\theta$</code></a>
           <ul>
             <li><a href="#생성망의-계층-구조">생성망의 계층 구조</a></li>
             <li><a href="#생성망-g-학습">생성망 G 학습</a></li>
           </ul>
         </li>
-        <li><a href="#분별망-d_phi">분별망 $D_\phi$</a>
+        <li><a href="#분별망-d_phi">분별망 <code>$D_\phi$</code></a>
           <ul>
-            <li><a href="#1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal $D_\phi(s)$ 제공</strong></a></li>
+            <li><a href="#1-scalar-guiding-signal-d_phis-제공">1. <strong>Scalar Guiding Signal <code>$D_\phi(s)$</code> 제공</strong></a></li>
             <li><a href="#guiding-signalleaked-features">Guiding Signal(Leaked Features)</a></li>
-            <li><a href="#2-f_t--s_t에서의-features">2. <strong>$f_t = s_t$에서의 features</strong></a></li>
+            <li><a href="#2-f_t--s_t에서의-features">2. <strong><code>$f_t = s_t$</code>에서의 features</strong></a></li>
             <li><a href="#3-learned-reward-function을-설정한다">3. <strong>Learned Reward Function을 설정한다.</strong></a></li>
           </ul>
         </li>

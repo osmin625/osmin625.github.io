@@ -205,9 +205,9 @@
 <p>하나 이상의 집합으로 구성</p>
 <p><code>antecedent</code>와 <code>consequent</code>는 disjoint(서로소)를 만족해야 한다.</p>
 <p>k-itemset: k개의 item으로 이루어진 itemset</p>
-<p><strong>support count($\sigma$)</strong></p>
+<p><strong>support count(<code>$\sigma$</code>)</strong></p>
 <p>전체 transaction data에서 itemset이 등장하는 횟수</p>
-<p>$\tt \sigma(\text{빵,\ 우유}) = 3$</p>
+<p><code>$\tt \sigma(\text\{빵,\ 우유\}) = 3$</code></p>
 <p><strong>support</strong></p>
 <p>itemset에서 전체 transaction data에서 등장하는 비율</p>
 <ul>
@@ -224,33 +224,33 @@
 <p>minimum support 값을 넘지 못한 itemset은 infrequent itemset이라고 부른다.</p>
 <h3 id="연관-규칙의-척도">연관 규칙의 척도</h3>
 <p>frequent itemset들 사이의 연관 규칙을 만들기 위해서 measurement가 필요하다.</p>
-<p>$X\rightarrow Y$가 존재할 때, $(X,Y : \text{itemset, N: 전체 transaction 수})$</p>
+<p><code>$X\rightarrow Y$</code>가 존재할 때, <code>$(X,Y : \text{itemset, N: 전체 transaction 수})$</code></p>
 <ul>
 <li>
 <p><strong>support</strong></p>
-<p>두 itemset $X,Y$를 모두 포함하는 transaction의 비율</p>
+<p>두 itemset <code>$X,Y$</code>를 모두 포함하는 transaction의 비율</p>
 <p>즉, 전체 transaction에 대한 itemset의 확률값</p>
 <p>좋은 규칙을 찾거나, 불필요한 연산을 줄일 때 사용된다.</p>
 </li>
 <li>
 <p><strong>confidence</strong></p>
-<p>$Y$의 $X$에 대한 조건부 확률</p>
+<p><code>$Y$</code>의 <code>$X$</code>에 대한 조건부 확률</p>
 <p>confidence가 높을수록 유용한 규칙이다.</p>
 </li>
 <li>
 <p><strong>lift</strong></p>
-<p>[$X$가 포함된 transaction가운데 $Y$가 등장할 확률] / [$Y$가 등장할 확률]</p>
+<p>[<code>$X$</code>가 포함된 transaction가운데 <code>$Y$</code>가 등장할 확률] / [<code>$Y$</code>가 등장할 확률]</p>
 <p>1을 기준으로 나타난다.</p>
 <p>0~1 사이의 값이 아니다.</p>
 <ul>
 <li>
-<p>$\tt lift = 1 ⇒ X,Y\ 독립$</p>
+<p><code>$\tt lift = 1 ⇒ X,Y\ 독립$</code></p>
 </li>
 <li>
-<p>$\tt lift &gt; 1 ⇒ X,Y\ 양의\ 상관관계$</p>
+<p><code>$\tt lift &gt; 1 ⇒ X,Y\ 양의\ 상관관계$</code></p>
 </li>
 <li>
-<p>$\tt lift &lt; 1 ⇒ X,Y\ 음의\ 상관관계$</p>
+<p><code>$\tt lift &lt; 1 ⇒ X,Y\ 음의\ 상관관계$</code></p>
 </li>
 <li>
 <p>예시</p>
@@ -259,23 +259,23 @@
 <ul>
 <li>
 <p><strong>support</strong>
-$$
+<code>$$</code>
 \begin{aligned}s(X \rightarrow Y)&amp;=\frac{n(X \cup Y)}{N}=P(X \cap Y)\&amp;=\frac{n(2,5)}{5}=0.4 \end{aligned}
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
 <p><strong>confidence</strong>
-$$
+<code>$$</code>
 \begin{aligned}
 c(X \rightarrow Y)&amp;=\frac{n(X \cup Y)}{n(X)}=\frac{n(2,5)}{n(2,4,5)}=0.66 \&amp; =P(Y \mid X)=\frac{P(X \cap Y)}{P(X)}=\frac{0.4}{0.6}=0.66\end{aligned}
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
 <p><strong>lift</strong>
-$$
+<code>$$</code>
 \begin{aligned}
 l(X \rightarrow Y)=\frac{c(X \rightarrow Y)}{s(Y)}&amp;=\frac{0.66}{0.4}=1.66 \&amp; =\frac{P(X \cap Y)}{P(X) P(Y)}=\frac{s(X \rightarrow Y)}{s(X) s(Y)}=\frac{0.4}{0.6 \cdot 0.4}=1.66\end{aligned}
-$$</p>
+<code>$$</code></p>
 </li>
 </ul>
 </li>
@@ -295,11 +295,11 @@ $$</p>
 <p>사용자 입장에서 lift값을 사용하면 더 만족스러운 추천을 얻게 된다.</p>
 <ul>
 <li>
-<p>ex) 와인($X$), 와인 오프너($Y$), 생수($Z$)라고 할 때,</p>
-<p>$P(Y|X) = 0.1$, $P(Z|X) = 0.2$인 경우</p>
+<p>ex) 와인(<code>$X$</code>), 와인 오프너(<code>$Y$</code>), 생수(<code>$Z$</code>)라고 할 때,</p>
+<p><code>$P(Y|X) = 0.1$</code>, <code>$P(Z|X) = 0.2$</code>인 경우</p>
 <p>위 수식만 봤을 땐, 와인을 샀을 때 오프너가 아닌 생수를 살 확률이 더 높다.</p>
-<p>$P(Y) = 0.01$</p>
-<p>$P(Z) = 0.2$</p>
+<p><code>$P(Y) = 0.01$</code></p>
+<p><code>$P(Z) = 0.2$</code></p>
 <p>하지만, 각 물건을 살 확률을 기반으로 lift값을 계산하게되면
 와인 — 와인오프너의 lift값이 10이 되고,
 와인 — 생수의 lift값은 1이 된다.</p>

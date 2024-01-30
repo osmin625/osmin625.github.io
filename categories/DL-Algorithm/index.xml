@@ -62,7 +62,7 @@
       <link>https://osmin625.github.io/posts/cbow/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/cbow/</guid>
-      <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&amp;rsquo;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
+      <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&#39;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
     </item>
     <item>
       <title>SG: Skip-Gram</title>

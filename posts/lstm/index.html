@@ -186,13 +186,13 @@
 </ul>
 <p>게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.</p>
 <p><strong>가중치</strong></p>
-<p>순환 신경망의 ${U, V, W}$에 4개를 추가하여 ${U, U_i , U_o , W, W_i , W_o , V}$</p>
+<p>순환 신경망의 <code>$\{U, V, W\}$</code>에 4개를 추가하여 <code>$\{U, U_i , U_o , W, W_i , W_o , V\}$</code></p>
 <ul>
 <li>
-<p>$i$ : 입력 게이트</p>
+<p><code>$i$</code> : 입력 게이트</p>
 </li>
 <li>
-<p>$o$ : 출력 게이트</p>
+<p><code>$o$</code> : 출력 게이트</p>
 </li>
 <li>
 <p>다양한 구조 설계가 가능하다.</p>
@@ -241,9 +241,7 @@
 </li>
 </ol>
 <h3 id="수식-요약">수식 요약</h3>
-<p>$$
-\begin{aligned}f_t &amp; =\sigma_g\left(W_f x_t+U_f h_{t-1}+b_f\right) \i_t &amp; =\sigma_g\left(W_i x_t+U_i h_{t-1}+b_i\right) \o_t &amp; =\sigma_g\left(W_o x_t+U_o h_{t-1}+b_o\right) \\tilde{c}<em>t &amp; =\sigma_c\left(W_c x_t+U_c h</em>{t-1}+b_c\right) \c_t &amp; =f_t \odot c_{t-1}+i_t \odot \tilde{c}_t \h_t &amp; =o_t \odot \sigma_h\left(c_t\right)\end{aligned}
-$$</p>
+<p><code>$$ \begin{aligned}f_t &amp; =\sigma_g\left(W_f x_t+U_f h_{t-1}+b_f\right) \\i_t &amp; =\sigma_g\left(W_i x_t+U_i h_{t-1}+b_i\right) \\o_t &amp; =\sigma_g\left(W_o x_t+U_o h_{t-1}+b_o\right) \\\tilde{c}_t &amp; =\sigma_c\left(W_c x_t+U_c h_{t-1}+b_c\right) \\c_t &amp; =f_t \odot c_{t-1}+i_t \odot \tilde{c}_t \\h_t &amp; =o_t \odot \sigma_h\left(c_t\right)\end{aligned} $$</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ft <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wf) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uf) <span style="color:#f92672">+</span> bf)  <span style="color:#75715e"># forget gate</span>
 </span></span><span style="display:flex;"><span>it <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wi) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Ui) <span style="color:#f92672">+</span> bi)  <span style="color:#75715e"># input gate</span>
 </span></span><span style="display:flex;"><span>ot <span style="color:#f92672">=</span> sigmoid(np<span style="color:#f92672">.</span>dot(xt, Wo) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uo) <span style="color:#f92672">+</span> bo)  <span style="color:#75715e"># output gate</span>

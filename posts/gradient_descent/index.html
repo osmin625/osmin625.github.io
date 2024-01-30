@@ -187,8 +187,8 @@
 <p>자연 과학과 공학에서 오랫동안 사용해온 최적화 방법</p>
 <p><strong>손실 함수의 최적 해를 찾기 위한 방법</strong></p>
 <p>1차 근삿값 발견을 위한 최적화 알고리즘</p>
-<p>미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 <strong>방향</strong>이다.</p>
-<p>따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.</p>
+<p>미분 값 <code>$\partial J\over\partial w_1$</code>의 반대 방향이 최적 해에 접근하는 <strong>방향</strong>이다.</p>
+<p>따라서, 현재 가중치 <code>$w_1$</code>에 <code>$-{\partial J\over\partial w_1}$</code>을 더하면 최적 해에 가까워진다.</p>
 <ul>
 <li><strong>굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</strong>
 <ul>
@@ -198,27 +198,19 @@
 </li>
 </ul>
 <!-- raw HTML omitted -->
-<p>$$
-w_{t+1} = w_t + \rho\left(-{\partial J\over\partial w_t}\right)
-$$</p>
-<p>$$
-w \leftarrow w + \eta \left( -\frac{\partial L}{\partial w}\right)
-$$</p>
+<p><code>$$ w_{t+1} = w_t + \rho\left(-{\partial J\over\partial w_t}\right) $$</code></p>
+<p><code>$$ w \leftarrow w + \eta \left( -\frac{\partial L}{\partial w}\right) $$</code></p>
 <ul>
-<li>$J, L$ : 손실 함수</li>
-<li>$\rho,\eta \text{(로, 에타)}$ : 학습률</li>
-<li>$\leftarrow$ : 업데이트를 의미한다.</li>
+<li><code>$J, L$</code> : 손실 함수</li>
+<li><code>$\rho,\eta \text{(로, 에타)}$</code> : 학습률</li>
+<li><code>$\leftarrow$</code> : 업데이트를 의미한다.</li>
 </ul>
 <p>표기는 다양하다.</p>
 <p><img src="gd.png" alt="GD"></p>
 <hr>
 <p>매개변수가 여럿인 경우, 편미분으로 구한 기울기를 사용한다.</p>
 <p>매개변수마다 독립적으로 미분한다.</p>
-<p>$$
-{\tt{w = w + \rho\left(\tt-\triangledown w\right)}}
-\
-\tt\triangledown w = \left({\partial J\over\partial w_0},{\partial J\over\partial w_1},{\partial J\over\partial w_2},&hellip;,{\partial J\over\partial w_d}\right)
-$$</p>
+<p><code>$$ {\tt{w = w + \rho\left(\tt-\triangledown w\right)}} \\ \tt\triangledown w = \left({\partial J\over\partial w_0},{\partial J\over\partial w_1},{\partial J\over\partial w_2},...,{\partial J\over\partial w_d}\right) $$</code></p>
 <p><img src="gd1.png" alt="GD"></p>
 <!-- raw HTML omitted -->
 <h3 id="적절한-학습률">적절한 학습률</h3>
@@ -286,9 +278,9 @@ $$</p>
 <p>Gradient Descent Algorithm에는 여러 문제점들이 존재하는데, 이를 해결한 <a href="https://osmin625.github.io/posts/Optimizer/">Optimizer</a>들이 등장한다.</p>
 <ul>
 <li>
-<p>Quiz. $f(x,y,z)$의 그래디언트 벡터는?</p>
-<p>$f(x,y,z) = 9x^2 + 5y^3 - 3z$</p>
-<p>$\tt ans = (18x, 15y^2, -3)$</p>
+<p>Quiz. <code>$f(x,y,z)$</code>의 그래디언트 벡터는?</p>
+<p><code>$f(x,y,z) = 9x^2 + 5y^3 - 3z$</code></p>
+<p><code>$\tt ans = (18x, 15y^2, -3)$</code></p>
 </li>
 </ul>
 

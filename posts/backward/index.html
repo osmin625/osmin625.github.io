@@ -196,13 +196,13 @@ Autograd, loss, optimizer, nn.Module</li>
 </span></span><span style="display:flex;"><span>z<span style="color:#f92672">.</span>backward()
 </span></span><span style="display:flex;"><span>w<span style="color:#f92672">.</span>grad()
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output : tensor(40.)</span>
-</span></span></code></pre></div><p>$$
+</span></span></code></pre></div><p><code>$$</code>
 w = 2\
 y = w^2\
 z = 10\times y  + 25\
 z = 10 \times w^2 + 25\
 {dz\over dw} = 20 \times w = 40
-$$</p>
+<code>$$</code></p>
 <p><strong>미분 값이 여러 개인 경우</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">2.</span>,<span style="color:#ae81ff">3.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">6.</span>,<span style="color:#ae81ff">4.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
@@ -216,13 +216,13 @@ $$</p>
 </span></span><span style="display:flex;"><span>b<span style="color:#f92672">.</span>grad
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([36.,81.])</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([-12.,-8.])</span>
-</span></span></code></pre></div><p>$$
+</span></span></code></pre></div><p><code>$$</code>
 \begin{aligned}
 &amp;Q = 3a^3 - b^2\
 &amp; \frac{\partial Q}{\partial a}=9 a^2 \
 &amp; \frac{\partial Q}{\partial b}=-2 b
 \end{aligned}
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
 <p><strong>미분 값을 tensor에 저장한다.</strong></p>
@@ -247,9 +247,7 @@ $$</p>
 </span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>grads <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;dw&#34;</span>: torch<span style="color:#f92672">.</span>zeros(dim, <span style="color:#ae81ff">1</span>, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float)<span style="color:#f92672">.</span>to(device), 
 </span></span><span style="display:flex;"><span>					  <span style="color:#e6db74">&#34;db&#34;</span>: torch<span style="color:#f92672">.</span>scalar_tensor(<span style="color:#ae81ff">0</span>)<span style="color:#f92672">.</span>to(device)}
 </span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>lr <span style="color:#f92672">=</span> lr<span style="color:#f92672">.</span>to(device)
-</span></span></code></pre></div><p>$$
-h_\theta(x)=\frac{1}{1+e^{-\theta^T \mathbf{x}}}
-$$</p>
+</span></span></code></pre></div><p><code>$$ h_\theta(x)=\frac{1}{1+e^{-\theta^T \mathbf{x}}} $$</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x): 
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">## compute forward</span>
@@ -264,18 +262,14 @@ $$</p>
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">## compute backward</span>
 </span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>mm(x, (yhat <span style="color:#f92672">-</span> y)<span style="color:#f92672">.</span>T) 
 </span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>] <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>x<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> torch<span style="color:#f92672">.</span>sum(yhat <span style="color:#f92672">-</span> y)
-</span></span></code></pre></div><p>$$
-\begin{aligned}&amp;\frac{\partial}{\partial \theta_j} J(\theta)=\frac{1}{m} \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned}
-$$</p>
+</span></span></code></pre></div><p><code>$$ \begin{aligned}&amp;\frac{\partial}{\partial \theta_j} J(\theta)=\frac{1}{m} \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned} $$</code></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">optimize</span>(self):
 </span></span><span style="display:flex;"><span>	<span style="color:#75715e">## optimization step</span>
 </span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>w <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>w <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;dw&#34;</span>]
 </span></span><span style="display:flex;"><span>	self<span style="color:#f92672">.</span>b <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>b <span style="color:#f92672">-</span> self<span style="color:#f92672">.</span>lr <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>grads[<span style="color:#e6db74">&#34;db&#34;</span>]
-</span></span></code></pre></div><p>기존의 $\theta$, 즉, $\tt w$ 값에 미분값 만큼의 업데이트를 수행해주는 함수.</p>
-<p>$$
-\begin{aligned}\theta_j &amp; :=\theta_j-\alpha \frac{\partial}{\partial \theta_j} J(\theta) \&amp; :=\theta_j-\alpha \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned}
-$$</p>
+</span></span></code></pre></div><p>기존의 <code>$\theta$</code>, 즉, <code>$\tt w$</code> 값에 미분값 만큼의 업데이트를 수행해주는 함수.</p>
+<p><code>$$ \begin{aligned}\theta_j &amp; :=\theta_j-\alpha \frac{\partial}{\partial \theta_j} J(\theta) \\&amp; :=\theta_j-\alpha \sum_{i=1}^m\left(h_\theta\left(x^i\right)-y^i\right) x_j^i\end{aligned} $$</code></p>
 <ul>
 <li>
 <p>전체 코드</p>

@@ -178,9 +178,7 @@
 <p>가장 간단한 보간법</p>
 <p>두 점을 이은 직선의 방정식을 근사 함수로 사용한다.</p>
 <p>데이터 점들 사이의 간격이 작을수록 더 좋은 근삿값을 얻는다.</p>
-<p>$$
-\mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right)
-$$</p>
+<p><code>$$ \mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right) $$</code></p>
 <h1 id="polynomial-interpolation"><strong>Polynomial interpolation</strong></h1>
 <p>(n+1)개의 점이 주어진 경우 n차 이하의 <strong>유일한</strong> 다항식을 구할 수 있다.</p>
 <ul>
@@ -188,36 +186,36 @@ $$</p>
 <p><strong>Q. n+1개의 점으로 찾을 수 있는 n차 다항식은 왜 유일한가?</strong></p>
 <p><strong>방데르몽드 행렬</strong></p>
 <p>각 행의 초항이 1인 등비수열로 이루어진 행렬</p>
-<p>$$
+<p><code>$$</code>
 V=\left(\begin{array}{ccccc}1 &amp; \alpha_1 &amp; \alpha_1^2 &amp; \cdots &amp; \alpha_1^{n-1} \\\\
 1 &amp; \alpha_2 &amp; \alpha_2^2 &amp; \cdots &amp; \alpha_2^{n-1} \\\
 1 &amp; \alpha_3 &amp; \alpha_3^2 &amp; \cdots &amp; \alpha_3^{n-1} \\\\
 \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \\\\
 1 &amp; \alpha_m &amp; \alpha_m^2 &amp; \cdots &amp; \alpha_m^{n-1}\end{array}\right)
-$$</p>
-<p>방데르몽드 행렬 $V$에 대해 다음과 같이 일반화할 수 있다.</p>
-<p>$$
+<code>$$</code></p>
+<p>방데르몽드 행렬 <code>$V$</code>에 대해 다음과 같이 일반화할 수 있다.</p>
+<p><code>$$</code>
 \operatorname{det} V=\prod_{i&lt;j}\left(\alpha_i-\alpha_j\right)
-$$</p>
-<p>따라서, $a_0,a_1,&hellip;,a_n$이 서로 다른 값을 가진다면 $V$는 역행렬이 존재한다.</p>
-<p>가역 행렬의 기본 정리에 의해 $\tt Vx = b$의 해는 유일하다.</p>
+<code>$$</code></p>
+<p>따라서, <code>$a_0,a_1,...,a_n$</code>이 서로 다른 값을 가진다면 <code>$V$</code>는 역행렬이 존재한다.</p>
+<p>가역 행렬의 기본 정리에 의해 <code>$\tt Vx = b$</code>의 해는 유일하다.</p>
 </li>
 </ul>
 <p>이제 다항식을 찾아내는 세 가지 방법을 알아보자.</p>
 <h3 id="미정-계수법"><strong>미정 계수법</strong></h3>
 <p>다항식을 찾는 가장 보편적인 방법</p>
-<p>보간 다항식 $p(x) = a_0 + a_1x + a_2x^2 + &hellip; + a_nx^n$에 대해</p>
+<p>보간 다항식 <code>$p(x) = a_0 + a_1x + a_2x^2 + ... + a_nx^n$</code>에 대해</p>
 <ol>
 <li>
-<p><strong>주어진 $n+1$개의 점을 $p(x)$에 대입하여 연립 방정식을 생성한다.</strong></p>
+<p><strong>주어진 <code>$n+1$</code>개의 점을 <code>$p(x)$</code>에 대입하여 연립 방정식을 생성한다.</strong></p>
 <p>모두 다 대입하면 아래와 같이 방데르몽드 행렬식 형태를 얻을 수 있다.</p>
-<p>$$
+<p><code>$$</code>
 \begin{array}{cc}p\left(x_0\right)=f\left(x_0\right) &amp; a_0+a_1 x_0+a_2 x_0^2+\cdots+a_n x_0^n=f\left(x_0\right)\\\
 p\left(x_1\right)=f\left(x_1\right) &amp; a_0+a_1 x_1+a_2 x_1^2+\cdots+a_n x_1^n=f\left(x_1\right)\\\
 \vdots &amp; \vdots \\\
 p\left(x_n\right)=f\left(x_n\right) &amp; a_0+a_1 x_n+a_2 x_n^2+\cdots+a_n x_n^n+\left(x_n\right)\end{array}
-$$</p>
-<p>$$
+<code>$$</code></p>
+<p><code>$$</code>
 \left[\begin{array}{ccccc}1 &amp; x_0 &amp; x_0^2 &amp; \cdots &amp; x_0^n \\\
 1 &amp; x 1 &amp; x_1^2 &amp; \cdots &amp; x_1^n \\\
 &amp; &amp; &amp; \cdots &amp; \\\
@@ -228,7 +226,7 @@ a n\end{array}\right]=\left[\begin{array}{c}f\left(x_0\right) \\\
 f\left(x_1\right) \\\
 \cdots \\\
 f\left(x_n\right)\end{array}\right]
-$$</p>
+<code>$$</code></p>
 </li>
 <li>
 <p><strong>가우스 소거법 등으로 연립 방정식의 해를 구한다.</strong></p>
@@ -243,45 +241,29 @@ $$</p>
 <p>연립 방정식을 풀지 않고 다항식을 결정하는 방법</p>
 <p>특정 숫자를 대입하면 0이나 1이 되는 항을 만든다.</p>
 <ol>
-<li>$(x-a)$를 곱해주면 $x$에 a값을 대입할 때 0이 된다.</li>
-<li>$(x-a)$를 $(b-a)$로 나누면, $x$에 $b$를 대입했을 때 1이 된다.</li>
+<li><code>$(x-a)$</code>를 곱해주면 <code>$x$</code>에 a값을 대입할 때 0이 된다.</li>
+<li><code>$(x-a)$</code>를 <code>$(b-a)$</code>로 나누면, <code>$x$</code>에 <code>$b$</code>를 대입했을 때 1이 된다.</li>
 </ol>
 <p><strong>1차 함수</strong></p>
-<p>두 점$(x_0, y_0), (x_1, y_1)$이 주어진 경우</p>
-<p>$$
-y=\left(\frac{x-x_1}{x_0-x_1}\right) y_0+\left(\frac{x-x_0}{x_1-x_0}\right) y_1
-$$</p>
-<p>위 식에 $x_0$을 대입하면 $y_0$이 나오고, $x_1$을 대입하면 $y_1$이 나온다.</p>
-<p>해당 식은 직관적으로 $(x_0,0),(x_1,y_1)$을 지나는 직선의 기울기와 $(x_0,y_0),(x_1,0)$을 지나는 직선의 기울기의 합으로 이해할 수 있다.</p>
+<p>두 점<code>$(x_0, y_0), (x_1, y_1)$</code>이 주어진 경우</p>
+<p><code>$$ y=\left(\frac{x-x_1}{x_0-x_1}\right) y_0+\left(\frac{x-x_0}{x_1-x_0}\right) y_1 $$</code></p>
+<p>위 식에 <code>$x_0$</code>을 대입하면 <code>$y_0$</code>이 나오고, <code>$x_1$</code>을 대입하면 <code>$y_1$</code>이 나온다.</p>
+<p>해당 식은 직관적으로 <code>$(x_0,0),(x_1,y_1)$</code>을 지나는 직선의 기울기와 <code>$(x_0,y_0),(x_1,0)$</code>을 지나는 직선의 기울기의 합으로 이해할 수 있다.</p>
 <p><img src="polynomial_interpolation.png" alt="Alt text"></p>
 <p><strong>2차 함수</strong></p>
-<p>세 점$(x_0, y_0), (x_1, y_1), (x_2, y_2)$이 주어진 경우</p>
-<p>$$
-y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)}\right) y_0+\left(\frac{\left(x-x_2\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_0\right)}\right) y_1\\\
-+\left(\frac{\left(x-x_0\right)\left(x-x_1\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)}\right) y_2
-$$</p>
+<p>세 점<code>$(x_0, y_0), (x_1, y_1), (x_2, y_2)$</code>이 주어진 경우</p>
+<p><code>$$ y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)}\right) y_0+\left(\frac{\left(x-x_2\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_0\right)}\right) y_1\\\\\\ +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)}\right) y_2 $$</code></p>
 <p><img src="polynomial_interpolation1.png" alt="Alt text"></p>
-<p>마찬가지로, $(x_i,y_i)$를 지나면서 $(x_j,0)$을 지나는 이차 함수의 기울기의 합으로 이해할 수 있다.</p>
+<p>마찬가지로, <code>$(x_i,y_i)$</code>를 지나면서 <code>$(x_j,0)$</code>을 지나는 이차 함수의 기울기의 합으로 이해할 수 있다.</p>
 <p><strong>3차 함수</strong></p>
 <p>네 점이 주어진 경우</p>
-<p>$$
-y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)\left(x-x_3\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)\left(x_0-x_3\right)}\right) y_0\\\
-+\left(\frac{\left(x-x_2\right)\left(x-x_3\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_3\right)\left(x_1-x_0\right)}\right) y_1\\\
-+\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_3\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)\left(x_2-x_3\right)}\right) y_2\\\
-+\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_2\right)}{\left(x_3-x_0\right)\left(x_3-x_1\right)\left(x_3-x_2\right)}\right) y_3
-$$</p>
+<p><code>$$ y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)\left(x-x_3\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)\left(x_0-x_3\right)}\right) y_0\\\\\\ +\left(\frac{\left(x-x_2\right)\left(x-x_3\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_3\right)\left(x_1-x_0\right)}\right) y_1\\\\\\ +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_3\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)\left(x_2-x_3\right)}\right) y_2\\\\\\ +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)\left(x-x_2\right)}{\left(x_3-x_0\right)\left(x_3-x_1\right)\left(x_3-x_2\right)}\right) y_3 $$</code></p>
 <p><strong>일반화</strong></p>
-<p>$$
-L_i(x)=\prod_{\substack{j=0 \ j \neq i}}^n \frac{x-x_j}{x_i-x_j}
-$$</p>
-<p>위의 식은 곧 $x_i$를 넣었을 때 $y_i$가 나온다는 것을 의미한다.</p>
-<p>$$
-\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\
-&amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right)
-\end{matrix}
-$$</p>
+<p><code>$$ L_i(x)=\prod_{\substack{j=0 \\ j \neq i}}^n \frac{x-x_j}{x_i-x_j} $$</code></p>
+<p>위의 식은 곧 <code>$x_i$</code>를 넣었을 때 <code>$y_i$</code>가 나온다는 것을 의미한다.</p>
+<p><code>$$ \begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\\\\ &amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right) \end{matrix} $$</code></p>
 <p>Q. 단일 함수를 구할 수 있는가?</p>
-<p>$P_n\left(x_i\right)=y_i$를 만족하므로 $\mathrm{n}+1$개의 점 $\left(x_i, y_i\right)$을 지나는 유일한 $\mathrm{n}$차 다항식이다.</p>
+<p><code>$P_n\left(x_i\right)=y_i$</code>를 만족하므로 <code>$\mathrm{n}+1$</code>개의 점 <code>$\left(x_i, y_i\right)$</code>을 지나는 유일한 <code>$\mathrm{n}$</code>차 다항식이다.</p>
 <p>Q. 연산량이 기존 방법과 비교했을 때 늘어나는가, 줄어드는가?</p>
 <p><strong>단점</strong></p>
 <ul>
@@ -314,187 +296,127 @@ $$</p>
 </blockquote>
 <p>뉴턴 형이 주어졌을 때, 상수 항들을 어떻게 계산해야 할까?</p>
 <p><strong>뉴턴 형</strong></p>
-<p>서로 다른 점 $x_0, &hellip;, x_n$에 대해 x값에 따라 상수 항들을 순서대로 구할 수 있는 형태</p>
-<p>$$
-\begin{matrix}P_n(x)=a_0+a_1\left(x-x_0\right)
-+a_2\left(x-x_0\right)\left(x-x_1\right)+\\\
-\ldots+a_n\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_{n-1}\right)\end{matrix}
-$$</p>
-<p>식이 복잡하게 생겼다. $P_n(x) = f(x)$라 정의하고, 식을 상수 항 기준으로 정리해보자.</p>
-<h3 id="a_0-a_1-도출-과정">$a_0, a_1$ 도출 과정</h3>
-<p>$$
-a_0 = f\left(x_0\right)\\\
-f(x_1) = a_0 + a_1(x_1-x_0),\\\
-\therefore a_1 =  {f\left(x_1\right) - f(x_0)\over x_1-x_0}
-$$</p>
-<p>해당 식의 형태를 $f[x_0,x_1]$로 치환하자.</p>
+<p>서로 다른 점 <code>$x_0, ..., x_n$</code>에 대해 x값에 따라 상수 항들을 순서대로 구할 수 있는 형태</p>
+<p><code>$$ \begin{matrix}P_n(x)=a_0+a_1\left(x-x_0\right) +a_2\left(x-x_0\right)\left(x-x_1\right)+\\\\\\ \ldots+a_n\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_{n-1}\right)\end{matrix} $$</code></p>
+<p>식이 복잡하게 생겼다. <code>$P_n(x) = f(x)$</code>라 정의하고, 식을 상수 항 기준으로 정리해보자.</p>
+<h3 id="a_0-a_1-도출-과정"><code>$a_0, a_1$</code> 도출 과정</h3>
+<p><code>$$ a_0 = f\left(x_0\right)\\\\\\ f(x_1) = a_0 + a_1(x_1-x_0),\\\\\\ \therefore a_1 =  {f\left(x_1\right) - f(x_0)\over x_1-x_0} $$</code></p>
+<p>해당 식의 형태를 <code>$f[x_0,x_1]$</code>로 치환하자.</p>
 <p>이는 first order Divided Difference라고 부른다.</p>
 <h3 id="first-order-divided-difference"><strong>first order Divided Difference</strong></h3>
-<p>$$
-f\left[x_0, x_1\right]=\frac{f\left(x_1\right)-f\left(x_0\right)}{x_1-x_0}
-$$</p>
+<p><code>$$ f\left[x_0, x_1\right]=\frac{f\left(x_1\right)-f\left(x_0\right)}{x_1-x_0} $$</code></p>
 <p>한글로 번역하면 1차 분할 차분인데, 이는 위의 수식이 1차 미분에 대한 이산적인 추정치로 쓰일 수 있기 때문이다.</p>
-<p>만약 $f(x)$가 구간 $[x_0,x_1]$에서 미분 가능하다면, 평균값 정리에 의해$f\left[x_0, x_1\right]=f^{\prime}(c)$임을 보장한다.</p>
-<h3 id="a_2-도출-과정">$a_2$ 도출 과정</h3>
-<p>$$
-\begin{matrix}
-f(x_2) &amp;=&amp; a_0 + a_1(x_2 - x_0) + a_2(x_2-x_0)(x_2-x_1)\\\
-&amp;=&amp; f(x_0) + (x_2 - x_0)(a_1 + a_2(x_2 - x_1)),\\\
-f(x_2) - f(x_0) &amp;=&amp; (x_2-x_0)(a_1 + a_2(x_2 - x_1))
-\end{matrix}
-$$</p>
+<p>만약 <code>$f(x)$</code>가 구간 <code>$[x_0,x_1]$</code>에서 미분 가능하다면, 평균값 정리에 의해<code>$f\left[x_0, x_1\right]=f^{\prime}(c)$</code>임을 보장한다.</p>
+<h3 id="a_2-도출-과정"><code>$a_2$</code> 도출 과정</h3>
+<p><code>$$ \begin{matrix} f(x_2) &amp;=&amp; a_0 + a_1(x_2 - x_0) + a_2(x_2-x_0)(x_2-x_1)\\\\\\ &amp;=&amp; f(x_0) + (x_2 - x_0)(a_1 + a_2(x_2 - x_1)),\\\\\\ f(x_2) - f(x_0) &amp;=&amp; (x_2-x_0)(a_1 + a_2(x_2 - x_1)) \end{matrix} $$</code></p>
 <p>이고, 이를 좀 더 정리하면</p>
-<p>$$
-\frac{f(x_2)-f(x_0)}{x_2-x_0} = a_1 + a_2(x_2 - x_1)
-$$</p>
+<p><code>$$ \frac{f(x_2)-f(x_0)}{x_2-x_0} = a_1 + a_2(x_2 - x_1) $$</code></p>
 <p>이 된다.</p>
-<p>여기서, $a_1$과 $a_2$에서 반복되는 형태를 $f[x_a,x_b]$로 치환하자.</p>
-<p>$$
-f[x_0,x_2] = f[x_0,x_1] + a_2(x_2 - x_1)\\\
-\frac{f[x_0,x_2] - f[x_0,x_1]}{x_2 - x_1} = a_2\\\
-$$</p>
-<p>위 식은 $f[x_0,x_1,x_2]$로 치환하며, <strong>Second order Divided Difference</strong>라고 부른다.</p>
+<p>여기서, <code>$a_1$</code>과 <code>$a_2$</code>에서 반복되는 형태를 <code>$f[x_a,x_b]$</code>로 치환하자.</p>
+<p><code>$$ f[x_0,x_2] = f[x_0,x_1] + a_2(x_2 - x_1)\\\\\\ \frac{f[x_0,x_2] - f[x_0,x_1]}{x_2 - x_1} = a_2\\\\\\ $$</code></p>
+<p>위 식은 <code>$f[x_0,x_1,x_2]$</code>로 치환하며, <strong>Second order Divided Difference</strong>라고 부른다.</p>
 <h3 id="high-order-divided-difference"><strong>High order Divided Difference</strong></h3>
-<p>$$
-f\left[x_0, x_1, x_2\right]=\frac{f\left[x_1, x_2\right]-f\left[x_0, x_1\right]}{x_2-x_0}
-$$</p>
-<p>$$
-f\left[x_0, x_1, x_2, x_3\right]=\frac{f\left[x_1, x_2, x_3\right]-f\left[x_0, x_1, x_2\right]}{x_3-x_0}
-$$</p>
-<p>$$
-f\left[x_0, \ldots, x_n\right]=\frac{f\left[x_1, \ldots, x_n\right]-f\left[x_0, \ldots, x_{n-1}\right]}{x_n-x_0}
-$$</p>
-<p>이와 같은 형태로 나머지 $a_n$에 대해서도 정리할 수 있고, 최종적으로 기존의 뉴턴 형은 다음과 같은 형태가 된다.</p>
-<p>$$
-\begin{aligned}&amp; P_1(x)=f\left(x_0\right)+\left(x-x_0\right) f\left[x_0, x_1\right] \\\
-&amp; \begin{aligned}P_2(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right] \\\
-&amp; +\left(x-x_0\right)\left(x-x_1\right) f\left[x_0, x_1, x_2\right]\end{aligned}\
-&amp;\ \ \ \ \ \ \ \ \ \ \ \ \vdots\\\
-&amp;\begin{aligned}P_n(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right]+\cdots \\\
-&amp; +\left(x-x_0\right)\left(x-x_1\right) \cdots\left(x-x_{n-1}\right) f\left[x_0, x_1, \ldots, x_n\right]\end{aligned}\end{aligned}
-$$</p>
+<p><code>$$ f\left[x_0, x_1, x_2\right]=\frac{f\left[x_1, x_2\right]-f\left[x_0, x_1\right]}{x_2-x_0} $$</code></p>
+<p><code>$$ f\left[x_0, x_1, x_2, x_3\right]=\frac{f\left[x_1, x_2, x_3\right]-f\left[x_0, x_1, x_2\right]}{x_3-x_0} $$</code></p>
+<p><code>$$ f\left[x_0, \ldots, x_n\right]=\frac{f\left[x_1, \ldots, x_n\right]-f\left[x_0, \ldots, x_{n-1}\right]}{x_n-x_0} $$</code></p>
+<p>이와 같은 형태로 나머지 <code>$a_n$</code>에 대해서도 정리할 수 있고, 최종적으로 기존의 뉴턴 형은 다음과 같은 형태가 된다.</p>
+<p><code>$$ \begin{aligned}&amp; P_1(x)=f\left(x_0\right)+\left(x-x_0\right) f\left[x_0, x_1\right] \\\\\\ &amp; \begin{aligned}P_2(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right] \\\\\\ &amp; +\left(x-x_0\right)\left(x-x_1\right) f\left[x_0, x_1, x_2\right]\end{aligned}\\ &amp;\ \ \ \ \ \ \ \ \ \ \ \ \vdots\\\\\\ &amp;\begin{aligned}P_n(x)=f\left(x_0\right) &amp; +\left(x-x_0\right) f\left[x_0, x_1\right]+\cdots \\\\\\ &amp; +\left(x-x_0\right)\left(x-x_1\right) \cdots\left(x-x_{n-1}\right) f\left[x_0, x_1, \ldots, x_n\right]\end{aligned}\end{aligned} $$</code></p>
 <p>여기에서 중요한 점은, 기호화를 함으로써 값을 재활용할 수 있게 되었다는 것이다.</p>
 <p>또한, 기존의 값을 활용하여 다음 값을 구할 수 있게 되었다.</p>
 <p>최종적으로 뉴턴 공식을 일반화하여 정리하면 다음과 같은 형태가 된다.</p>
-<p>$$
-\begin{aligned}P_n(x) &amp; =f\left[x_0\right]+f\left[x_0, x_1\right]\left(x-x_0\right)+\cdots\\\
-&amp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ +f\left[x_0, \cdots, x_n\right]\left(x-x_0\right) \cdots\left(x-x_{n-1}\right) \\\
-&amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right]\left(x-x_0\right) \cdots\left(x-x_{k-1}\right) \\\
-&amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right] \prod_{i=0}^{k-1}\left(x-x_i\right)\end{aligned}
-$$</p>
+<p><code>$$ \begin{aligned}P_n(x) &amp; =f\left[x_0\right]+f\left[x_0, x_1\right]\left(x-x_0\right)+\cdots\\\\\\ &amp;\ \ \ \ \ \ \ \ \ \ \ \ \ \ +f\left[x_0, \cdots, x_n\right]\left(x-x_0\right) \cdots\left(x-x_{n-1}\right) \\\\\\ &amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right]\left(x-x_0\right) \cdots\left(x-x_{k-1}\right) \\\\\\ &amp; =f\left[x_0\right]+\sum_{k=1}^n f\left[x_0, \cdots, x_k\right] \prod_{i=0}^{k-1}\left(x-x_i\right)\end{aligned} $$</code></p>
 <p>이를 점화식의 형태로 정리하면 다음과 같다.</p>
-<p>$$
-p_{n+1}(x)=p_n(x)+f[x_0, x_1, \cdots, x_n, x_{{n+1}}] \prod_{j=0}^n(x-x_j)
-$$</p>
+<p><code>$$ p_{n+1}(x)=p_n(x)+f[x_0, x_1, \cdots, x_n, x_{{n+1}}] \prod_{j=0}^n(x-x_j) $$</code></p>
 <h1 id="2-error-in-polynomial-interpolation">2. Error in polynomial interpolation</h1>
 <p>보간 다항식은 결국 실제 함수에 대한 추정이기 때문에, 오차가 존재한다.</p>
 <p>라그랑주 보간법의 오차를 계산해보자.</p>
-<p>앞에서 $P_n(x)$를 다음과 같이 정리했다.</p>
-<p>$$
-\begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\
-&amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right)
-\end{matrix}
-$$</p>
+<p>앞에서 <code>$P_n(x)$</code>를 다음과 같이 정리했다.</p>
+<p><code>$$ \begin{matrix}P_n(x)&amp;=&amp;L_0(x) f\left(x_0\right)+L_1(x) f\left(x_1\right)+\cdots L_n(x) f\left(x_n\right)\\\\\\ &amp;=&amp;\sum_{i=0}^n L_{i(x)} f\left(x_i\right) \end{matrix} $$</code></p>
 <ul>
-<li>$f(x):$  구간 $[a,b]$에서 정의된 함수(실제 함수)</li>
-<li>$p_n(x): n+1$ $n+1$$f(x)$의 보간 다항식</li>
+<li><code>$f(x):$</code>  구간 <code>$[a,b]$</code>에서 정의된 함수(실제 함수)</li>
+<li><code>$p_n(x): n+1$</code> <code>$n+1$``$f(x)$</code>의 보간 다항식</li>
 </ul>
 <p>이라 했을 때, 다음이 성립한다.</p>
-<p>$$
-f(x)=P_n(x) + \frac{\left(x-x_0\right)\left(x-x_1\right) \cdots\left(x-x_n\right)}{(n+1) !} f^{(n+1)}\left(c_x\right)
-$$</p>
+<p><code>$$ f(x)=P_n(x) + \frac{\left(x-x_0\right)\left(x-x_1\right) \cdots\left(x-x_n\right)}{(n+1) !} f^{(n+1)}\left(c_x\right) $$</code></p>
 <ul>
 <li>
-<p>$c_x : [a,b]$ 구간 내 임의의 점</p>
+<p><code>$c_x : [a,b]$</code> 구간 내 임의의 점</p>
 </li>
 <li>
 <p>증명 과정</p>
 <ol>
 <li>
-<p>실제 함수$f(x)$와 보간 다항식 $P_n(x)$의 차이에 대한 함수를 $R_n(x)$라 하자. $(x \neq x_k)$</p>
-<p>즉, $f(x) = P_n(x) + R_n(x)$가 성립하는 상황에서,</p>
-<p>$R_n(x)$는 $x_k$마다 0이 되기 때문에 다음과 같이 정의할 수 있다.</p>
-<p>$$
+<p>실제 함수<code>$f(x)$</code>와 보간 다항식 <code>$P_n(x)$</code>의 차이에 대한 함수를 <code>$R_n(x)$</code>라 하자. <code>$(x \neq x_k)$</code></p>
+<p>즉, <code>$f(x) = P_n(x) + R_n(x)$</code>가 성립하는 상황에서,</p>
+<p><code>$R_n(x)$</code>는 <code>$x_k$</code>마다 0이 되기 때문에 다음과 같이 정의할 수 있다.</p>
+<p><code>$$</code>
 R_n(x)=C \prod_{k=0}^n\left(x-x_k\right)
-$$</p>
+<code>$$</code></p>
 <ul>
-<li>$C$는 상수를 의미한다.</li>
+<li><code>$C$</code>는 상수를 의미한다.</li>
 </ul>
 </li>
 <li>
-<p>새로운 함수 $F(x)$를</p>
-<p>$$
+<p>새로운 함수 <code>$F(x)$</code>를</p>
+<p><code>$$</code>
 F(x) = f(x) - P_n(x) - R_n(x)
-$$</p>
+<code>$$</code></p>
 <p>라고 할 때,</p>
 </li>
 <li>
-<p>**롤의 정리(Rolle&rsquo;s Theorem)**에 의해 $\mathrm{n}$개 점에서 함수가 0이면, $\mathrm{n}-1$차 미분의 값이 0인 점이 존재한다.</p>
-<p>$\mathrm{g}(\mathrm{t})$ 는 $x, x_0, x_1, \ldots, x_n$ 의 구간으로 $\mathrm{n}+2$개의 함수가 0 인 점이 존재하므로, $\mathrm{n}+1$ 차 미분이 0 인 점 $c_x$가 존재한다.</p>
-<p>$$
+<p>**롤의 정리(Rolle&rsquo;s Theorem)**에 의해 <code>$\mathrm{n}$</code>개 점에서 함수가 0이면, <code>$\mathrm{n}-1$</code>차 미분의 값이 0인 점이 존재한다.</p>
+<p><code>$\mathrm{g}(\mathrm{t})$</code> 는 <code>$x, x_0, x_1, \ldots, x_n$</code> 의 구간으로 <code>$\mathrm{n}+2$</code>개의 함수가 0 인 점이 존재하므로, <code>$\mathrm{n}+1$</code> 차 미분이 0 인 점 <code>$c_x$</code>가 존재한다.</p>
+<p><code>$$</code>
 f^{n+1}(c_x)-P^{n+1}(c_x)-[f(x)-P(x)] \frac{d^{n+1}}{d t^{n+1}}\left[\Pi_{i=0}^n \frac{t-x_i}{x-x_i}\right]_{t=c_x}
-$$</p>
+<code>$$</code></p>
 <ul>
-<li>$\mathrm{P}$ 는 최대 $\mathrm{n}$차식이므로 $P^{n+1}=0$</li>
+<li><code>$\mathrm{P}$</code> 는 최대 <code>$\mathrm{n}$</code>차식이므로 <code>$P^{n+1}=0$</code></li>
 </ul>
 </li>
 <li>
-<p>$g^{n+1}(c_x)=0=f^{n+1}(c_x)-0-f(x)-P(x) ! \Pi_{i=0}^n \frac{1}{x-x_i}$</p>
+<p><code>$g^{n+1}(c_x)=0=f^{n+1}(c_x)-0-f(x)-P(x) ! \Pi_{i=0}^n \frac{1}{x-x_i}$</code></p>
 <ul>
-<li>$\left(t-x_i\right)$ 는 $\mathrm{n}+1$ 차항이므로 $\mathrm{n}+1$번 미분하면 $(\mathrm{n}+1)!$</li>
+<li><code>$\left(t-x_i\right)$</code> 는 <code>$\mathrm{n}+1$</code> 차항이므로 <code>$\mathrm{n}+1$</code>번 미분하면 <code>$(\mathrm{n}+1)!$</code></li>
 </ul>
 </li>
 <li>
-<p>위 식을 $\mathrm{f}(\mathrm{x})$ 에 대해 정리하면 다음과 같다.</p>
-<p>$$
+<p>위 식을 <code>$\mathrm{f}(\mathrm{x})$</code> 에 대해 정리하면 다음과 같다.</p>
+<p><code>$$</code>
 f(x)=P(x)+\frac{f^{n+1}(c_x)}{(n+1) !}\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_n\right)
-$$</p>
+<code>$$</code></p>
 </li>
 </ol>
 <p>결론적으로, 오차(실제 함수 - 보간 다항식)는 다음과 같이 정의된다.</p>
-<p>$$
+<p><code>$$</code>
 e_n(x)=f(x)-P_n(x)
-$$</p>
-<p>$$
+<code>$$</code></p>
+<p><code>$$</code>
 f(x)-P(x)=\frac{f^{n+1}(c_x)}{(n+1) !}\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_n\right)
-$$</p>
+<code>$$</code></p>
 <ul>
-<li>최대 오차는 $\max |\frac{f^{n+1}(c_x)}{(n+1) !}| \cdot \max |\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_n\right)|$</li>
+<li>최대 오차는 <code>$\max \|\frac{f^{n+1}(c_x)}{(n+1) !}\| \cdot \max \|\left(x-x_0\right)\left(x-x_1\right) \ldots\left(x-x_n\right)\|$</code></li>
 </ul>
 </li>
 </ul>
 <hr>
 <ul>
 <li>
-<p>$f(x):$  구간 $[a,b]$에서 정의된 함수(실제 함수)</p>
+<p><code>$f(x):$</code>  구간 <code>$[a,b]$</code>에서 정의된 함수(실제 함수)</p>
 </li>
 <li>
-<p>$p_n(x): n+1$ $n+1$$f(x)$의 보간 다항식</p>
+<p><code>$p_n(x): n+1$</code> <code>$n+1$``$f(x)$</code>의 보간 다항식</p>
 <p>이라 했을 때, 오차(실제 함수 - 보간 다항식)는 다음과 같이 정의된다.</p>
 </li>
 </ul>
-<p>$$
-e_n(x)=f(x)-p_n(x)
-$$</p>
+<p><code>$$ e_n(x)=f(x)-p_n(x) $$</code></p>
 <p>따라서 다음이 성립한다.</p>
-<p>$$
-\begin{aligned}
-&amp; p_{n+1}\left(x_i\right)=f\left(x_i\right), \quad i=0,1,2, \cdots, n \\\
-&amp; p_{n+1}(\bar{x})=f(\bar{x})
-\end{aligned}
-$$</p>
+<p><code>$$ \begin{aligned} &amp; p_{n+1}\left(x_i\right)=f\left(x_i\right), \quad i=0,1,2, \cdots, n \\\\\\ &amp; p_{n+1}(\bar{x})=f(\bar{x}) \end{aligned} $$</code></p>
 <p>뉴턴 공식으로 다시 표현하면</p>
-<p>$$
-p_{n+1}(x)=p_n(x)+f\left[x_0, x_1, \cdots, x_n, \bar{x}\right] \prod_{j=0}^n(x-x_j)
-$$</p>
-<p>과 같고, 이 때의 $f(x)$는 다음과 같다.</p>
-<p>$$
-f(\bar{x})=p_{n+1}+f\left[x_0, x_1, \cdots, x_n, \bar{x}\right) \prod_{j=0}^n\left(\bar{x}-x_j\right)
-$$</p>
+<p><code>$$ p_{n+1}(x)=p_n(x)+f\left[x_0, x_1, \cdots, x_n, \bar{x}\right] \prod_{j=0}^n(x-x_j) $$</code></p>
+<p>과 같고, 이 때의 <code>$f(x)$</code>는 다음과 같다.</p>
+<p><code>$$ f(\bar{x})=p_{n+1}+f\left[x_0, x_1, \cdots, x_n, \bar{x}\right) \prod_{j=0}^n\left(\bar{x}-x_j\right) $$</code></p>
 <p>아래에서 표현된 식들로 오차에 대한 식을 다시 정리해보면</p>
-<p>$$
-e_n(\bar{x})=f\left[x_0, x_1, \cdots, x_n, \bar{x}\right] \prod_{j=0}^n\left(\bar{x}-x_j\right)
-$$</p>
+<p><code>$$ e_n(\bar{x})=f\left[x_0, x_1, \cdots, x_n, \bar{x}\right] \prod_{j=0}^n\left(\bar{x}-x_j\right) $$</code></p>
 <p>위처럼 나타낼 수 있다.</p>
 <ul>
 <li>
@@ -512,9 +434,9 @@ $$</p>
 <li>
 <p><strong>Runge 현상</strong></p>
 <p>Runge 함수는 Polynomial로 적합이 잘 되지 않는 함수로 알려져 있다.</p>
-<p>$$
+<p><code>$$</code>
 f(x)=\frac{1}{1+25 x^2}
-$$</p>
+<code>$$</code></p>
 <p><img src="polynomial_interpolation3.png" alt="Alt text"></p>
 </li>
 <li>
@@ -535,57 +457,56 @@ $$</p>
 <p>하지만 여전히 만족스럽지 않다.</p>
 <h2 id="spline"><strong>Spline</strong></h2>
 <ul>
-<li>각 지점(knots)에서 자기 자신과 1차 미분 함수부터 $d-1$차 미분 함수까지 모두 연속이다.</li>
+<li>각 지점(knots)에서 자기 자신과 1차 미분 함수부터 <code>$d-1$</code>차 미분 함수까지 모두 연속이다.</li>
 <li>knot에서 함수의 계수가 변하므로 knot가 많을 수록 더 유연하게 된다.</li>
 </ul>
 <p>점과 점 사이를 그저 연결하면 Linear Spline이 되기 때문에, 선형 스플라인은 잘 활용하지 않는다.</p>
 <p>2차 Spline부터 알아보자.</p>
 <h3 id="quadratic-spline-interpolation">Quadratic Spline Interpolation</h3>
 <p>n+1개의 점을 연결하는 n개의 2차 다항식을 추정하고자 한다.</p>
-<p>각 2차 다항식마다 $ax^2 + bx + c$와 같이 3개의 미지수가 존재하기 때문에,
-모든 다항식을 추정하기 위해서 $3n$개의 조건이 필요하다.</p>
-<p>이러한 $3n$개의 조건은 적절한 제약을 추가하여 얻을 수 있다.</p>
+<p>각 2차 다항식마다 <code>$ax^2 + bx + c$</code>와 같이 3개의 미지수가 존재하기 때문에,
+모든 다항식을 추정하기 위해서 <code>$3n$</code>개의 조건이 필요하다.</p>
+<p>이러한 <code>$3n$</code>개의 조건은 적절한 제약을 추가하여 얻을 수 있다.</p>
 <ol>
 <li>
 <p><strong>첫 번째 함수와 맨 마지막 함수는 각각 첫 번째 점과 마지막 점을 지나야 한다.</strong></p>
 <p>이로부터 2개의 조건을 얻을 수 있다.</p>
-<p>$\begin{aligned}&amp; f\left(x_0\right)=a_1 x_0^2+b_1 x_0+c_1 \
-&amp; f\left(x_n\right)=a_n x_n^2+b_n x_n+c_n\end{aligned}$</p>
+<p>$<code>\begin{aligned}&amp; f\left(x_0\right)=a_1 x_0^2+b_1 x_0+c_1 \\ &amp; f\left(x_n\right)=a_n x_n^2+b_n x_n+c_n\end{aligned}$</code></p>
 <p>이제 나머지 n개의 조건을 얻으면 된다.</p>
 </li>
 <li>
 <p>양 끝을 제외한 n-1개의 점에서 <strong>함수가 연속해야 한다.</strong></p>
 <p>즉, 각 내부의 점에서 n개의 함수는 양 끝 점을 지나야 한다.</p>
-<p>이로부터 $2n-2$개의 조건을 얻을 수 있다.</p>
-<p>$i=2\dots n$일 때,
-$f\left(x_{i-1}\right)=a_{i-1} x_{i-1}^2+b_{i-1} x_{i-1}+c_{i-1}:$ 주어진 $i-1$번째 데이터의 왼쪽 함수 $f\left(x_{i-1}\right)=a_i x_{i-1}^2+b_i x_{i-1}+c_i:$ 주어진 $i-1$ 번째 데이터의 오른쪽 함수</p>
+<p>이로부터 <code>$2n-2$</code>개의 조건을 얻을 수 있다.</p>
+<p><code>$i=2\dots n$</code>일 때,
+<code>$f\left(x_{i-1}\right)=a_{i-1} x_{i-1}^2+b_{i-1} x_{i-1}+c_{i-1}:$</code> 주어진 <code>$i-1$</code>번째 데이터의 왼쪽 함수 <code>$f\left(x_{i-1}\right)=a_i x_{i-1}^2+b_i x_{i-1}+c_i:$</code> 주어진 <code>$i-1$</code> 번째 데이터의 오른쪽 함수</p>
 </li>
 <li>
 <p><strong>모든 점에서 함수가 매끄러워야 한다. 즉, 모든 knots에서 미분 가능해야 한다.</strong></p>
-<p>$i=2\dots n$일 때,
-$f^{\prime}\left(x_{i-1}\right)=2 a_{i-1} x_{i-1}+b_{i-1}$ : 주어진 $i-1$ 번째 데이터의 왼쪽 1차 도함수 $f^{\prime}\left(x_{i-1}\right)=2 a_i x_{i-1}+b_i$ : 주어진 $i-1$ 번째 데이터의 왼쪽 1차 도함수</p>
-<p>이를 통해 $n-1$개의 조건을 얻을 수 있다.</p>
+<p><code>$i=2\dots n$</code>일 때,
+<code>$f^{\prime}\left(x_{i-1}\right)=2 a_{i-1} x_{i-1}+b_{i-1}$</code> : 주어진 <code>$i-1$</code> 번째 데이터의 왼쪽 1차 도함수 <code>$f^{\prime}\left(x_{i-1}\right)=2 a_i x_{i-1}+b_i$</code> : 주어진 <code>$i-1$</code> 번째 데이터의 왼쪽 1차 도함수</p>
+<p>이를 통해 <code>$n-1$</code>개의 조건을 얻을 수 있다.</p>
 <p>이제 단 하나의 조건만 있으면 된다.</p>
 </li>
 <li>
 <p><strong>첫 번째 함수의 이계 도함수는 0이다. 즉, 첫 번째 함수는 직선이다.</strong></p>
-<p>$f_1&rsquo;&rsquo;(x_0) = a_1 = 0$</p>
+<p><code>$f_1''(x_0) = a_1 = 0$</code></p>
 </li>
 </ol>
-<p>이렇게 총 $3n$개의 조건을 얻었으므로, $n$개의 2차 다항식을 추정할 수 있다.</p>
+<p>이렇게 총 <code>$3n$</code>개의 조건을 얻었으므로, <code>$n$</code>개의 2차 다항식을 추정할 수 있다.</p>
 <h3 id="cubic-spline-interpolation">Cubic Spline Interpolation</h3>
-<p>2차 Spline 보간법과 마찬가지 이유로 이번에는 $4n$개의 조건이 필요하다.</p>
+<p>2차 Spline 보간법과 마찬가지 이유로 이번에는 <code>$4n$</code>개의 조건이 필요하다.</p>
 <ol>
-<li>첫 번째와 마지막 함수는 각 양 끝 점을 지난다. → $2$</li>
-<li>연속 → $2n - 2$</li>
-<li>미분 가능(1계 도함수 연속) → $n-1$</li>
-<li>2계 도함수 연속 → $n-1$</li>
+<li>첫 번째와 마지막 함수는 각 양 끝 점을 지난다. → <code>$2$</code></li>
+<li>연속 → <code>$2n - 2$</code></li>
+<li>미분 가능(1계 도함수 연속) → <code>$n-1$</code></li>
+<li>2계 도함수 연속 → <code>$n-1$</code></li>
 </ol>
 <hr>
-<p>여기까지 계산하면 총 $4n - 2$로 2개의 조건이 부족해 유일 해를 구할 수 없다.</p>
+<p>여기까지 계산하면 총 <code>$4n - 2$</code>로 2개의 조건이 부족해 유일 해를 구할 수 없다.</p>
 <p>따라서 다음과 같은 임의의 조건을 추가하여 유일 해를 채울 수 있다.</p>
 <ol>
-<li><strong>첫 번째 함수와 마지막 함수의 2계 도함수는 0이어야 한다. → $2$</strong></li>
+<li><strong>첫 번째 함수와 마지막 함수의 2계 도함수는 0이어야 한다. → <code>$2$</code></strong></li>
 </ol>
 <p>이러한 다섯 개의 조건으로 보간된 곡선을 <strong>Natural Cubic Spline</strong>이라고 한다.</p>
 <p>4차 이상의 고차 스플라인은 내재된 불안정성 때문에 잘 사용하지 않기 때문에, Cubic Spline을 가장 많이 활용한다.</p>
@@ -687,9 +608,9 @@ $f^{\prime}\left(x_{i-1}\right)=2 a_{i-1} x_{i-1}+b_{i-1}$ : 주어진 $i-1$ 번
         <li><a href="#newtons-divided-differences-interpolation"><strong>Newton’s divided differences interpolation</strong></a>
           <ul>
             <li><a href="#divided-differences분할-차분법">Divided Differences(분할 차분법)</a></li>
-            <li><a href="#a_0-a_1-도출-과정">$a_0, a_1$ 도출 과정</a></li>
+            <li><a href="#a_0-a_1-도출-과정"><code>$a_0, a_1$</code> 도출 과정</a></li>
             <li><a href="#first-order-divided-difference"><strong>first order Divided Difference</strong></a></li>
-            <li><a href="#a_2-도출-과정">$a_2$ 도출 과정</a></li>
+            <li><a href="#a_2-도출-과정"><code>$a_2$</code> 도출 과정</a></li>
             <li><a href="#high-order-divided-difference"><strong>High order Divided Difference</strong></a></li>
           </ul>
         </li>

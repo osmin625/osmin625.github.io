@@ -336,19 +336,15 @@
 </span></span></code></pre></div><p>ex) 우리가 추천한 아이템 개수: 5(=K)</p>
 <p>추천한 아이템 중 유저가 관심있는 아이템 개수: 2</p>
 <p>유저가 관심있는 아이템의 전체 개수: 3</p>
-<p>$\tt Precision@5 = 2/5$</p>
-<p>$\tt Recall@5 = 2/3$</p>
+<p><code>$\tt Precision@5 = 2/5$</code></p>
+<p><code>$\tt Recall@5 = 2/3$</code></p>
 <p><strong>AP@K</strong></p>
 <p>Precision@1부터 Precision@K까지의 평균값</p>
 <p>Precision@K와 달리, 관련 아이템을 더 높은 순위에 추천할수록 점수가 상승한다.</p>
-<p>$$
-A P @ K=\frac{1}{m} \sum_{i=1}^K \text { Precision@i }
-$$</p>
+<p><code>$$ A P @ K=\frac{1}{m} \sum_{i=1}^K \text { Precision@i } $$</code></p>
 <p><strong>MAP(Mean AP)@K</strong></p>
 <p>모든 유저에 대한 Average Precision 값의 평균</p>
-<p>$$
-M A P @ K=\frac{1}{|U|} \sum_{u=1}^{|U|}(A P @ K)_u
-$$</p>
+<p><code>$$ M A P @ K=\frac{1}{|U|} \sum_{u=1}^{|U|}(A P @ K)_u $$</code></p>
 <h3 id="ndcg-normalized-discounted-cumulative-gain">nDCG: Normalized Discounted Cumulative Gain</h3>
 <p>추천 시스템에 가장 많이 사용되는 지표 중 하나</p>
 <p>검색(IR)에서 등장한 지표.</p>
@@ -359,24 +355,20 @@ $$</p>
 <p><strong>CG</strong></p>
 <p>상위 K개 아이템의 관련도를 합한 것</p>
 <p>순서에 따라 Discount하지 않고, 동일하게 더한 값</p>
-<p>$$
+<p>`$$
 C G_K=\sum_{i=1}^K r e l_i</p>
-<p>$$</p>
+<p>$$`</p>
 <p><strong>DCG</strong></p>
 <p>순서에 따라 Cumulative Gain을 Discount한다.</p>
-<p>$$
-D C G_K=\sum_{i=1}^K \frac{r e l_i}{\log _2(i+1)}
-$$</p>
+<p><code>$$ D C G_K=\sum_{i=1}^K \frac{r e l_i}{\log _2(i+1)} $$</code></p>
 <p><strong>Ideal DCG</strong></p>
 <p>이상적인 추천이 일어났을 때의 DGC값</p>
 <p>즉, DCG의 최대값</p>
-<p>$$</p>
+<p>`$$</p>
 <p>I D C G=\sum_{i=1}^K \frac{r e l_i^{o p t}}{\log _2(i+1)}</p>
-<p>$$</p>
+<p>$$`</p>
 <p><strong>Normalized DCG</strong></p>
-<p>$$
-N D C G=\frac{D C G}{I D C G}
-$$</p>
+<p><code>$$ N D C G=\frac{D C G}{I D C G} $$</code></p>
 <h3 id="online-ab-test"><strong>Online A/B Test</strong></h3>
 <p>동시에 대조군 A와 B의 성능을 평가한다.</p>
 <p>(대조군과 실험군의 환경은 최대한 동일해야 한다.)</p>
@@ -384,9 +376,7 @@ $$</p>
 <p>대부분 현업에서 의사결정에 사용하는 최종 지표는 모델 성능이 아닌 매출, CTR 등의 비즈니스/서비스 지표</p>
 <p><img src="/imgs/%EC%B6%94%EC%B2%9C%ED%8F%89%EA%B0%80%EC%A7%80%ED%91%9C1.png" alt="추천평가지표"></p>
 <h3 id="mrr-mean-reciprocal-rank">MRR: Mean Reciprocal Rank</h3>
-<p>$$
-M R R=\frac{1}{|U|} \sum_{u \in U} \frac{1}{\operatorname{rank}_u\left(i_u\right)}
-$$</p>
+<p><code>$$ M R R=\frac{1}{|U|} \sum_{u \in U} \frac{1}{\operatorname{rank}_u\left(i_u\right)} $$</code></p>
 
         </p>
         

@@ -294,7 +294,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <li>
 <p><strong>MANAGER</strong>: <code>$t$</code>시점마다 추출된 <code>$f_t$</code>를 활용해 <code>$g_t$</code> 생성</p>
 <p><code>$f_t$</code>를 LSTM에 입력한 후 goal vector <code>$g_t$</code>를 생성한다.</p>
-<p><code>$$` \begin{aligned} \hat{g}_t, h_t^M &amp; = \mathcal{M}\left(f_t, h_{t-1}^M; \theta_m \right)\\ g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right| \end{aligned} `$$</code></p>
+<p><code>$$ \begin{aligned} \hat{g}_t, h_t^M &amp; = \mathcal{M}\left(f_t, h_{t-1}^M; \theta_m \right)\\ g_t &amp; =\hat{g}_t /\left|\hat{g}_t\right| \end{aligned} $$</code></p>
 <ul>
 <li>
 <p><code>$M:$</code> LSTM 모델</p>
@@ -361,11 +361,11 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p><strong>WORKER</strong>: MANAGER의 <code>$g_t$</code>를 토대로 보상을 높이는 다음 단어 생성</p>
 <p>MANAGER의 <code>$g_t$</code>를 포함하기 위해 가중치 행렬 <code>$W_\psi$</code>로 최근 c개의 목표들에 대한 선형 변환을 수행한다.</p>
 <p>이를 통해 k차원의 goal embedding vector <code>$w_t$</code>를 얻는다.</p>
-<p><code>$$` w_t=\psi\left(\sum_{i=1}^c g_{t-i}\right)=W_\psi\left(\sum_{i=1}^c g_{t-i}\right) `$$</code></p>
+<p><code>$$ w_t=\psi\left(\sum_{i=1}^c g_{t-i}\right)=W_\psi\left(\sum_{i=1}^c g_{t-i}\right) $$</code></p>
 <ul>
 <li><code>$\psi:$</code> 선형 변환(행렬 곱셈)</li>
 </ul>
-<p><code>$$` \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right) \\ G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right) \end{aligned} `$$</code></p>
+<p><code>$$ \begin{aligned}O_t, h_t^W &amp; =\mathcal{W}\left(x_t, h_{t-1}^W ; \theta_w\right) \\ G_\theta\left(\cdot \mid s_t\right) &amp; =\operatorname{softmax}\left(O_t \cdot w_t / \alpha\right) \end{aligned} $$</code></p>
 <ul>
 <li>
 <p><code>$\mathcal W:$</code> WORKER 모듈</p>
@@ -443,7 +443,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <li>
 <p><strong>MANAGER — 식별 가능한 feature space에서의 이동 방향을 예측하도록 훈련된다.</strong></p>
 <p>MANAGER의 gradient</p>
-<p><code>$$` \nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q_{\mathcal{F}}\left(s_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(f_{t+c}-f_t, g_t\left(\theta_m\right)\right) `$$</code></p>
+<p><code>$$ \nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q_{\mathcal{F}}\left(s_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(f_{t+c}-f_t, g_t\left(\theta_m\right)\right) $$</code></p>
 <ul>
 <li>
 <p><code>$Q_{\mathcal{F}}\left(s_t, g_t\right)=Q\left(\mathcal{F}\left(s_t\right), g_t\right)=Q\left(f_t, g_t\right)=\mathbb{E}\left[r_t\right]$</code></p>
@@ -455,19 +455,19 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 </li>
 </ul>
 <p>손실 함수에서는 높은 보상을 달성하기 위해 <code>$g_t$</code>가 특징 공간의 전환과 일치하도록 강제한다.</p>
-<p><code>$$` \begin{aligned}&amp; \nabla_{\theta_w} \mathbb{E}_{s_{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\\ = &amp; \mathbb{E}_{s_{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\end{aligned} `$$</code></p>
+<p><code>$$ \begin{aligned}&amp; \nabla_{\theta_w} \mathbb{E}_{s_{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\\ = &amp; \mathbb{E}_{s_{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]\end{aligned} $$</code></p>
 </li>
 <li>
 <p><strong>WORKER — MANAGER의 지시를 따르도록 보상이 주어진다.</strong></p>
 <p>REINFORCE 알고리즘을 활용하여 보상을 최대화한다.</p>
 <p>이는 <code>$s_{t-1}$</code> 상태와 함께 WORKER가 취한 <code>$x_t$</code> 작업을 샘플링하여 근사할 수 있다.</p>
 <p>WORKER에 제공되는 보상은 다음과 같이 정의된다.</p>
-<p><code>$$` r_t^I=\frac{1}{c} \sum_{i=1}^c d_{\cos }\left(f_t-f_{t-i}, g_{t-i}\right) `$$</code></p>
+<p><code>$$ r_t^I=\frac{1}{c} \sum_{i=1}^c d_{\cos }\left(f_t-f_{t-i}, g_{t-i}\right) $$</code></p>
 </li>
 <li>
 <p><strong>실제로는 <code>$G_\theta$</code>는 적대적 학습 전에 사전 학습이 필요하다.</strong></p>
 <p>사전 학습 시 일관성을 유지하기 위해 MANAGER의 기울기를 통한 별도의 훈련 체계를 사용한다.</p>
-<p><code>$$` \nabla_{\theta_m}^{\mathrm{pre}} g_t=-\nabla_{\theta_m} d_{\cos }\left(\hat{f}_{t+c}-\hat{f}_t, g_t\left(\theta_m\right)\right) `$$</code></p>
+<p><code>$$ \nabla_{\theta_m}^{\mathrm{pre}} g_t=-\nabla_{\theta_m} d_{\cos }\left(\hat{f}_{t+c}-\hat{f}_t, g_t\left(\theta_m\right)\right) $$</code></p>
 <ul>
 <li><code>$\hat{f}_t=\mathcal{F}\left(\hat{s}_t\right), \hat s_t, \hat s_{t + c}:$</code> 실제 텍스트의 상태</li>
 </ul>
@@ -485,7 +485,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p>전체 문장 <code>$s_T$</code>가 생성된 후 생성망이 파라미터를 조정할 때 가이드 역할을 한다.</p>
 <p>이 때, <code>$D_\phi(s)$</code>는 문장이 길어질수록 정보량이 적어지므로, 이를 해결하기 위해 추가적인 정보 <code>$f_t$</code>를 제공한다.</p>
 <h3 id="guiding-signalleaked-features">Guiding Signal(Leaked Features)</h3>
-<p><code>$$` D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right) `$$</code></p>
+<p><code>$$ D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right) $$</code></p>
 <ul>
 <li><code>$s:$</code> input. 생성된 문장.</li>
 <li><code>$\mathcal F:$</code> CNN (특징맵 추출기)</li>
@@ -634,7 +634,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <ul>
 <li>
 <p>다음 수식으로 <code>$t$</code>번째 열 벡터 <code>$R^t$</code>의 스케일을 재조정한다.</p>
-<p><code>$$` R_i^t=\sigma\left(\delta \cdot\left(0.5-\frac{\operatorname{rank}(i)}{B}\right)\right) `$$</code></p>
+<p><code>$$ R_i^t=\sigma\left(\delta \cdot\left(0.5-\frac{\operatorname{rank}(i)}{B}\right)\right) $$</code></p>
 </li>
 <li>
 <p><code>$\text {rank}(i):$</code> 열 벡터에서 i번째 원소의 ranking</p>
@@ -703,9 +703,7 @@ logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 �
 <p><code>$D(φ)$</code>를 시퀀스 데이터 집합 <code>$S$</code>를 양성 샘플로,
 <code>$G$</code>에서 생성된 시퀀스를 음성 샘플로 사용하여 사전 학습한다.</p>
 <p>이때, <code>$D(φ)$</code>는 특징 추출기(<code>$\mathcal F$</code>)와 출력 레이어(sigmoid)로 구성된다.</p>
-<p><code>$$</code>
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right)
-<code>$$</code></p>
+<p><code>$$ D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l^{\top} f\right) $$</code></p>
 </li>
 <li>
 <p><code>$**G(θ_m, θ_w)$</code> 사전 학습**</p>
@@ -736,18 +734,11 @@ D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\
 </li>
 <li>
 <p>WORKER 매개변수 <code>$θ_w, ψ$</code>, softmax를 갱신한다.</p>
-<p><code>$$</code>
-\begin{aligned}
-&amp; \nabla_{\theta_w} \mathbb{E}<em>{s</em>{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right] \
-= &amp; \mathbb{E}<em>{s</em>{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right]
-\end{aligned}
-<code>$$</code></p>
+<p><code>$$ \begin{aligned} &amp; \nabla_{\theta_w} \mathbb{E}_{s_{t-1} \sim G}\left[\sum_{x_t} r_t^I \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right] \\ = &amp; \mathbb{E}_{s_{t-1} \sim G, x_t \sim \mathcal{W}\left(x_t \mid s_{t-1}\right)}\left[r_t^I \nabla_{\theta_w} \log \mathcal{W}\left(x_t \mid s_{t-1} ; \theta_w\right)\right] \end{aligned} $$</code></p>
 </li>
 <li>
 <p>MANAGER 매개변수 <code>$θ_m$</code>을 갱신한다.</p>
-<p><code>$$</code>
-\nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q\left(f_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(\mathcal{F}\left(s_{t+c}\right)-\mathcal{F}\left(s_t\right), g_t\left(\theta_m\right)\right)
-<code>$$</code></p>
+<p><code>$$ \nabla_{\theta_m}^{\mathrm{adv}} g_t=-Q\left(f_t, g_t\right) \nabla_{\theta_m} d_{\cos }\left(\mathcal{F}\left(s_{t+c}\right)-\mathcal{F}\left(s_t\right), g_t\left(\theta_m\right)\right) $$</code></p>
 </li>
 </ul>
 </li>
@@ -759,9 +750,7 @@ D_\phi(s)=\operatorname{sigmoid}\left(\phi_l^{\top} \mathcal{F}\left(s ; \phi_f\
 </li>
 <li>
 <p>k-epoch 동안 <code>$D(φ)$</code>를 훈련한다.</p>
-<p><code>$$</code>
-D_\phi(s)=\operatorname{sigmoid}\left(\phi_l \cdot \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l, f\right)
-<code>$$</code></p>
+<p><code>$$ D_\phi(s)=\operatorname{sigmoid}\left(\phi_l \cdot \mathcal{F}\left(s ; \phi_f\right)\right)=\operatorname{sigmoid}\left(\phi_l, f\right) $$</code></p>
 </li>
 </ul>
 </li>

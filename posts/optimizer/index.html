@@ -189,15 +189,15 @@ Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법</p
 </blockquote>
 <h2 id="background-gradient-descentgd에서의-issue">Background: <strong>Gradient Descent(GD)에서의 Issue</strong></h2>
 <h3 id="1-local-minima-saddle-point">1. Local minima, Saddle point</h3>
-<p><img src="optimizer.png" alt="Optimizer">{: w=&ldquo;700&rdquo; h=&ldquo;400&rdquo; }</p>
+<p><img src="/imgs/optimizer.png" alt="Optimizer">{: w=&ldquo;700&rdquo; h=&ldquo;400&rdquo; }</p>
 <p>실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.</p>
 <p>local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.</p>
-<p><img src="optimizer1.png" alt="Optimizer">{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
-<p><img src="optimizer2.png" alt="Optimizer">{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
+<p><img src="/imgs/optimizer1.png" alt="Optimizer">{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
+<p><img src="/imgs/optimizer2.png" alt="Optimizer">{: w=&ldquo;400&rdquo; h=&ldquo;250&rdquo; }</p>
 <p>대신 위의 상황에서 gradient descent 알고리즘이 평평한 곳에 머물러버리는 문제가 발생할 수 있다.</p>
 <p>꼭 머무르지 않더라도 주변이 평평하기 때문에 매우 더디게 학습이 진행되는 문제점도 있다.</p>
 <h3 id="2-길-헤매기">2. 길 헤매기</h3>
-<p><img src="optimizer3.png" alt="Optimizer">
+<p><img src="/imgs/optimizer3.png" alt="Optimizer">
 SGD, Mini-batch GD가 굉장히 헤매면서 길을 찾는다.</p>
 <p>헤매는 정도를 줄일 필요가 있다.</p>
 <p>이를 위해 Optimizer가 등장했다.</p>
@@ -208,21 +208,21 @@ SGD, Mini-batch GD가 굉장히 헤매면서 길을 찾는다.</p>
 <p>이보단, 올바른 방향으로 더 많이 가는 것을 원한다.</p>
 <p>이를 위해 **관성(Momentum)**을 적용한다.</p>
 <h3 id="momentum"><strong>Momentum</strong></h3>
-<p><img src="optimizer4.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer4.png" alt="Optimizer"></p>
 <p>가중치를 갱신할 때, 이전에 나아갔던 방향도 반영을 해준다.</p>
-<p><img src="optimizer5.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer5.png" alt="Optimizer"></p>
 <p><strong>단점</strong></p>
 <p>학습률에 따라 minimum point에 수렴하지 못하는 경우가 발생한다.</p>
-<p><img src="optimizer6.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer6.png" alt="Optimizer"></p>
 <h3 id="nag--nesterov-accelerated-gradient">NAG : Nesterov Accelerated Gradient</h3>
 <p>Momentum의 단점을 개선한 방법.</p>
 <p>관성 방향으로 먼저 이동한 후, gradient를 계산한다.</p>
 <p>Momentum보다 수렴이 더 빠르다.</p>
-<p><img src="optimizer7.png" alt="Optimizer"></p>
-<p><img src="optimizer8.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer7.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer8.png" alt="Optimizer"></p>
 <h3 id="2-거리학습률">2. <strong>거리(학습률)</strong></h3>
 <h3 id="adagard">Adagard</h3>
-<p><img src="optimizer9.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer9.png" alt="Optimizer"></p>
 <p>현재까지 값이 많이 변한 파라미터에 대해서는 적게 변화시키고, 적게 변한 파라미터는 많이 변화시킨다.</p>
 <p><strong>단점</strong></p>
 <p><code>$G_t$</code>의 값은 계속 커지는데, 이 값이 무한대에 가깝게 커지게 되면 값이 0이 되어버린다.</p>
@@ -231,16 +231,16 @@ SGD, Mini-batch GD가 굉장히 헤매면서 길을 찾는다.</p>
 <p>Adagrad의 단점을 개선한 방법.</p>
 <p><code>$G_t$</code>가 너무 커지는 것을 방지한다.</p>
 <p>Learning rate가 없어 변형이 불가능하기 때문에, 잘 쓰지 않는다.</p>
-<p><img src="optimizer10.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer10.png" alt="Optimizer"></p>
 <h3 id="rmsprop">RMSProp</h3>
 <p>Adadelta + stepsize.</p>
-<p><img src="optimizer11.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer11.png" alt="Optimizer"></p>
 <h3 id="adam">Adam</h3>
 <p>Momentum + RMSProp</p>
-<p><img src="optimizer12.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer12.png" alt="Optimizer"></p>
 <p>가장 많이 쓰인다.</p>
 <hr>
-<p><img src="optimizer13.png" alt="Optimizer"></p>
+<p><img src="/imgs/optimizer13.png" alt="Optimizer"></p>
 <p><a href="https://hyunw.kim/blog/2017/11/01/Optimization.html">그림으로 보는 다양한 Optimization 기법들</a></p>
 <p><a href="https://seamless.tistory.com/38">딥러닝(Deep learning) 살펴보기 2탄</a></p>
 

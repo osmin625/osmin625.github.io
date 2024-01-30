@@ -206,18 +206,18 @@
 <li><code>$\leftarrow$</code> : 업데이트를 의미한다.</li>
 </ul>
 <p>표기는 다양하다.</p>
-<p><img src="gd.png" alt="GD"></p>
+<p><img src="/imgs/gd.png" alt="GD"></p>
 <hr>
 <p>매개변수가 여럿인 경우, 편미분으로 구한 기울기를 사용한다.</p>
 <p>매개변수마다 독립적으로 미분한다.</p>
 <p><code>$$ {\tt{w = w + \rho\left(\tt-\triangledown w\right)}} \\ \tt\triangledown w = \left({\partial J\over\partial w_0},{\partial J\over\partial w_1},{\partial J\over\partial w_2},...,{\partial J\over\partial w_d}\right) $$</code></p>
-<p><img src="gd1.png" alt="GD"></p>
+<p><img src="/imgs/gd1.png" alt="GD"></p>
 <!-- raw HTML omitted -->
 <h3 id="적절한-학습률">적절한 학습률</h3>
 <p>학습률은 한번에 최적해를 향해 나아가는 거리를 의미한다.</p>
 <p>학습률이 너무 낮다면, 수렴하는 데 시간이 너무 오래 걸리게 되고,</p>
 <p>학습률이 너무 높다면, 최적해에 수렴하지 못하고 다른곳으로 발산하게 된다.</p>
-<p><img src="gd2.png" alt="GD"></p>
+<p><img src="/imgs/gd2.png" alt="GD"></p>
 <h2 id="학습률을-적절히-조정하는-것이-매우-중요하다">학습률을 적절히 조정하는 것이 매우 중요하다.</h2>
 <h3 id="기계-학습의-경사-하강법">기계 학습의 경사 하강법</h3>
 <ul>
@@ -271,7 +271,7 @@
 <p>배치사이즈가 너무 커지면 <strong>Sharp Minimum</strong>에 빠지게 된다.</p>
 <p>Flat Minimum은 Generalization 성능이 좋다.</p>
 <p>반대로, 배치사이즈가 작을수록 noise의 영향력이 커지므로 Sharp Minimum에서 탈출할 확률이 높다.</p>
-<p><img src="gd3.png" alt="GD"></p>
+<p><img src="/imgs/gd3.png" alt="GD"></p>
 <p><strong>참고 논문 :</strong> <a href="https://arxiv.org/pdf/1609.04836.pdf">On Large-batch Training for Deep Learning : Generalization Gap and Sharp Minima, 2017</a></p>
 </li>
 </ul>

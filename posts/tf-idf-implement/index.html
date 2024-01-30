@@ -176,12 +176,12 @@
         <p>
             <p>우선, 시작하기에 앞서 corpus 구성을 확인했다.</p>
 <p>한글로 작성되었으며, 제목과 문서 내용으로 구성되어있는 것을 확인했다.</p>
-<p><img src="tfi.png" alt="tfi">
+<p><img src="/imgs/tfi.png" alt="tfi">
 일단 데이터를 처리하기 위해 코드에서 파일을 열어야 하는데, 문서가 한글파일로 제공되었기 때문에 한글 문서를 txt 문서로 변환해주었다.</p>
-<p><img src="tfi1.png" alt="tfi">{: w=&ldquo;200&rdquo; h=&ldquo;100&rdquo; }</p>
+<p><img src="/imgs/tfi1.png" alt="tfi">{: w=&ldquo;200&rdquo; h=&ldquo;100&rdquo; }</p>
 <p>언어는 파이썬을 선택했다.</p>
 <p>처음 프로젝트를 시작했을 때, 나는 colab 환경에서 파이썬 코드를 실행시키고자 했으므로 Google Drive에 corpus 파일을 업로드하고, 코드 작성을 시작했다.</p>
-<p><img src="tfi2.png" alt="tfi"></p>
+<p><img src="/imgs/tfi2.png" alt="tfi"></p>
 <p>수업 내용에서는 영어를 기준으로 다뤄왔었는데 한글을 토큰화하는 방법이 떠오르지 않았다.</p>
 <p>다행스럽게도 한글 형태소 분석 라이브러리 Konlpy가 있어서 이를 활용하고자 했다.</p>
 <p>하지만 해당 Konlpy 라이브러리가 자바를 기반으로 짜여졌고, 파이썬으로 wrapping한 채로 사용하는 방식이었다.</p>
@@ -189,11 +189,11 @@
 <p>코랩 환경에서 해당 라이브러리를 사용하기 위해 수많은 블로그를 탐색하고, 깃허브 라이브러리 페이지를 방문하여 issue를 살펴봤었지만 해당 문제는 쉽사리 해결되지 않았다.</p>
 <p>그래서 거의 포기하고 직접 문서의 조사를 제거하여 활용하고자 마음 먹고 작업을 수행했다.</p>
 <p>하지만 결국 이 과정은 학습에 도움이 되지 않는다고 판단해 colab 환경을 pycharm 환경으로 바꿔서 다시 한번 해보자고 마음먹었고, 시행착오 끝에 라이브러리를 사용할 수 있게 되었다.</p>
-<p><img src="tfi3.png" alt="tfi"></p>
+<p><img src="/imgs/tfi3.png" alt="tfi"></p>
 <p>라이브러리 활용을 포기하고 직접 문서의 단어를 추출하고 있었다.</p>
 <p><a href="https://colab.research.google.com/drive/1f_27zf6HxhjM12BmVw_GBp--ByCZK4tj?usp=sharing">Google Colaboratory</a></p>
 <p>한글 단어를 직접 추출하던 코드다. 나의 고통의 흔적이 보인다.</p>
-<p><img src="tfi4.png" alt="tfi"></p>
+<p><img src="/imgs/tfi4.png" alt="tfi"></p>
 <p>라이브러리 실행을 성공시킨 마지막 명령어.</p>
 <p>JPype1.1.2와 JPype3-1, Python 3.6, Python 3.7, Python 3.10의 조합을 활용해보았고, 실행되지 않았다.</p>
 <p>하지만 결국 위 사진에서 보이듯이, JPype1의 1.4.0 버전과 python 3.9.5 버전을 활용하여 성공했다.</p>
@@ -378,7 +378,7 @@ W_{t,d}=(1+log_{10}tf_{t,d}) \times log_{10}(N/df_t)
 </span></span><span style="display:flex;"><span>            print(i, result)
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
 </span></span><span style="display:flex;"><span>            print(i, <span style="color:#e6db74">&#34;검색 결과가 없습니다.&#34;</span>)
-</span></span></code></pre></div><p><img src="tfi5.png" alt="tfi"></p>
+</span></span></code></pre></div><p><img src="/imgs/tfi5.png" alt="tfi"></p>
 
         </p>
         

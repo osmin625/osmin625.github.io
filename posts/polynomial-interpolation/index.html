@@ -225,11 +225,11 @@
 <p><code>$$ y=\left(\frac{x-x_1}{x_0-x_1}\right) y_0+\left(\frac{x-x_0}{x_1-x_0}\right) y_1 $$</code></p>
 <p>위 식에 <code>$x_0$</code>을 대입하면 <code>$y_0$</code>이 나오고, <code>$x_1$</code>을 대입하면 <code>$y_1$</code>이 나온다.</p>
 <p>해당 식은 직관적으로 <code>$(x_0,0),(x_1,y_1)$</code>을 지나는 직선의 기울기와 <code>$(x_0,y_0),(x_1,0)$</code>을 지나는 직선의 기울기의 합으로 이해할 수 있다.</p>
-<p><img src="polynomial_interpolation.png" alt="Alt text"></p>
+<p><img src="/imgs/polynomial_interpolation.png" alt="Alt text"></p>
 <p><strong>2차 함수</strong></p>
 <p>세 점<code>$(x_0, y_0), (x_1, y_1), (x_2, y_2)$</code>이 주어진 경우</p>
 <p><code>$$ y=\left(\frac{\left(x-x_1\right)\left(x-x_2\right)}{\left(x_0-x_1\right)\left(x_0-x_2\right)}\right) y_0+\left(\frac{\left(x-x_2\right)\left(x-x_0\right)}{\left(x_1-x_2\right)\left(x_1-x_0\right)}\right) y_1\\ +\left(\frac{\left(x-x_0\right)\left(x-x_1\right)}{\left(x_2-x_0\right)\left(x_2-x_1\right)}\right) y_2 $$</code></p>
-<p><img src="polynomial_interpolation1.png" alt="Alt text"></p>
+<p><img src="/imgs/polynomial_interpolation1.png" alt="Alt text"></p>
 <p>마찬가지로, <code>$(x_i,y_i)$</code>를 지나면서 <code>$(x_j,0)$</code>을 지나는 이차 함수의 기울기의 합으로 이해할 수 있다.</p>
 <p><strong>3차 함수</strong></p>
 <p>네 점이 주어진 경우</p>
@@ -399,22 +399,22 @@
 <p><strong>Runge 현상</strong></p>
 <p>Runge 함수는 Polynomial로 적합이 잘 되지 않는 함수로 알려져 있다.</p>
 <p><code>$$ f(x)=\frac{1}{1+25 x^2} $$</code></p>
-<p><img src="polynomial_interpolation3.png" alt="Alt text"></p>
+<p><img src="/imgs/polynomial_interpolation3.png" alt="Alt text"></p>
 </li>
 <li>
 <p><strong>Gibbs 현상</strong>
 불연속 함수를 근사할 때 불연속 값 근처에서 나타나는 불일치 현상
-<img src="polynomial_interpolation4.png" alt="Alt text"></p>
+<img src="/imgs/polynomial_interpolation4.png" alt="Alt text"></p>
 </li>
 </ul>
-<p><img src="polynomial_interpolation4-1.png" alt="Alt text"></p>
+<p><img src="/imgs/polynomial_interpolation4-1.png" alt="Alt text"></p>
 <h3 id="piecewise-polynomials-interpolation">Piecewise Polynomials Interpolation</h3>
 <p>여러 개의 데이터를 하나의 추정 함수로 표현하지 않고, 구간 별로 추정 함수를 구하는 것</p>
-<p><img src="polynomial_interpolation5.png" alt="Alt text">
+<p><img src="/imgs/polynomial_interpolation5.png" alt="Alt text">
 사진은 Interpolation이 아니라 Regression에 해당하지만, Piecewise Polynomial에 대한 이해를 돕기 위해 가져왔다.</p>
 <p>다만, 사진처럼 knot에서 불연속이기 때문에, 합리적이지 않은 추정 함수가 나올 수 있다.</p>
 <h3 id="continuous-piecewise-polynomials-interpolation">Continuous Piecewise Polynomials Interpolation</h3>
-<p><img src="polynomial_interpolation6.png" alt="Alt text"></p>
+<p><img src="/imgs/polynomial_interpolation6.png" alt="Alt text"></p>
 <p>Piecewise에 연속이라는 제약 조건을 추가했다.</p>
 <p>하지만 여전히 만족스럽지 않다.</p>
 <h2 id="spline"><strong>Spline</strong></h2>

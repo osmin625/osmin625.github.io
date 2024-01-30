@@ -180,7 +180,7 @@
 <li>내가 뽑고자 하는 target값과 실제 모델이 계산한 출력의 차이를 계산한다.</li>
 <li>오차값을 다시 뒤로 전파해가면서 각 노드가 가지고 있는 변수들을 갱신한다.</li>
 </ol>
-<p><img src="bp.png" alt="bp"></p>
+<p><img src="/imgs/bp.png" alt="bp"></p>
 <p>직관적인 이해는 끝났다. 이제 제대로 이해해보자.</p>
 <p>오차 역전파가 중요한 이유를 알고 싶다면, <a href="https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/">여기</a>를 클릭하여 오차 역전파가 없을 시에 발생하는 문제점을 이해하자.</p>
 <h2 id="오차-역전파">오차 역전파</h2>
@@ -205,7 +205,7 @@
 </ul>
 <h3 id="순전파-역전파-국소적-계산">순전파, 역전파, 국소적 계산</h3>
 <p>ex) <code>$f(x) = y$</code></p>
-<p><img src="bp1.png" alt="bp"></p>
+<p><img src="/imgs/bp1.png" alt="bp"></p>
 <p><strong>f에 x를 집어넣으면 y가 튀어나온다.</strong></p>
 <p>위의 그림처럼 어딘가에서 갑자기 등장한 <code>$L$</code>이라는 함수를 <code>$y$</code>로 미분한 값(<code>$\partial L\over \partial y$</code>)이 제공된다면?</p>
 <p>우리는 <code>$L$</code>이라는 함수를 모르지만, <code>$x$</code>로 미분한 값을 알 수 있다.</p>
@@ -226,7 +226,7 @@
 <li><code>$\partial z\over \partial x$</code> = 1</li>
 <li><code>$\partial z\over \partial y$</code> = 1</li>
 </ul>
-<p><img src="bp2.png" alt="bp"></p>
+<p><img src="/imgs/bp2.png" alt="bp"></p>
 <p>상류에서 내려온 신호인 <code>$\partial L\over \partial z$</code>에 <code>$\partial z\over \partial x$</code>를 곱함으로써 <code>$\partial L\over \partial x$</code>을 구했다.</p>
 <p>단순한 덧셈 연산이기 때문에 미분값은 1이다.</p>
 <p>즉, 덧셈에서는 상류에서 내려온 값을 그대로 하류로 전달한다.</p>
@@ -237,14 +237,14 @@
 <li><code>${\partial z\over \partial y} = x$</code></li>
 </ul>
 <p>이므로,</p>
-<p><img src="bp3.png" alt="bp">
+<p><img src="/imgs/bp3.png" alt="bp">
 이 된다.</p>
 <p>즉, 단순한 곱셈 노드는 상류에서 내려온 신호를 교차시켜 곱한 후, 다시 하류로 보낸다.</p>
 <p>하지만 본질은 미분이다.</p>
 <p><code>$z = x^2$</code>의 경우, 미분값은 <code>$2x$</code>가 되는 것을 명심하자.</p>
 <h3 id="연쇄-법칙과-계산-그래프">연쇄 법칙과 계산 그래프</h3>
-<p><img src="bp4.png" alt="bp"></p>
-<p><img src="bp5.png" alt="bp"></p>
+<p><img src="/imgs/bp4.png" alt="bp"></p>
+<p><img src="/imgs/bp5.png" alt="bp"></p>
 <p>처음에 예시로 들었던 함수 <code>$z = (x+y)^2$</code>를 그래프화 한 것이다.</p>
 <h3 id="결론">결론</h3>
 <p>역전파는 오차(손실 함수)를 상류에서 하류로 내려보내면서 각 가중치가 손실 함수에서의 기울기를 알 수 있도록 해주는 기법이다.</p>
@@ -253,7 +253,7 @@
 <p>곱셈 노드, 덧셈 노드뿐만 아니라 exp 노드, log 노드 등 수많은 노드들이 있지만,</p>
 <p>결국 <strong>기본 원리는 상류 노드에 해당 노드에서의 미분 값을 찾아서 곱한 뒤, 하류로 흘려보내는 것</strong>이 전부이다.</p>
 <p>그러므로 수치 미분보다는 당연히 빠르다.</p>
-<p><img src="bp6.png" alt="bp"></p>
+<p><img src="/imgs/bp6.png" alt="bp"></p>
 <ul>
 <li>
 <p>구현 코드</p>

@@ -180,7 +180,7 @@
 <ul>
 <li>
 <p><strong>선별적 게이트</strong>라는 개념으로 선별 기억 능력을 확보한다.</p>
-<p><img src="lstm0.png" alt="lstm"></p>
+<p><img src="/imgs/lstm0.png" alt="lstm"></p>
 <p>그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.</p>
 </li>
 </ul>
@@ -196,8 +196,8 @@
 </li>
 <li>
 <p>다양한 구조 설계가 가능하다.</p>
-<p><img src="lstm1.png" alt="lstm">
-<img src="lstm2.png" alt="lstm"></p>
+<p><img src="/imgs/lstm1.png" alt="lstm">
+<img src="/imgs/lstm2.png" alt="lstm"></p>
 </li>
 </ul>
 <h2 id="model-concept">Model Concept</h2>
@@ -213,7 +213,7 @@
 <p>일종의 컨베이어 벨트</p>
 <p>작은 linear interaction만을 적용시키면서 데이터의 흐름은 그대로 유지한다.</p>
 <p>아무런 동작을 추가하지 않는다면, 정보는 전혀 바뀌지 않고 그대로 흐른다.</p>
-<p><img src="lstm3.png" alt="lstm"></p>
+<p><img src="/imgs/lstm3.png" alt="lstm"></p>
 </li>
 </ul>
 <p><strong>Cell State에서 gate에 의해 정보가 추가되거나 삭제된다.</strong></p>
@@ -221,23 +221,23 @@
 <ol>
 <li>
 <p><strong>Forget Gate</strong></p>
-<p><img src="lstm4.png" alt="lstm"></p>
+<p><img src="/imgs/lstm4.png" alt="lstm"></p>
 </li>
 <li>
 <p><strong>Input Gate</strong></p>
-<p><img src="lstm5.png" alt="lstm"></p>
+<p><img src="/imgs/lstm5.png" alt="lstm"></p>
 </li>
 </ol>
 <ul>
 <li>
 <p><strong>Cell State 업데이트</strong></p>
-<p><img src="lstm6.png" alt="lstm"></p>
+<p><img src="/imgs/lstm6.png" alt="lstm"></p>
 </li>
 </ul>
 <ol>
 <li>
 <p><strong>Output Gate</strong></p>
-<p><img src="lstm7.png" alt="lstm"></p>
+<p><img src="/imgs/lstm7.png" alt="lstm"></p>
 </li>
 </ol>
 <h3 id="수식-요약">수식 요약</h3>
@@ -248,7 +248,7 @@
 </span></span><span style="display:flex;"><span>Ct <span style="color:#f92672">=</span> ft <span style="color:#f92672">*</span> Ct_1 <span style="color:#f92672">+</span> it <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>tanh(np<span style="color:#f92672">.</span>dot(xt, Wc) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>dot(ht_1, Uc) <span style="color:#f92672">+</span> bc)
 </span></span><span style="display:flex;"><span>ht <span style="color:#f92672">=</span> ot <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>tanh(Ct)
 </span></span></code></pre></div><h3 id="모델-요약">모델 요약</h3>
-<p><img src="lstm8.png" alt="lstm"></p>
+<p><img src="/imgs/lstm8.png" alt="lstm"></p>
 <h3 id="input--output-shape">Input / Output Shape</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
 </span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
@@ -260,7 +260,7 @@
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>output, h <span style="color:#f92672">=</span> lstm(input)
 </span></span><span style="display:flex;"><span>output<span style="color:#f92672">.</span>size()  <span style="color:#75715e"># =&gt; torch.Size([3, 5, 2]), batch_size, seq_len, hidden_size</span>
-</span></span></code></pre></div><p><img src="lstm9.png" alt="lstm"></p>
+</span></span></code></pre></div><p><img src="/imgs/lstm9.png" alt="lstm"></p>
 <ul>
 <li>LSTM을 활용하여 주식 가격을 예측 — 과거 5일의 종가를 예측하는 경우
 <ul>

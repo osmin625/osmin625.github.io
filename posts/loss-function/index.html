@@ -204,7 +204,7 @@ Gradient, MAE, MSE, RMSE</p>
 <p>따라서, 신경망은 <code>$\mathbf w$</code>에서 손실 함수의 기울기를 측정하여 loss가 낮아지는 방향으로 가중치를 조금씩 이동하는 전략을 사용한다.</p>
 <p>이 때의 조금을 결정하는 것이 Optimizer이다.</p>
 <p>해결하고자 하는 문제에 맞게 loss function을 설정해 사용해주면 된다.</p>
-<p><img src="imgs/loss_function.png" alt="Loss"></p>
+<p><img src="/imgs/imgs/loss_function.png" alt="Loss"></p>
 <p>신경망 학습을 통해 손실 함수 <code>$J$</code>의 최저점을 찾아야 한다.</p>
 <h2 id="신경망의-학습-알고리즘"><strong>신경망의 학습 알고리즘</strong></h2>
 <ol>
@@ -244,7 +244,7 @@ Gradient, MAE, MSE, RMSE</p>
 <p><code>$$</code>
 \frac{1}{n} \sum_{i=1}^n\left|{y_i}-\hat y_i\right|
 <code>$$</code></p>
-<p><img src="imgs/loss_function1.png" alt="Loss_function"></p>
+<p><img src="/imgs/imgs/loss_function1.png" alt="Loss_function"></p>
 </li>
 <li>
 <p><strong>MSE(Mean Squared Error)</strong> — <code>$(정답 - 예측값)^2$</code>의 평균</p>
@@ -257,7 +257,7 @@ Gradient, MAE, MSE, RMSE</p>
 <p><code>$$</code>
 M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
 <code>$$</code></p>
-<p><img src="imgs/loss_function2.png" alt="Loss_function"></p>
+<p><img src="/imgs/imgs/loss_function2.png" alt="Loss_function"></p>
 <p>미니 배치 단위로 처리(샘플의 오차를 평균 낸다.)</p>
 <p><code>$$</code>
 \begin{aligned}J\left(\mathbf{U}^1, \mathbf{U}^2\right) &amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}|\mathbf{y}-\mathbf{0}|^2 \&amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\left|\mathbf{y}-\tau_2\left(\mathbf{U}^2 \tau_1\left(\mathbf{U}^1 \mathbf{x}^{\mathrm{T}}\right)\right)\right|^2\end{aligned}
@@ -278,11 +278,11 @@ M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
 <p><code>$$</code>
 R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2}
 <code>$$</code></p>
-<p><img src="imgs/loss_function3.png" alt="Loss_function"></p>
+<p><img src="/imgs/imgs/loss_function3.png" alt="Loss_function"></p>
 <p>MSE와 마찬가지로 각 오차값의 크기에 따라 다른 그래디언트를 가지게 된다.</p>
 </li>
 </ul>
-<p><img src="imgs/loss_function4.png" alt="Loss_function"></p>
+<p><img src="/imgs/imgs/loss_function4.png" alt="Loss_function"></p>
 <h3 id="분류classification">분류(Classification)</h3>
 <p><strong>Entropy</strong></p>
 <p>확률 분포의 무작위성(불확실성)을 측정하는 함수</p>

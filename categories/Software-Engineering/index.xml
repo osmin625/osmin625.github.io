@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Software Engineering on OMIN</title>
-    <link>https://osmin625.github.io/categories/software-engineering/</link>
+    <link>https://osmin625.github.io/categories/Software-Engineering/</link>
     <description>Recent content in Software Engineering on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Thu, 23 Dec 2021 16:22:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/categories/software-engineering/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/categories/Software-Engineering/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1. 프로젝트 식별 및 관리</title>
       <link>https://osmin625.github.io/posts/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%8B%9D%EB%B3%84-%EB%B0%8F-%EA%B4%80%EB%A6%AC/</link>

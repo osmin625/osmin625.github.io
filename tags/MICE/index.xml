@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>MICE on OMIN</title>
-    <link>https://osmin625.github.io/tags/mice/</link>
+    <link>https://osmin625.github.io/tags/MICE/</link>
     <description>Recent content in MICE on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 18 Oct 2022 07:41:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/mice/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/MICE/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>MICE : Multiple Imputation Chained Equation</title>
-      <link>https://osmin625.github.io/posts/mice/</link>
+      <link>https://osmin625.github.io/posts/MICE/</link>
       <pubDate>Tue, 18 Oct 2022 07:41:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/mice/</guid>
+      <guid>https://osmin625.github.io/posts/MICE/</guid>
       <description>Multiple Imputation Chained Equation(다중 산입 연립 방정식)&#xA;MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.&#xA;값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.&#xA;Process 누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.&#xA;가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.&#xA;이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</description>
     </item>
   </channel>

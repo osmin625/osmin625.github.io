@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Neural Network on OMIN</title>
-    <link>https://osmin625.github.io/tags/neural-network/</link>
+    <link>https://osmin625.github.io/tags/Neural-Network/</link>
     <description>Recent content in Neural Network on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 04 Apr 2023 17:38:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/neural-network/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/Neural-Network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>DeepFM</title>
-      <link>https://osmin625.github.io/posts/deepfm/</link>
+      <link>https://osmin625.github.io/posts/DeepFM/</link>
       <pubDate>Tue, 04 Apr 2023 17:38:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/deepfm/</guid>
+      <guid>https://osmin625.github.io/posts/DeepFM/</guid>
       <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background 추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
     </item>
   </channel>

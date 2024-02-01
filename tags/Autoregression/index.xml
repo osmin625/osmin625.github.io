@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Autoregression on OMIN</title>
-    <link>https://osmin625.github.io/tags/autoregression/</link>
+    <link>https://osmin625.github.io/tags/Autoregression/</link>
     <description>Recent content in Autoregression on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Wed, 28 Jun 2023 16:10:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/autoregression/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/Autoregression/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autoregression</title>
-      <link>https://osmin625.github.io/posts/autoregression/</link>
+      <link>https://osmin625.github.io/posts/Autoregression/</link>
       <pubDate>Wed, 28 Jun 2023 16:10:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/autoregression/</guid>
+      <guid>https://osmin625.github.io/posts/Autoregression/</guid>
       <description>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것&#xA;즉, Regression을 자기 자신에게 적용하는 것&#xA;$$&#xD;y_1, \ldots, y_n \rightarrow y_{n+1}&#xD;$$&#xA;$$&#xD;\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2&#xD;$$&#xA;종류 Moving Average(이동평균) 가장 간단한 방법&#xA;최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</description>
     </item>
   </channel>

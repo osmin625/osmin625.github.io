@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rule-Based on OMIN</title>
-    <link>https://osmin625.github.io/tags/rule-based/</link>
+    <link>https://osmin625.github.io/tags/Rule-Based/</link>
     <description>Recent content in Rule-Based on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 11 Apr 2023 23:44:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/rule-based/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/Rule-Based/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>인기도 기반 추천이란?</title>
       <link>https://osmin625.github.io/posts/%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</link>

@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Natural Language Processing on OMIN</title>
-    <link>https://osmin625.github.io/categories/natural-language-processing/</link>
+    <link>https://osmin625.github.io/categories/Natural-Language-Processing/</link>
     <description>Recent content in Natural Language Processing on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Sat, 07 Oct 2023 02:40:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/categories/natural-language-processing/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/categories/Natural-Language-Processing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>
-      <link>https://osmin625.github.io/posts/leakgan/</link>
+      <link>https://osmin625.github.io/posts/LeakGAN/</link>
       <pubDate>Sat, 07 Oct 2023 02:40:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/leakgan/</guid>
+      <guid>https://osmin625.github.io/posts/LeakGAN/</guid>
       <description>✔️ 간단 요약&#xA;Sparsity와 Non-Informative를 효과적으로 해결한다.&#xA;분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.&#xA;Hierarchical RL architecture (MANAGER, WORKER)&#xA;MANAGER (LSTM)&#xA;중재자 역할 D로부터 고수준 feature representation을 받음 → Leakage WORKER (LSTM)&#xA;$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적) D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다. {: .prompt-info } logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization</description>
     </item>
     <item>
       <title>CBOW: Continous Bag of Word</title>
-      <link>https://osmin625.github.io/posts/cbow/</link>
+      <link>https://osmin625.github.io/posts/CBOW/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/cbow/</guid>
+      <guid>https://osmin625.github.io/posts/CBOW/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&#39;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
     </item>
     <item>
       <title>SG: Skip-Gram</title>
-      <link>https://osmin625.github.io/posts/sg/</link>
+      <link>https://osmin625.github.io/posts/SG/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/sg/</guid>
+      <guid>https://osmin625.github.io/posts/SG/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;CBOW가 뒤집어진 모델&#xA;CBOW와 입력층과 출력층이 반대로 구성되어 있다.&#xA;벡터의 평균을 구하는 과정이 없다.&#xA;CBOW보다 성능이 좋다고 알려져있다.&#xA;참고로 이 때의 성능은 학습 과정의 Loss가 아니라 임베딩 벡터의 표현력을 의미한다.&#xA;CBOW와 마찬가지로 Multi-Classification Model에 해당한다.</description>
     </item>
     <item>
       <title>SGNS: Skip-Gram with Negative Sampling</title>
-      <link>https://osmin625.github.io/posts/sgns/</link>
+      <link>https://osmin625.github.io/posts/SGNS/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/sgns/</guid>
+      <guid>https://osmin625.github.io/posts/SGNS/</guid>
       <description>SG를 이진 분류 문제로 바꾼 모델&#xA;Negative Sampling 주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것&#xA;Negative Sampling의 개수는 하이퍼파라미터에 해당한다.&#xA;학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다. positive sample 하나당 k개 샘플링 중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.&#xA;만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,&#xA;특정 단어, 가령 &amp;ldquo;dog&amp;quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &amp;ldquo;dog dog&amp;quot;를 연속으로 쓸 일은 없으니.</description>
     </item>
   </channel>

@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AI Math on OMIN</title>
-    <link>https://osmin625.github.io/categories/ai-math/</link>
+    <link>https://osmin625.github.io/categories/AI-Math/</link>
     <description>Recent content in AI Math on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 12 Sep 2023 23:39:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/categories/ai-math/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/categories/AI-Math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Polynomial Interpolation(보간 다항식)</title>
-      <link>https://osmin625.github.io/posts/polynomial-interpolation/</link>
+      <link>https://osmin625.github.io/posts/Polynomial-Interpolation/</link>
       <pubDate>Tue, 12 Sep 2023 23:39:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/polynomial-interpolation/</guid>
+      <guid>https://osmin625.github.io/posts/Polynomial-Interpolation/</guid>
       <description>Linear Interpolation 가장 간단한 보간법&#xA;두 점을 이은 직선의 방정식을 근사 함수로 사용한다.&#xA;데이터 점들 사이의 간격이 작을수록 더 좋은 근삿값을 얻는다.&#xA;$$&#xD;\mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right)&#xD;$$&#xA;Polynomial interpolation (n+1)개의 점이 주어진 경우 n차 이하의 유일한 다항식을 구할 수 있다.&#xA;Q. n+1개의 점으로 찾을 수 있는 n차 다항식은 왜 유일한가?&#xA;방데르몽드 행렬&#xA;각 행의 초항이 1인 등비수열로 이루어진 행렬&#xA;$$&#xD;V=\left(\begin{array}{ccccc}1 &amp;amp; \alpha_1 &amp;amp; \alpha_1^2 &amp;amp; \cdots &amp;amp; \alpha_1^{n-1} \\&#xD;1 &amp;amp; \alpha_2 &amp;amp; \alpha_2^2 &amp;amp; \cdots &amp;amp; \alpha_2^{n-1} \\&#xD;1 &amp;amp; \alpha_3 &amp;amp; \alpha_3^2 &amp;amp; \cdots &amp;amp; \alpha_3^{n-1} \\&#xD;\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\&#xD;1 &amp;amp; \alpha_m &amp;amp; \alpha_m^2 &amp;amp; \cdots &amp;amp; \alpha_m^{n-1}\end{array}\right)&#xD;$$</description>
     </item>
     <item>
       <title>Autoregression</title>
-      <link>https://osmin625.github.io/posts/autoregression/</link>
+      <link>https://osmin625.github.io/posts/Autoregression/</link>
       <pubDate>Wed, 28 Jun 2023 16:10:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/autoregression/</guid>
+      <guid>https://osmin625.github.io/posts/Autoregression/</guid>
       <description>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것&#xA;즉, Regression을 자기 자신에게 적용하는 것&#xA;$$&#xD;y_1, \ldots, y_n \rightarrow y_{n+1}&#xD;$$&#xA;$$&#xD;\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2&#xD;$$&#xA;종류 Moving Average(이동평균) 가장 간단한 방법&#xA;최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</description>
     </item>
     <item>
       <title>SVD: Singular Value Decomposition(특이값 분해)</title>
-      <link>https://osmin625.github.io/posts/svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
+      <link>https://osmin625.github.io/posts/SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
       <pubDate>Thu, 30 Mar 2023 00:19:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
+      <guid>https://osmin625.github.io/posts/SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
       <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD 기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
     </item>
     <item>
       <title>MICE : Multiple Imputation Chained Equation</title>
-      <link>https://osmin625.github.io/posts/mice/</link>
+      <link>https://osmin625.github.io/posts/MICE/</link>
       <pubDate>Tue, 18 Oct 2022 07:41:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/mice/</guid>
+      <guid>https://osmin625.github.io/posts/MICE/</guid>
       <description>Multiple Imputation Chained Equation(다중 산입 연립 방정식)&#xA;MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.&#xA;값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.&#xA;Process 누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.&#xA;가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.&#xA;이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</description>
     </item>
   </channel>

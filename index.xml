@@ -10,93 +10,93 @@
     <atom:link href="https://osmin625.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Taylor polynomials</title>
-      <link>https://osmin625.github.io/posts/taylor-polynomials/</link>
+      <link>https://osmin625.github.io/posts/Taylor-Polynomials/</link>
       <pubDate>Sat, 11 Nov 2023 18:04:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/taylor-polynomials/</guid>
+      <guid>https://osmin625.github.io/posts/Taylor-Polynomials/</guid>
       <description>테일러 근사 복잡한 형태의 미분 가능한 함수 $f(x)$를 다항식의 합으로 근사하는 것&#xA;$a$를 포함하는 구간에서 함수 $f$가 무한 미분이 가능 할 때&#xA;$$&#xD;\begin{aligned}f(x) &amp;amp; =\sum_{n=0}^{\infty} \frac{f^{(n)}(a)}{n !}(x-a)^n \\&amp;amp; =f(a)+\frac{f^{\prime}(a)}{1 !}(x-a)+\frac{f^{\prime \prime}(a)}{2 !}(x-a)^2+\frac{f^{\prime \prime \prime}(a)}{3 !}(x-a)^3+\ldots\end{aligned}&#xD;$$&#xA;를 테일러 급수라고 한다.&#xA;$f(x)$를 임의의 수 $a$에 대해 정리하는 과정이라 이해하면 편하다.&#xA;수식이 이렇게 생긴 이유&#xA;$f(x)$를 $a$에 대해 정리하고 싶어 식을 $f(x) = t_n(x-a)^n + t_{n-1}(x-a)^{n-1 }+\dots + t_1(x-a)^1$와 같이 정의했을 때,</description>
     </item>
     <item>
       <title>[논문 리뷰] LeakGAN: Long Text Generation via Adversarial Training with Leaked Information</title>
-      <link>https://osmin625.github.io/posts/leakgan/</link>
+      <link>https://osmin625.github.io/posts/LeakGAN/</link>
       <pubDate>Sat, 07 Oct 2023 02:40:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/leakgan/</guid>
+      <guid>https://osmin625.github.io/posts/LeakGAN/</guid>
       <description>✔️ 간단 요약&#xA;Sparsity와 Non-Informative를 효과적으로 해결한다.&#xA;분별망에게 스파이를 심어 생성망이 분별망을 더 잘 속일 수 있도록 구성한다.&#xA;Hierarchical RL architecture (MANAGER, WORKER)&#xA;MANAGER (LSTM)&#xA;중재자 역할 D로부터 고수준 feature representation을 받음 → Leakage WORKER (LSTM)&#xA;$s_t$를 인코딩한 후, MANAGER가 넘겨준 Goal 임베딩과 결합한다. (내적) D가 넘겨준 guiding signal은 scalar 보상 값으로도 쓰이고, 문장 생성 과정에서 Goal 임베딩으로도 쓰인다. {: .prompt-info } logit, temperature parameter, highway network(gate), leakgan의 3가지 학습 방법, CNN for text classification, truncated normalization</description>
     </item>
     <item>
       <title>추천 시스템 개요</title>
-      <link>https://osmin625.github.io/posts/recsys-overview/</link>
+      <link>https://osmin625.github.io/posts/Recsys-Overview/</link>
       <pubDate>Wed, 27 Sep 2023 13:53:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/recsys-overview/</guid>
+      <guid>https://osmin625.github.io/posts/Recsys-Overview/</guid>
       <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) ML based CF</description>
     </item>
     <item>
       <title>Polynomial Interpolation(보간 다항식)</title>
-      <link>https://osmin625.github.io/posts/polynomial-interpolation/</link>
+      <link>https://osmin625.github.io/posts/Polynomial-Interpolation/</link>
       <pubDate>Tue, 12 Sep 2023 23:39:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/polynomial-interpolation/</guid>
+      <guid>https://osmin625.github.io/posts/Polynomial-Interpolation/</guid>
       <description>Linear Interpolation 가장 간단한 보간법&#xA;두 점을 이은 직선의 방정식을 근사 함수로 사용한다.&#xA;데이터 점들 사이의 간격이 작을수록 더 좋은 근삿값을 얻는다.&#xA;$$&#xD;\mathrm{g}(x)=\frac{f\left(x_{i+1}\right)-f\left(x_i\right)}{x_{i+1}-x_i}\left(x-x_i\right)+f\left(x_i\right)&#xD;$$&#xA;Polynomial interpolation (n+1)개의 점이 주어진 경우 n차 이하의 유일한 다항식을 구할 수 있다.&#xA;Q. n+1개의 점으로 찾을 수 있는 n차 다항식은 왜 유일한가?&#xA;방데르몽드 행렬&#xA;각 행의 초항이 1인 등비수열로 이루어진 행렬&#xA;$$&#xD;V=\left(\begin{array}{ccccc}1 &amp;amp; \alpha_1 &amp;amp; \alpha_1^2 &amp;amp; \cdots &amp;amp; \alpha_1^{n-1} \\&#xD;1 &amp;amp; \alpha_2 &amp;amp; \alpha_2^2 &amp;amp; \cdots &amp;amp; \alpha_2^{n-1} \\&#xD;1 &amp;amp; \alpha_3 &amp;amp; \alpha_3^2 &amp;amp; \cdots &amp;amp; \alpha_3^{n-1} \\&#xD;\vdots &amp;amp; \vdots &amp;amp; \vdots &amp;amp; &amp;amp; \vdots \\&#xD;1 &amp;amp; \alpha_m &amp;amp; \alpha_m^2 &amp;amp; \cdots &amp;amp; \alpha_m^{n-1}\end{array}\right)&#xD;$$</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
-      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-2-upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
+      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
       <pubDate>Tue, 08 Aug 2023 18:30:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-2-upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
+      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
       <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트 전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경 기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
     </item>
     <item>
       <title>5F 8월 1주차 주간회고록</title>
-      <link>https://osmin625.github.io/posts/5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</link>
+      <link>https://osmin625.github.io/posts/5F-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</link>
       <pubDate>Sun, 06 Aug 2023 01:22:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/5f-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</guid>
+      <guid>https://osmin625.github.io/posts/5F-%EC%A3%BC%EA%B0%84%ED%9A%8C%EA%B3%A0%EB%A1%9D-230806/</guid>
       <description>8월 2일 네트워킹 데이 때 기업에서 채용담당자 분들과 면담할 기회가 있었다.&#xA;어떤 캠퍼가 기업관계자분께 *“신입 개발자에게 가장 중요한 것이 무엇이냐”*고 물었고, 이에 대한 대답으로&#xA;문제를 잘 정의하고, 다양한 솔루션을 시도하는 역량&#xA;이 중요하다고 말씀해주셨다.&#xA;이 말을 캠퍼 50명과 함께 듣고 있었는데, 마치 나를 해주는 충고처럼 느껴졌다.&#xA;아무래도 PM으로 프로젝트를 주도하다보니, 문제 정의와 다양한 솔루션 제안에서 많은 고민을 했기 때문에 더 크게 와닿았던 것이 아닐까 생각한다.&#xA;그 충고를 듣고 보니 나는 일부 솔루션에 매몰되는 성향이 있었다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 1 — 강의, 대회</title>
-      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
+      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
       <pubDate>Sat, 29 Jul 2023 01:24:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
+      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
       <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나? AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
     </item>
     <item>
       <title>KPT20230629</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</link>
       <pubDate>Thu, 29 Jun 2023 05:00:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230629/</guid>
       <description>TIL (Today I Learn) Autoregression&#xA;Regression을 자기 자신에게 적용하는 것&#xA;회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 모델&#xA;이전부터 Autoregression에 대한 개념 설명을 몇 번 들었으나, 직관적으로 와닿지 않았는데, 이번에 학습하며 이해됐다.&#xA;경사하강법 기반 선형회귀 알고리즘&#xA;Input: X, y, lr, T, Output: beta ——————————————————————————————————————————— # norm: L2-노름을 계산하는 함수 # lr: 학습률, T: 학습횟수 for t in range(T): error = y - X @ beta grad = - transpose(X) @ error beta = beta - lr * grad 오랜만에 AI Math의 내용을 복습했더니 또 매우 새롭다.</description>
     </item>
     <item>
       <title>Autoregression</title>
-      <link>https://osmin625.github.io/posts/autoregression/</link>
+      <link>https://osmin625.github.io/posts/Autoregression/</link>
       <pubDate>Wed, 28 Jun 2023 16:10:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/autoregression/</guid>
+      <guid>https://osmin625.github.io/posts/Autoregression/</guid>
       <description>회귀 분석의 관점에서 과거의 데이터를 보고 현재 또는 미래의 결과를 예측하는 것&#xA;즉, Regression을 자기 자신에게 적용하는 것&#xA;$$&#xD;y_1, \ldots, y_n \rightarrow y_{n+1}&#xD;$$&#xA;$$&#xD;\mathrm{MSE}=\frac{1}{n} \sum_{i=1}^n\left(f\left(y_1, \ldots y_i\right)-y_{i+1}\right)^2&#xD;$$&#xA;종류 Moving Average(이동평균) 가장 간단한 방법&#xA;최신 트렌드를 반영하기 위해 최근 K개의 평균을 향후 예측에 활용한다. K의 값에 따라 경향성을 다르게 모델링할 수 있다. K가 커질수록 최신 트렌드의 반영 정도가 줄어든다. 평균 뿐만 아니라 다양한 형태로 Moving Average의 모델링이 가능하다.</description>
     </item>
     <item>
       <title>KPT20230628</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</link>
       <pubDate>Wed, 28 Jun 2023 05:00:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-20230628/</guid>
       <description>TIL (Today I Learn) CF의 단점&#xA;CF의 단점은 모두 Input이 유저-아이템 상호작용 형태에 국한된다는 점에서 비롯된다.&#xA;CBF와 CF는 서로 상호 보완적인 성격을 가지며, CBF를 단독으로 잘 사용하지 않는다.&#xA;마지막 몰입 책을 다시 읽으며, 어떠한 정보를 암기하기 위해서는 해당 정보가 나중에 어떤 상황에서 다시 사용될 것이라는 생각을 가져야 한다는 것을 깨달았다.&#xA;이외의 CDL, Group Aware 추천, SDAE, FME, FPMC, PRME에 대한 개념을 학습했다.&#xA;강의자료를 정독하며 노션에 개념을 정리했지만, 머릿속에 기억되지는 않았다.</description>
     </item>
     <item>
       <title>KPT20230624</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</link>
       <pubDate>Sat, 24 Jun 2023 16:00:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230624/</guid>
       <description>TIL (Today I Learn) 하루종일 쿠버네티스 과제하다가, 유튜브 한 편 봤더니 아이러니하게도 더 많은 것을 배웠다.&#xA;기록하는 방법&#xA;극단적으로 요약하기&#xA;키워드 중심으로 메모하기&#xA;내 것으로 소화한 후 메모하기&#xA;내 머릿속에 각인된 것들을 중심으로 메모하기.&#xA;하루 일기쓰는 방법&#xA;하루 1~2시간마다 한 줄정도씩 메모하기&#xA;플래너 작성하기&#xA;오전 2개, 오후 1개, 저녁 2개 목표로 잡기.&#xA;시간 단위로 나누게 되면 안하고 자책하게 된다.&#xA;업무 역량 올리기&#xA;일을 시작하기 5분 전, 무엇에 집중해야 하는지 생각하기.</description>
     </item>
     <item>
       <title>KPT20230623</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</link>
       <pubDate>Sat, 24 Jun 2023 02:08:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230623/</guid>
       <description>TIL (Today I Learn) TIL 작성하는 방법&#xA;이때까지 매일 배우는 것이 없어서, 어떻게 TIL을 작성할 지에 대해 고민했었다.&#xA;꾸준한 사람에게는 변명처럼 들릴 수 있겠지만, 나는 TIL을 매일 적는 것이 어려웠다.&#xA;파악한 가장 핵심적인 이유는, 매일 학습량이 일정하지 않다는 것이다.&#xA;학습량이 적은 날은 작성할 내용이 없고, 따라서 TIL을 작성하는 것이 오히려 죄책감을 불러일으키거나, 내용 없는 글을 작성하고 있다는 기분이 들었다.&#xA;그러다보면, 자연스레 TIL을 쓰지 않게 된다.&#xA;앞으로는 목표 학습량을 채우지 못하면, Digital Garden의 키워드를 복습하고 TIL에 채워넣기로 했다.</description>
     </item>
     <item>
       <title>Book Rating Prediction Wrap-up Report</title>
-      <link>https://osmin625.github.io/posts/book-rating-prediction-wrap-up-report/</link>
+      <link>https://osmin625.github.io/posts/Book-Rating-Prediction-Wrap-up-Report/</link>
       <pubDate>Fri, 26 May 2023 21:14:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/book-rating-prediction-wrap-up-report/</guid>
+      <guid>https://osmin625.github.io/posts/Book-Rating-Prediction-Wrap-up-Report/</guid>
       <description>1. 프로젝트 개요 개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
     </item>
     <item>
@@ -108,72 +108,72 @@
     </item>
     <item>
       <title>DeepFM</title>
-      <link>https://osmin625.github.io/posts/deepfm/</link>
+      <link>https://osmin625.github.io/posts/DeepFM/</link>
       <pubDate>Tue, 04 Apr 2023 17:38:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/deepfm/</guid>
+      <guid>https://osmin625.github.io/posts/DeepFM/</guid>
       <description>DeepFM: A Factorization-Machine based Neural Network for CTR Prediction&#xA;Wide &amp;amp; Deep 모델과 달리 두 요소(wide, deep)가 입력값을 공유하도록 한 end-to-end 방식의 논문&#xA;Background 추천 시스템에서는 implicit feature interaction을 학습하는 것이 중요하다.&#xA;예시) 식사 시간에 배달앱 다운로드 수 증가 (order-2 interaction)&#xA;10대 남성은 슈팅/RPG게임을 선호 (order-3 interaction)&#xA;기존 모델들은 low-나 high-order interaction 중 어느 한 쪽에만 강하다.&#xA;Wide &amp;amp; Deep 모델은 이 둘을 통합하여 문제 해결&#xA;하지만 wide component에 feature engineering(=Cross-Product Transformation)이 필요하다.</description>
     </item>
     <item>
       <title>WDN: Wide &amp; Deep Network</title>
-      <link>https://osmin625.github.io/posts/wdn-wide-deep-network/</link>
+      <link>https://osmin625.github.io/posts/WDN-Wide-Deep-Network/</link>
       <pubDate>Tue, 04 Apr 2023 17:38:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/wdn-wide-deep-network/</guid>
+      <guid>https://osmin625.github.io/posts/WDN-Wide-Deep-Network/</guid>
       <description>Wide &amp;amp; Deep Learning for Recommender Systems&#xA;선형적인 모델(Wide)과 비선형적인 모델(Deep)을 결합하여 기존 모델들의 장점을 모두 취하고자 한 논문&#xA;등장 배경 추천시스템에서 해결해야 할 두 가지 과제&#xA;Memorization — 학습데이터에 자주 등장하는 패턴은 모델이 암기해야 한다.&#xA;함께 빈번히 등장하는 아이템 혹은 특성(feature) 관계를 과거 데이터로부터 학습하는 것&#xA;Logistic Regression과 같은 선형 모델&#xA;대규모 추천 시스템 및 검색 엔진에서 사용해왔다. 확장 및 해석이 용이하다. 학습 데이터에 없는 feature 조합에 취약하다. Generalization — 학습데이터에 발생하지 않는 패턴을 적절하게 표현해야 한다.</description>
     </item>
     <item>
       <title>FFM: Field-aware Factorization Machine</title>
-      <link>https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/</link>
+      <link>https://osmin625.github.io/posts/FFM-Field-aware-Factorization-Machine/</link>
       <pubDate>Mon, 03 Apr 2023 14:17:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/ffm-field-aware-factorization-machine/</guid>
+      <guid>https://osmin625.github.io/posts/FFM-Field-aware-Factorization-Machine/</guid>
       <description>개요 Field-aware Factorization Machines for CTR Prediction&#xA;FM의 변형된 모델인 FFM을 제안하여 더 높은 성능을 보인 논문 FM은 예측 문제에 두루 적용 가능한 모델로, 특히 sparse 데이터로 구성된 CTR 예측에서 좋은 성능을 보인다.&#xA;Field-aware Factorization Machine (FFM) FM을 발전시킨 모델&#xA;PITF 모델에서 아이디어를 얻었다.&#xA;PITF : Pairwise Interaction Tensor Factorization MF를 3차원으로 확장시킨 모델&#xA;PITF에서는 (user, item, tag) 3개의 필드에 대한 클릭률을 예측하기 위해&#xA;(user, item), (item, tag), (user, tag) 각각에 대해서 서로 다른 latent factor를 정의하여 계산</description>
     </item>
     <item>
       <title>FM: Factorization Machine</title>
-      <link>https://osmin625.github.io/posts/fm-factorization-machine/</link>
+      <link>https://osmin625.github.io/posts/FM-Factorization-Machine/</link>
       <pubDate>Mon, 03 Apr 2023 02:17:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/fm-factorization-machine/</guid>
+      <guid>https://osmin625.github.io/posts/FM-Factorization-Machine/</guid>
       <description>General Predictor에 Latent Factor Model을 추가한 모델.&#xA;Background Factorization Machines&#xA;SVM과 Factorization Model의 장점을 결합한 FM을 처음 소개한 논문&#xA;등장 배경&#xA;딥러닝이 등장하기 이전 SVM이 가장 많이 사용됐다.&#xA;매우 희소한 데이터가 많은 CF 환경에서는 SVM보다 MF 계열의 모델이 더 높은 성능을 내왔다.&#xA;SVM과 MF의 장점을 결합할 수 없을까? ⇒ FM 탄생.&#xA;MF 기반 모델의 한계 ⇒ User-Item 행렬 기반&#xA;즉, 특정 데이터 포맷에 특화되어 있다.&#xA;$X:$ (유저, 아이템) → $Y:$ (rating)으로 이루어진 데이터에 대해서만 적용이 가능하다.</description>
     </item>
     <item>
       <title>KPT20230401</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</link>
       <pubDate>Sat, 01 Apr 2023 23:51:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230401/</guid>
       <description>주말이지만, 밀린 진도와 공부를 따라잡는 시간으로 열심히 보냈다.&#xA;TIL (Today I Learn) MF, SVD를 완벽하게 이해했다.&#xA;Word2Vec 생성 방법을 완전히 이해했다.&#xA;CBOW — 중간 단어 예측&#xA;SG — CBOW 뒤집은 버전&#xA;SGNS — SG를 이진 분류로 바꾼 것.&#xA;MBCF&#xA;NCF&#xA;AE&#xA;DAE&#xA;Keep 집중을 잘 한 것&#xA;4시 전까지는 만족스럽게 집중하는 시간을 가졌다.&#xA;그 이후는 체력 때문에 집중도가 떨어졌다.&#xA;4시 이후는 집중이 떨어질 수 있다는 것을 감안하고 체력관리를 해야겠다.&#xA;Problem 늘 그랬듯이, 잠을 늦게 자는 것.</description>
     </item>
     <item>
       <title>CBOW: Continous Bag of Word</title>
-      <link>https://osmin625.github.io/posts/cbow/</link>
+      <link>https://osmin625.github.io/posts/CBOW/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/cbow/</guid>
+      <guid>https://osmin625.github.io/posts/CBOW/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;앞뒤의 단어를 통해 중앙의 단어를 예측하는 방법&#xA;input — quick, brown, jumps, over output — fox 단어를 예측하기 위해 앞뒤로 몇 개의 단어(n)를 사용할지 정한다.&#xA;Multi-Class Classification&#xA;Input을 통해 One-Hot Vector의 각 원소가 0인지 1인지 예측한다.&#xA;학습 파라미터 $W_{V\times M}$: One-Hot Vector을 임베딩 벡터로 변환하는 행렬&#xA;$V$: 단어의 총 개수(One-Hot Vector의 크기) $M$: 임베딩 벡터의 크기 $W&#39;_{M\times V}$: 임베딩 벡터를 One-Hot Vector의 길이로 변환하는 행렬</description>
     </item>
     <item>
       <title>SG: Skip-Gram</title>
-      <link>https://osmin625.github.io/posts/sg/</link>
+      <link>https://osmin625.github.io/posts/SG/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/sg/</guid>
+      <guid>https://osmin625.github.io/posts/SG/</guid>
       <description>Word2Vec을 학습하는 방법 중 하나.&#xA;CBOW가 뒤집어진 모델&#xA;CBOW와 입력층과 출력층이 반대로 구성되어 있다.&#xA;벡터의 평균을 구하는 과정이 없다.&#xA;CBOW보다 성능이 좋다고 알려져있다.&#xA;참고로 이 때의 성능은 학습 과정의 Loss가 아니라 임베딩 벡터의 표현력을 의미한다.&#xA;CBOW와 마찬가지로 Multi-Classification Model에 해당한다.</description>
     </item>
     <item>
       <title>SGNS: Skip-Gram with Negative Sampling</title>
-      <link>https://osmin625.github.io/posts/sgns/</link>
+      <link>https://osmin625.github.io/posts/SGNS/</link>
       <pubDate>Fri, 31 Mar 2023 06:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/sgns/</guid>
+      <guid>https://osmin625.github.io/posts/SGNS/</guid>
       <description>SG를 이진 분류 문제로 바꾼 모델&#xA;Negative Sampling 주변 단어가 아닌 단어를 Label 0으로 Sample에 포함시키는 것&#xA;Negative Sampling의 개수는 하이퍼파라미터에 해당한다.&#xA;학습 데이터가 적은 경우 5-20, 충분히 큰 경우 2-5가 적당하다. positive sample 하나당 k개 샘플링 중심 단어와 주변 단어가 각각 임베딩 벡터를 따로 가진다.&#xA;만약 input/output 혹은 word/context representation을 동일한 값으로 사용한다고 하면,&#xA;특정 단어, 가령 &amp;ldquo;dog&amp;quot;에 대해 P(dog|dog)가 현실적으로는 불가하지만 (한 문장에 &amp;ldquo;dog dog&amp;quot;를 연속으로 쓸 일은 없으니.</description>
     </item>
     <item>
       <title>MF: Matrix Factorization</title>
-      <link>https://osmin625.github.io/posts/mf-matrix-factorization/</link>
+      <link>https://osmin625.github.io/posts/MF-Matrix-Factorization/</link>
       <pubDate>Thu, 30 Mar 2023 12:19:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/mf-matrix-factorization/</guid>
+      <guid>https://osmin625.github.io/posts/MF-Matrix-Factorization/</guid>
       <description>간단 요약&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;인수분해를 다양하게 시도하여 대상 행렬을 가장 잘 복구하는 최적의 하위행렬을 찾는 과정 {: .prompt-info } Latent Factors, Matrix Factorization, SGD&#xA;행렬을 인수분해 후 재생성하여 결측치를 예측하는 방법&#xA;대상 행렬을 두개의 하위 행렬로 분해한다.&#xA;User-Item 행렬을 User와 Item 각각에 대한 저차원의 latent factor 행렬로 분해한다.&#xA;두 하위 행렬을 다시 곱해서 대상 행렬과 동일한 크기의 단일 행렬로 만든다.&#xA;위의 과정에서 기존 행렬의 빈공간이 채워진다.</description>
     </item>
     <item>
       <title>SVD: Singular Value Decomposition(특이값 분해)</title>
-      <link>https://osmin625.github.io/posts/svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
+      <link>https://osmin625.github.io/posts/SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</link>
       <pubDate>Thu, 30 Mar 2023 00:19:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/svd-singular-value-decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
+      <guid>https://osmin625.github.io/posts/SVD-Singular-Value-Decomposition%ED%8A%B9%EC%9D%B4%EA%B0%92-%EB%B6%84%ED%95%B4/</guid>
       <description>간단 요약&#xA;2차원 행렬을 두 개의 잠재요인 행렬과 하나의 대각행렬로 분해하는 기법 {: .prompt-info } eigen vector, eigen value&#xA;2차원 행렬 분해 기법 유저 잠재요인 행렬 ⇒ 유저 임베딩 잠재요인 대각행렬 ⇒ 임베딩의 중요도 아이템 잠재요인 행렬 ⇒ 아이템 임베딩 차원축소 기법 행렬을 대각화하는 방법 모든 m x n 행렬에 대해 적용 가능 Rating Matrix $R$ 에 대해 유저와 아이템의 잠재 요인을 포함할 수 있는 행렬로 분해한다.&#xA;Full SVD 기존 행렬을 온전하게 3개의 행렬로 분해한다.</description>
     </item>
     <item>
@@ -185,9 +185,9 @@
     </item>
     <item>
       <title>KPT20230328</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</link>
       <pubDate>Tue, 28 Mar 2023 22:00:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230328/</guid>
       <description>TIL (Today I Learn) git-flow 설명하기 TF-IDF UMAP 활용 HDBSCAN 활용 Data Clustering 시각화 Pandas 활용 value_count 활용 Dataframe filter 활용 groupby, get_group 활용 Keep 연구실 과제를 진행하며 차원 축소 알고리즘 UMAP과, 클러스터링 기법인 HDBSCAN을 활용해보았다. 직접 써보니 확실히 기억에 오래 남을 것 같다. Visualization도 직접 활용해보고, Problem git 강의는 듣지 않았다.&#xA;솔직히 강의 진행이 많이 느리다고 느낀다.&#xA;이미 알고 있는 내용이라, 강의를 안듣고 싶지만… 마음 편히 무시하지는 못해서, 시간이나 집중력이 허비되는 느낌이다.</description>
     </item>
     <item>
@@ -199,9 +199,9 @@
     </item>
     <item>
       <title>KPT20230327</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</link>
       <pubDate>Mon, 27 Mar 2023 22:00:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230327/</guid>
       <description>TIL (Today I Learn) Stacking이 무엇이고, 어떤 상황에 사용하는지 추천 시스템이 무엇인지와, 추천시스템을 통해 해결하고자 하는 문제의 본질(The Long tail 현상) 추천시스템의 목적 추천시스템의 평가 지표 AP, MAP CG, DCG, IDCG, NDCG 스코어 생성 방법 UMAP 활용 방법 Keep 강의를 통해 추천 시스템의 전반적인 틀을 알게 되었다. 여러 추천 시스템 예시들을 접하다보니, 과거에 내가 수행했었던 프로젝트가 결국 추천시스템이라는 것을 깨달았다. 연구실 과제를 수행하며 차원 축소를 진행해야 했는데, 일전에 1분 말하기때 차원축소에 대해 정리했던 것이 도움이 됐다.</description>
     </item>
     <item>
@@ -220,114 +220,114 @@
     </item>
     <item>
       <title>KPT20230326</title>
-      <link>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</link>
+      <link>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</link>
       <pubDate>Mon, 27 Mar 2023 01:24:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/kpt-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</guid>
+      <guid>https://osmin625.github.io/posts/KPT-%EC%9D%BC%EC%9D%BC%ED%9A%8C%EA%B3%A0%EB%A1%9D-230326/</guid>
       <description>부스트캠퍼들의 학습정리 기록들을 읽었다.&#xA;덕분에 많은 동기부여가 되어, 나도 회고를 하고자 마음먹었다.&#xA;늦었지만, 지금 당장 시작해야지.&#xA;TIL (Today I Learn) 노션에 특정 시간에 자동으로 페이지 생성 기능이 있다는 것을 깨달았다. Keep 회고록을 쓰기 시작한 것! 엉망진창이던 여러 폴더 자료 정리를 한 것. 부스트캠프 시작하고 처음으로…계획을 세운 것!(이런 내가…MBTI J..?) 야식을 참은 것. 배가 고프지만 살이 잘 빠지고 있다. Problem 내일은…반드시 일찍 자도록 하자. Try 미리미리 하루를 부지런하게 살고, 하루의 목표치는 적당한 양으로 잡자.</description>
     </item>
     <item>
       <title>모델에 데이터를 먹이는 방법(PyTorch Datasets &amp; DataLoaders)</title>
-      <link>https://osmin625.github.io/posts/pytorch-datasets-dataloaders/</link>
+      <link>https://osmin625.github.io/posts/PyTorch-Datasets-DataLoaders/</link>
       <pubDate>Tue, 14 Mar 2023 10:13:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/pytorch-datasets-dataloaders/</guid>
+      <guid>https://osmin625.github.io/posts/PyTorch-Datasets-DataLoaders/</guid>
       <description>모델에 데이터를 먹이는 방법&#xA;1. Dataset 모아놓은 데이터에 대해 Dataset이라는 클래스를 통해 시작, 길이, mapstyle 등을 선언해준다.&#xA;__getitems__() : 하나의 데이터를 불러올 때 어떤 식으로 데이터를 반환할 지를 선언해준다.&#xA;데이터 입력 형태를 정의하는 클래스&#xA;데이터를 입력하는 방식의 표준화&#xA;Image, Text, Audio 등에 따라 다르게 입력이 정의된다.&#xA;데이터의 형태에 따라 각 함수를 다르게 정의한다.&#xA;모든 것을 데이터 생성 시점에 처리할 필요는 없다.&#xA;image의 Tensor 변화는 학습에 필요한 시점에 변환해주면 된다.&#xA;데이터 셋에 대한 표준화된 처리 방법 제공이 필요하다.</description>
     </item>
     <item>
       <title>PyTorch의 Backward에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/backward/</link>
+      <link>https://osmin625.github.io/posts/Backward/</link>
       <pubDate>Mon, 13 Mar 2023 22:13:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/backward/</guid>
+      <guid>https://osmin625.github.io/posts/Backward/</guid>
       <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y + 25\ z = 10 \times w^2 + 25\ {dz\over dw} = 20 \times w = 40 $$</description>
     </item>
     <item>
       <title>PyTorch 모델 정의하기 - nn.Module</title>
-      <link>https://osmin625.github.io/posts/pytorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</link>
+      <link>https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</link>
       <pubDate>Mon, 13 Mar 2023 22:09:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/pytorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</guid>
+      <guid>https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EC%A0%95%EC%9D%98%ED%95%98%EA%B8%B0/</guid>
       <description>간단 요약&#xA;반복되는 Layer을 만들기 위한 Torch의 가장 기본적인 신경망 모듈&#xA;매개변수를 캡슐화하는 간편한 방법&#xA;GPU로 이동, 내보내기(exporting), 불러오기(loading) 등의 작업을 위한 헬퍼(helper)를 제공한다.&#xA;{: .prompt-info }&#xA;DL 모델은 모두 Layer의 반복이며, 블록 반복의 연속이다.&#xA;Module에서 정의하는 것&#xA;Input&#xA;Output&#xA;Forward&#xA;(Backward)&#xA;이 때, Backward는 자동 미분이 되기 때문에, 해당되는 weight의 값들을 내보내준다.&#xA;즉, weight가 학습의 대상이 되고, 이를 parameter(tensor)로 정의한다.&#xA;일반적으로는 직접 지정해줄 필요가 없다.&#xA;example import torch from torch.</description>
     </item>
     <item>
       <title>PyTorch에서 weight를 저장하는 객체 - nn.Parameter</title>
-      <link>https://osmin625.github.io/posts/pytorch-nn-parameter/</link>
+      <link>https://osmin625.github.io/posts/PyTorch-nn-Parameter/</link>
       <pubDate>Mon, 13 Mar 2023 22:09:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/pytorch-nn-parameter/</guid>
+      <guid>https://osmin625.github.io/posts/PyTorch-nn-Parameter/</guid>
       <description>간단 요약&#xA;학습의 대상이 되는 Weight를 정의한다.&#xA;Tensor 객체의 상속 객체 {: .prompt-info }&#xA;Tensor 객체와 매우 비슷하다.&#xA;nn.Module의 attribute가 될 때는 required_grad = True로 자동으로 지정되어 AutoGrad의 대상이 된다.&#xA;대부분의 Layer에는 weights 값들이 지정되어 있기 때문에, 직접 지정할 일은 드물다. 그래도 직접 지정하는 법을 알아보자.&#xA;nn.Module로 만든 $\tt xw +b$라는 선형 모델을 살펴본다.&#xA;$\tt xw +b$ class MyLinear(nn.Module): def __init__ (self, in_features, out_features, bias=True): super(). init () **self.in_features = in_features self.</description>
     </item>
     <item>
       <title>Tensor에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/tensor/</link>
+      <link>https://osmin625.github.io/posts/Tensor/</link>
       <pubDate>Mon, 13 Mar 2023 10:44:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/tensor/</guid>
+      <guid>https://osmin625.github.io/posts/Tensor/</guid>
       <description>간단 요약&#xA;autograd 연산을 지원하는 다차원 배열&#xA;tensor에 대한 미분값을 가진다.&#xA;reshape보다 view를 쓰는 것이 좋다. squeeze와 unsqueeze의 차이 mm, dot, matmul 차이&#xA;{: .prompt-info } 신경망의 가중치(매개변수)를 텐서로 표현한다.&#xA;다차원 Arrays를 표현하는 PyTorch 클래스&#xA;numpy의 ndarray와 호환된다.&#xA;TensorFlow의 Tensor와도 동일&#xA;Tensor을 생성하는 함수도 거의 동일&#xA;numpy — ndarray&#xA;import numpy as np n_array = np.arange(10).reshape(2,5) print(n_array) print(&amp;#34;n_dim :&amp;#34;, n_array.ndim, &amp;#34;shape :&amp;#34;, n_array.shape) pytorch — tensor&#xA;import torch t_array = torch.</description>
     </item>
     <item>
       <title>PyTorch 개요</title>
-      <link>https://osmin625.github.io/posts/pytorch-overview/</link>
+      <link>https://osmin625.github.io/posts/Pytorch-overview/</link>
       <pubDate>Mon, 13 Mar 2023 09:58:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/pytorch-overview/</guid>
+      <guid>https://osmin625.github.io/posts/Pytorch-overview/</guid>
       <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;{: .prompt-info }&#xA;구현 개요(PyTorch) 1. 데이터 준비 Tensor PyTorch Datasets &amp;amp; DataLoaders 2. 모델 정의 (torch.nn.Module) PyTorch 모델 불러오기&#xA;Input size, Output size 정의 nn.Parameter Forward 연산 정의 Backward 연산 정의 3. 하이퍼 파라미터 지정 Hyperparameter Tuning 4. 모델 평가 기준 및 Optimizer 설정 모델 평가 기준 : loss를 어떻게 계산할 것인가? 손실 함수(Loss Function) Optimizer 설정 5.</description>
     </item>
     <item>
       <title>PyTorch 모델 저장하고 불러오기</title>
-      <link>https://osmin625.github.io/posts/pytorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
+      <link>https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</link>
       <pubDate>Mon, 13 Mar 2023 09:58:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/pytorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
+      <guid>https://osmin625.github.io/posts/PyTorch-%EB%AA%A8%EB%8D%B8-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0/</guid>
       <description>model.save() 학습의 결과를 저장하기 위한 함수&#xA;모델 형태(architecture)와 파라미터를 저장&#xA;모델 학습 중간 과정의 저장을 통해 최선의 결과 모델을 선택&#xA;만들어진 모델을 외부 연구자와 공유하여 학습 재연성 향상&#xA;# Print model&amp;#39;s state_dict print(&amp;#34;Model&amp;#39;s state_dict:&amp;#34;) # state dict: 모델의 파라미터를 표시 for param_tensor in model.state_dict(): print(param_tensor, &amp;#34;\t&amp;#34;, model.state_dict()[param_tensor].size()) ## 방법 1. # 모델의 파라미터만 저장하기 **torch.save**(model.**state_dict()**, os.path.join(MODEL_PATH, &amp;#34;model.pt&amp;#34;)) # 모델은.pt 파일로 저장한다. # dict type으로 저장된다. new_model = TheModelClass() # 모델의 Architecture가 동일한 경우 파라미터만 저장하고 불러온다.</description>
     </item>
     <item>
       <title>모델의 성능이 더이상 오르지 않을 때 (Hyper-Parameter Tuning)</title>
-      <link>https://osmin625.github.io/posts/hyperparameter_tuning/</link>
+      <link>https://osmin625.github.io/posts/Hyperparameter_tuning/</link>
       <pubDate>Mon, 13 Mar 2023 09:58:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/hyperparameter_tuning/</guid>
+      <guid>https://osmin625.github.io/posts/Hyperparameter_tuning/</guid>
       <description>하이퍼 파라미터&#xA;모델 스스로 학습하지 않는 값.&#xA;사람이 직접 지정해주어야 한다.&#xA;결과를 개선하고 싶을 때 모델을 바꾸기&#xA;중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.&#xA;데이터를 바꾸기 → 성능 개선을 위해 가장 중요하다.&#xA;하이퍼 파라미터 Tuning&#xA;약간의 성능 개선이 간절한 경우 수행한다.&#xA;마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.&#xA;generalization 등 적용&#xA;Hyperparameter Tuning 가장 기본적인 방법 - grid vs random&#xA;grid&#xA;적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</description>
     </item>
     <item>
       <title>1 x 1 Convolution</title>
-      <link>https://osmin625.github.io/posts/1x1-convolution/</link>
+      <link>https://osmin625.github.io/posts/1x1-Convolution/</link>
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/1x1-convolution/</guid>
+      <guid>https://osmin625.github.io/posts/1x1-Convolution/</guid>
       <description>차원 축소를 위해 활용한다.&#xA;이미지에서 단 하나의 픽셀만 보기 때문에, 이미지에서 영역을 살펴보는 의미는 없다.&#xA;다만, 1 * 1 Convolution을 이용하여 기존 Spatial Dimension을 그대로 유지한 채, 채널의 개수를 128개에서 32개로 줄인다.&#xA;![1x1 Conv_1](/imgs/1x1 Conv_1.png)&#xA;이를 통해 NN의 층을 더 깊게 쌓으면서도, 채널의 수를 줄여서 파라미터의 수를 줄일 수 있다.&#xA;1 * 1 Convolution을 사용하지 않는 경우&#xA;![1x1 Conv_2](/imgs/1x1 Conv_2.png)&#xA;1 * 1 Convolution을 사용한 경우&#xA;![1x1 Conv_3](/imgs/1x1 Conv_3.png)&#xA;파라미터 수를 147,456개에서 40,960개로 효과적으로 줄일 수 있다.</description>
     </item>
     <item>
       <title>Alexnet 모델의 파라미터 수 계산</title>
-      <link>https://osmin625.github.io/posts/alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</link>
+      <link>https://osmin625.github.io/posts/Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</link>
       <pubDate>Fri, 13 Jan 2023 15:15:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</guid>
+      <guid>https://osmin625.github.io/posts/Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</guid>
       <description>Conv Layer Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k&#xA;입력 : 224 * 224 * 3&#xA;filter : 11 * 11 * (3)&#xA;3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.&#xA;모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.&#xA;gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.&#xA;Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k</description>
     </item>
     <item>
       <title>LSTM: Long Short Term Memory</title>
-      <link>https://osmin625.github.io/posts/lstm/</link>
+      <link>https://osmin625.github.io/posts/LSTM/</link>
       <pubDate>Sun, 04 Dec 2022 02:11:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/lstm/</guid>
+      <guid>https://osmin625.github.io/posts/LSTM/</guid>
       <description>RNN의 장기문맥 의존성을 해결하기 위해 탄생한 모델&#xA;선별적 게이트라는 개념으로 선별 기억 능력을 확보한다.&#xA;그림은 이해를 돕기위해 O,X로 표현했지만, 실제로는 게이트는 0~1 사이의 실수값으로 열린 정도를 조절한다.&#xA;게이트의 여닫는 정도는 가중치로 표현되며 가중치는 학습으로 알아낸다.&#xA;가중치&#xA;순환 신경망의 $\{U, V, W\}$에 4개를 추가하여 $\{U, U_i , U_o , W, W_i , W_o , V\}$&#xA;$i$ : 입력 게이트&#xA;$o$ : 출력 게이트&#xA;다양한 구조 설계가 가능하다.&#xA;Model Concept Cell State LSTM의 핵심</description>
     </item>
     <item>
       <title>Optimizer란?</title>
-      <link>https://osmin625.github.io/posts/optimizer/</link>
+      <link>https://osmin625.github.io/posts/Optimizer/</link>
       <pubDate>Sat, 03 Dec 2022 13:05:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/optimizer/</guid>
+      <guid>https://osmin625.github.io/posts/Optimizer/</guid>
       <description>간단 요약&#xA;Loss의 미분값을 파라미터에 어떻게 반영할 지에 대한 방법&#xA;반영 방법 : loss의 미분 값을 파라미터에 어떻게 반영할 것인가? Learning rate : 한 번에 얼마나 반영할 것인가?&#xA;{: .prompt-info } Background: Gradient Descent(GD)에서의 Issue 1. Local minima, Saddle point {: w=&amp;ldquo;700&amp;rdquo; h=&amp;ldquo;400&amp;rdquo; }&#xA;실제로는 Local Minima보단 안장점(saddle point)이 문제인 경우가 더 많다.&#xA;local minima가 되기 위해선 모든 변수 방향에서 loss가 증가해야 하는데, 이는 흔치 않다.&#xA;{: w=&amp;ldquo;400&amp;rdquo; h=&amp;ldquo;250&amp;rdquo; }</description>
     </item>
     <item>
       <title>손실 함수(Loss Function)에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/loss-function/</link>
+      <link>https://osmin625.github.io/posts/Loss-function/</link>
       <pubDate>Sat, 19 Nov 2022 00:04:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/loss-function/</guid>
+      <guid>https://osmin625.github.io/posts/Loss-function/</guid>
       <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function 신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
     </item>
     <item>
       <title>MICE : Multiple Imputation Chained Equation</title>
-      <link>https://osmin625.github.io/posts/mice/</link>
+      <link>https://osmin625.github.io/posts/MICE/</link>
       <pubDate>Tue, 18 Oct 2022 07:41:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/mice/</guid>
+      <guid>https://osmin625.github.io/posts/MICE/</guid>
       <description>Multiple Imputation Chained Equation(다중 산입 연립 방정식)&#xA;MICE 접근 방식에는 MI에서 언급된 동일한 개념이 적용된다.&#xA;값들은 각 방식에 따라 산입된 후 완전한 데이터셋에 대한 분석이 진행되고 결과가 합쳐진다. 다만 차이점으로, MI에서는 모든 변수에 대해 동시에 산입되지만, MICE에서는 각 변수의 값이 순차적으로 산입된다.&#xA;Process 누락된 데이터의 양이 가장 적은 변수가 가장 먼저 산입된다.&#xA;가장 첫 변수는 mean replacement(평균 대체) 방법으로 채워진다.&#xA;이후, 채워진 변수는 다른 변수를 채울 때 함께 예측 변수로 사용된다.</description>
     </item>
     <item>
       <title>Git Branch는 무엇이고, 무엇을 위해 사용하는가?</title>
-      <link>https://osmin625.github.io/posts/git-branch/</link>
+      <link>https://osmin625.github.io/posts/Git-Branch/</link>
       <pubDate>Sun, 09 Oct 2022 07:49:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/git-branch/</guid>
+      <guid>https://osmin625.github.io/posts/Git-Branch/</guid>
       <description>독립적으로 특정 작업을 진행할 때 사용한다.&#xA;팀으로 여러작업을 동시에 작업할 수 있다.&#xA;여러 Branch를 합치는 방법 — Merge&#xA;merge branch의 모든 기록 보존, merge에 대한 기록 추가.&#xA;이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</description>
     </item>
     <item>
@@ -346,23 +346,23 @@
     </item>
     <item>
       <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
-      <link>https://osmin625.github.io/posts/gradient_descent/</link>
+      <link>https://osmin625.github.io/posts/Gradient_Descent/</link>
       <pubDate>Fri, 22 Apr 2022 23:21:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/gradient_descent/</guid>
+      <guid>https://osmin625.github.io/posts/Gradient_Descent/</guid>
       <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법) 자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
     </item>
     <item>
       <title>Ranked Retreival 모델 구현(TF-IDF)</title>
-      <link>https://osmin625.github.io/posts/tf-idf-implement/</link>
+      <link>https://osmin625.github.io/posts/TF-IDF-Implement/</link>
       <pubDate>Tue, 01 Mar 2022 12:37:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/tf-idf-implement/</guid>
+      <guid>https://osmin625.github.io/posts/TF-IDF-Implement/</guid>
       <description>우선, 시작하기에 앞서 corpus 구성을 확인했다.&#xA;한글로 작성되었으며, 제목과 문서 내용으로 구성되어있는 것을 확인했다.&#xA;일단 데이터를 처리하기 위해 코드에서 파일을 열어야 하는데, 문서가 한글파일로 제공되었기 때문에 한글 문서를 txt 문서로 변환해주었다.&#xA;{: w=&amp;ldquo;200&amp;rdquo; h=&amp;ldquo;100&amp;rdquo; }&#xA;언어는 파이썬을 선택했다.&#xA;처음 프로젝트를 시작했을 때, 나는 colab 환경에서 파이썬 코드를 실행시키고자 했으므로 Google Drive에 corpus 파일을 업로드하고, 코드 작성을 시작했다.&#xA;수업 내용에서는 영어를 기준으로 다뤄왔었는데 한글을 토큰화하는 방법이 떠오르지 않았다.&#xA;다행스럽게도 한글 형태소 분석 라이브러리 Konlpy가 있어서 이를 활용하고자 했다.</description>
     </item>
     <item>
       <title>문서의 순위를 매기는 방법, TF-IDF</title>
-      <link>https://osmin625.github.io/posts/tf-idf/</link>
+      <link>https://osmin625.github.io/posts/TF-IDF/</link>
       <pubDate>Mon, 28 Feb 2022 20:41:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/tf-idf/</guid>
+      <guid>https://osmin625.github.io/posts/TF-IDF/</guid>
       <description>Background 이때까지 우리의 쿼리는 모두 Boolean을 활용한 것이었다.&#xA;Boolean은 자신들의 원하는 검색결과를 정확하게 아는 전문가들이 사용하기에 좋다.&#xA;또한 많은 정보를 탐색하는 전문가들에게 유용하다.&#xA;하지만 대부분의 사람들이 편하게 사용하기엔 적절하지 않다.&#xA;대부분의 유저들은 boolean 쿼리를 작성하지 못한다.&#xA;사용자들은 그렇게 많은 결과물이 필요하지 않다.&#xA;대부분 Boolean query는 문서가 너무 많이 나오거나, 너무 적게 나온다.&#xA;Query 1: “standard user dlink 650” → 200,000 hits&#xA;Query 2: “standard user dlink 650 no card found”: 0 hits</description>
     </item>
     <item>

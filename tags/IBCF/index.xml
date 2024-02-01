@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IBCF on OMIN</title>
-    <link>https://osmin625.github.io/tags/ibcf/</link>
+    <link>https://osmin625.github.io/tags/IBCF/</link>
     <description>Recent content in IBCF on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Wed, 29 Mar 2023 14:03:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/ibcf/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/tags/IBCF/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NBCF: Neighborhood-based CF(이웃 기반 협업 필터링)</title>
       <link>https://osmin625.github.io/posts/nbcf-neighborhood-based-cf/</link>

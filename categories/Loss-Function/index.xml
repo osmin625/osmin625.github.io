@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Loss Function on OMIN</title>
-    <link>https://osmin625.github.io/categories/loss-function/</link>
+    <link>https://osmin625.github.io/categories/Loss-Function/</link>
     <description>Recent content in Loss Function on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Sat, 19 Nov 2022 00:04:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/categories/loss-function/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/categories/Loss-Function/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>손실 함수(Loss Function)에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/loss-function/</link>
+      <link>https://osmin625.github.io/posts/Loss-function/</link>
       <pubDate>Sat, 19 Nov 2022 00:04:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/loss-function/</guid>
+      <guid>https://osmin625.github.io/posts/Loss-function/</guid>
       <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function 신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
     </item>
     <item>
@@ -31,9 +31,9 @@
     </item>
     <item>
       <title>손실 함수에서 최적 해를 찾는 방법: Gradient Descent(경사 하강법)</title>
-      <link>https://osmin625.github.io/posts/gradient_descent/</link>
+      <link>https://osmin625.github.io/posts/Gradient_Descent/</link>
       <pubDate>Fri, 22 Apr 2022 23:21:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/gradient_descent/</guid>
+      <guid>https://osmin625.github.io/posts/Gradient_Descent/</guid>
       <description>손실 함수, 확률적 경사 하강법, 수치 미분, 배치 모드, 미니 배치 모드, 패턴 모드, Local Minima, Global Minima, Optimizer&#xA;Gradient Descent(경사하강법) 자연 과학과 공학에서 오랫동안 사용해온 최적화 방법&#xA;손실 함수의 최적 해를 찾기 위한 방법&#xA;1차 근삿값 발견을 위한 최적화 알고리즘&#xA;미분 값 $\partial J\over\partial w_1$의 반대 방향이 최적 해에 접근하는 방향이다.&#xA;따라서, 현재 가중치 $w_1$에 $-{\partial J\over\partial w_1}$을 더하면 최적 해에 가까워진다.&#xA;굳이 가까워질 필요 없이, 손실 함수를 미분해서 바로 극값을 찾으면 되지 않을까?</description>
     </item>
   </channel>

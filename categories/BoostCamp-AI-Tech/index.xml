@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BoostCamp AI Tech on OMIN</title>
-    <link>https://osmin625.github.io/categories/boostcamp-ai-tech/</link>
+    <link>https://osmin625.github.io/categories/BoostCamp-AI-Tech/</link>
     <description>Recent content in BoostCamp AI Tech on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 08 Aug 2023 18:30:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/categories/boostcamp-ai-tech/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://osmin625.github.io/categories/BoostCamp-AI-Tech/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
-      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-2-upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
+      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
       <pubDate>Tue, 08 Aug 2023 18:30:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-2-upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
+      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</guid>
       <description>최종 프로젝트는 변성윤 마스터님(유튜버 카일스쿨)의 Product Serving 강좌와 함께 진행됐다.&#xA;내가 강의를 통해 최종 프로젝트의 흐름에 대해 정리한 바로는 AI를 활용하는 End-to-End 서비스를 구축하는 것이 1차 목표이고, 2차 목표로는 사용자 피드백을 받아 서비스를 개선하는 것이다.&#xA;다만 우리 팀은 기업 연계 프로젝트를 진행하여 AI 활용 서비스를 개발하는 것에 초점을 두지 않았다.&#xA;업스테이지 기업연계 프로젝트 전체 트랙에서 지원을 받아 최종적으로 뽑힌 팀이 기업이 제안한 주제로 프로젝트를 진행할 수 있다.&#xA;지원 배경 기연프에 지원하기 위해선 팀원 모두가 기업에서 제안한 프로젝트 주제가 마음에 들어야 한다.</description>
     </item>
     <item>
       <title>네이버 부스트캠프 AI Tech 회고 1 — 강의, 대회</title>
-      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
+      <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</link>
       <pubDate>Sat, 29 Jul 2023 01:24:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-ai-tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
+      <guid>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-1-%EA%B0%95%EC%9D%98-%EB%8C%80%ED%9A%8C/</guid>
       <description>{: lqip=&amp;quot;/imgs/boostcamp_logo.png&amp;quot; }&#xA;드디어! 최종 프로젝트를 제출하면서, 길고 길었던 부스트캠프 AI Tech 5기의 모든 일정이 종료됐다.&#xA;부스트캠프 전체에 대한 회고도 하면서, 기업연계 프로젝트에 대한 회고도 담아보고자 한다.&#xA;처음에는 하나의 포스트로 작성했는데, 쓰다보니 너무 길어져 구분하여 글을 작성했다.&#xA;왜 부스트캠프 추천 트랙에 지원했나? AI 부스트캠프 지원자를 모집할 당시(22년 하반기), 나는 카카오 DS 최종면접을 준비하고 있었다.&#xA;1년간 통계학과와 수학과를 넘나들며 나름 AI의 수학적 지식기반을 쌓았(다고 생각했)고, 여러 경진대회를 경험하고 AI 관련 과목을 수강하면서 점점 자신감이 차오르던 시기였다.</description>
     </item>
     <item>
       <title>Book Rating Prediction Wrap-up Report</title>
-      <link>https://osmin625.github.io/posts/book-rating-prediction-wrap-up-report/</link>
+      <link>https://osmin625.github.io/posts/Book-Rating-Prediction-Wrap-up-Report/</link>
       <pubDate>Fri, 26 May 2023 21:14:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/book-rating-prediction-wrap-up-report/</guid>
+      <guid>https://osmin625.github.io/posts/Book-Rating-Prediction-Wrap-up-Report/</guid>
       <description>1. 프로젝트 개요 개요&#xA;본 프로젝트에서는 소비자들의 책 구매 결정에 도움을 주기 위해 개인화된 상품을 추천하는 문제를 해결하였습니다.&#xA;본 프로젝트에서는 크게 세 가지 작업을 수행하였습니다.&#xA;주어진 데이터셋을 바탕으로 데이터의 내용을 분석하고 시각화하는 과정을 통해 인사이트를 도출하였습니다. 주어진 모델 예제들을 변형하고 조합하여 다양한 모델에 대한 성능을 실험하였습니다. 앞서 명시한 작업들을 통해 최고 성능을 내는 모델을 발굴하였습니다. 본 프로젝트를 수행하면서 부스트코스 RecSys 트랙에서 학습하였던 머신러닝/딥러닝 모델을 이해하고 이를 PyTorch 구현하면서 실생활 문제에 적용하는 경험을 하였습니다.</description>
     </item>
   </channel>

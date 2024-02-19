@@ -42,7 +42,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.27e099f5f7b5310b8853cb8fc0f5d1438f8b991a5b7185adc6b3829620068575.js" integrity="sha256-J&#43;CZ9fe1MQuIU8uPwPXRQ4&#43;LmRpbcYWtxrOCliAGhXU="></script>
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
 
     
     
@@ -222,9 +222,7 @@ Gradient, MAE, MSE, RMSE</p>
 <p>기울기 관점으로, 모든 가중치에서 그래디언트의 크기가 동일하다.</p>
 <p>따라서 MSE나 RMSE에 비해 상대적으로 이상치에 대해 Robust하다.</p>
 <p>(이상치도 오차만큼만 벌점이 쌓이기 때문)</p>
-<p><code>$$</code>
-\frac{1}{n} \sum_{i=1}^n\left|{y_i}-\hat y_i\right|
-<code>$$</code></p>
+<p><code>$$ \frac{1}{n} \sum_{i=1}^n\left|{y_i}-\hat y_i\right| $$</code></p>
 <p><img src="/imgs/imgs/loss_function1.png" alt="Loss_function"></p>
 </li>
 <li>
@@ -235,14 +233,10 @@ Gradient, MAE, MSE, RMSE</p>
 <p>오차를 제곱 하면 되겠네?</p>
 <p>정답에서 멀어질수록 그래디언트의 크기가 증가한다.</p>
 </blockquote>
-<p><code>$$</code>
-M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
-<code>$$</code></p>
+<p><code>$$ M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2 $$</code></p>
 <p><img src="/imgs/imgs/loss_function2.png" alt="Loss_function"></p>
 <p>미니 배치 단위로 처리(샘플의 오차를 평균 낸다.)</p>
-<p><code>$$</code>
-\begin{aligned}J\left(\mathbf{U}^1, \mathbf{U}^2\right) &amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}|\mathbf{y}-\mathbf{0}|^2 \&amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\left|\mathbf{y}-\tau_2\left(\mathbf{U}^2 \tau_1\left(\mathbf{U}^1 \mathbf{x}^{\mathrm{T}}\right)\right)\right|^2\end{aligned}
-<code>$$</code></p>
+<p><code>$$ \begin{aligned}J\left(\mathbf{U}^1, \mathbf{U}^2\right) &amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\|\mathbf{y}-\mathbf{0}\|^2 \\&amp; =\frac{1}{|M|} \sum_{\mathbf{x} \in M}\left\|\mathbf{y}-\tau_2\left(\mathbf{U}^2 \tau_1\left(\mathbf{U}^1 \mathbf{x}^{\mathrm{T}}\right)\right)\right\|^2\end{aligned} $$</code></p>
 <ul>
 <li>오차값에 제곱을 취하기 때문에 0~1 사이의 값은 상대적으로 작게 반영되고, 1보다 큰 값은 상대적으로 더 크게 반영된다.</li>
 <li>학습이 느려지거나 학습이 안되는 상황을 초래할 가능성이 있다.</li>
@@ -256,9 +250,7 @@ M S E=\frac{1}{n} \sum_{i=1}^n\left({y_i}-\hat y_i\right)^2
 <p>MSE에 루트 씌운 값.</p>
 <p>얼핏 MAE와 동일한 것 아니야? 생각할 수 있지만, 계산 순서에서 차이가 발생하고, <code>$1\over n$</code>이 아니라 <code>$1\over \sqrt n$</code>을 했다는 점이 MAE와 다르다.</p>
 </blockquote>
-<p><code>$$</code>
-R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2}
-<code>$$</code></p>
+<p><code>$$ R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2} $$</code></p>
 <p><img src="/imgs/imgs/loss_function3.png" alt="Loss_function"></p>
 <p>MSE와 마찬가지로 각 오차값의 크기에 따라 다른 그래디언트를 가지게 된다.</p>
 </li>
@@ -273,38 +265,28 @@ R M S E=\sqrt{\frac{1}{n} \sum_{i=1}^n\left(\hat{y_i}-y_i\right)^2}
 <p><strong>Cross-Entropy</strong></p>
 <p><strong>정보량을 상징한다. → 불공정성 문제 해결</strong></p>
 <p>두 확률 분포 P와 Q가 다른 정도를 측정하는 함수</p>
-<p><code>$$</code>
-H(P, Q)=-\sum_{i=1, k} P\left(e_i\right) \log Q\left(e_i\right)
-<code>$$</code></p>
+<p><code>$$ H(P, Q)=-\sum_{i=1, k} P\left(e_i\right) \log Q\left(e_i\right) $$</code></p>
 <ul>
 <li>
 <p>공정한 주사위에는 특별한 정보가 존재하지 않는다.</p>
-<p><code>$$</code>
--\left(\frac{1}{6} \log \frac{1}{6}+\ldots+\frac{1}{6} \log \frac{1}{6}\right)=1.7918
-<code>$$</code></p>
+<p><code>$$ -\left(\frac{1}{6} \log \frac{1}{6}+\ldots+\frac{1}{6} \log \frac{1}{6}\right)=1.7918 $$</code></p>
 </li>
 <li>
 <p>찌그러진 주사위에서는 특정 값이 더 잘나온다는 정보가 추가된다.</p>
 <p>공정한 주사위와 찌그러진 주사위의 교차 엔트로피</p>
-<p><code>$$</code>
--\left(\frac{1}{6} \log \frac{1}{2}+\frac{1}{6} \log \frac{1}{10}+\cdots+\frac{1}{6} \log \frac{1}{10}\right)=2.0343
-<code>$$</code></p>
+<p><code>$$ -\left(\frac{1}{6} \log \frac{1}{2}+\frac{1}{6} \log \frac{1}{10}+\cdots+\frac{1}{6} \log \frac{1}{10}\right)=2.0343 $$</code></p>
 </li>
 </ul>
 </li>
 <li>
 <p><strong>Binary Cross-Entropy</strong></p>
 <p><code>tf.nn.sigmoid_cross_entropy_with_logits( )</code></p>
-<p><code>$$</code>
-B C E=-\frac{1}{N} \sum_{i=0}^N y_i \cdot \log \left(\hat{y_i}\right)+\left(1-y_i\right) \cdot \log \left(1-\hat{y_i}\right)
-<code>$$</code></p>
+<p><code>$$ B C E=-\frac{1}{N} \sum_{i=0}^N y_i \cdot \log \left(\hat{y_i}\right)+\left(1-y_i\right) \cdot \log \left(1-\hat{y_i}\right) $$</code></p>
 </li>
 <li>
 <p><strong>Categorical Cross-Entropy</strong></p>
 <p><code>tf.nn.softmax_cross_entropy_with_logits_v2( )</code></p>
-<p><code>$$</code>
-C C E=-\frac{1}{N} \sum_{i=0}^N \sum_{j=0}^J y_j \cdot \log \left(\hat{y_j}\right)+\left(1-y_j\right) \cdot \log \left(1-\hat{y_j}\right)
-<code>$$</code></p>
+<p><code>$$ C C E=-\frac{1}{N} \sum_{i=0}^N \sum_{j=0}^J y_j \cdot \log \left(\hat{y_j}\right)+\left(1-y_j\right) \cdot \log \left(1-\hat{y_j}\right) $$</code></p>
 </li>
 </ul>
 

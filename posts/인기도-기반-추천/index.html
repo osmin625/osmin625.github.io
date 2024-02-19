@@ -42,7 +42,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.27e099f5f7b5310b8853cb8fc0f5d1438f8b991a5b7185adc6b3829620068575.js" integrity="sha256-J&#43;CZ9fe1MQuIU8uPwPXRQ4&#43;LmRpbcYWtxrOCliAGhXU="></script>
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
 
     
     
@@ -178,9 +178,7 @@
 <li>
 <p><strong>Hacker News Formula</strong></p>
 <p>뉴스 추천 서비스</p>
-<p><code>$$</code>
-score = \frac{pageviews -1}{(age + 2)^{gravity}}
-<code>$$</code></p>
+<p><code>$$ score = \frac{pageviews -1}{(age + 2)^{gravity}} $$</code></p>
 <ul>
 <li>gravity = 1.8</li>
 </ul>
@@ -189,9 +187,7 @@ score = \frac{pageviews -1}{(age + 2)^{gravity}}
 <li>
 <p><strong>Raddit Formula</strong></p>
 <p>시간에 따른 가점 방식</p>
-<p><code>$$</code>
-score = \log_{10}{(ups-downs)} + \frac{sign(ups-downs)\times seconds}{45000}
-<code>$$</code></p>
+<p><code>$$ score = \log_{10}{(ups-downs)} + \frac{sign(ups-downs)\times seconds}{45000} $$</code></p>
 <p><strong>첫번째 term — Popularity</strong></p>
 <p>해당 값이 높아질수록 점수가 높아진다.</p>
 <p>log scale이기 때문에, 첫 vote가 가장 가치가 높고, vote가 쌓일수록 영향력이 점점 약해진다.</p>
@@ -205,23 +201,15 @@ score = \log_{10}{(ups-downs)} + \frac{sign(ups-downs)\times seconds}{45000}
 <ul>
 <li>
 <p><strong>Steam Rating Formula</strong></p>
-<p><code>$$</code>
-avg_rating = \frac{\text{# of positive review}}{\text{# of reviews}}
-<code>$$</code></p>
-<p><code>$$</code>
-score = avg_rating - (avg_rating - 0.5) \times 2^{-\log\text{(# of reviews)}}
-<code>$$</code></p>
+<p><code>$$ avg\_rating = \frac{\text{\# of positive review}}{\text{\# of reviews}} $$</code></p>
+<p><code>$$ score = avg\_rating - (avg\_rating - 0.5) \times 2^{-\log\text{(\# of reviews)}} $$</code></p>
 <p>rating은 평균값을 사용하되, 전체 review 개수에 따라 rating을 보정한다.</p>
 <p>review 개수가 아주 많아지면 score은 평균 rating과 거의 비슷해진다.</p>
 </li>
 <li>
 <p><strong>Steam Rating Formula → Movie Rating</strong></p>
-<p><code>$$</code>
-avg_rating = \frac{\text{# of positive review}}{\text{# of reviews}}
-<code>$$</code></p>
-<p><code>$$</code>
-score = avg_rating - (avg_rating - 3.0) \times 2^{-\log\text{(# of reviews)}}
-<code>$$</code></p>
+<p><code>$$ avg\_rating = \frac{\text{\# of positive review}}{\text{\# of reviews}} $$</code></p>
+<p><code>$$ score = avg\_rating - (avg\_rating - 3.0) \times 2^{-\log\text{(\# of reviews)}} $$</code></p>
 </li>
 </ul>
 

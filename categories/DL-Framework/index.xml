@@ -20,7 +20,7 @@
       <link>https://osmin625.github.io/posts/Backward/</link>
       <pubDate>Mon, 13 Mar 2023 22:13:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/Backward/</guid>
-      <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y + 25\ z = 10 \times w^2 + 25\ {dz\over dw} = 20 \times w = 40 $$</description>
+      <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$&#xD;w = 2\\&#xD;y = w^2\\&#xD;z = 10\times y + 25\\&#xD;z = 10 \times w^2 + 25\\&#xD;{dz\over dw} = 20 \times w = 40&#xD;$$</description>
     </item>
     <item>
       <title>PyTorch 모델 정의하기 - nn.Module</title>

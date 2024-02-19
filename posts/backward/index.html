@@ -42,7 +42,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.27e099f5f7b5310b8853cb8fc0f5d1438f8b991a5b7185adc6b3829620068575.js" integrity="sha256-J&#43;CZ9fe1MQuIU8uPwPXRQ4&#43;LmRpbcYWtxrOCliAGhXU="></script>
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
 
     
     
@@ -177,13 +177,7 @@ Autograd, loss, optimizer, nn.Module</li>
 </span></span><span style="display:flex;"><span>z<span style="color:#f92672">.</span>backward()
 </span></span><span style="display:flex;"><span>w<span style="color:#f92672">.</span>grad()
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output : tensor(40.)</span>
-</span></span></code></pre></div><p><code>$$</code>
-w = 2\
-y = w^2\
-z = 10\times y  + 25\
-z = 10 \times w^2 + 25\
-{dz\over dw} = 20 \times w = 40
-<code>$$</code></p>
+</span></span></code></pre></div><p><code>$$ w = 2\\ y = w^2\\ z = 10\times y  + 25\\ z = 10 \times w^2 + 25\\ {dz\over dw} = 20 \times w = 40 $$</code></p>
 <p><strong>미분 값이 여러 개인 경우</strong></p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">2.</span>,<span style="color:#ae81ff">3.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
 </span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">6.</span>,<span style="color:#ae81ff">4.</span>], requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
@@ -197,13 +191,7 @@ z = 10 \times w^2 + 25\
 </span></span><span style="display:flex;"><span>b<span style="color:#f92672">.</span>grad
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([36.,81.])</span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># output: tensor([-12.,-8.])</span>
-</span></span></code></pre></div><p><code>$$</code>
-\begin{aligned}
-&amp;Q = 3a^3 - b^2\
-&amp; \frac{\partial Q}{\partial a}=9 a^2 \
-&amp; \frac{\partial Q}{\partial b}=-2 b
-\end{aligned}
-<code>$$</code></p>
+</span></span></code></pre></div><p><code>$$ \begin{aligned} &amp;Q = 3a^3 - b^2\\ &amp; \frac{\partial Q}{\partial a}=9 a^2 \\ &amp; \frac{\partial Q}{\partial b}=-2 b \end{aligned} $$</code></p>
 </li>
 <li>
 <p><strong>미분 값을 tensor에 저장한다.</strong></p>

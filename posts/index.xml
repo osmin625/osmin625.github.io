@@ -104,7 +104,7 @@
       <link>https://osmin625.github.io/posts/%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</link>
       <pubDate>Tue, 11 Apr 2023 23:44:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/%EC%9D%B8%EA%B8%B0%EB%8F%84-%EA%B8%B0%EB%B0%98-%EC%B6%94%EC%B2%9C/</guid>
-      <description>간단 요약&#xA;가장 인기있는 아이템을 규칙을 기반으로 추천한다.&#xA;인기도의 척도&#xA;- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수&#xA;예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법 Most Popular: 조회수가 가장 많은 아이템 최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.&#xA;Score Formula&#xA;가장 많이 조회된 뉴스를 추천하기&#xA;좋아요가 가장 많은 게시글을 추천하기&#xA;Hacker News Formula&#xA;뉴스 추천 서비스&#xA;$$ score = \frac{pageviews -1}{(age + 2)^{gravity}} $$</description>
+      <description>간단 요약&#xA;가장 인기있는 아이템을 규칙을 기반으로 추천한다.&#xA;인기도의 척도&#xA;- 조회수, 평균 평점, 리뷰 개수, 좋아요/싫어요 수&#xA;예시 네이버 쇼핑 랭킹 순 다음 뉴스, 댓글 추천 레딧 Hot 추천 Score 계산 방법 Most Popular: 조회수가 가장 많은 아이템 최신성을 고려하지 않으면 한번 조회수가 높은 아이템이 계속 추천되게 된다.&#xA;Score Formula&#xA;가장 많이 조회된 뉴스를 추천하기&#xA;좋아요가 가장 많은 게시글을 추천하기&#xA;Hacker News Formula&#xA;뉴스 추천 서비스&#xA;$$&#xD;score = \frac{pageviews -1}{(age + 2)^{gravity}}&#xD;$$</description>
     </item>
     <item>
       <title>DeepFM</title>
@@ -237,7 +237,7 @@
       <link>https://osmin625.github.io/posts/Backward/</link>
       <pubDate>Mon, 13 Mar 2023 22:13:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/Backward/</guid>
-      <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$ w = 2\ y = w^2\ z = 10\times y + 25\ z = 10 \times w^2 + 25\ {dz\over dw} = 20 \times w = 40 $$</description>
+      <description>✔️ 간단 요약&#xA;forward함수를 정의하면 자동으로 정의된다.&#xA;동작 과정&#xA;tensor(loss에 해당)가 포함된 식을 미분한다. 미분 값을 tensor에 저장한다.&#xA;{: .prompt-info } Autograd, loss, optimizer, nn.Module tensor(loss에 해당)가 포함된 식을 미분한다.&#xA;Tensor 객체의 backward 함수에는 default로 Autograd 설정이 되어 있기 때문에, 미분 수식을 따로 작성하지 않아도 자동으로 미분이 가능하다.&#xA;기본 예제&#xA;w = torch.tensor(2.0, requires_grad=True) y = w**2 z = 10*y + 25 z.backward() w.grad() # output : tensor(40.) $$&#xD;w = 2\\&#xD;y = w^2\\&#xD;z = 10\times y + 25\\&#xD;z = 10 \times w^2 + 25\\&#xD;{dz\over dw} = 20 \times w = 40&#xD;$$</description>
     </item>
     <item>
       <title>PyTorch 모델 정의하기 - nn.Module</title>

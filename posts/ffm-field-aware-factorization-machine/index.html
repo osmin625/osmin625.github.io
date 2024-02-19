@@ -42,7 +42,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.27e099f5f7b5310b8853cb8fc0f5d1438f8b991a5b7185adc6b3829620068575.js" integrity="sha256-J&#43;CZ9fe1MQuIU8uPwPXRQ4&#43;LmRpbcYWtxrOCliAGhXU="></script>
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
 
     
     
@@ -205,9 +205,7 @@
 </li>
 </ul>
 <h2 id="ffm-공식">FFM 공식</h2>
-<p>`$$
-\begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}<em>{i, f_j}, \mathrm{v}</em>{j, f_i}\right\rangle x_i x_j \w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_{i, f} \in \mathbb{R}^k\end{gathered}</p>
-<p>$$`</p>
+<p><code>$$ \begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_{i, f_j}, \mathrm{v}_{j, f_i}\right\rangle x_i x_j \\w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_{i, f} \in \mathbb{R}^k\end{gathered} $$</code></p>
 <p><img src="/imgs/FFM1.png" alt="FFM"></p>
 <!-- raw HTML omitted -->
 <p><code>$$ \begin{gathered}\hat{y}(\mathrm{x})=w_0+\sum_{i=1}^n w_i x_i+\sum_{i=1}^n \sum_{j=i+1}^n\left\langle\mathrm{v}_i, \mathrm{v}_j\right\rangle x_i x_j \\w_0 \in \mathbb{R}, \quad w_i \in \mathbb{R}, \quad \mathrm{v}_i \in \mathbb{R}^k\end{gathered} $$</code></p>
@@ -239,21 +237,13 @@
 <p><strong>FM</strong></p>
 <p>필드가 존재하지 않는다.</p>
 <p>하나의 변수에 대해 factorization 차원<code>$(k)$</code> 만큼의 파라미터를 학습한다.</p>
-<p><code>$$</code>
-\hat{y}(\mathrm{x})
-=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\mathrm{Nike}}\
-+\mathrm{v}<em>{\mathrm{ESPN}} \cdot \mathrm{v}</em>{\text {Male }}+\mathrm{v}<em>{\mathrm{Nike}} \cdot \mathrm{v}</em>{\text {Male }}}
-<code>$$</code></p>
+<p><code>$$ \hat{y}(\mathrm{x}) =w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}_{\mathrm{ESPN}} \cdot \mathrm{v}_{\mathrm{Nike}}\\ +\mathrm{v}_{\mathrm{ESPN}} \cdot \mathrm{v}_{\text {Male }}+\mathrm{v}_{\mathrm{Nike}} \cdot \mathrm{v}_{\text {Male }}} $$</code></p>
 </li>
 <li>
 <p><strong>FFM</strong></p>
 <p>각각의 feature를 필드 P,A,G로 정의</p>
 <p>하나의 변수에 대해 필드 개수<code>$(f)$</code>와 factorization 차원<code>$(k)$</code>의 곱 <code>$(=fk)$</code>만큼의 파라미터를 학습한다.</p>
-<p><code>$$</code>
-\hat{y}(\mathrm{x})
-=w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{A}} \cdot \mathrm{v}</em>{\mathrm{Nike}, \mathrm{P}}\</p>
-<p>+\mathrm{v}<em>{\mathrm{ESPN}, \mathrm{G}} \cdot \mathrm{v}</em>{\text {Male,P }}+\mathrm{v}<em>{\mathrm{Nike}, \mathrm{G}} \cdot \mathrm{v}</em>{\mathrm{Male}, \mathrm{A}}}
-<code>$$</code></p>
+<p><code>$$ \hat{y}(\mathrm{x}) =w_0+w_{\mathrm{ESPN}}+w_{\mathrm{Nike}}+w_{\text {Male }}+{\mathrm{v}_{\mathrm{ESPN}, \mathrm{A}} \cdot \mathrm{v}_{\mathrm{Nike}, \mathrm{P}}\\ +\mathrm{v}_{\mathrm{ESPN}, \mathrm{G}} \cdot \mathrm{v}_{\text {Male,P }}+\mathrm{v}_{\mathrm{Nike}, \mathrm{G}} \cdot \mathrm{v}_{\mathrm{Male}, \mathrm{A}}} $$</code></p>
 </li>
 </ul>
 <h2 id="ffm의-필드-구성">FFM의 필드 구성</h2>

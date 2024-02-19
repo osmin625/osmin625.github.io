@@ -42,7 +42,7 @@
     <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
 
     
-    <script src="/js/bundle.min.27e099f5f7b5310b8853cb8fc0f5d1438f8b991a5b7185adc6b3829620068575.js" integrity="sha256-J&#43;CZ9fe1MQuIU8uPwPXRQ4&#43;LmRpbcYWtxrOCliAGhXU="></script>
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
 
     
     
@@ -229,34 +229,24 @@ Latent Factors, Matrix Factorization, SGD</p>
 <ul>
 <li>
 <p><strong>Error <code>$e_{ui}$</code></strong></p>
-<p><code>$$</code>
+<p>`$$
 \tt e_{u i}=r_{u i}-p_u^T q_i</p>
-<p><code>$$</code></p>
+<p>$$`</p>
 </li>
 <li>
 <p><strong>Loss <code>$L$</code></strong></p>
-<p><code>$$</code>
-\tt L=\sum\left(r_{u, i}-p_u^T q_i\right)^2+\lambda\left(\left|p_u\right|_2^2+\left|q_i\right|_2^2\right) \quad</p>
-<p><code>$$</code></p>
+<p><code>$$ \tt L=\sum\left(r_{u, i}-p_u^T q_i\right)^2+\lambda\left(\left\|p_u\right\|_2^2+\left\|q_i\right\|_2^2\right) \quad $$</code></p>
 <p>Loss를 <code>$p_u$</code>로 미분하여 최솟값 계산</p>
 </li>
 <li>
 <p><strong>Gradient</strong></p>
-<p><code>$$</code>
-{\tt{\frac{\partial L}{\partial p_u}=\frac{\partial\left(r_{u i}-p_u^T q_i\right)^2}{\partial p_u}+\frac{\partial \lambda\left|p_u\right|<em>2^2}{\partial p_u}}}\\tt{
-\=-2\left(r</em>{u i}-p_u^T q_i\right) q_i+2 \lambda p_u}</p>
-<p><code>$$</code></p>
+<p><code>$$ {\tt{\frac{\partial L}{\partial p_u}=\frac{\partial\left(r_{u i}-p_u^T q_i\right)^2}{\partial p_u}+\frac{\partial \lambda\left\|p_u\right\|_2^2}{\partial p_u}}}\\\tt{ \\=-2\left(r_{u i}-p_u^T q_i\right) q_i+2 \lambda p_u} $$</code></p>
 <p>이를 Error Term을 활용하여 아래와 같이 나타낼 수 있다.</p>
-<p><code>$$</code>
-\tt \frac{\partial L}{\partial p_u}=-2\left(e_{u i} q_i-\lambda p_u\right)
-<code>$$</code></p>
+<p><code>$$ \tt \frac{\partial L}{\partial p_u}=-2\left(e_{u i} q_i-\lambda p_u\right) $$</code></p>
 </li>
 <li>
 <p><strong>Gradient의 반대 방향으로 <code>$p_u$</code>, <code>$q_i$</code>를 업데이트</strong></p>
-<p><code>$$</code>
-{\tt \p_u \leftarrow p_u+\eta \cdot\left(e_{u i} q_i-\lambda p_u\right)}\
-\tt q_i \leftarrow q_i+\eta \cdot\left(e_{u i} p_u-\lambda q_i\right)
-<code>$$</code></p>
+<p><code>$$ {\tt \\p_u \leftarrow p_u+\eta \cdot\left(e_{u i} q_i-\lambda p_u\right)}\\ \tt q_i \leftarrow q_i+\eta \cdot\left(e_{u i} p_u-\lambda q_i\right) $$</code></p>
 <p>부호가 바뀐다.</p>
 </li>
 </ul>
@@ -273,30 +263,20 @@ Latent Factors, Matrix Factorization, SGD</p>
 <ul>
 <li>
 <p><strong>기존 목적 함수</strong></p>
-<p><code>$$</code>
-\tt \min <em>{P, Q} \sum</em>{\text {observed  }r_{u,i}}\left(r_{u, i}-p_u^T q_i\right)^2+\lambda\left(\left|p_u\right|_2^2+\left|q_i\right|_2^2\right)
-<code>$$</code></p>
+<p><code>$$ \tt \min _{P, Q} \sum_{\text {observed  }r_{u,i}}\left(r_{u, i}-p_u^T q_i\right)^2+\lambda\left(\left\|p_u\right\|_2^2+\left\|q_i\right\|_2^2\right) $$</code></p>
 </li>
 <li>
 <p><strong>Bias가 추가된 목적 함수</strong></p>
-<p><code>$$</code>
-{\tt \min <em>{P, Q} \sum</em>{\text {observed } r_{u,i}}\left(r_{u, i}-{\mu - b_u-b_i}-p_u^T q_i\right)^2}
-\+\tt \lambda\left(|| p_u\left|_2^2+|| q_i\right|_2^2+{b_u^2+b_i^2}\right)
-<code>$$</code></p>
+<p><code>$$ {\tt \min _{P, Q} \sum_{\text {observed } r_{u,i}}\left(r_{u, i}-{\mu - b_u-b_i}-p_u^T q_i\right)^2} \\+\tt \lambda\left(|| p_u\left\|_2^2+|| q_i\right\|_2^2+{b_u^2+b_i^2}\right) $$</code></p>
 <p>마찬가지로 bias가 규제 term에 추가되어 과적합되지 않게 한다.</p>
 </li>
 <li>
 <p><strong>Error</strong></p>
-<p><code>$$</code>
-\tt e_{u,i} = r_{u,i} - \mu - b_u - b_i - p_u^Tq_i
-<code>$$</code></p>
+<p><code>$$ \tt e_{u,i} = r_{u,i} - \mu - b_u - b_i - p_u^Tq_i $$</code></p>
 </li>
 <li>
 <p><strong>Gradient의 반대방향으로 <code>$\tt b_u, b_i, x_u, y_i$</code>를 업데이트</strong></p>
-<p><code>$$</code>
-\begin{aligned}&amp; {b_u \leftarrow b_u+\gamma \cdot\left(e_{u i}-\lambda b_u\right)} \&amp; {b_i \leftarrow b_i+\gamma \cdot\left(e_{u i}-\lambda b_i\right) }
-\&amp; p_u \leftarrow p_u+\gamma \cdot\left(e_{u i} q_i-\lambda p_u\right) \&amp; q_i \leftarrow q_i+\gamma \cdot\left(e_{u i} p_u-\lambda q_i\right)\end{aligned}
-<code>$$</code></p>
+<p><code>$$ \begin{aligned}&amp; {b_u \leftarrow b_u+\gamma \cdot\left(e_{u i}-\lambda b_u\right)} \\&amp; {b_i \leftarrow b_i+\gamma \cdot\left(e_{u i}-\lambda b_i\right) } \\&amp; p_u \leftarrow p_u+\gamma \cdot\left(e_{u i} q_i-\lambda p_u\right) \\&amp; q_i \leftarrow q_i+\gamma \cdot\left(e_{u i} p_u-\lambda q_i\right)\end{aligned} $$</code></p>
 </li>
 </ul>
 </li>
@@ -312,15 +292,11 @@ Latent Factors, Matrix Factorization, SGD</p>
 </li>
 <li>
 <p><strong>기존 목적 함수</strong></p>
-<p><code>$$</code>
-{\tt \min <em>{P, Q} \sum</em>{\text {observed } r_{u,i}}\left(r_{u, i}-\mu-b_u-b_i-p_u^T q_i\right)^2} \+\tt\lambda\left(|| p_u\left|_2^2+|| q_i\right|_2^2+b_u^2+b_i^2\right)
-<code>$$</code></p>
+<p><code>$$ {\tt \min _{P, Q} \sum_{\text {observed } r_{u,i}}\left(r_{u, i}-\mu-b_u-b_i-p_u^T q_i\right)^2} \\+\tt\lambda\left(|| p_u\left\|_2^2+|| q_i\right\|_2^2+b_u^2+b_i^2\right) $$</code></p>
 </li>
 <li>
 <p><strong>Confidence Level이 추가된 목적함수</strong></p>
-<p><code>$$</code>
-{\tt \min <em>{P, Q} \sum</em>{\text {observed } r_{u, i}}  {c_{u, i}}\left(r_{u, i}-\mu-b_u-b_i-p_u^T q_i\right)^2}\+\tt\lambda\left(|| p_u\left|_2^2+|| q_i\right|_2^2+b_u^2+b_i^2\right)
-<code>$$</code></p>
+<p><code>$$ {\tt \min _{P, Q} \sum_{\text {observed } r_{u, i}}  {c_{u, i}}\left(r_{u, i}-\mu-b_u-b_i-p_u^T q_i\right)^2}\\+\tt\lambda\left(|| p_u\left\|_2^2+|| q_i\right\|_2^2+b_u^2+b_i^2\right) $$</code></p>
 </li>
 </ul>
 </li>
@@ -331,9 +307,7 @@ Latent Factors, Matrix Factorization, SGD</p>
 <p>유저가 시간이 흐르면서 평점을 내리는 기준이 엄격해진다.</p>
 <p>시간을 반영한 평점 예측</p>
 <p>학습 파라미터가 시간을 반영하도록 모델 설계</p>
-<p><code>$$</code>
-\tt \widehat r_{ui}(t) = \mu + b_u(t) + b_i(t) + p^T_uq_i(t)
-<code>$$</code></p>
+<p><code>$$ \tt \widehat r_{ui}(t) = \mu + b_u(t) + b_i(t) + p^T_uq_i(t) $$</code></p>
 </li>
 </ul>
 <h2 id="단점">단점</h2>

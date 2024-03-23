@@ -10,9 +10,9 @@
     <atom:link href="https://osmin625.github.io/categories/Code/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notion2Hugo blog 자동화</title>
-      <link>https://osmin625.github.io/posts/Notion2Hugo_blog_automation/</link>
+      <link>https://osmin625.github.io/posts/Notion-to-Hugo-blog-automation/</link>
       <pubDate>Mon, 18 Mar 2024 05:59:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/Notion2Hugo_blog_automation/</guid>
+      <guid>https://osmin625.github.io/posts/Notion-to-Hugo-blog-automation/</guid>
       <description>나는 노션을 꽤 오래 전부터 사용해왔다.&#xA;공부하며 노션에 기록하는 것이 습관화되어 있는데, 이렇게 정리해 둔 게시글만 500개가 넘는다.&#xA;애초부터 노션에 정리해 둔 글을 보다 쉽게 블로그에 업로드하고자 호환성이 좋은 깃허브 블로그를 사용하고 있으나, 학습 내용을 기록하는 공간이 두 개로 구분되었을 때 둘 모두를 관리하는 건 생각보다 쉽지 않다는 것을 깨달았다.&#xA;아무튼, 이번에는 Hugo 블로그에 Notion에서 작성한 게시글을 보다 쉽게 업로드하기 위해 자동화를 시도해보았다.&#xA;기존에는 post 작성을 끝낸 후 build하고 push하는 과정을 쉘 커맨드로 간편하게 구성해두었다.</description>
     </item>
   </channel>

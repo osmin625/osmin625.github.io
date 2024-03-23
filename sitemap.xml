@@ -2,16 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://osmin625.github.io/</loc>
-    <lastmod>2023-11-11T18:04:00+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
   </url><url>
-    <loc>https://osmin625.github.io/tags/Polynomial-Form/</loc>
-    <lastmod>2023-11-11T18:04:00+09:00</lastmod>
+    <loc>https://osmin625.github.io/categories/Code/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Github-Blog/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Hugo/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Latex/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Notion/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/Notion2Hugo_blog_%E1%84%8C%E1%85%A1%E1%84%83%E1%85%A9%E1%86%BC%E1%84%92%E1%85%AA/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/</loc>
-    <lastmod>2023-11-11T18:04:00+09:00</lastmod>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/categories/Review/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/</loc>
+    <lastmod>2024-03-18T05:59:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Polynomial-Form/</loc>
     <lastmod>2023-11-11T18:04:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/Taylor-Approximation/</loc>
@@ -21,9 +45,6 @@
     <lastmod>2023-11-11T18:04:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/LeakGAN/</loc>
-    <lastmod>2023-10-07T02:40:00+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/categories/</loc>
     <lastmod>2023-10-07T02:40:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/categories/DL-Algorithm/</loc>
@@ -84,9 +105,6 @@
     <lastmod>2023-08-08T18:30:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/BoostCampAITech/</loc>
-    <lastmod>2023-08-08T18:30:00+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/categories/Review/</loc>
     <lastmod>2023-08-08T18:30:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</loc>

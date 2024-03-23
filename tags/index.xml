@@ -6,8 +6,36 @@
     <description>Recent content in Tags on OMIN</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
-    <lastBuildDate>Sat, 11 Nov 2023 18:04:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2024 05:59:00 +0900</lastBuildDate>
     <atom:link href="https://osmin625.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Github Blog</title>
+      <link>https://osmin625.github.io/tags/Github-Blog/</link>
+      <pubDate>Mon, 18 Mar 2024 05:59:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Github-Blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hugo</title>
+      <link>https://osmin625.github.io/tags/Hugo/</link>
+      <pubDate>Mon, 18 Mar 2024 05:59:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Hugo/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Latex</title>
+      <link>https://osmin625.github.io/tags/Latex/</link>
+      <pubDate>Mon, 18 Mar 2024 05:59:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Notion</title>
+      <link>https://osmin625.github.io/tags/Notion/</link>
+      <pubDate>Mon, 18 Mar 2024 05:59:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Notion/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Polynomial Form</title>
       <link>https://osmin625.github.io/tags/Polynomial-Form/</link>

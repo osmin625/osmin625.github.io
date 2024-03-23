@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>TF-IDF on OMIN</title>
+    <title>TF-IDF on 오뚝이 개발자</title>
     <link>https://osmin625.github.io/tags/TF-IDF/</link>
-    <description>Recent content in TF-IDF on OMIN</description>
+    <description>Recent content in TF-IDF on 오뚝이 개발자</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Tue, 01 Mar 2022 12:37:00 +0900</lastBuildDate>

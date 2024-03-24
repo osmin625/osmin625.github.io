@@ -16,6 +16,13 @@
       <description>나는 노션을 꽤 오래 전부터 사용해왔다.&#xA;공부하며 노션에 기록하는 것이 습관화되어 있는데, 이렇게 정리해 둔 게시글만 500개가 넘는다.&#xA;애초부터 노션에 정리해 둔 글을 보다 쉽게 블로그에 업로드하고자 호환성이 좋은 깃허브 블로그를 사용하고 있으나, 학습 내용을 기록하는 공간이 두 개로 구분되었을 때 둘 모두를 관리하는 건 생각보다 쉽지 않다는 것을 깨달았다.&#xA;아무튼, 이번에는 Hugo 블로그에 Notion에서 작성한 게시글을 보다 쉽게 업로드하기 위해 자동화를 시도해보았다.&#xA;기존에는 post 작성을 끝낸 후 build하고 push하는 과정을 쉘 커맨드로 간편하게 구성해두었다.</description>
     </item>
     <item>
+      <title>Hugo Blog category 404 해결 방법</title>
+      <link>https://osmin625.github.io/posts/hugo_blog_category_404_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8/</link>
+      <pubDate>Wed, 31 Jan 2024 07:50:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/hugo_blog_category_404_%E1%84%92%E1%85%A2%E1%84%80%E1%85%A7%E1%86%AF_%E1%84%87%E1%85%A1%E1%86%BC%E1%84%87%E1%85%A5%E1%86%B8/</guid>
+      <description>Hugo 블로그를 사용하며 분명이 업로드한 포스팅이 보이지 않는 경우가 가끔 발생한다.&#xA;나는 이번에 블로그를 hugo로 이전하며 카테고리 페이지를 직접 구현했는데, 이 때 카테고리가 제대로 동작하지 않는 문제를 마주했다.&#xA;이는 카테고리 front matter에 대문자가 포함된 경우 hugo의 urlize의 동작이 jekyll의 urlize와 달라서 발생하는 문제로 보인다.&#xA;category → 404 found 기존에 Jekyll에서는 front-matter에 categories로 대문자를 마음껏 사용했었는데, Hugo 블로그로 옮기고 나니 대문자가 인식이 되지 않는다.&#xA;Hugo와 Jekyll의 urlize 차이점 jekyll에서의 urlize — 대문자는 그대로 유지, 띄어쓰기는 ‘-’로 변경</description>
+    </item>
+    <item>
       <title>네이버 부스트캠프 AI Tech 회고 2 — Upstage 기업연계 프로젝트</title>
       <link>https://osmin625.github.io/posts/%EB%84%A4%EC%9D%B4%EB%B2%84-%EB%B6%80%EC%8A%A4%ED%8A%B8%EC%BA%A0%ED%94%84-AI-Tech-%ED%9A%8C%EA%B3%A0-2-Upstage-%EA%B8%B0%EC%97%85%EC%97%B0%EA%B3%84-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/</link>
       <pubDate>Tue, 08 Aug 2023 18:30:00 +0900</pubDate>

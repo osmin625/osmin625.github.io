@@ -11,26 +11,26 @@
     
 
     
-    <title>나를 위한 Git Branch 총정리</title>
+    <title>나를 위한 Git Flow 총정리</title>
     <meta name="description" content="Interested in ML Engineering, Data Science.">
-    <meta name="keywords" content='blog, gokarna, hugo, Git, Github, Git Branch'>
+    <meta name="keywords" content='blog, gokarna, hugo, Git, Git Branch, Git Flow, Github'>
 
-    <meta property="og:url" content="https://osmin625.github.io/posts/git_branch/">
+    <meta property="og:url" content="https://osmin625.github.io/posts/git_flow/">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="나를 위한 Git Branch 총정리">
+    <meta property="og:title" content="나를 위한 Git Flow 총정리">
     <meta property="og:description" content="Interested in ML Engineering, Data Science.">
     <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
     <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="나를 위한 Git Branch 총정리">
+    <meta name="twitter:title" content="나를 위한 Git Flow 총정리">
     <meta name="twitter:description" content="Interested in ML Engineering, Data Science.">
-    <meta property="twitter:domain" content="https://osmin625.github.io/posts/git_branch/">
-    <meta property="twitter:url" content="https://osmin625.github.io/posts/git_branch/">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/git_flow/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/git_flow/">
     <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
 
     
-    <link rel="canonical" href="https://osmin625.github.io/posts/git_branch/" />
+    <link rel="canonical" href="https://osmin625.github.io/posts/git_flow/" />
 
     
     <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
@@ -136,9 +136,9 @@
 <main id="content">
     <div class="post container">
     <div class="post-header-section">
-        <h1>나를 위한 Git Branch 총정리</h1>
+        <h1>나를 위한 Git Flow 총정리</h1>
         <small role="doc-subtitle"></small>
-        <p class="post-date">10월 8, 2022
+        <p class="post-date">9월 28, 2022
         
         </p>
 
@@ -146,149 +146,150 @@
         
             <li class="post-tag"><a href="https://osmin625.github.io/tags/Git">Git</a></li>
         
-            <li class="post-tag"><a href="https://osmin625.github.io/tags/Github">Github</a></li>
-        
             <li class="post-tag"><a href="https://osmin625.github.io/tags/Git-Branch">Git Branch</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Git-Flow">Git Flow</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Github">Github</a></li>
         
         </ul>
     </div>
 
     <div class="post-content">
         <p>
-            <p><strong>독립적으로 특정 작업을 진행할 때 사용</strong>한다.</p>
-<p>팀으로 여러작업 동시에 작업 가능</p>
-<p>여러 Branch를 합치는 방법 — Merge</p>
-<h3 id="merge-방법에-따른-차이">merge 방법에 따른 차이</h3>
+            <p><strong>Local Repository 중심 Branch 관리 방법론</strong></p>
+<p>기능이나 프로그램이 아닌, 개발자간의 약속</p>
+<p>물론 이를 지원하는 모듈이 존재한다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ apt-get install git-flow
+</span></span></code></pre></div><p><strong>장점</strong></p>
 <ul>
-<li><strong>merge</strong> — branch의 모든 기록 보존, merge에 대한 기록 추가.
-<ul>
-<li>이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다.</li>
-<li>branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다.</li>
+<li>신중하다.</li>
 </ul>
-</li>
-<li><strong>squash and merge</strong> — 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.
-<strong>지저분한 커밋 이력들을 삭제하면서 master branch로 합칠 때 사용한다.</strong>
+<p><strong>단점</strong></p>
 <ul>
-<li>
-<p>merge할 때 여러 commit들을 하나로 합친다.</p>
-<p>Squash를 하게 되면 모든 커밋 이력이 하나의 커밋으로 합쳐지며 <strong>사라진다.</strong></p>
-</li>
-<li>
-<p>merge에 대한 이력은 남기지 않는다.</p>
-</li>
-</ul>
-</li>
-<li><strong>rebase and merge</strong> — 여러 commit 기록 남기기, merge 기록 남기지 않기.
-<strong>기존의 커밋 이력을 유지하면서도, 깔끔하게 하나의 흐름으로 관리하고자 할 때 사용한다.</strong>
+<li>복잡하다.</li>
+<li>배포할 때 거쳐야 할 단계가 많다.
 <ul>
-<li>
-<p><strong>일반적으로 가장 많이 사용된다.</strong></p>
-</li>
-<li>
-<p>merge에 대한 이력이 남지 않는다.</p>
-<p>즉, 언제 merge가 됐는지 알 수 없다.</p>
-<p>만약 merge 시점에 대한 기록이 필요하다면 커밋으로 직접 명시해주면 된다.</p>
-</li>
-<li>
-<p>모든 커밋이력들이 rebase 되어서 추가된다. 즉, fast-forward 된다.</p>
-<p>Rebase를 하면 커밋들의 Base가 변경되므로 Commit Hash 또한 변경 될 수 있다.</p>
-<p>이로 인해 Force Push가 필요한 경우가 발생한다.</p>
-</li>
+<li>단계별로 관리하는 사람이 다른 경우, 특정 지점에서 병목이 발생할 수 있다.</li>
 </ul>
 </li>
 </ul>
+<p>총 5가지의 branch를 사용해서 개발이 진행된다.</p>
+<ol>
+<li>
+<p><strong>master</strong></p>
+<p>배포의 기준이 되는 branch.</p>
+<p>Release Tag를 기록하는 branch.</p>
+<p>제품을 배포하는 용도.</p>
+<p>배포용 브랜치이므로 개발자가 해당 브랜치에 직접 커밋하거나, Release 이외의 branch에서 직접 Merge할 일이 없다.</p>
+<ul>
+<li>예외적으로 hotfix 브랜치의 경우 main 브랜치에 직접 merge할 수 있다.</li>
+</ul>
+</li>
+<li>
+<p><strong>hotfix</strong></p>
+<p>master 브랜치로 배포를 했는데 버그가 생겼을 때 main branch를 긴급 수정하는 branch.</p>
+</li>
+<li>
+<p><strong>release</strong></p>
+<p>배포를 위해 master 브랜치로 보내기 전에 먼저 QA(품질검사)를 하기위한 branch</p>
+</li>
+<li>
+<p><strong>develop</strong></p>
+<p>주로 개발이 이루어지는 브랜치</p>
+<p>develop branch를 기준으로 여러 개발자들이 각자 작업한 기능들 merge 수행</p>
+<p>하지만 많은 개발자가 동시에 develop 브랜치에서 작업을 한다면 자주 conflict가 발생할 수 있기 때문에, 실제로는 develop branch에도 직접 commit하는 일은 드물다.</p>
+</li>
+<li>
+<p><strong>feature</strong></p>
+<p>단위 기능을 개발하는 branch.</p>
+<ul>
+<li>Issue에 등록된 기능을 구현, Bugfix, Refactoring 등을 develop 브랜치로부터 각각 feature 브랜치를 만들어 작업을 수행</li>
+</ul>
+<p>기능 개발이 완료되면 develop 브랜치로 병합한다.</p>
+<p><code>git flow feature start opencv</code></p>
+<p><code>feature/opencv</code> branch를 생성하는 것과 동일하다.</p>
+<ul>
+<li>
+<p>prefix</p>
+<ul>
+<li>feat</li>
+<li>refactor</li>
+<li>fix</li>
+<li>docs</li>
+</ul>
+<p>등을 붙인다.</p>
+<p>update readme 등의 커밋 기록을 10줄씩 남기지 말자!</p>
+</li>
+</ul>
+<p>issue 하나가 feature branch 하나를 담당하는 것이 편하다.</p>
+</li>
+</ol>
+<h2 id="process">process</h2>
+<ol>
+<li>
+<p>동일한 브랜치인 master, develop 생성</p>
+<p><code>git flow start</code></p>
+<p>개발자들은 develop에서 개발을 진행(보통은 feature에서 개발을 진행)</p>
+<p>개발을 진행하다가 회원가입, 장바구니 등의 기능 구현이 필요할 경우 A개발자는 develop 브랜치에서 feature 브랜치를 하나 생성해서 회원가입 기능을 구현하고 B개발자도 develop 브랜치에서 feature 브랜치를 하나 생성해서 장바구니 기능을 구현</p>
+<p>완료된 feature 브랜치는 검토를 거쳐 다시 develop 브랜치에 합친다.(Merge)</p>
+</li>
+<li>
+<p>모든 기능이 완료되면 develop 브랜치를 release 브랜치로 만든다.</p>
+<p>그리고 QA(품질검사)를 하면서 보완점을 보완하고 버그를 픽스한다.</p>
+</li>
+<li>
+<p>모든 과정이 완료되면 이제 release 브랜치를 master 브랜치와 develop 브랜치로 보낸다.</p>
+</li>
+<li>
+<p>master 브랜치에서 버전추가를 위해 태그를 하나 생성하고 배포한다.</p>
+</li>
+<li>
+<p>배포를 했는데 미처 발견하지 못한 버그가 있을 경우 hot fix 브랜치를 만들어 긴급 수정 후 태그를 생성하고 바로 수정 배포한다.</p>
+</li>
+</ol>
+<p>Git-flow 진행</p>
+<p>react나 bootstrap같이 규모가 있는 개발을 할 경우 브랜치보다는 Fork와 Pull requests를 활용하여 구현한다.</p>
+<p>flow Fork는 브랜치와 비슷하지만 프로젝트를 통째로 외부로 복제해서 개발을 하는 방식.</p>
+<p>branch처럼 merge를 바로 하는 것이 아니라 PR을 보내면 원 프로젝트 관리자가 검토 후 해당  기능을 추가하는 방식으로 개발이 진행된다.</p>
+<p><a href="https://t1.daumcdn.net/cfile/tistory/99CD994C5E69CCF223">Vincent Driessen(git flow 최초 제안자)의 블로그 참조. 보통 Git-flow를 설명할 때 가장 많이 사용되는 설명 이미지</a></p>
 <hr>
-<ul>
-<li>
-<p>e.g., 내가 branch를 분기한 이후, 기존의 branch에 수정이 발생한 상황. 어떻게 해야 할까?</p>
+<h3 id="feature-branch-만들기">Feature Branch 만들기</h3>
 <ol>
-<li><strong>merge할 때 rebase and merge하기. ← 더 나은 방법.</strong></li>
-<li>내 branch에 기존 branch를 pull해서 conflict 해결하기.
+<li><code>git branch</code> 현재 나의 브랜치가 어디에 있는지 확인</li>
+<li><code>git checkout develop</code> develop 브랜치로 이동</li>
+<li><code>git pull origin develop</code> 코드를 작성하기전에 수정된 사항을 업데이트</li>
+<li><code>git branch feat/[기능명] develop</code> develop 브랜치로부터 feature 브랜치 생성</li>
+<li>코드 수정</li>
+</ol>
+<h3 id="feature-branch-commit--pull-request-수행하기">Feature Branch Commit &amp; Pull Request 수행하기</h3>
+<ol>
+<li>
+<p>commit 양식에 맞도록 메시지를 작성하기.</p>
+<p>커밋 메시지에 #23과 같이 issue 번호를 달게되면 해당 issue에 자동으로 매핑된다.</p>
+</li>
+<li>
+<p><code>git push origin [feature branch 이름]</code> 현재 나의 feature branch를 github에 push</p>
+</li>
+<li>
+<p>github 홈페이지에서 pull request 요청</p>
+<p><img src="https://user-images.githubusercontent.com/75417296/231333244-947fb4b5-cb0c-4afa-974b-40240c600e31.png" alt="https://user-images.githubusercontent.com/75417296/231333244-947fb4b5-cb0c-4afa-974b-40240c600e31.png"></p>
 <ul>
-<li>내가 작성한 커밋을 절대 변경하고 싶지 않은 경우</li>
-<li>내가 작성한 커밋 기록은 유지한채, Merge라는 기능을 통해 합쳐졌다라는 기록을 같이 남기게 된다.</li>
+<li>pull request 작성
+<ul>
+<li>제목은 commit 메시지와 동일하게</li>
+<li>base를 develop branch로 설정</li>
+<li>양식에 맞게 내용 작성</li>
+<li>reviewer 등 설정가능</li>
+</ul>
+</li>
+<li>review 작성</li>
+<li>merge</li>
 </ul>
 </li>
 </ol>
-</li>
-<li>
-<p>Conflict</p>
-<p>마지막으로 push 하는 사람이 해결해야 한다.</p>
-<ol>
-<li>
-<p>마지막에 push하는 사람은 conflict 에러가 발생한다</p>
-</li>
-<li>
-<p>git status로 충돌 위치 확인</p>
-</li>
-<li>
-<p>A와 B가 협의 후 수정</p>
-<p>CVN의 해결방법과 유사</p>
-</li>
-</ol>
-</li>
-</ul>
-<h3 id="원격-브랜치-가져오기">원격 브랜치 가져오기</h3>
 <ul>
-<li>
-<p><code>**git remote update</code> 원격 저장소 갱신**</p>
-<p>가끔 갱신을 하지 않으면 push하고자 하는 원격 branch를 찾을 수 없다는 오류를 보게된다.</p>
-<p>해당 오류를 처음 만나면 <em>분명 branch있는데 왜 없어!</em> 하게 된다.</p>
-</li>
-<li>
-<p><code>**git branch -r</code> 원격 저장소 branch 리스트 확인**</p>
-</li>
-<li>
-<p><code>**git branch -d dev</code> 로컬 저장소 branch 제거하기**</p>
-</li>
-<li>
-<p><code>**git checkout -t origin/dev</code> 원격 저장소 branch 가져오기**</p>
-<p><code>-t</code>: 원격 저장소의 branch 이름과 동일한 로컬 branch를 생성</p>
-<p><code>-f</code>: 문제가 발생하더라도 강제로 진행한다.</p>
-</li>
-</ul>
-<h3 id="branch-합치기-병합하기">branch 합치기, 병합하기</h3>
-<ol>
-<li>
-<p><code>**git checkout -b issue1</code> branch 생성하고 변경하기**</p>
-<ul>
-<li>위 명령어는 아래의 두 가지 명령어를 한 번에 수행한 것이다.
-<ol>
-<li><code>git branch issue1 main</code> main branch로부터 issue1 branch 생성하기</li>
-<li><code>git checkout issue1</code> main branch에서 issue1 branch로 변경하기</li>
-</ol>
-</li>
-</ul>
-<p><strong>— 코드 추가 작업 수행 —</strong></p>
-</li>
-<li>
-<p><code>**git checkout master</code> (작업이 완료되고 난 후) <code>master</code> 브랜치로 이동하기**</p>
-</li>
-<li>
-<p><code>**git merge issue1</code> issue1을 master에 merge (병합)하기**</p>
-</li>
-</ol>
-<h3 id="실수로-삭제한-branch-되돌리기">실수로 삭제한 branch 되돌리기</h3>
-<p>실수로 커밋을 추가한 후, branch를 삭제해서 작업물이 사라졌다면??</p>
-<p>멘붕에 빠지지 말자. 복구 방법이 있다!</p>
-<ol>
-<li>
-<p><code>git reflog</code> : branch 사용 이력 출력하기</p>
-<p><img src="/imgs/git_branch0.png" alt="git_branch"></p>
-</li>
-<li>
-<p>복구하고자 하는 branch의 <code>HEAD@{번호}</code> 기억하기</p>
-</li>
-<li>
-<p><code>git checkout -b '&lt;branch name&gt;' HEAD@{번호}</code></p>
-<p>해당 명령어를 통해 삭제해버린 branch를 복구할 수 있다.</p>
-</li>
-</ol>
-<h2 id="branch-전략--flows">Branch 전략 — Flows</h2>
-<p>가장 최신 커밋이 어디에 존재하느냐에 따라 두 가지 방법으로 나뉜다.</p>
-<ul>
-<li><strong>Local 중심 — <a href="https://www.notion.so/Git-Flow-aaf663b86f2644ab9a9774d9771d424a?pvs=21">Git Flow</a></strong></li>
-<li><strong>Remote 중심 — <a href="https://www.notion.so/Github-Flow-59d94e2ceaa145f9b041dc024d65af30?pvs=21">Github Flow</a></strong></li>
+<li>merge 후 feature branch 제거merge한 후 하단에 branch 제거 버튼 클릭</li>
 </ul>
 
         </p>
@@ -372,15 +373,12 @@
   <ul>
     <li>
       <ul>
-        <li>
+        <li><a href="#process">process</a>
           <ul>
-            <li><a href="#merge-방법에-따른-차이">merge 방법에 따른 차이</a></li>
-            <li><a href="#원격-브랜치-가져오기">원격 브랜치 가져오기</a></li>
-            <li><a href="#branch-합치기-병합하기">branch 합치기, 병합하기</a></li>
-            <li><a href="#실수로-삭제한-branch-되돌리기">실수로 삭제한 branch 되돌리기</a></li>
+            <li><a href="#feature-branch-만들기">Feature Branch 만들기</a></li>
+            <li><a href="#feature-branch-commit--pull-request-수행하기">Feature Branch Commit &amp; Pull Request 수행하기</a></li>
           </ul>
         </li>
-        <li><a href="#branch-전략--flows">Branch 전략 — Flows</a></li>
       </ul>
     </li>
   </ul>

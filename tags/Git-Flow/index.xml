@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git Flow on 오뚝이 개발자</title>
+    <link>https://osmin625.github.io/tags/Git-Flow/</link>
+    <description>Recent content in Git Flow on 오뚝이 개발자</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <lastBuildDate>Wed, 28 Sep 2022 11:41:00 +0900</lastBuildDate>
+    <atom:link href="https://osmin625.github.io/tags/Git-Flow/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>나를 위한 Git Flow 총정리</title>
+      <link>https://osmin625.github.io/posts/git_flow/</link>
+      <pubDate>Wed, 28 Sep 2022 11:41:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/git_flow/</guid>
+      <description>Local Repository 중심 Branch 관리 방법론&#xA;기능이나 프로그램이 아닌, 개발자간의 약속&#xA;물론 이를 지원하는 모듈이 존재한다.&#xA;$ apt-get install git-flow 장점&#xA;신중하다. 단점&#xA;복잡하다. 배포할 때 거쳐야 할 단계가 많다. 단계별로 관리하는 사람이 다른 경우, 특정 지점에서 병목이 발생할 수 있다. 총 5가지의 branch를 사용해서 개발이 진행된다.&#xA;master&#xA;배포의 기준이 되는 branch.&#xA;Release Tag를 기록하는 branch.&#xA;제품을 배포하는 용도.&#xA;배포용 브랜치이므로 개발자가 해당 브랜치에 직접 커밋하거나, Release 이외의 branch에서 직접 Merge할 일이 없다.</description>
+    </item>
+  </channel>
+</rss>

@@ -296,6 +296,13 @@
       <description>독립적으로 특정 작업을 진행할 때 사용한다.&#xA;팀으로 여러작업을 동시에 작업할 수 있다.&#xA;여러 Branch를 합치는 방법 — Merge&#xA;merge branch의 모든 기록 보존, merge에 대한 기록 추가.&#xA;이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</description>
     </item>
     <item>
+      <title>나를 위한 Git Branch 총정리</title>
+      <link>https://osmin625.github.io/posts/git_branch/</link>
+      <pubDate>Sat, 08 Oct 2022 22:49:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/git_branch/</guid>
+      <description>독립적으로 특정 작업을 진행할 때 사용한다.&#xA;팀으로 여러작업 동시에 작업 가능&#xA;여러 Branch를 합치는 방법 — Merge&#xA;merge 방법에 따른 차이 merge — branch의 모든 기록 보존, merge에 대한 기록 추가. 이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다. branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다. squash and merge — 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.</description>
+    </item>
+    <item>
       <title>경사 하강법에 오차 역전파가 없다면 무슨 일이 일어날까?</title>
       <link>https://osmin625.github.io/posts/%EC%88%98%EC%B9%98-%EB%AF%B8%EB%B6%84/</link>
       <pubDate>Fri, 27 May 2022 20:54:00 +0900</pubDate>

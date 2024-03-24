@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>나를 위한 Git Branch 총정리</title>
+    <meta name="description" content="Interested in ML Engineering, Data Science.">
+    <meta name="keywords" content='blog, gokarna, hugo, Git, Github'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/git_branch/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="나를 위한 Git Branch 총정리">
+    <meta property="og:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="나를 위한 Git Branch 총정리">
+    <meta name="twitter:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/git_branch/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/git_branch/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/git_branch/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+            
+            const sessionId = getSessionId();
+            console.log('현재 세션 ID:', sessionId);
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">오뚝이 개발자</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>나를 위한 Git Branch 총정리</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">10월 8, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Git">Git</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Github">Github</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <p><strong>독립적으로 특정 작업을 진행할 때 사용</strong>한다.</p>
+<p>팀으로 여러작업 동시에 작업 가능</p>
+<p>여러 Branch를 합치는 방법 — Merge</p>
+<h3 id="merge-방법에-따른-차이">merge 방법에 따른 차이</h3>
+<ul>
+<li><strong>merge</strong> — branch의 모든 기록 보존, merge에 대한 기록 추가.
+<ul>
+<li>이 방법을 사용하면 merge에 대한 commit이 하나 생성되고 어느 시점에 merge를 진행했는지 쉽게 알 수 있다.</li>
+<li>branch가 늘어나고 여러 번의 merge가 생기게 되면, 그래프가 복잡해져 **커밋 히스토리(Commit History)**를 파악하기 더욱 어려워질 수 있다.</li>
+</ul>
+</li>
+<li><strong>squash and merge</strong> — 여러 commit 기록 하나로 합치기, merge기록 남기지 않기.
+<strong>지저분한 커밋 이력들을 삭제하면서 master branch로 합칠 때 사용한다.</strong>
+<ul>
+<li>
+<p>merge할 때 여러 commit들을 하나로 합친다.</p>
+<p>Squash를 하게 되면 모든 커밋 이력이 하나의 커밋으로 합쳐지며 <strong>사라진다.</strong></p>
+</li>
+<li>
+<p>merge에 대한 이력은 남기지 않는다.</p>
+</li>
+</ul>
+</li>
+<li><strong>rebase and merge</strong> — 여러 commit 기록 남기기, merge 기록 남기지 않기.
+<strong>기존의 커밋 이력을 유지하면서도, 깔끔하게 하나의 흐름으로 관리하고자 할 때 사용한다.</strong>
+<ul>
+<li>
+<p><strong>일반적으로 가장 많이 사용된다.</strong></p>
+</li>
+<li>
+<p>merge에 대한 이력이 남지 않는다.</p>
+<p>즉, 언제 merge가 됐는지 알 수 없다.</p>
+<p>만약 merge 시점에 대한 기록이 필요하다면 커밋으로 직접 명시해주면 된다.</p>
+</li>
+<li>
+<p>모든 커밋이력들이 rebase 되어서 추가된다. 즉, fast-forward 된다.</p>
+<p>Rebase를 하면 커밋들의 Base가 변경되므로 Commit Hash 또한 변경 될 수 있다.</p>
+<p>이로 인해 Force Push가 필요한 경우가 발생한다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li>
+<p>e.g., 내가 branch를 분기한 이후, 기존의 branch에 수정이 발생한 상황. 어떻게 해야 할까?</p>
+<ol>
+<li><strong>merge할 때 rebase and merge하기. ← 더 나은 방법.</strong></li>
+<li>내 branch에 기존 branch를 pull해서 conflict 해결하기.
+<ul>
+<li>내가 작성한 커밋을 절대 변경하고 싶지 않은 경우</li>
+<li>내가 작성한 커밋 기록은 유지한채, Merge라는 기능을 통해 합쳐졌다라는 기록을 같이 남기게 된다.</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Conflict</p>
+<p>마지막으로 push 하는 사람이 해결해야 한다.</p>
+<ol>
+<li>
+<p>마지막에 push하는 사람은 conflict 에러가 발생한다</p>
+</li>
+<li>
+<p>git status로 충돌 위치 확인</p>
+</li>
+<li>
+<p>A와 B가 협의 후 수정</p>
+<p>CVN의 해결방법과 유사</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="원격-브랜치-가져오기">원격 브랜치 가져오기</h3>
+<ul>
+<li>
+<p><code>**git remote update</code> 원격 저장소 갱신**</p>
+<p>가끔 갱신을 하지 않으면 push하고자 하는 원격 branch를 찾을 수 없다는 오류를 보게된다.</p>
+<p>해당 오류를 처음 만나면 <em>분명 branch있는데 왜 없어!</em> 하게 된다.</p>
+</li>
+<li>
+<p><code>**git branch -r</code> 원격 저장소 branch 리스트 확인**</p>
+</li>
+<li>
+<p><code>**git branch -d dev</code> 로컬 저장소 branch 제거하기**</p>
+</li>
+<li>
+<p><code>**git checkout -t origin/dev</code> 원격 저장소 branch 가져오기**</p>
+<p><code>-t</code>: 원격 저장소의 branch 이름과 동일한 로컬 branch를 생성</p>
+<p><code>-f</code>: 문제가 발생하더라도 강제로 진행한다.</p>
+</li>
+</ul>
+<h3 id="branch-합치기-병합하기">branch 합치기, 병합하기</h3>
+<ol>
+<li>
+<p><code>**git checkout -b issue1</code> branch 생성하고 변경하기**</p>
+<ul>
+<li>위 명령어는 아래의 두 가지 명령어를 한 번에 수행한 것이다.
+<ol>
+<li><code>git branch issue1 main</code> main branch로부터 issue1 branch 생성하기</li>
+<li><code>git checkout issue1</code> main branch에서 issue1 branch로 변경하기</li>
+</ol>
+</li>
+</ul>
+<p><strong>— 코드 추가 작업 수행 —</strong></p>
+</li>
+<li>
+<p><code>**git checkout master</code> (작업이 완료되고 난 후) <code>master</code> 브랜치로 이동하기**</p>
+</li>
+<li>
+<p><code>**git merge issue1</code> issue1을 master에 merge (병합)하기**</p>
+</li>
+</ol>
+<h3 id="실수로-삭제한-branch-되돌리기">실수로 삭제한 branch 되돌리기</h3>
+<p>실수로 커밋을 추가한 후, branch를 삭제해서 작업물이 사라졌다면??</p>
+<p>멘붕에 빠지지 말자. 복구 방법이 있다!</p>
+<ol>
+<li>
+<p><code>git reflog</code> : branch 사용 이력 출력하기</p>
+<p><img src="/imgs/git_branch0.png" alt="git_branch"></p>
+</li>
+<li>
+<p>복구하고자 하는 branch의 <code>HEAD@{번호}</code> 기억하기</p>
+</li>
+<li>
+<p><code>git checkout -b '&lt;branch name&gt;' HEAD@{번호}</code></p>
+<p>해당 명령어를 통해 삭제해버린 branch를 복구할 수 있다.</p>
+</li>
+</ol>
+<h2 id="branch-전략--flows">Branch 전략 — Flows</h2>
+<p>가장 최신 커밋이 어디에 존재하느냐에 따라 두 가지 방법으로 나뉜다.</p>
+<ul>
+<li><strong>Local 중심 — <a href="https://www.notion.so/Git-Flow-aaf663b86f2644ab9a9774d9771d424a?pvs=21">Git Flow</a></strong></li>
+<li><strong>Remote 중심 — <a href="https://www.notion.so/Github-Flow-59d94e2ceaa145f9b041dc024d65af30?pvs=21">Github Flow</a></strong></li>
+</ul>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+    <div id="tex">
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script> 
+    </div>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#merge-방법에-따른-차이">merge 방법에 따른 차이</a></li>
+            <li><a href="#원격-브랜치-가져오기">원격 브랜치 가져오기</a></li>
+            <li><a href="#branch-합치기-병합하기">branch 합치기, 병합하기</a></li>
+            <li><a href="#실수로-삭제한-branch-되돌리기">실수로 삭제한 branch 되돌리기</a></li>
+          </ul>
+        </li>
+        <li><a href="#branch-전략--flows">Branch 전략 — Flows</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+</footer>
+</body>
+</html>

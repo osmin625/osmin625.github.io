@@ -107,6 +107,27 @@
       <description></description>
     </item>
     <item>
+      <title>Entropy</title>
+      <link>https://osmin625.github.io/tags/Entropy/</link>
+      <pubDate>Fri, 22 Sep 2023 07:11:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Entropy/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Information Theory</title>
+      <link>https://osmin625.github.io/tags/Information-Theory/</link>
+      <pubDate>Fri, 22 Sep 2023 07:11:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Information-Theory/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Cross Entropy</title>
+      <link>https://osmin625.github.io/tags/Cross-Entropy/</link>
+      <pubDate>Fri, 22 Sep 2023 06:54:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/Cross-Entropy/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Interpolation</title>
       <link>https://osmin625.github.io/tags/Interpolation/</link>
       <pubDate>Tue, 12 Sep 2023 23:39:00 +0900</pubDate>
@@ -541,6 +562,13 @@
       <description></description>
     </item>
     <item>
+      <title>KL Divergence</title>
+      <link>https://osmin625.github.io/tags/KL-Divergence/</link>
+      <pubDate>Mon, 12 Dec 2022 12:34:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/tags/KL-Divergence/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Long-Short-Term-Memory</title>
       <link>https://osmin625.github.io/tags/Long-Short-Term-Memory/</link>
       <pubDate>Sun, 04 Dec 2022 02:11:00 +0900</pubDate>
@@ -608,13 +636,6 @@
       <link>https://osmin625.github.io/tags/Classification/</link>
       <pubDate>Sat, 19 Nov 2022 00:04:00 +0900</pubDate>
       <guid>https://osmin625.github.io/tags/Classification/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Cross-Entropy</title>
-      <link>https://osmin625.github.io/tags/Cross-Entropy/</link>
-      <pubDate>Sat, 19 Nov 2022 00:04:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/tags/Cross-Entropy/</guid>
       <description></description>
     </item>
     <item>

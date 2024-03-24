@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Entropy(엔트로피)</title>
+    <meta name="description" content="Interested in ML Engineering, Data Science.">
+    <meta name="keywords" content='blog, gokarna, hugo, Entropy, Information Theory'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Entropy(엔트로피)">
+    <meta property="og:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Entropy(엔트로피)">
+    <meta name="twitter:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+            
+            const sessionId = getSessionId();
+            console.log('현재 세션 ID:', sessionId);
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">오뚝이 개발자</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Entropy(엔트로피)</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">9월 22, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Entropy">Entropy</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Information-Theory">Information Theory</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p><strong>간단 요약</strong></p>
+<p>확률 분포의 불확실성을 의미한다.</p>
+<p>정보 이론에서의 엔트로피는 <strong>(최적화된 전략 하에서의) 질문 개수에 대한 기댓값</strong>이다.</p>
+<p>스무 고개로 정답 맞추기를 진행할 때 질문이 많이 필요할수록 불확실성이 높은 것이다.</p>
+</blockquote>
+<p><strong>확률 분포의 무작위성(불확실성)을 측정하는 함수</strong></p>
+<p><code>$$ H(X)=\sum_{i=1}^n p_i\left(\log \frac{1}{p_i}\right)=-\sum_{i=1}^n p_i \log p_i $$</code></p>
+<ul>
+<li>
+<p>entropy 공식은 왜 이렇게 생겼을까?</p>
+<p>스무 고개로 정답 맞추기를 진행할 때 확률 분포가 불확실할수록 필요한 질문의 개수가 늘어난다.</p>
+<p>이 때, 전체 경우를 양분하는 질문의 개수는 <code>$log_2$</code>를 통해 파악할 수 있다.</p>
+<p>즉, 위의 수식은 각 경우<code>$(p_i)$</code>에 도달하기까지 전체 경우의 수를 이분하는 질문<code>$(-\log_2(p_i))$</code> 이 얼마나 많이 필요한 지와 동일하게 생각할 수 있다.</p>
+</li>
+</ul>
+<p><strong>ex) 1이 나올 확률이 매우 높은 찌그러진 주사위인 경우</strong></p>
+<p>언제나 최선의 전략을 짤 수 있는 사람이 주사위 숫자 맞추기 게임을 한다고 가정하자.</p>
+<p>스무 고개를 진행하면 1인가?를 먼저 물어보고, 대부분 정답이 될 것이다.</p>
+<p>하지만 공정한 주사위의 숫자를 한 번의 질문으로 예측하기는 어렵다.</p>
+<p>따라서, 공정한 주사위의 <strong>불확실성</strong>이 찌그러진 주사위의 <strong>불확실성</strong>보다 높다.</p>
+<p>즉, 공정한 주사위의 <strong>Entropy</strong>가 찌그러진 주사위의 <strong>Entropy</strong>보다 높다.</p>
+<ul>
+<li>
+<p>엔트로피 계산 예제</p>
+<p><code>$$ X = \{ a=\frac{1}{2},b=\frac{1}{4},c=\frac{1}{8},d=\frac{1}{8}\} $$</code></p>
+<p><code>$$ \begin{matrix} H(X) &amp;=&amp; -(\frac{1}{2}\log\frac{1}{2} + \frac{1}{4}\log{\frac{1}{4}} + \frac{1}{8}\log{\frac{1}{8}} + \frac{1}{8}\log{\frac{1}{8}})\\\\ &amp;=&amp; (\frac{1}{2} + \frac{1}{2} + \frac{3}{4})\log 2\\\\ &amp;=&amp; 0.52680249241 \end{matrix} $$</code></p>
+<ul>
+<li>
+<p>동전의 엔트로피</p>
+<p><code>$$ H_{\text {coin }}(x)=-\left(\frac{1}{2} \log \frac{1}{2}+\frac{1}{2} \log \frac{1}{2}\right)=0.3010 $$</code></p>
+</li>
+<li>
+<p>주사위의 엔트로피</p>
+<p><code>$$ H_{\text {dice }}(x)=-\left(\frac{1}{6} \log \frac{1}{6}+ \cdots+ \frac{1}{6} \log \frac{1}{6}\right)=0.7782 $$</code></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="엔트로피의-특성"><strong>엔트로피의 특성</strong></h3>
+<ul>
+<li><code>$H(X)$</code>는 오목하다.</li>
+<li><code>$H\left(p_{\max }, 1-p_{\max }\right) \leq H(P)$</code>.</li>
+<li><code>$H\left(p_1 q_1, \ldots, p_1 q_m, p_2 q_1, \ldots, p_2 q_m, \ldots p_n q_1, \ldots, p_n q_m\right)\\= H\left(p_1, \ldots, p_n\right)+\mathcal{S}\left(q_1, \ldots, q_m\right)$</code></li>
+</ul>
+<h3 id="shannon-entropy">(Shannon) Entropy</h3>
+<ul>
+<li>
+<p>X를 확률 질량 함수가 P(.)인 랜덤 이산 변수라고 할 때,</p>
+<p>X의 Entropy <code>$H(X)$</code>는 다음과 같이 정의할 수 있다.</p>
+<p><code>$$ H(X) = -\sum_xP(x)\log_bP(x) $$</code></p>
+</li>
+</ul>
+<p>엔트로피는 자신의 정보(최적화된 전략 하에서의 질문 개수)에 대한 기댓값으로 해석될 수 있다.</p>
+<p><code>$$ H(X) = -E[\log_bP(X)] $$</code></p>
+<p>b = 2의 경우, 엔트로피의 단위를 bit라고 한다.</p>
+<p>→ X에 포함된 모든 정보를 인코딩하는 데 필요한 최소 값을 bit 단위로 추정할 수 있다.</p>
+<p>연속형 변수의 엔트로피는 합을 적분으로 대체함으로써 정의할 수 있다.</p>
+<h3 id="joint-entropy">Joint Entropy</h3>
+<p><code>$$ H(X, Y)=-\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log p(x, y) $$</code></p>
+<p>ex)</p>
+<p><img src="/imgs/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B50.png" alt="entropy_엔트로피"></p>
+<p><code>$$ \begin{aligned}H(X, Y) &amp; =-\sum_{x \in \mathcal{X}} \sum_{y \in \mathcal{Y}} p(x, y) \log p(x, y) \\&amp; =-5\left[\frac{1}{10} \log \frac{1}{10}+\frac{1}{20} \log \frac{1}{20}+\frac{1}{40} \log \frac{1}{40}+\frac{1}{80} \log \frac{1}{80}+\frac{1}{80} \log \frac{1}{80}\right] \\&amp; =\log 5\left[\frac{1}{2} \log \frac{1}{2}+\frac{1}{4} \log \frac{1}{4}+\frac{1}{8} \log \frac{1}{8}+\frac{1}{16} \log \frac{1}{16}+\frac{1}{16} \log \frac{1}{16}\right] \\&amp; =\frac{15}{8} \log 5\end{aligned} $$</code></p>
+<h3 id="theorem--independent-random-variable-xy">Theorem — Independent Random Variable X,Y</h3>
+<p><code>$$ \mathrm{H}(\mathbf{X, Y})=\mathrm{H}(\mathbf{X})+\mathrm{H}(\mathbf{Y}) $$</code></p>
+<p>증명</p>
+<p><code>$$ \begin{aligned}p\left(x_i, y_j\right) &amp; =p\left(x_i\right) p\left(y_j\right) \\H(X, Y) &amp; =-\sum_{i=1}^N \sum_{j=1}^M p\left(x_i, y_j\right) \log \left\{p\left(x_i, y_j\right)\right\} \\&amp; =-\sum_{i=1}^N \sum_{j=1}^M p\left(x_i\right) p\left(y_j\right) \log \left\{p\left(x_i\right) p\left(y_j\right)\right\} \\&amp; =-\sum_{i=1}^N \sum_{j=1}^M p\left(x_i\right) p\left(y_j\right)\left[\log \left\{p\left(x_i\right)\right\}+\log \left\{p\left(y_i\right)\right\}\right] \\&amp; =-\sum_{i=1}^N \sum_{j=1}^M p\left(x_i\right) p\left(y_j\right) \log \left\{p\left(x_i\right)\right\}-\sum_{i=1}^N \sum_{j=1}^M p\left(x_i\right) p\left(y_j\right) \log \left\{p\left(y_i\right)\right\} \\&amp; =-\sum_{i=1}^N p\left(x_i\right) \log \left\{p\left(x_i\right)\right\}-\sum_{j=1}^M p\left(y_j\right) \log \left\{p\left(y_i\right)\right\} \\&amp; =H(X)+H(Y)\end{aligned} $$</code></p>
+<h3 id="cross-entropylog-loss-교차-엔트로피httpswwwnotionsocross-entropy-log-loss-8be927e10cdf40be9eacf0de4f3cffd7pvs21"><a href="https://www.notion.so/Cross-Entropy-Log-loss-8be927e10cdf40be9eacf0de4f3cffd7?pvs=21"><strong>Cross-Entropy(=Log loss, 교차 엔트로피)</strong></a></h3>
+<h3 id="von-neumann-entropy폰-노이만-엔트로피">Von Neumann Entropy(폰 노이만 엔트로피)</h3>
+<p>The von Neumann entropy of a density matrix <code>$\boldsymbol{\rho}$</code>, denoted by <code>$\mathbf{H}(\boldsymbol{\rho})$</code>, is defined as</p>
+<p><code>$$ \mathbf{H}(\rho)=-\operatorname{tr}(\rho \ln \rho)=-\sum_{i=1}^n \lambda_i \ln \lambda_i $$</code></p>
+<p>where <code>$\lambda_1, \ldots, \lambda_n$</code> are eigen values of <code>$\rho$</code>. It is conventional to define <code>$0 \ln 0=0$</code>.</p>
+<p>This definition is a proper extension of both the Gibbs entropy and the Shannon entropy to the quantum case.</p>
+<h3 id="relative-entropy상대-엔트로피">Relative Entropy(상대 엔트로피)</h3>
+<p>Kullback-Leibler Divergence</p>
+<p><a href="https://www.notion.so/Kullback-Leibler-KL-Divergence-2dee5fd67d52406d9e85a9bf853c73aa?pvs=21"><strong>Kullback-Leibler (KL) Divergence</strong></a></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+    <div id="tex">
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script> 
+    </div>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#엔트로피의-특성"><strong>엔트로피의 특성</strong></a></li>
+            <li><a href="#shannon-entropy">(Shannon) Entropy</a></li>
+            <li><a href="#joint-entropy">Joint Entropy</a></li>
+            <li><a href="#theorem--independent-random-variable-xy">Theorem — Independent Random Variable X,Y</a></li>
+            <li><a href="#cross-entropylog-loss-교차-엔트로피httpswwwnotionsocross-entropy-log-loss-8be927e10cdf40be9eacf0de4f3cffd7pvs21"><a href="https://www.notion.so/Cross-Entropy-Log-loss-8be927e10cdf40be9eacf0de4f3cffd7?pvs=21"><strong>Cross-Entropy(=Log loss, 교차 엔트로피)</strong></a></a></li>
+            <li><a href="#von-neumann-entropy폰-노이만-엔트로피">Von Neumann Entropy(폰 노이만 엔트로피)</a></li>
+            <li><a href="#relative-entropy상대-엔트로피">Relative Entropy(상대 엔트로피)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+</footer>
+</body>
+</html>

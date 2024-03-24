@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>KL Divergence on 오뚝이 개발자</title>
+    <link>https://osmin625.github.io/tags/KL-Divergence/</link>
+    <description>Recent content in KL Divergence on 오뚝이 개발자</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <lastBuildDate>Mon, 12 Dec 2022 12:34:00 +0900</lastBuildDate>
+    <atom:link href="https://osmin625.github.io/tags/KL-Divergence/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kullback-Leibler (KL) Divergence</title>
+      <link>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</link>
+      <pubDate>Mon, 12 Dec 2022 12:34:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</guid>
+      <description>간단 요약&#xA;Cross Entropy - Entropy&#xA;두 분포의 차이, 정보량을 의미한다.&#xA;metric이 아니다.&#xA;엔트로피의 상대성에 대해 이야기한다.&#xA;유도 과정&#xA;$$&#xD;\begin{aligned}H(p, q) &amp;amp; =-\sum_i p_i \log q_i \\&amp;amp; =-\sum_i p_i \log q_i-\sum_i p_i \log p_i+\sum_i p_i \log p_i \\&amp;amp; =H(p)+\sum_i p_i \log p_i-\sum_i p_i \log q_i \\&amp;amp; =H(p)+\sum_i p_i \log \frac{p_i}{q_i}\end{aligned}&#xD;$$&#xA;이 때, $H(p,q) - H(p)$로 정리되는 다음 수식을 KL-Divergence 혹은 Relative Entropy라고 부른다.&#xA;$$&#xD;\sum_i p_i \log \frac{p_i}{q_i}=H(p, q)-H(p)&#xD;$$</description>
+    </item>
+  </channel>
+</rss>

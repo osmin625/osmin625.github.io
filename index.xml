@@ -44,6 +44,20 @@
       <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) ML based CF</description>
     </item>
     <item>
+      <title>Entropy(엔트로피)</title>
+      <link>https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</link>
+      <pubDate>Fri, 22 Sep 2023 07:11:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</guid>
+      <description>간단 요약&#xA;확률 분포의 불확실성을 의미한다.&#xA;정보 이론에서의 엔트로피는 (최적화된 전략 하에서의) 질문 개수에 대한 기댓값이다.&#xA;스무 고개로 정답 맞추기를 진행할 때 질문이 많이 필요할수록 불확실성이 높은 것이다.&#xA;확률 분포의 무작위성(불확실성)을 측정하는 함수&#xA;$$&#xD;H(X)=\sum_{i=1}^n p_i\left(\log \frac{1}{p_i}\right)=-\sum_{i=1}^n p_i \log p_i&#xD;$$&#xA;entropy 공식은 왜 이렇게 생겼을까?&#xA;스무 고개로 정답 맞추기를 진행할 때 확률 분포가 불확실할수록 필요한 질문의 개수가 늘어난다.&#xA;이 때, 전체 경우를 양분하는 질문의 개수는 $log_2$를 통해 파악할 수 있다.</description>
+    </item>
+    <item>
+      <title>Cross-Entropy(=Log loss, 교차 엔트로피)</title>
+      <link>https://osmin625.github.io/posts/cross_entropy_log_loss_%E1%84%80%E1%85%AD%E1%84%8E%E1%85%A1_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</link>
+      <pubDate>Fri, 22 Sep 2023 06:54:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/cross_entropy_log_loss_%E1%84%80%E1%85%AD%E1%84%8E%E1%85%A1_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</guid>
+      <description>두 확률 분포 P와 Q가 다른 정도를 측정하는 함수&#xA;$$&#xD;H(P, Q)=-\sum_{i=1, k} P\left(e_i\right) \log Q\left(e_i\right)&#xD;$$&#xA;최선의 전략이 아닐 때의 질문 개수의 기댓값&#xA;엔트로피를 최적화된 전략 하에서 질문 개수에 대한 기댓값이라고 설명했다.&#xA;하지만 현실 문제의 대부분의 경우 최선의 전략을 찾기 어렵다.&#xA;스무 고개에서 최적의 전략이 각 사건의 확률에 의해 결정되듯이, 전략은 곧 확률 분포라고 이해할 수 있다.&#xA;결국 엔트로피는 전략$(\log P_i)$과 사건$(P_i)$의 분포가 동일한 상태를 의미하고,&#xA;교차 엔트로피는 전략$(\log Q_i)$과 사건$(P_i)$의 분포가 다른 상태를 의미한다.</description>
+    </item>
+    <item>
       <title>Polynomial Interpolation(보간 다항식)</title>
       <link>https://osmin625.github.io/posts/Polynomial-Interpolation/</link>
       <pubDate>Tue, 12 Sep 2023 23:39:00 +0900</pubDate>
@@ -259,6 +273,13 @@
       <pubDate>Fri, 13 Jan 2023 15:15:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</guid>
       <description>Conv Layer Layer 1 파라미터 수 = 11 * 11 * 3 * 48 * 2 ⇒ 35k&#xA;입력 : 224 * 224 * 3&#xA;filter : 11 * 11 * (3)&#xA;3은 생략되어 있지만, 입력 크기와 동일한 채널을 가질 것이기 때문에 3으로 유추할 수 있다.&#xA;모델 이미지상 커널이 위 아래로 두 개이기 때문에 * 2를 했다.&#xA;gpu 메모리 용량 등의 이유로 이처럼 구성하는 경우가 많다.&#xA;Layer 2 파라미터 수 = 5 * 5 * 48 * 128 * 2 ⇒ 307k</description>
+    </item>
+    <item>
+      <title>Kullback-Leibler (KL) Divergence</title>
+      <link>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</link>
+      <pubDate>Mon, 12 Dec 2022 12:34:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</guid>
+      <description>간단 요약&#xA;Cross Entropy - Entropy&#xA;두 분포의 차이, 정보량을 의미한다.&#xA;metric이 아니다.&#xA;엔트로피의 상대성에 대해 이야기한다.&#xA;유도 과정&#xA;$$&#xD;\begin{aligned}H(p, q) &amp;amp; =-\sum_i p_i \log q_i \\&amp;amp; =-\sum_i p_i \log q_i-\sum_i p_i \log p_i+\sum_i p_i \log p_i \\&amp;amp; =H(p)+\sum_i p_i \log p_i-\sum_i p_i \log q_i \\&amp;amp; =H(p)+\sum_i p_i \log \frac{p_i}{q_i}\end{aligned}&#xD;$$&#xA;이 때, $H(p,q) - H(p)$로 정리되는 다음 수식을 KL-Divergence 혹은 Relative Entropy라고 부른다.&#xA;$$&#xD;\sum_i p_i \log \frac{p_i}{q_i}=H(p, q)-H(p)&#xD;$$</description>
     </item>
     <item>
       <title>LSTM: Long Short Term Memory</title>

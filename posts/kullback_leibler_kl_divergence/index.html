@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Kullback-Leibler (KL) Divergence</title>
+    <meta name="description" content="Interested in ML Engineering, Data Science.">
+    <meta name="keywords" content='blog, gokarna, hugo, Cross Entropy, Entropy, KL Divergence'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/kullback_leibler_kl_divergence/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Kullback-Leibler (KL) Divergence">
+    <meta property="og:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Kullback-Leibler (KL) Divergence">
+    <meta name="twitter:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/kullback_leibler_kl_divergence/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/kullback_leibler_kl_divergence/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/kullback_leibler_kl_divergence/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+            
+            const sessionId = getSessionId();
+            console.log('현재 세션 ID:', sessionId);
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">오뚝이 개발자</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Kullback-Leibler (KL) Divergence</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">12월 12, 2022
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Cross-Entropy">Cross Entropy</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Entropy">Entropy</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/KL-Divergence">KL Divergence</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <blockquote>
+<p><strong>간단 요약</strong></p>
+<p><strong>Cross Entropy - Entropy</strong></p>
+<p>두 분포의 차이, 정보량을 의미한다.</p>
+<p>metric이 아니다.</p>
+</blockquote>
+<p>엔트로피의 상대성에 대해 이야기한다.</p>
+<p><strong>유도 과정</strong></p>
+<p><code>$$ \begin{aligned}H(p, q) &amp; =-\sum_i p_i \log q_i \\&amp; =-\sum_i p_i \log q_i-\sum_i p_i \log p_i+\sum_i p_i \log p_i \\&amp; =H(p)+\sum_i p_i \log p_i-\sum_i p_i \log q_i \\&amp; =H(p)+\sum_i p_i \log \frac{p_i}{q_i}\end{aligned} $$</code></p>
+<p>이 때, <code>$H(p,q) - H(p)$</code>로 정리되는 다음 수식을 KL-Divergence 혹은 Relative Entropy라고 부른다.</p>
+<p><code>$$ \sum_i p_i \log \frac{p_i}{q_i}=H(p, q)-H(p) $$</code></p>
+<p><code>$$ KL(p|q) = \sum_xp_i\log{p_i\over q_i} = E_p[\log{\left({p_i\over q_i}\right)}] $$</code></p>
+<p>두 분포 간의 차이를 측정한다.</p>
+<p><code>$P(X)$</code>를 기준으로 두 분포의 차이를 의미한다.</p>
+<p><strong>Metric이 아니다.</strong></p>
+<ul>
+<li>
+<p><code>$K L(p \mid q) \geq 0$</code>을 만족한다.</p>
+</li>
+<li>
+<p>모든 x에 대해 <code>$Q(X) =0\rightarrow P(X) =0$</code>가 성립한다.</p>
+</li>
+<li>
+<p><strong>Symmetry가 성립하지 않는다.</strong></p>
+<p><code>$K L(p \mid q) \neq K L(q \mid p)$</code></p>
+</li>
+<li>
+<p><strong>Triangle inequality를 만족하지 않는다.</strong></p>
+</li>
+</ul>
+<p>연속 변수의 KL 발산은 Entropy와 마찬가지로 합을 적분으로 대체하여 정의할 수 있다.</p>
+<ul>
+<li>
+<p><strong>예제 — Relative Entropy 계산</strong></p>
+<p><img src="/imgs/kullback_leibler_kl_divergence0.png" alt="kullback_leibler_kl_divergence"></p>
+<p><code>$$ H(p) = -\left( \frac{1}{2}\log\frac{1}{2} + \frac{1}{4}\log\frac{1}{4} + \frac{1}{4}\log\frac{1}{4} \right)\\ = \frac{3}{2}\log 2 = 0.45154499349 $$</code></p>
+<p><code>$$ H(q) = -\left( \frac{1}{3}\log\frac{1}{3} + \frac{1}{3}\log\frac{1}{3} + \frac{1}{3}\log\frac{1}{3} \right)\\ = \log 3 = 0.47712125472 $$</code></p>
+<p><code>$$ H(p,q) = -\left( \frac{1}{2}\log\frac{1}{3} + \frac{1}{4}\log\frac{1}{3} + \frac{1}{4}\log\frac{1}{3} \right)\\ = \log 3 = 0.47712125472 $$</code></p>
+<p><code>$$ H(q,p) = -\left( \frac{1}{3}\log\frac{1}{2} + \frac{1}{3}\log\frac{1}{4} + \frac{1}{3}\log\frac{1}{4} \right)\\ = \frac{5}{3}\log 2 = 0.50171665944 $$</code></p>
+<ul>
+<li>
+<p><code>$D_{KL}(p||q) = H(p,q) - H(p)$</code></p>
+<p><code>$$ H(p,q) - H(p) = \log 3 - \frac{3}{2}\log 2 = 0.02557626122 $$</code></p>
+</li>
+<li>
+<p><code>$D_{KL}(q||p) = H(q,p) - H(q)$</code></p>
+</li>
+</ul>
+<p><code>$$ H(q,p) - H(q) = \frac{5}{3}\log 2 - \log 3 = 0.02459540472 $$</code></p>
+</li>
+</ul>
+<h3 id="참조">참조</h3>
+<p><a href="https://hyunw.kim/blog/2017/10/27/KL_divergence.html">초보를 위한 정보이론 안내서 - KL divergence 쉽게 보기</a></p>
+<p><strong>연관 개념? 알아보기</strong></p>
+<p>elbo, variational inference</p>
+<p>MLE</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+    <div id="tex">
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script> 
+    </div>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#참조">참조</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+</footer>
+</body>
+</html>

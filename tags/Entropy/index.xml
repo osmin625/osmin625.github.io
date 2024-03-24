@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Cross Entropy on 오뚝이 개발자</title>
-    <link>https://osmin625.github.io/tags/Cross-Entropy/</link>
-    <description>Recent content in Cross Entropy on 오뚝이 개발자</description>
+    <title>Entropy on 오뚝이 개발자</title>
+    <link>https://osmin625.github.io/tags/Entropy/</link>
+    <description>Recent content in Entropy on 오뚝이 개발자</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
-    <lastBuildDate>Fri, 22 Sep 2023 06:54:00 +0900</lastBuildDate>
-    <atom:link href="https://osmin625.github.io/tags/Cross-Entropy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Sep 2023 07:11:00 +0900</lastBuildDate>
+    <atom:link href="https://osmin625.github.io/tags/Entropy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Entropy(엔트로피)</title>
+      <link>https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</link>
+      <pubDate>Fri, 22 Sep 2023 07:11:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</guid>
+      <description>간단 요약&#xA;확률 분포의 불확실성을 의미한다.&#xA;정보 이론에서의 엔트로피는 (최적화된 전략 하에서의) 질문 개수에 대한 기댓값이다.&#xA;스무 고개로 정답 맞추기를 진행할 때 질문이 많이 필요할수록 불확실성이 높은 것이다.&#xA;확률 분포의 무작위성(불확실성)을 측정하는 함수&#xA;$$&#xD;H(X)=\sum_{i=1}^n p_i\left(\log \frac{1}{p_i}\right)=-\sum_{i=1}^n p_i \log p_i&#xD;$$&#xA;entropy 공식은 왜 이렇게 생겼을까?&#xA;스무 고개로 정답 맞추기를 진행할 때 확률 분포가 불확실할수록 필요한 질문의 개수가 늘어난다.&#xA;이 때, 전체 경우를 양분하는 질문의 개수는 $log_2$를 통해 파악할 수 있다.</description>
+    </item>
     <item>
       <title>Cross-Entropy(=Log loss, 교차 엔트로피)</title>
       <link>https://osmin625.github.io/posts/cross_entropy_log_loss_%E1%84%80%E1%85%AD%E1%84%8E%E1%85%A1_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</link>
@@ -21,13 +28,6 @@
       <pubDate>Mon, 12 Dec 2022 12:34:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</guid>
       <description>간단 요약&#xA;Cross Entropy - Entropy&#xA;두 분포의 차이, 정보량을 의미한다.&#xA;metric이 아니다.&#xA;엔트로피의 상대성에 대해 이야기한다.&#xA;유도 과정&#xA;$$&#xD;\begin{aligned}H(p, q) &amp;amp; =-\sum_i p_i \log q_i \\&amp;amp; =-\sum_i p_i \log q_i-\sum_i p_i \log p_i+\sum_i p_i \log p_i \\&amp;amp; =H(p)+\sum_i p_i \log p_i-\sum_i p_i \log q_i \\&amp;amp; =H(p)+\sum_i p_i \log \frac{p_i}{q_i}\end{aligned}&#xD;$$&#xA;이 때, $H(p,q) - H(p)$로 정리되는 다음 수식을 KL-Divergence 혹은 Relative Entropy라고 부른다.&#xA;$$&#xD;\sum_i p_i \log \frac{p_i}{q_i}=H(p, q)-H(p)&#xD;$$</description>
-    </item>
-    <item>
-      <title>손실 함수(Loss Function)에 대해 알아보자.</title>
-      <link>https://osmin625.github.io/posts/Loss-function/</link>
-      <pubDate>Sat, 19 Nov 2022 00:04:00 +0900</pubDate>
-      <guid>https://osmin625.github.io/posts/Loss-function/</guid>
-      <description>✔️ 간단 요약&#xA;신경망의 학습 중 받는 벌점의 기준&#xA;회귀와 분류 문제에서 다른 loss function을 사용한다.&#xA;{: .prompt-info } Gradient, MAE, MSE, RMSE&#xA;Loss : 예측 값과 실제 값의 차이&#xA;신경망의 학습 중 오답에 대해 받는 벌점&#xA;두 값의 차이는 단순히 뺄셈의 절댓값을 의미하는 것은 아니며, 상황에 따라 다양하게 나타난다.&#xA;ex) 정답과 완전히 동떨어진 대답을 하면 더 많은 벌점을 받는다.&#xA;Loss Function 신경망이 벌점을 받는 기준&#xA;신경망의 학습 과정에서 가중치 $\mathbf w$를 평가하는 함수.</description>
     </item>
   </channel>
 </rss>

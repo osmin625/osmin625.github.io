@@ -90,7 +90,25 @@
     <lastmod>2023-09-27T13:53:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/categories/AI-Math/</loc>
-    <lastmod>2023-09-12T23:39:00+09:00</lastmod>
+    <lastmod>2023-09-22T07:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Entropy/</loc>
+    <lastmod>2023-09-22T07:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/entropy_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</loc>
+    <lastmod>2023-09-22T07:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Information-Theory/</loc>
+    <lastmod>2023-09-22T07:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/categories/Statistics/</loc>
+    <lastmod>2023-09-22T07:11:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/tags/Cross-Entropy/</loc>
+    <lastmod>2023-09-22T06:54:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/cross_entropy_log_loss_%E1%84%80%E1%85%AD%E1%84%8E%E1%85%A1_%E1%84%8B%E1%85%A6%E1%86%AB%E1%84%90%E1%85%B3%E1%84%85%E1%85%A9%E1%84%91%E1%85%B5/</loc>
+    <lastmod>2023-09-22T06:54:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/Interpolation/</loc>
     <lastmod>2023-09-12T23:39:00+09:00</lastmod>
@@ -135,9 +153,6 @@
     <lastmod>2023-06-28T16:10:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/Autoregressive-Model/</loc>
-    <lastmod>2023-06-28T16:10:00+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/categories/Statistics/</loc>
     <lastmod>2023-06-28T16:10:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/posts/Book-Rating-Prediction-Wrap-up-Report/</loc>
@@ -407,6 +422,12 @@
     <loc>https://osmin625.github.io/posts/Alexnet-%EB%AA%A8%EB%8D%B8%EC%9D%98-%ED%8C%8C%EB%9D%BC%EB%AF%B8%ED%84%B0-%EC%88%98-%EA%B3%84%EC%82%B0%ED%95%B4%EB%B3%B4%EA%B8%B0/</loc>
     <lastmod>2023-01-13T15:15:00+09:00</lastmod>
   </url><url>
+    <loc>https://osmin625.github.io/tags/KL-Divergence/</loc>
+    <lastmod>2022-12-12T12:34:00+09:00</lastmod>
+  </url><url>
+    <loc>https://osmin625.github.io/posts/kullback_leibler_kl_divergence/</loc>
+    <lastmod>2022-12-12T12:34:00+09:00</lastmod>
+  </url><url>
     <loc>https://osmin625.github.io/tags/Long-Short-Term-Memory/</loc>
     <lastmod>2022-12-04T02:11:00+09:00</lastmod>
   </url><url>
@@ -444,9 +465,6 @@
     <lastmod>2022-12-03T13:05:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/Classification/</loc>
-    <lastmod>2022-11-19T00:04:00+09:00</lastmod>
-  </url><url>
-    <loc>https://osmin625.github.io/tags/Cross-Entropy/</loc>
     <lastmod>2022-11-19T00:04:00+09:00</lastmod>
   </url><url>
     <loc>https://osmin625.github.io/tags/Loss-Function/</loc>

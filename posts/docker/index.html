@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>나를 위한 Docker 총정리</title>
+    <meta name="description" content="Interested in ML Engineering, Data Science.">
+    <meta name="keywords" content='blog, gokarna, hugo, Docker, Docker Compose'>
+
+    <meta property="og:url" content="https://osmin625.github.io/posts/docker/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="나를 위한 Docker 총정리">
+    <meta property="og:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="og:image" content="https://osmin625.github.io/images/from_scratch.webp">
+    <meta property="og:image:secure_url" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="나를 위한 Docker 총정리">
+    <meta name="twitter:description" content="Interested in ML Engineering, Data Science.">
+    <meta property="twitter:domain" content="https://osmin625.github.io/posts/docker/">
+    <meta property="twitter:url" content="https://osmin625.github.io/posts/docker/">
+    <meta name="twitter:image" content="https://osmin625.github.io/images/from_scratch.webp">
+
+    
+    <link rel="canonical" href="https://osmin625.github.io/posts/docker/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.4ffdc838c15e2e2971b91a99fe21b6cfe58ddb8410dd0e3487b6b9b92cc3caaa.js" integrity="sha256-T/3IOMFeLilxuRqZ/iG2z&#43;WN24QQ3Q40h7a5uSzDyqo="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+            
+            const sessionId = getSessionId();
+            console.log('현재 세션 ID:', sessionId);
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://osmin625.github.io">
+                <img src='/images/from_scratch.webp' alt="OMIN" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://osmin625.github.io">오뚝이 개발자</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/categories/"><span data-feather='list'></span> Categories </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://osmin625.github.io/posts/"><span data-feather='book'></span> archive </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>나를 위한 Docker 총정리</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">2월 13, 2023
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Docker">Docker</a></li>
+        
+            <li class="post-tag"><a href="https://osmin625.github.io/tags/Docker-Compose">Docker Compose</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <table>
+<thead>
+<tr>
+<th>눈송이 서버</th>
+<th>가상화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VM(Virtual Machine)</td>
+<td>Container</td>
+</tr>
+<tr>
+<td>Docker Image</td>
+<td>Docker Container</td>
+</tr>
+</tbody>
+</table>
+<h3 id="background--왜-도커를-써야하나"><strong>Background —</strong> 왜 도커를 써야하나?</h3>
+<ul>
+<li>
+<p><strong>눈송이 서버들(Snowflake Servers)</strong></p>
+<p>모든 눈송이의 모양이 다르듯, 서버들도 모두 다르다.</p>
+<p>서버가 여러개인 경우, 서버 구성 시기에 따라 운영체제, 컴파일러, 설치된 패키지 등의 버전이 달라지게 된다.</p>
+<p>눈송이 서버를 방지하기 위해, 새로 서버를 구성할 때 다양한 방식으로 서버 운영 기록을 저장해 둔다.</p>
+</li>
+<li>
+<p><strong>가상화</strong></p>
+<p>특정 소프트웨어 환경을 만든 후, Local 서버나 Production 서버에서 그대로 활용하는 방법.</p>
+<p>어느 운영체제에서나 동일한 환경으로 프로그램 실행 가능</p>
+</li>
+<li>
+<p><strong>VM(Virtual Machine)</strong></p>
+<p>고전적인 가상화 방법</p>
+<p>OS 위의 OS → 과도한 리소스 활용</p>
+</li>
+<li>
+<p><strong>Container</strong></p>
+<p>VM을 다소 경량화하여, 빠르고 가벼운 가상화 지원</p>
+</li>
+</ul>
+<h3 id="docker"><strong>Docker</strong></h3>
+<p><strong>컨테이너 기술을 쉽게 사용할 수 있도록 나온 도구</strong></p>
+<p>서버 운영 기록을 코드화한 것</p>
+<p><strong>Dockerfile → Docker Image → Docker Container</strong></p>
+<ul>
+<li>
+<p><strong>Dockerfile</strong></p>
+<p>Image를 만드는 설계도.</p>
+<p>즉, 주형틀을 만드는 설계도.</p>
+</li>
+<li>
+<p><strong>Docker Image</strong></p>
+<p>Dockerfile을 기반으로 생성된 주형틀.</p>
+<p>객체 지향 언어에 비유하자면, Class에 해당한다.</p>
+<p>직접 제작할 수도 있고, Docker hub에서 다운받아 사용할 수도 있다.</p>
+</li>
+<li>
+<p><strong>Docker Container</strong></p>
+<p>Image로 생성해낸 초경량 컴퓨터.</p>
+<p>비유하자면, Instance에 해당한다.</p>
+<p><code>Docker run</code>으로 Container를 찍어낼 수 있다.</p>
+</li>
+</ul>
+<p>자신만의 이미지를 생성한 후, 원격 저장소에 저장하면 어디서나 사용이 가능하다.</p>
+<h3 id="docker-use-case">Docker use case</h3>
+<p><img src="/imgs/docker0.png" alt="docker"></p>
+<h2 id="기존-이미지-활용하기">기존 이미지 활용하기</h2>
+<ol>
+<li>
+<p><code>docker pull 이미지 이름:태그</code>   — 필요한 이미지 다운</p>
+<p>Dockerhub에서 공개된 모든 이미지를 다운받을 수 있다.</p>
+<p>Registry : Dockerhub, AWS ECR, GCP GCR</p>
+</li>
+<li>
+<p><code>docker images</code> — 다운받은 이미지 목록 확인</p>
+</li>
+<li>
+<p><code>docker run 이미지 이름:태그</code> — 이미지를 기반으로 <strong>컨테이너 생성</strong></p>
+<p>컨테이너 생성 시 바로 실행된다.</p>
+</li>
+</ol>
+<hr>
+<p>위의 동작들은 자주 수행되지 않는다.</p>
+<ul>
+<li><code>docker ps</code> — 실행중인 컨테이너 목록 확인</li>
+</ul>
+<ol>
+<li>
+<p><code>**docker start [컨테이너 이름(ID)]</code> 컨테이너 실행하기.**</p>
+<ul>
+<li>
+<p><code>docker exec -it “컨테이너” /bin/bash</code> — 컨테이너에 진입</p>
+<p>exec가 필요하다면 docker desktop을 활용하는 것이 훨씬 편하다.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><code>**docker stop 컨테이너 이름(ID)</code> — 실행 중인 컨테이너를 중지**</p>
+<ul>
+<li><code>docker rm 컨테이너 이름(ID)</code> — 중지된 컨테이너 삭제</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="docker-이미지-만들기-docker-build">Docker 이미지 만들기 <code>docker build</code></h2>
+<h3 id="1-폴더-하나를-만든-후-poetry-세팅과-torch-관련-패키지-설치"><strong>1. 폴더 하나를 만든 후, poetry 세팅과 torch 관련 패키지 설치</strong></h3>
+<p><code>mkdir docker_prac &amp;&amp; cd docker_prac</code></p>
+<p><code>python -V # python 3.10.6</code></p>
+<p><code>poetry init</code></p>
+<p><code>poetry add torch torchvision</code></p>
+<h3 id="2-dockerfile-생성-및-작성하기"><strong>2. <code>Dockerfile</code> 생성 및 작성하기</strong></h3>
+<p>Docker Image를 빌드하기 위한 정보가 담긴다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> 이미지이름:태그</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> . /app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONPATH<span style="color:#f92672">=</span>/app<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PYTHONUNBUFFERED<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">RUN</span> pip install pip<span style="color:#f92672">=</span>23.0.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>		pip install poetry<span style="color:#f92672">==</span>1.2.1 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>		poetry export -0 requirements.txt <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>		pip install -r requirements.txt<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">CMD</span> [<span style="color:#e6db74">&#34;python&#34;</span>, <span style="color:#e6db74">&#34;main.py&#34;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>보통 처음부터 만드는 경우는 드물고, 기존 이미지를 변경하거나, 추가해서 사용한다.</p>
+<ul>
+<li>
+<p>Dockerfile Options</p>
+<ul>
+<li><strong>FROM</strong> : 베이스 이미지
+<ul>
+<li>어느 이미지에서 시작할 지를 의미한다.</li>
+</ul>
+</li>
+<li><strong>COPY / ADD</strong> : build 명령 중간에 호스트의 파일 또는 폴더를 이미지에 가져오는 것
+<ul>
+<li>ADD 명령문은 좀 더 파워풀한 COPY 명령문이라고 생각할 수 있다.</li>
+<li>ADD 명령문은 일반 파일 뿐만 아니라 압축 파일이나 네트워크 상의 파일도 사용할 수 있다.</li>
+<li>이렇게 특수한 파일을 다루는 게 아니라면 COPY 명령문을 사용하는 것이 권장된다.</li>
+</ul>
+</li>
+<li><strong>WORKDIR</strong> : 작업 디렉토리를 지정한다. 해당 디렉토리가 없으면 새로 생성한다.
+<ul>
+<li>작업 디렉토리를 지정하면 그 이후 명령어는 해당 디렉토리를 기준으로 동작한다.</li>
+<li>cd 명령어와 동일하다.</li>
+</ul>
+</li>
+<li><strong>RUN</strong> : 새로운 레이어에서 명령어를 실행하고, 새로운 이미지를 생성한다.
+<ul>
+<li>RUN 명령을 실행할 때 마다 레이어가 생성되고 캐시된다.</li>
+<li>따라서 RUN 명령을 따로 실행하면 apt-get update는 다시 실행되지 않아서 최신 패키지를 설치할 수 없다.</li>
+<li>위 처럼 RUN 명령 하나에 apt-get update와 install을 함께 실행 해주자.</li>
+</ul>
+</li>
+<li><strong>CMD :</strong> 컨테이너를 생성할 때 실행할 명령어
+<ul>
+<li>보통 컨테이너 내부에서 항상 돌아가야하는 서버를 띄울 때 사용한다.</li>
+<li>컨테이너를 생성할 때만 실행된다. (docker run)</li>
+<li>컨테이너 생성 시, 추가적인 명령어에 따라 설정한 명령어를 수정할 수 있다.</li>
+<li>CMD [&quot;&lt;커맨드&gt;&quot;, &ldquo;&lt;파라미터1&gt;&rdquo;, &ldquo;&lt;파라미터2&gt;&rdquo;]</li>
+<li>CMD &lt;커맨드&gt; &lt;파라미터1&gt; &lt;파라미터2&gt;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><strong>MAINTAINER</strong> : 이미지를 생성한 개발자의 정보 (1.13.0 이후 사용 X)</li>
+<li><strong>LABEL</strong> : 이미지에 메타데이터를 추가 (key-value 형태)</li>
+<li><strong>EXPOSE</strong> : Dockerfile의 빌드로 생성된 이미지에서 열어줄 포트를 의미한다.
+<ul>
+<li>호스트 머신과 컨테이너의 포트 매핑시에 사용된다.</li>
+<li>컨테이너 생성 시 -p 옵션의 컨테이너 포트 값으로 EXPOSE 값을 적어야 한다.</li>
+<li>이 이미지에서 해당 포트를 외부로 개방한다고 명시하는 것일 뿐,
+사용자가 해당 포트로 접근이 가능한 것은 아니다.</li>
+</ul>
+</li>
+<li><strong>USER</strong> : 이미지를 어떤 계정에서 실행 하는지 지정
+<ul>
+<li>기본적으로 root에서 해준다.</li>
+</ul>
+</li>
+<li><strong>ENTRYPOINT :</strong> 컨테이너를 시작할 때 실행할 명령어
+<ul>
+<li>컨테이너를 시작할 때마다 실행된다. (docker start)</li>
+<li>컨테이너 시작 시, 추가적인 명령어 존재 여부와 상관 없이 무조건 실행된다.</li>
+<li>ENTRYPOINT [&quot;&lt;커맨드&gt;&quot;, &ldquo;&lt;파라미터1&gt;&rdquo;, &ldquo;&lt;파라미터2&gt;&rdquo;]</li>
+<li>ENTRYPOINT &lt;커맨드&gt; &lt;파라미터1&gt; &lt;파라미터2&gt;</li>
+</ul>
+</li>
+<li><strong>ENV</strong> : 이미지에서 사용할 환경 변수 값을 지정한다.
+<ul>
+<li>path 등</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-docker-image-build-options-path--url---">3. <code>docker image build [OPTIONS] PATH | URL | -</code></h3>
+<p><strong>예시) <code>docker build -t 02-docker:latest .</code></strong></p>
+<p><code>.</code>은 현재 폴더에 Dockerfile이 있음을 의미한다.</p>
+<p>태그는 미 지정 시 latest로 채워진다.</p>
+<p><a href="https://climbtheladder.com/10-docker-image-naming-convention-best-practices/">도커 이미지 이름 컨벤션</a></p>
+<p>options</p>
+<ul>
+<li>
+<p><code>-t</code>: 이미지 명과 태그 명을 붙이는 옵션</p>
+<p>실제 사용에서 거의 필수적이다.</p>
+</li>
+<li>
+<p><code>-f</code>: 기본 옵션인 Dockfile 대신 다른 파일 명을 사용할 경우 필요한 옵션</p>
+</li>
+<li>
+<p>Docker image 삭제 방법</p>
+<p><code>docker images</code>로 imageID 확인</p>
+<p><code>docker rmi [imageID]</code></p>
+<ul>
+<li>container에서 사용 중인 image의 경우 삭제가 불가능함.</li>
+<li>종료한 container가 사용 중인 image의 경우 <code>-f</code> 옵션으로 삭제 가능.</li>
+</ul>
+</li>
+</ul>
+<h2 id="docker-container-만들기-docker-run">Docker Container 만들기 <code>docker run</code></h2>
+<h3 id="4-docker-run-options-image_nametagdigest-command-arg">4. <code>docker run [OPTIONS] IMAGE_NAME[:TAG|@DIGEST] [COMMAND] [ARG...]</code></h3>
+<p>options</p>
+<ul>
+<li>
+<p><code>**-p [host port:container port]</code> host port를 container port로 포워딩시키기.**</p>
+<p>예시) <code>docker run -p 8080:8080 backserv</code></p>
+<p>해당 옵션을 제공하지 않으면 container port로 접근할 수가 없다.</p>
+<p>꼭 같은 포트로 지정해줄 필요는 없다.</p>
+</li>
+<li>
+<p><strong><code>-P(대문자)</code> 랜덤한 host port가 Dockfile에서 <code>EXPOSE</code> 구문으로 명시한 포트에 매핑된다.</strong></p>
+<p>호스트 OS에서 컨테이너를 실행할 때 매번 포트 룰을 정하는 것은 귀찮기 때문에, 랜덤한 포트를 EXPOSE한 포트에 매핑시킨다.</p>
+<p>도커를 다루는 GUI 프로그램에서 -p 옵션으로 제공할 수 있도록 힌트 역할을 하기도 한다.</p>
+</li>
+<li>
+<p><code>**-d**</code>: 컨테이너를 백그라운드에서 실행한다.</p>
+</li>
+<li>
+<p><code>-v [host dir:container dir]</code>: 호스트와 컨테이너 간의 디렉토리를 공유한다.</p>
+<p>컨테이너 내부의 파일을 Host와 공유하는 방법: <code>Volume Mount</code></p>
+<p>만약 디렉토리를 공유하지 않는다면 컨테이너를 삭제할 때 컨테이너 내부 파일은 삭제된다.</p>
+<p>ex) docker run -it -p8888:8888 -v/some/host/folder/workspace
+jupyter/minimal -notebook</p>
+</li>
+<li>
+<p><code>-it</code> 상호 입출력 옵션 및 tty 활성화</p>
+<p>tty를 활성화하면 default로 bash shell을 사용한다.</p>
+<p>해당 옵션을 제공하지 않으면 터미널에서의 ctrl+C 명령이 동작하지 않는다.</p>
+</li>
+<li>
+<p><code>--name [CONTAINER_NAME]</code> container 이름을 직접 지정하고자 할 때 사용한다.</p>
+</li>
+<li>
+<p><code>-rm</code> 명령이 종료되면 컨테이너를 내리는 옵션</p>
+<p>해당 옵션을 주지 않으면 컨테이너를 종료하더라도 exited된 상태로 ps에 남아있게 된다.</p>
+</li>
+<li>
+<p><code>[COMMAND]</code> 이미지가 가진 시작 명령어(CMD로 추정)를 무시하고 <code>COMMAND</code>를 대신 실행한다.</p>
+</li>
+</ul>
+<h3 id="docker-commit"><code>docker commit</code></h3>
+<h3 id="docker-save"><code>docker save</code></h3>
+<h3 id="docker-container-시작">Docker Container 시작</h3>
+<p><code>docker start [container id]</code></p>
+<h3 id="docker-container-종료">Docker Container 종료</h3>
+<p><code>docker ps</code></p>
+<p><code>docker stop [container id]</code> : 동작을 완료하는 것을 기다린 후 종료</p>
+<p><code>docker kill [container id]</code> : 바로 종료</p>
+<h3 id="docker-with-vs-code">Docker with VS Code</h3>
+<p><a href="https://learn.microsoft.com/ko-kr/visualstudio/docker/tutorials/docker-tutorial?WT.mc_id=vscode_docker_aka_getstartedwithdocker">Visual Studio Code에서 Docker 앱 시작</a></p>
+<ol>
+<li>Docker를 Linux 컨테이너 모드로 설정하기</li>
+</ol>
+<p><strong>Settings &gt; Builders &gt; desktop-linux</strong></p>
+<p><img src="/imgs/docker1.png" alt="docker"></p>
+<ol>
+<li>VS Code에서 새 터미널 열기</li>
+</ol>
+<h2 id="docker-compose-사용하기">Docker Compose 사용하기</h2>
+<h3 id="1-docker-composeyml-파일-작성하기">1. docker-compose.yml 파일 작성하기</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-docker" data-lang="docker"><span style="display:flex;"><span><span style="color:#75715e"># compose 파일 버전</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>version: <span style="color:#e6db74">&#34;1&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>services:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  <span style="color:#75715e"># 서비스 명</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  backend:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 사용할 이미지</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    image: backserv<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 컨테이너 실행 시 재시작</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    restart: always<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 컨테이너명 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    container_name: blogback<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 접근 포트 설정 (컨테이너 외부:컨테이너 내부)</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    ports:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#34;8080:8080&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 환경 변수 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># environment:</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 볼륨 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># volumes:</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  postgresql:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    image: postgres<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 컨테이너 실행 시 재시작</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    restart: always<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    container_name: blogdb<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    ports:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#34;5432:5432&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 환경 변수 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    environment: <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      <span style="color:#75715e"># PostgreSQL 계정 및 패스워드 설정 옵션</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      POSTGRES_USER: postgres<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      POSTGRES_PASSWORD: password<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\O</span>hseungmin<span style="color:#ae81ff">\w</span>orkspace<span style="color:#ae81ff">\b</span>log<span style="color:#ae81ff">\p</span>gdata:/var/lib/postgresql/data<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>  pgadmin:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    image: dpage/pgadmin4<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 컨테이너 실행 시 재시작</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    restart: always<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 컨테이너명 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    container_name: pgadmin4<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    ports:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - <span style="color:#e6db74">&#34;5050:80&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#75715e"># 환경 변수 설정</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    environment:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      PGADMIN_DEFAULT_EMAIL: tmdals179@naver.com<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      PGADMIN_DEFAULT_PASSWORD: password<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    volumes:<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>      - C:<span style="color:#ae81ff">\U</span>sers<span style="color:#ae81ff">\O</span>hseungmin<span style="color:#ae81ff">\w</span>orkspace<span style="color:#ae81ff">\b</span>log<span style="color:#ae81ff">\p</span>gadmin:/var/lib/pgadmin<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><h3 id="2-docker-compose-up--d--컨테이너-한-번에-생성하고-실행하기">2. <code>docker-compose up -d</code> : 컨테이너 한 번에 생성하고 실행하기</h3>
+<h3 id="3-docker-compose-stop--d--컨테이너-한-번에-종료하기">3. <code>docker-compose stop -d</code> : 컨테이너 한 번에 종료하기</h3>
+<h3 id="4-docker-compose-start--d--컨테이너-한-번에-실행하기">4. <code>docker-compose start -d</code> : 컨테이너 한 번에 실행하기</h3>
+<h3 id="5-docker-compose-down--컨테이너-한-번에-종료하고-삭제하기">5. <code>docker-compose down</code> : 컨테이너 한 번에 종료하고 삭제하기</h3>
+<p><strong>이외</strong></p>
+<p><a href="https://www.daleseo.com/docker-compose/">https://www.daleseo.com/docker-compose/</a></p>
+<p><a href="https://docs.docker.com/compose/reference/">https://docs.docker.com/compose/reference/</a></p>
+<p><a href="https://docs.docker.com/compose/">https://docs.docker.com/compose/</a></p>
+<h2 id="docker-network">Docker Network</h2>
+<p><a href="https://jaehun2841.github.io/2018/12/01/2018-12-01-docker-5/#Container-%EB%AA%A8%EB%93%9C-%EC%9D%B4%EA%B2%83%EB%8F%84-Bridge-%EB%AA%A8%EB%93%9C%EC%9D%98-%EC%9D%BC%EB%B6%80">https://jaehun2841.github.io/2018/12/01/2018-12-01-docker-5/#Container-모드-이것도-Bridge-모드의-일부</a></p>
+<p><a href="https://www.daleseo.com/docker-networks/">https://www.daleseo.com/docker-networks/</a></p>
+<p><a href="https://velog.io/@jihwankim94/Docker-Host-%EC%99%80-Container-%EB%82%B4%EB%B6%80%EC%9D%98-app%EB%93%A4%EC%9D%B4-%ED%86%B5%EC%8B%A0%EC%9D%B4-%EC%95%88%EB%90%98%EB%8A%94-%EC%9D%B4%EC%9C%A0">https://velog.io/@jihwankim94/Docker-Host-와-Container-내부의-app들이-통신이-안되는-이유</a></p>
+<h3 id="reference">reference</h3>
+<p><a href="https://hynek.me/articles/docker-signals/">https://hynek.me/articles/docker-signals/</a></p>
+<p><a href="https://docs.docker.com/">https://docs.docker.com/</a></p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+    
+    <div id="tex">
+        <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+  });
+  MathJax.Hub.Queue(function() {
+    
+    
+    
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script> 
+    </div>
+    
+</div>
+
+<aside class="post-toc">
+    <nav id="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#background--왜-도커를-써야하나"><strong>Background —</strong> 왜 도커를 써야하나?</a></li>
+            <li><a href="#docker"><strong>Docker</strong></a></li>
+            <li><a href="#docker-use-case">Docker use case</a></li>
+          </ul>
+        </li>
+        <li><a href="#기존-이미지-활용하기">기존 이미지 활용하기</a></li>
+        <li><a href="#docker-이미지-만들기-docker-build">Docker 이미지 만들기 <code>docker build</code></a>
+          <ul>
+            <li><a href="#1-폴더-하나를-만든-후-poetry-세팅과-torch-관련-패키지-설치"><strong>1. 폴더 하나를 만든 후, poetry 세팅과 torch 관련 패키지 설치</strong></a></li>
+            <li><a href="#2-dockerfile-생성-및-작성하기"><strong>2. <code>Dockerfile</code> 생성 및 작성하기</strong></a></li>
+            <li><a href="#3-docker-image-build-options-path--url---">3. <code>docker image build [OPTIONS] PATH | URL | -</code></a></li>
+          </ul>
+        </li>
+        <li><a href="#docker-container-만들기-docker-run">Docker Container 만들기 <code>docker run</code></a>
+          <ul>
+            <li><a href="#4-docker-run-options-image_nametagdigest-command-arg">4. <code>docker run [OPTIONS] IMAGE_NAME[:TAG|@DIGEST] [COMMAND] [ARG...]</code></a></li>
+            <li><a href="#docker-commit"><code>docker commit</code></a></li>
+            <li><a href="#docker-save"><code>docker save</code></a></li>
+            <li><a href="#docker-container-시작">Docker Container 시작</a></li>
+            <li><a href="#docker-container-종료">Docker Container 종료</a></li>
+            <li><a href="#docker-with-vs-code">Docker with VS Code</a></li>
+          </ul>
+        </li>
+        <li><a href="#docker-compose-사용하기">Docker Compose 사용하기</a>
+          <ul>
+            <li><a href="#1-docker-composeyml-파일-작성하기">1. docker-compose.yml 파일 작성하기</a></li>
+            <li><a href="#2-docker-compose-up--d--컨테이너-한-번에-생성하고-실행하기">2. <code>docker-compose up -d</code> : 컨테이너 한 번에 생성하고 실행하기</a></li>
+            <li><a href="#3-docker-compose-stop--d--컨테이너-한-번에-종료하기">3. <code>docker-compose stop -d</code> : 컨테이너 한 번에 종료하기</a></li>
+            <li><a href="#4-docker-compose-start--d--컨테이너-한-번에-실행하기">4. <code>docker-compose start -d</code> : 컨테이너 한 번에 실행하기</a></li>
+            <li><a href="#5-docker-compose-down--컨테이너-한-번에-종료하고-삭제하기">5. <code>docker-compose down</code> : 컨테이너 한 번에 종료하고 삭제하기</a></li>
+          </ul>
+        </li>
+        <li><a href="#docker-network">Docker Network</a>
+          <ul>
+            <li><a href="#reference">reference</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </nav>
+</aside>
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 OMIN</span>
+    
+</footer>
+</body>
+</html>

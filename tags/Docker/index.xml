@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Docker on 오뚝이 개발자</title>
+    <link>https://osmin625.github.io/tags/Docker/</link>
+    <description>Recent content in Docker on 오뚝이 개발자</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko</language>
+    <lastBuildDate>Mon, 13 Feb 2023 13:00:00 +0900</lastBuildDate>
+    <atom:link href="https://osmin625.github.io/tags/Docker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>나를 위한 Docker 총정리</title>
+      <link>https://osmin625.github.io/posts/docker/</link>
+      <pubDate>Mon, 13 Feb 2023 13:00:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/docker/</guid>
+      <description>눈송이 서버 가상화 VM(Virtual Machine) Container Docker Image Docker Container Background — 왜 도커를 써야하나? 눈송이 서버들(Snowflake Servers)&#xA;모든 눈송이의 모양이 다르듯, 서버들도 모두 다르다.&#xA;서버가 여러개인 경우, 서버 구성 시기에 따라 운영체제, 컴파일러, 설치된 패키지 등의 버전이 달라지게 된다.&#xA;눈송이 서버를 방지하기 위해, 새로 서버를 구성할 때 다양한 방식으로 서버 운영 기록을 저장해 둔다.&#xA;가상화&#xA;특정 소프트웨어 환경을 만든 후, Local 서버나 Production 서버에서 그대로 활용하는 방법.&#xA;어느 운영체제에서나 동일한 환경으로 프로그램 실행 가능</description>
+    </item>
+  </channel>
+</rss>

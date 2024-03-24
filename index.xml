@@ -240,6 +240,13 @@
       <description>하이퍼 파라미터&#xA;모델 스스로 학습하지 않는 값.&#xA;사람이 직접 지정해주어야 한다.&#xA;결과를 개선하고 싶을 때 모델을 바꾸기&#xA;중요하지만, 이미 높은 성능의 모델이 공개되어있기 때문에 상대적으로 덜 중요.&#xA;데이터를 바꾸기 → 성능 개선을 위해 가장 중요하다.&#xA;하이퍼 파라미터 Tuning&#xA;약간의 성능 개선이 간절한 경우 수행한다.&#xA;마지막 0.01의 성능 개선이라도 필요한 경우 사용한다.&#xA;generalization 등 적용&#xA;Hyperparameter Tuning 가장 기본적인 방법 - grid vs random&#xA;grid&#xA;적절한 하이퍼파라미터를 찾을 때, 값들을 일정한 범위를 정해 선택하는 것.</description>
     </item>
     <item>
+      <title>나를 위한 Docker 총정리</title>
+      <link>https://osmin625.github.io/posts/docker/</link>
+      <pubDate>Mon, 13 Feb 2023 13:00:00 +0900</pubDate>
+      <guid>https://osmin625.github.io/posts/docker/</guid>
+      <description>눈송이 서버 가상화 VM(Virtual Machine) Container Docker Image Docker Container Background — 왜 도커를 써야하나? 눈송이 서버들(Snowflake Servers)&#xA;모든 눈송이의 모양이 다르듯, 서버들도 모두 다르다.&#xA;서버가 여러개인 경우, 서버 구성 시기에 따라 운영체제, 컴파일러, 설치된 패키지 등의 버전이 달라지게 된다.&#xA;눈송이 서버를 방지하기 위해, 새로 서버를 구성할 때 다양한 방식으로 서버 운영 기록을 저장해 둔다.&#xA;가상화&#xA;특정 소프트웨어 환경을 만든 후, Local 서버나 Production 서버에서 그대로 활용하는 방법.&#xA;어느 운영체제에서나 동일한 환경으로 프로그램 실행 가능</description>
+    </item>
+    <item>
       <title>1 x 1 Convolution</title>
       <link>https://osmin625.github.io/posts/1x1-Convolution/</link>
       <pubDate>Fri, 13 Jan 2023 15:39:00 +0900</pubDate>

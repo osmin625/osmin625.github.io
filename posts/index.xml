@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Self Righting Dev.O</title>
+    <title>Posts on Robust dev O</title>
     <link>https://osmin625.github.io/posts/</link>
-    <description>Recent content in Posts on Self Righting Dev.O</description>
+    <description>Recent content in Posts on Robust dev O</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ko</language>
     <lastBuildDate>Mon, 18 Mar 2024 05:59:00 +0900</lastBuildDate>
@@ -34,7 +34,7 @@
       <link>https://osmin625.github.io/posts/Recsys-Overview/</link>
       <pubDate>Wed, 27 Sep 2023 13:53:00 +0900</pubDate>
       <guid>https://osmin625.github.io/posts/Recsys-Overview/</guid>
-      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;{: .prompt-info }&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) ML based CF</description>
+      <description>Naver BoostCamp AI Tech에서 학습한 내용을 재구성했습니다.&#xA;해당 게시글은 지속적으로 업데이트할 예정입니다.&#xA;노션에 정리했던 내용을 복습하며 블로그에 조금씩 업로드하고 있습니다.&#xA;추천 시스템 추천 시스템 평가 패러다임 Rule Base 인기도 기반 추천&#xA;연관 분석(Association Analysis)&#xA;CBF: Content Based Filtering 1. Vectorizer — 아이템 특성을 벡터 형태로 어떻게 표현하는가 TF-IDF&#xA;TF-IDF 기반 추천&#xA;BM25&#xA;Word2Vec&#xA;2. Similarity — 특성화된 아이템이 서로 얼마나 비슷한가 Similarity&#xA;Distance&#xA;CF: Collaborative Filtering(협업 필터링) NBCF: Neighborhood-based CF(이웃 기반 협업 필터링) MBCF: Model based Collaborative Filtering(모델 기반 협업 필터링) ML based CF</description>
     </item>
     <item>
       <title>Polynomial Interpolation(보간 다항식)</title>

@@ -163,11 +163,11 @@
 <ul>
 <li>
 <p>jekyll에서의 urlize — 대문자는 그대로 유지, 띄어쓰기는 ‘-’로 변경</p>
-<p><code>**/DL-Algorithm/**</code> → 정상 동작</p>
+<p><strong><code>/DL-Algorithm/</code></strong> → 정상 동작</p>
 </li>
 <li>
 <p>hugo에서의 urlize — 대문자는 소문자로, 띄어쓰기는 ‘-’로 변경</p>
-<p><code>**/dl-algorithm/**</code> ≠ <code>/DL-Algorithm/</code> → 인덱싱 오류 발생</p>
+<p><strong><code>/dl-algorithm/</code></strong> ≠ <code>/DL-Algorithm/</code> → 인덱싱 오류 발생</p>
 </li>
 </ul>
 <h3 id="공식-문서의-지침">공식 문서의 지침</h3>
@@ -175,7 +175,7 @@
 <ul>
 <li>
 <p><code>preserveTaxonomyNames = true</code>옵션을 주면?</p>
-<p><code>**/DL%20Algorithm/**</code> ≠ <code>/DL-Algorithm/</code> → 인덱싱 오류 발생</p>
+<p><strong><code>/DL%20Algorithm/</code></strong> ≠ <code>/DL-Algorithm/</code> → 인덱싱 오류 발생</p>
 </li>
 </ul>
 <p>띄어쓰기가 유니코드 그대로 url에 삽입되기 때문에 여전히 page not found가 발생한다.</p>
